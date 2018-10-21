@@ -1,9 +1,17 @@
-html {
-    font-family: "ChampagneLimousines" !important;
-    src: url(../Fonts/champagne__limousines-webfont.woff2) !important;
+@font-face {
+    font-family: "ChampagneLimousines";
+    src: url(../Fonts/champagne__limousines-webfont.woff2);
+}
+
+@font-face {
+    font-family: "Elkwood";
+    src: url(../Fonts/elkwood-webfont.woff2);
+}
+
+p {
+    font-family: ChampagneLimousines;    
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Elkwood" !important;
-    src: url(../Fonts/elkwood-webfont.woff2) !important;
+    font-family: Elkwood;
 }

@@ -1,0 +1,9 @@
+html {
+    font-family: "ChampagneLimousines" !important;
+    src: url(../Fonts/CHhampagne&Limousines.tff) !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Elkwood" !important;
+    src: url(../Fonts/Elkwood.otf) !important;
+}

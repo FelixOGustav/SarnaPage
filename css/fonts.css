@@ -11,6 +11,23 @@
 p {
     font-family: ChampagneLimousines;
     font-size: 20px;
+    font-weight: bold;
+    color: #606569;
+}
+
+.same-as-p {
+    font-family: ChampagneLimousines;
+    font-size: 20px;
+    font-weight: bold;
+    color: #606569;
+}
+
+.same-as-p:hover {
+    font-family: ChampagneLimousines;
+    font-size: 20px;
+    font-weight: bold;
+    color: #cacaca;
+    text-decoration-line: none;
 }
 
 h1, h2, h3, h4, h5, h6 {

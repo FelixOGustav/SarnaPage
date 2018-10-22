@@ -24,7 +24,7 @@
 
     <!-- Navbar -->
     
-    <div class="navbar navbar-expand-lg navbar-light navbarBG fixed-top">
+    <div class="navbar navbar-expand-lg navbar-light navbarBG fixed-top navbar-custom">
         <div>
             <img src="../img/snowflake.PNG" class="navbarSnowflakePos">
             <a class="navbarLogo navbar-brand" href="#" style="color: #606569;">Särna Lägret</a>
@@ -35,19 +35,19 @@
         <div class="navbar-collapse collapse" id="navbarBasic">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link ElkwoodNavbar navbarItemSpacing" href="#">Pris <span class="sr-only">(current)</span></a>
+                    <a class="nav-link nav-item-custom ElkwoodNavbar navbarItemSpacing" href="#">Pris <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link ElkwoodNavbar navbarItemSpacing" href="#">Särnalägret?</a>
+                    <a class="nav-link nav-item-custom ElkwoodNavbar navbarItemSpacing" href="#">Särnalägret?</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link ElkwoodNavbar navbarItemSpacing" href="#">Regler</a>
+                    <a class="nav-link nav-item-custom ElkwoodNavbar navbarItemSpacing" href="#">Regler</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link ElkwoodNavbar navbarItemSpacing" href="#">FAQ</a>
+                    <a class="nav-link nav-item-custom ElkwoodNavbar navbarItemSpacing" href="#">FAQ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link ElkwoodNavbar navbarItemSpacing" href="#">Kontakt</a>
+                    <a class="nav-link nav-item-custom ElkwoodNavbar navbarItemSpacing" href="#">Kontakt</a>
                 </li>
             </ul>
         </div>
@@ -58,13 +58,13 @@
     <!-- Main Site Content -->
     <!-- Example content -->
     <div class="container-fluid noPadding" style="min-height: 850px;"><!-- min-height should be able to be removed later -->
-        <div style="height: 86px;"></div> <!-- Spacer so that content doesn't start under navbar -->
-        
+        <div style="height: 65px;"></div> <!-- Spacer so that content doesn't start under navbar -->
+
         <h1 class="bigLogo">särnalägret</h1>
         <h1 class="dateLogo">27 dec - 1 jan</h1>        
         <h1 class="dateLogo">2018 - 2019</h1>
 
-        <div class="container-fluid" style="background-color :#ffffffbe; padding: 10px;">
+        <div class="container-fluid noPadding" style="background-color :#ffffffbe; padding: 10px;">
             <p>Lorem ipsum lectus vestibulum interdum porttitor ligula aenean inceptos magna, orci blandit tincidunt aliquam dictumst fermentum suspendisse aliquam quis, eu dolor non class euismod venenatis quis a turpis posuere adipiscing leo donec bibendum dictum posuere habitasse elit, inceptos curae nam interdum et donec aptent sem, hendrerit integer nisi litora ligula eget mi sollicitudin nunc volutpat turpis ut facilisis nisl duis.</p>
             <p>Nunc tincidunt pellentesque dictum taciti adipiscing condimentum diam et, semper scelerisque vehicula tortor commodo neque dictum aptent vehicula, nunc nullam ultrices eget praesent porta interdum.</p>
             <p>Lacinia consequat habitasse donec tristique auctor leo ac venenatis, amet sollicitudin luctus orci porta vitae inceptos, morbi rutrum feugiat donec vel amet adipiscing.</p>
@@ -89,15 +89,16 @@
 
     <div class="footerBG row" style="margin: 0px;">
         <div class="col" style="margin-top: auto; margin-bottom: auto; text-align: center">
-            <p style="color: white;">Om hemsidan</p>
-            <p style="color: white;">Admin sida</p>
+            <a href="#" class="same-as-p whiteColor">Om hemsidan<br><br></a>
+            <a href="#" class="same-as-p whiteColor">GDPR<br><br></a>
+            <a href="#" class="same-as-p whiteColor">Admin-sidan</a>
         </div>
 
         <div class="col">
-            <img src="../img/EqumeniaTextLogga.png" class="footerImg">
+            <a href="http://www.equmenia.se/" target="blank"><img src="../img/EqumeniaTextLogga.png" class="footerImg"></a>
         </div>
         <div  class="col">
-                <img src="../img/EqumeniakyrkanKorsLogga.png" class="footerImg">
+            <a href="http://www.equmenia.se/" target="blank"><img src="../img/EqumeniakyrkanKorsLogga.png" class="footerImg"></a> 
         </div>
     </div>
 
@@ -106,7 +107,7 @@
 
     <!-- scroll to top btn -->
 
-    <button onclick="topFunction()" id="scrollToTopBtn" title="Go to top"><img src="../img/arrowUp.png"></button>
+    <button onclick="topFunction()" id="scrollToTopBtn" title="Go to top" class="dropShadow"><img src="../img/arrowUp.png"></button>
 
     <!-- scroll to top btn end -->
 

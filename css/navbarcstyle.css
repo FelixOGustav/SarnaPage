@@ -13,14 +13,20 @@
 }
 
 .navbarItemSpacing {
-    margin-right: 65px;
+    margin-right: 50px;
 }
 
 .ElkwoodNavbar{
     font-family: Elkwood;
-    font-size: 30px;
+    font-size: 25px;
 }
 
 .navbarBG {
-    background-color: #ffffff9c;
+    background-color: #ffffffd3;
+}
+
+@media (min-width: 992px) {
+    .navbar-custom {
+        height: 45px;
+    }
 }

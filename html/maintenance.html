@@ -5,8 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- CSS links-->
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/fonts.css">
+    <style type="text/css">
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        #wrapper {
+            min-height: 100%; 
+            min-width: 100%;
+        }
+
+        .bibleStyleBig {
+            font-size:40px;
+        }
+
+        .bibleStyleSmall {
+            font-size:30px;
+        }
+        @media (max-width:991.98px){
+            .mobileScale {
+                transform: scale(0.7); /* Equal to scaleX(0.7) scaleY(0.7) */
+            }
+        }
+    </style>
+    
 
 
     <title>Särnalägret 2018-2019</title>
@@ -18,13 +42,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/randombibelord.js"></script>
-
-    <h1 align="center", style="font-size:80px">Särnalägret</h1>
-<<<<<<< HEAD
-    <h4 align="middle", style="vertical-align: middle",class="greyColor">Oj, vad pinsamt... Vi är inte helt färdiga än...<br> Kom tillbaka  1 november, för då öppnar anmälan. <br>Under tiden du väntar, <br>Har vi lämnat lite bibelord om just väntan.</h4>
-=======
-    <h4 align="middle", style="vertical-align: middle",class="greyColor">Oj, vad pinsamt... Vi är inte helt färdiga än...<br> Kom tillbaka  1 november, för då öppnar anmälan. <br>Under tiden du vänra, <br>Har vi lämnat lite bibelord om just väntan.</h4>
-    <h4 align="middle", id="bibleverse" class="greyColor">placeholder text</h4>
->>>>>>> 5ad321977a7c1cdbd6c7a2492438c485a5dcc6e4
+    <div id="wrapper", class="mobileScale">
+        <div style="padding: 7%">
+        </div>
+        <img style="max-height: 150px;"src="../img/sarnalagret.svg" alt="Särnalägret">
+        <br>
+        <br>
+        <h1 align="middle", style="vertical-align: middle",class="greyColor">Oj, vad pinsamt... Vi är inte helt färdiga än...<br> Kom tillbaka  1 november, för då öppnar anmälan. <br>Under tiden du väntar, <br>Har vi lämnat lite bibelord om just väntan.</h1>
+        <br>
+        <br>
+        <br>
+        <br>
+        <P align="middle", id="bibletext" class="greyColor", class=".bibleStyleBig">placeholder text</p>
+        <p align="middle", id="bibleverse" class="greyColor", class=".bibleStyleSmall">placeholder text</p>
+    </div>
 </body>
 </html>

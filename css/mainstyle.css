@@ -1,0 +1,23 @@
+.mainBG{
+    background-image: url(../img/mainBG.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.noPadding {
+    padding: 0px;
+}
+
+.bigLogo {
+    color: white;
+    font-size: 150px;
+    text-align: center;
+    margin-bottom: -10px;
+}
+
+.dateLogo {    
+    color: white;
+    font-size: 40px;
+    margin-top: -25px;
+    text-align: center;
+}

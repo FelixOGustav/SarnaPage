@@ -9,10 +9,19 @@
 }
 
 p {
-    font-family: ChampagneLimousines;    
+    font-family: ChampagneLimousines;
+    font-size: 20px;
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-family: Elkwood;
     color: #606569;
+}
+
+.greyColor {
+    color: #606569;
+}
+
+.whiteColor {
+    color: #FFFFFF;
 }

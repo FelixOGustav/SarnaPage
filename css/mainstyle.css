@@ -32,6 +32,70 @@
     background-color: #ffffffe3;
 }
 
+.buttonStyle {
+    background-color: #606569;
+    border: none;
+    padding: 10px 25px 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 35px;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+}
+
+.buttonStyle p {
+    color: white;
+    font-family: Elkwood;
+    font-size: 30px;
+    font-weight: normal;
+    margin: 0px;
+}
+
+.startPageInfo {
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (min-width: 992px){
+    .startPageInfo {
+        margin-top: 80px;
+        padding-left: 12%;
+    }
+}
+
+@media (max-width: 991.98px){
+    .startPageInfo h1 {
+        font-size: 33px;
+    }
+
+    .startPageInfo h3 {
+        font-size: 23px;
+    }
+}
+
+.modal-content {
+    border-radius: 0px;
+    border: none;
+}
+
+.modalButtonStyle {
+    margin: 0px 15px;
+    background-color: #606569;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.modalButtonStyle h3 {
+    margin: 0px;
+    padding: 0px;
+}
+
 #scrollToTopBtn {
     display: none; /* Hidden by default */
     position: fixed; /* Fixed/sticky position */

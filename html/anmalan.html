@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head lang = "en">
+    <meta charset="ISO-8859-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="../img/snowflake.PNG" type="img/PNG">
+
+    <!-- CSS links-->
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/fonts.css">
+    <link rel="stylesheet" href="../css/navbarcstyle.css">
+    <link rel="stylesheet" href="../css/footerstyle.css">
+    <link rel="stylesheet" href="../css/mainstyle.css">
+
+    <title>Särnalägret</title>
+</head>
+<body class="mainBG">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/scrollToTop.js"></script>
+
+    <!-- Navbar -->
+    
+    <div class="navbar navbar-expand-lg navbar-light navbarBG fixed-top navbar-custom">
+        <div>
+            <img src="../img/snowflake.PNG" class="navbarSnowflakePos">
+            <a class="navbarLogo navbar-brand" href="#" style="color: #606569;">SärnaLägret</a>
+        </div>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarBasic" aria-controls="navbarBasic" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarBasic">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link nav-item-custom ElkwoodNavbar navbarItemSpacing" href="#">Pris <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-item-custom ElkwoodNavbar navbarItemSpacing" href="#">Särnalägret?</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-item-custom ElkwoodNavbar navbarItemSpacing" href="#">Regler</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-item-custom ElkwoodNavbar navbarItemSpacing" href="#">FAQ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-item-custom ElkwoodNavbar navbarItemSpacing" href="#">Kontakt</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Navbar end -->
+
+    <!-- Main Site Content -->
+    <!-- Example content -->
+    <div class="container-fluid noPadding" style="min-height: 850px;"><!-- min-height should be able to be removed later -->
+        <div class="navbarSpacer" ></div> <!-- Spacer so that content doesn't start under navbar -->
+            <form>
+                        <div><h2>Deltagare</h2></div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="firstName">Förnamn</label>
+                                <input type="text" class="form-control" id="" placeholder="Kim">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="lastName">Efternamn</label>
+                                <input type="text" class="form-control" id="lastName" placeholder="Svensson">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputAddress">Adress</label>
+                            <input type="text" class="form-control" id="inputAddress" placeholder="Sommargatan">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputAddress2">Adress 2</label>
+                            <input type="text" class="form-control" id="inputAddress2" >
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputCity">Postort</label>
+                                <input type="text" class="form-control" id="inputCity" placeholder="Sommargårda">
+                            </div>
+                           <!-- <div class="form-group col-md-4">
+                                <label for="inputState">State</label>
+                                <select id="inputState" class="form-control">
+                                    <option selected>Choose...</option>
+                                    <option>...</option>
+                                </select>
+                            </div>
+                            -->
+                            <div class="form-group col-md-6">
+                                <label for="inputZip">Postnummer</label>
+                                <input type="text" class="form-control" id="inputZip" placeholder="13337">
+                            </div>
+                        </div>
+                        <br>
+                        <div><h2>Kontaktuppgifter målsman</h2></div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="firstNameAdvocate">Förnamn målsman</label>
+                                <input type="text" class="form-control" id="" placeholder="Kalle">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="lastNameAdvocate">Efternamn målsman</label>
+                                <input type="text" class="form-control" id="lastName" placeholder="Svensson">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox"> Check me out
+                                </label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Slutför Anmälan</button>
+        </form>
+    </div>
+
+    <!-- Main Site Content End -->
+
+    <!-- Footer -->
+
+    <div class="footerBG row" style="margin: 0px;" id="footerId">
+        <div class="col" style="margin-top: auto; margin-bottom: auto; text-align: center">
+            <a href="#" class="same-as-p whiteColor scaleFooterTextToMobile">Om hemsidan<br><br></a>
+            <a href="#" class="same-as-p whiteColor scaleFooterTextToMobile">GDPR<br><br></a>
+            <a href="#" class="same-as-p whiteColor scaleFooterTextToMobile">Admin-sidan</a>
+        </div>
+
+        <div class="col">
+            <a href="http://www.equmenia.se/" target="blank"><img src="../img/EqumeniaTextLogga.png" class="footerImg"></a>
+        </div>
+        <div  class="col">
+            <a href="http://www.equmenia.se/" target="blank"><img src="../img/EqumeniakyrkanKorsLogga.png" class="footerImg"></a> 
+        </div>
+    </div>
+
+    <!-- Footer end -->
+   
+
+    <!-- scroll to top btn -->
+
+    <button onclick="topFunction()" id="scrollToTopBtn" title="Go to top" class="dropShadow"><img src="../img/arrowUp.png"></button>
+
+    <!-- scroll to top btn end -->
+
+
+</body>
+</html>

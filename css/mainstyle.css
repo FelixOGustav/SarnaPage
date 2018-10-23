@@ -28,6 +28,10 @@
     box-shadow: 0px 5px 15px #464444ab;
 }
 
+.BGTransparent {
+    background-color: #ffffffe3;
+}
+
 #scrollToTopBtn {
     display: none; /* Hidden by default */
     position: fixed; /* Fixed/sticky position */

@@ -1,4 +1,4 @@
-window.onload =  function() {SetRandomBibleVers()};
+﻿window.onload =  function() {SetRandomBibleVers()};
 
 function SetRandomBibleVers(){
     var bibeltext = ["Var som en tjänare som väntar...", "Vilken lott det är att vänta...", "Vänta lite, jag ska snart ge dig besked...", "De befallde dem att vänta...","Låt oss därför tåligt vänta..."];

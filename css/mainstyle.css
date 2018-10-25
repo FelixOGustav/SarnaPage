@@ -138,6 +138,20 @@
     min-width: 80%;
 }
 
+.qnaBound {
+    width: 50%;
+    margin: 0px;
+    padding: 0px;
+}
+
+@media (max-width: 991.98px){
+    .qnaBound {
+        width: 100%;
+        margin: 0px;
+        padding: 0px;
+    }
+}
+
 @media screen and (min-width: 992px) {
     #scrollToTopBtn:hover{
         background-color: #d8d8d8e3; /* Add a dark-grey background on hover */

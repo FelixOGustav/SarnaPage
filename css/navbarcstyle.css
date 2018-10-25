@@ -4,8 +4,7 @@
 }
 
 .navbarLogo {
-    font-family: Elkwood;
-    font-size: 40px;
+    max-height: 30%;
 }
 
 .navbarSnowflakePos {

@@ -7,6 +7,7 @@ function scrollFunction() {
     } else {
         document.getElementById("scrollToTopBtn").style.display = "none";
     }
+
     // Move scroll to top button away from footer on mobile
     if(window.innerWidth < 992){
         var footerHeight = document.getElementById("footerId").clientHeight;
@@ -30,6 +31,6 @@ function scrollFunction() {
 
 // When the user clicks on the button, scroll to the top of the document
 function topFunction() {
-    document.body.scrollTop = 0; // For Safari
-    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    //document.body.scrollTop = 0; // For Safari
+    //document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }

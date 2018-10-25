@@ -113,6 +113,33 @@
     font-size: 18px; /* Increase font size */
 }
 
-#scrollToTopBtn:hover {
-    background-color: #d8d8d8e3; /* Add a dark-grey background on hover */
+.BGGrey {
+    background-color: #606569;
+}
+
+.centerTextInDiv {
+    text-align: center;
+}
+
+.invisibleSpacer {
+    min-height: 500px;
+}
+
+.paddingBottom {
+    padding-bottom: 100px;
+}
+
+.paddingTop{
+    padding-top: 100px;
+}
+
+.qnaBox {
+    margin: 8px 20px;
+    min-width: 80%;
+}
+
+@media screen and (min-width: 992px) {
+    #scrollToTopBtn:hover{
+        background-color: #d8d8d8e3; /* Add a dark-grey background on hover */
+    }
 }

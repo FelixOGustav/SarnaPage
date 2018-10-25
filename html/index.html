@@ -17,7 +17,7 @@
 <body class="mainBG">
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/scrollToTop.js"></script>
@@ -35,10 +35,10 @@
         <div class="navbar-collapse collapse" id="navbarBasic">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link nav-item-custom ElkwoodNavbar navbarItemSpacing" href="#">Pris <span class="sr-only">(current)</span></a>
+                    <a class="nav-link nav-item-custom ElkwoodNavbar navbarItemSpacing" href="#" id="scrollToPrisBtn">Pris <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link nav-item-custom ElkwoodNavbar navbarItemSpacing" href="#">Särnalägret?</a>
+                    <a class="nav-link nav-item-custom ElkwoodNavbar navbarItemSpacing" href="#" id="scrollToBranaslagretBtn">Särnalägret?</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link nav-item-custom ElkwoodNavbar navbarItemSpacing" href="#">Regler</a>
@@ -91,12 +91,113 @@
 
         
         
-        <div class="container-fluid startPageInfo">
+        <div class="container-fluid startPageInfo paddingBottom">
             <h1>Plats</h1>
             <h3>Vi sover i Kvistbergskolan i Torsby, Värmland. Vi åker skidor i Branäs</h3>
             <h1>Åldersgräns</h1>
             <h3>För dig som är född 2004 eller tidigare</h3>
         </div>
+        <div class="invisibleSpacer"></div>
+
+        <!-- Pris info -->
+        <div class="container-fluid bg-white paddingBottom paddingTop" id="prisInfo">
+            <div class="centerTextInDiv">
+                <h1>Pris</h1>
+                <h3>Lägeravgift - 1950 kr</h3>
+                <h3>Med syskonrabatt - 1550 kr</h3>
+                <h2><br>Liftkort</h2>
+                <h3>1 Dag - 200 kr</h3>
+                <h3>2 Dag - 400 kr</h3>
+                <h3>3 Dag - 450 kr</h3>
+                <h2><br>Skidhyra</h2>
+                <h3>Skidor - 400 kr</h3>
+                <h3>Snowboard - 300 kr</h3>
+                <h3>Längdskidor - 100 kr</h3>
+            </div>
+        </div>
+        <!-- Pris info end -->
+
+        <div class="invisibleSpacer"></div>
+
+        <!-- What is branaslagret info -->
+        <div class="container-fluid bg-white paddingBottom paddingTop" id="branaslagretInfo">
+            <div class=" container centerTextInDiv">
+                <h1>Vad är Branäslägret?</h1>
+                <p>Branäslägret är ett nyårsläger som varje år arrangeras av Equmeniaförsamlingarna i Vårgårda och Herrljungtrakten.
+                    Lägret riktar sig till tonåringar (födda senast 2004) och bjuder på en vecka av skidåkning, snack om Gud och bibel,
+                    gamla och nya vönner, aktiviteter av olika salg och mängder med tillfällen att njuta av livet! Lägret hålls i Kvistbergskolan
+                    i Sysslebäck, 10 min norr om branäs
+                </p>
+                <h1><br>Hur kan en dag se ut</h1>
+                <p>En vanlig dag börjar med frukost i matsalen. Därefter träffas tonåringar och ledare från respektive ort för att snacka
+                    om hur tonåringarna upplever lägret, presentera dagens aktiviteter och tema och kanske leka en lek tillsammans. Runt 9
+                    går bussarna mot Branäs för att dem som skall till pisten. Väl där serveras sedan en lättare mack-lunch vid kl 12.
+                    Bussarna kommer sedan tillbaka från backen senast kl 17, då väntar en god kvällsmat. På eftermiddagen träffas man med sin
+                    tvärgrupp. tvärgruppen består av en grupp tonåringar från olika orter men i ungefär samma ålder. tillsammans med ett par 
+                    ledare pratar pratar man om hur dagen har varit, om dagen bibeltext, man lär känna varandra, prata och har roligt. För de 
+                    deltagare som inte åker iväg till Branäs finns det gott om fria aktiviteter på skolan, spela spel, pyssla, idrotta eller 
+                    bara slappa och ha de gött. Under kvällen är det ofta spex och något roligt program i matsalen innan det är dags för en andakt. 
+                    Andkaterna ör delade i två delar. Under det första stunden vill vi att alla deltagare är med, sedan följer en frivilig del 
+                    för dem som vill stanna lite längre. På andakterna sjunger man tillsammans och lyssnar på någon som berättar om sin tro. 
+                    För den som är hungrig server en lättare kvällsmat efter andakten, och sen är det läggdags som gäller! 
+                    <br>
+                    Branäslägret är ett läger med kristet grund. Alla som hjälper till med lägret har en relation till kyrkan och en personlig 
+                    tro på Gud. För oss är den kristen tron en central byggsten i våra liv, men oavsett vilken tro eller livsåskådning du har 
+                    är du alltid välkommen på våra läger!
+                </p>
+                <h1><br>Vänta inte med att anmäla dig</h1>
+                <p>Det är högt tryck på plattserna, så vänta inte med att anmäla dig! Anmälan öppnar 1 nov här på hemsidan. Vi somer på luftmadrasser 
+                    som man tar med sig själva. Avfärd till lägret sker tidigt på morgonen den 27 Dec. Vi åker bussar upp till lägret. Hemfärd 
+                    sker den 1 Jan. Det är svårt att säga i förväg exakt vilken tid bussarna anländer då det beror på väder och väglag. Vi håller 
+                    ungdommarna informerade under resans gång!
+                </p>
+                <h1><br>För föräldrar</h1>
+                <p>Branäslägret anordnas av flera Equmeniaförsamlingar i Vårgårdatrakten. Lägret är en platts där ungdommar får lära känna nya 
+                    vänner i sin egen ålder, men också skapar viktiga relationer till ledare och vuxna, vilket kan bli till ett stort stöd till tonåringarna.
+                    <br>
+                    lägret har fått vara en mötesplats för nya bekantskaper och en plats där tonåringar och unga vuxna fått möjlighet att växa i sig 
+                    själv och i en eventuell tro. Branäslägret är ett läger med en kristen grund. Alla som hjälper till med lägret har en relation 
+                    till kyrkan och en personlig tro på Gud. För oss är den kristen tron en central byggsten i våra liv, men oavsett vilken tro eller 
+                    livsåskådning du har är du alltid välkommen på våra läger! Vi ledare som är med och jobbar inför lägret är väldigt förväntansfulla 
+                    och ser fram emot ännu ett härligt nyårsläger med mycket snö, glädje, kärlek och Gud.
+                    <br>
+                    Vi hoppas att alla som vill ska hänga med oss till Branäslägret!
+                </p>
+            </div>
+        </div>
+        <!-- What is branaslagret end -->
+
+        <div class="invisibleSpacer"></div>
+
+        <!-- QnA -->
+
+        <div class="container paddingBottom">
+            <div class="centerTextInDiv">
+                <h1>Frågor och svar</h1>
+            </div>
+            <div class="row">
+                <!-- Left row -->
+                <div class="row">
+                    <div class="qnaBox BGGrey text-center">
+                        <div>
+                            <h2 data-toggle="collapse" href="#question1" aria-expanded="false" aria-controls="collapseExample" class="whiteColor" style="cursor: pointer;">Fråga</h2>
+                        </div>
+                        <div class="collapse" id="question1">
+                            <p class="whiteColor">Svaret på alla dina frågor!</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Left row end-->
+                <!-- Right row-->
+                <div class="row">
+                    
+                </div>
+                <!-- Right row end -->
+            </div>
+        </div>
+
+        <!-- QnA End -->
+
     </div>
 
     <!-- Main Site Content End -->
@@ -123,8 +224,62 @@
 
     <!-- scroll to top btn -->
 
-    <button onclick="topFunction()" id="scrollToTopBtn" title="Go to top" class="dropShadow"><img src="../img/arrowUp.png"></button>
+    <button id="scrollToTopBtn" title="Go to top" class="dropShadow"><img src="../img/arrowUp.png"></button>
 
+    <script>
+        // Smooth scroll functions
+        
+        // Scroll to top
+        $(function(){
+            $("#scrollToTopBtn").click(function(){
+                $("html,body").animate({scrollTop:0},"800");
+                return false
+            })
+        })
+        
+        // Scroll to pris
+        $(function(){
+            $("#scrollToPrisBtn").click(function(){
+                console.log("Pris button working");
+                $("html,body").animate({scrollTop: $("#prisInfo").offset().top},"800");
+                return false
+            })
+        })
+        
+        // Scroll to branaslagret?
+        $(function(){
+            $("#scrollToBranaslagretBtn").click(function(){
+                $("html,body").animate({scrollTop: $("#branaslagretInfo").offset().top},"800");
+                return false
+            })
+        })
+        
+        // Scroll to Regler
+        $(function(){
+            $("#scrollToReglerBtn").click(function(){
+                $("html,body").animate({scrollTop:0},"800");
+                return false
+            })
+        })
+
+        
+        // Scroll to faq
+        $(function(){
+            $("#scrollTofaqBtn").click(function(){
+                $("html,body").animate({scrollTop:0},"800");
+                return false
+            })
+        })
+
+        
+        // Scroll to kontakt
+        $(function(){
+            $("#scrollToKontaktBtn").click(function(){
+                $("html,body").animate({scrollTop:0},"800");
+                return false
+            })
+        })
+    </script>
     <!-- scroll to top btn end -->
 
 

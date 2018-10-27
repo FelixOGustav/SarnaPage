@@ -1,0 +1,188 @@
+.mainBG{
+    background-image: url(../img/mainBG.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.noPadding {
+    padding: 0px;
+}
+
+
+.bigLogo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 700px;
+    margin-bottom: -10px;
+}
+
+.dateLogo {    
+    color: #606569;
+    font-size: 40px;
+    margin-top: -25px;
+    text-align: center;
+}
+
+.dropShadow {
+    box-shadow: 0px 5px 15px #464444ab;
+}
+
+.BGTransparent {
+    background-color: #ffffffe3;
+}
+
+.buttonStyle {
+    background-color: #606569;
+    border: none;
+    padding: 10px 25px 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 35px;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+}
+
+.buttonStyle p {
+    color: white;
+    font-family: Elkwood;
+    font-size: 30px;
+    font-weight: normal;
+    margin: 0px;
+}
+
+.startPageInfo {
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (min-width: 992px){
+    .startPageInfo {
+        margin-top: 80px;
+        padding-left: 12%;
+    }
+}
+
+@media (max-width: 991.98px){
+    .startPageInfo h1 {
+        font-size: 33px;
+    }
+
+    .startPageInfo h3 {
+        font-size: 23px;
+    }
+}
+
+.modal-content {
+    border-radius: 0px;
+    border: none;
+}
+/*
+.modal {
+    width: 50%;
+}
+*/
+
+.modalButtonStyle {
+    margin: 0px 15px;
+    background-color: #606569;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.modalButtonStyle h3 {
+    margin: 0px;
+    padding: 0px;
+}
+
+#scrollToTopBtn {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 20px; /* Place the button at the bottom of the page */
+    left: 30px; /* Place the button 30px from the right */
+    z-index: 999; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: rgba(255, 255, 255, 0.897); /* Set a background color */
+    color: #606569; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 15px; /* Some padding */
+    border-radius: 30px; /* Rounded corners */
+    font-family: ChampagneLimousines;
+    font-size: 18px; /* Increase font size */
+}
+
+.BGGrey {
+    background-color: #606569;
+}
+
+.centerTextInDiv {
+    text-align: center;
+}
+
+.invisibleSpacer {
+    min-height: 500px;
+}
+
+.paddingBottom {
+    padding-bottom: 100px;
+}
+
+.paddingTop{
+    padding-top: 100px;
+}
+
+.qnaBox {
+    margin: 8px 20px;
+    min-width: 80%;
+}
+
+.qnaBound {
+    width: 50%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.qnaBtnSize{
+    min-width: 450px;
+}
+
+
+@media (max-width: 991.98px){
+    .qnaBound {
+        width: 100%;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .qnaBtnSize{
+        min-width: 350px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    #scrollToTopBtn:hover{
+        background-color: #d8d8d8e3; /* Add a dark-grey background on hover */
+    }
+}
+
+.spacingForms {
+    margin-top: 18px;
+}
+
+label {
+    font-family: ChampagneLimousines;
+    font-weight: bold;
+}
+
+.centerImg {
+    display: block;  
+    margin-left: auto; 
+    margin-right: auto; 
+}

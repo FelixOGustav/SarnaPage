@@ -1,0 +1,45 @@
+@font-face {
+    font-family: "ChampagneLimousines";
+    src: url(../Fonts/champagne__limousines-webfont.woff2);
+}
+
+@font-face {
+    font-family: "Elkwood";
+    src: url(../Fonts/elkwood-webfont.woff2);
+}
+
+p {
+    font-family: ChampagneLimousines;
+    font-weight: bold;
+    font-size: 20px;
+    font-weight: bold;
+    color: #606569;
+}
+
+.same-as-p {
+    font-family: ChampagneLimousines;
+    font-size: 20px;
+    font-weight: bold;
+    color: #606569;
+}
+
+.same-as-p:hover {
+    font-family: ChampagneLimousines;
+    font-size: 20px;
+    font-weight: bold;
+    color: #cacaca;
+    text-decoration-line: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: Elkwood;
+    color: #606569;
+}
+
+.greyColor {
+    color: #606569;
+}
+
+.whiteColor {
+    color: #FFFFFF;
+}

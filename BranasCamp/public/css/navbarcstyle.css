@@ -1,0 +1,39 @@
+@font-face {
+    font-family: "Elkwood";
+    src: url(../Fonts/elkwood-webfont.woff2);
+}
+
+.navbarLogo {
+    max-height: 30%;
+}
+
+.navbarSnowflakePos {
+    padding-bottom: 15px;
+}
+
+.navbarItemSpacing {
+    margin-right: 50px;
+}
+
+.ElkwoodNavbar{
+    font-family: Elkwood;
+    font-size: 25px;
+}
+
+.navbarBG {
+    background-color: #ffffffd3;
+}
+
+.navbarSpacer {
+    height: 85px;
+}
+
+@media (min-width: 992px) {
+    .navbar-custom {
+        height: 45px;
+    }
+
+    .navbarSpacer {
+        height: 45px;
+    }
+}

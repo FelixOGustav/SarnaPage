@@ -80,6 +80,11 @@
     border-radius: 0px;
     border: none;
 }
+/*
+.modal {
+    width: 50%;
+}
+*/
 
 .modalButtonStyle {
     margin: 0px 15px;
@@ -144,11 +149,20 @@
     padding: 0px;
 }
 
+.qnaBtnSize{
+    min-width: 450px;
+}
+
+
 @media (max-width: 991.98px){
     .qnaBound {
         width: 100%;
         margin: 0px;
         padding: 0px;
+    }
+
+    .qnaBtnSize{
+        min-width: 350px;
     }
 }
 

@@ -26,8 +26,7 @@
     
     <div class="navbar navbar-expand-lg navbar-light navbarBG fixed-top navbar-custom">
         <div>
-            <img src="../img/snowflake.PNG" class="navbarSnowflakePos">
-            <a class="navbarLogo navbar-brand" href="#" style="color: #606569;">SärnaLägret</a>
+            <a class="navbar-brand"  id="scrollToTopLogo" href="#"><img src="../img/branaslagret.svg" height="40" class="d-inline-block align-top"></a>
         </div>
         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarBasic" aria-controls="navbarBasic" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -35,19 +34,19 @@
         <div class="navbar-collapse collapse" id="navbarBasic">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link nav-item-custom ElkwoodNavbar navbarItemSpacing" href="#" id="scrollToPrisBtn">Pris <span class="sr-only">(current)</span></a>
+                        <a class="nav-link nav-item-custom ElkwoodNavbar navbarItemSpacing" href="#" id="scrollToBranaslagretBtn">Branäslägret?</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link nav-item-custom ElkwoodNavbar navbarItemSpacing" href="#" id="scrollToBranaslagretBtn">Särnalägret?</a>
+                        <a class="nav-link nav-item-custom ElkwoodNavbar navbarItemSpacing" href="#" id="scrollToPrisBtn">Pris <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link nav-item-custom ElkwoodNavbar navbarItemSpacing" href="#">Regler</a>
+                    <a class="nav-link nav-item-custom ElkwoodNavbar navbarItemSpacing" href="#" id="scrollToReglerBtn">Regler</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link nav-item-custom ElkwoodNavbar navbarItemSpacing" href="#">FAQ</a>
+                    <a class="nav-link nav-item-custom ElkwoodNavbar navbarItemSpacing" href="#" id="scrollTofaqBtn">FAQ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link nav-item-custom ElkwoodNavbar navbarItemSpacing" href="#">Kontakt</a>
+                    <a class="nav-link nav-item-custom ElkwoodNavbar navbarItemSpacing" href="#" id="scrollToKontaktBtn">Kontakt</a>
                 </li>
             </ul>
         </div>
@@ -60,7 +59,7 @@
     <div class="container-fluid noPadding" style="min-height: 850px;"><!-- min-height should be able to be removed later -->
         <div class="navbarSpacer" ></div> <!-- Spacer so that content doesn't start under navbar -->
 
-        <img  class="bigLogo" src="../img/sarnalagret.svg" alt="Särnalägret">
+        <img  class="bigLogo" src="../img/branaslagret.svg" alt="Särnalägret">
         <h1 class="dateLogo">27 dec - 1 jan</h1>        
         <h1 class="dateLogo">2018 - 2019</h1>
 
@@ -97,25 +96,6 @@
             <h1>Åldersgräns</h1>
             <h3>För dig som är född 2004 eller tidigare</h3>
         </div>
-        <div class="invisibleSpacer"></div>
-
-        <!-- Pris info -->
-        <div class="container-fluid bg-white paddingBottom paddingTop" id="prisInfo">
-            <div class="centerTextInDiv">
-                <h1>Pris</h1>
-                <h3>Lägeravgift - 1950 kr</h3>
-                <h3>Med syskonrabatt - 1550 kr</h3>
-                <h2><br>Liftkort</h2>
-                <h3>1 Dag - 200 kr</h3>
-                <h3>2 Dag - 400 kr</h3>
-                <h3>3 Dag - 450 kr</h3>
-                <h2><br>Skidhyra</h2>
-                <h3>Skidor - 400 kr</h3>
-                <h3>Snowboard - 300 kr</h3>
-                <h3>Längdskidor - 100 kr</h3>
-            </div>
-        </div>
-        <!-- Pris info end -->
 
         <div class="invisibleSpacer"></div>
 
@@ -169,34 +149,251 @@
 
         <div class="invisibleSpacer"></div>
 
+        <!-- Pris info -->
+        <div class="container-fluid bg-white paddingBottom paddingTop" id="prisInfo">
+            <div class="centerTextInDiv">
+                <h1>Pris</h1>
+                <h3>Lägeravgift - 1950 kr</h3>
+                <h3>Med syskonrabatt - 1550 kr</h3>
+                <h2><br>Liftkort</h2>
+                <h3>1 Dag - 200 kr</h3>
+                <h3>2 Dag - 400 kr</h3>
+                <h3>3 Dag - 450 kr</h3>
+                <h2><br>Skidhyra</h2>
+                <h3>Skidor - 400 kr</h3>
+                <h3>Snowboard - 300 kr</h3>
+                <h3>Längdskidor - 100 kr</h3>
+            </div>
+        </div>
+        <!-- Pris info end -->
+
+        <div class="invisibleSpacer"></div>
+
+        <!-- Regler info -->
+        <div class="container-fluid bg-white paddingBottom paddingTop" id="ReglerInfo">
+                <div class="container centerTextInDiv">
+                    <h1>Regler</h1>
+                    <h3>- Tider ska följas</h3>
+                    <h3>- Ledarna är de som bestämmer</h3>
+                    <h3>- Du ska vara med på de obligatoriska aktiviteterna</h3>
+                    <h3>- Nolltolerans mot alkohol och droger</h3>
+                    <h3>- Avanmälan efter sista anmälningsdagen utan giltigt läkarintyg eller överenskommande med 
+                        lägerledningen gör att man måste betala lägeravgiften. Eventuell kostnad för liftkort/skidhyra 
+                        behöver inte betalas.
+                    </h3>
+                </div>
+            </div>
+            <!-- Regler info end -->
+
+        <div class="invisibleSpacer"></div>
+
         <!-- QnA -->
 
         <div class="container paddingBottom">
-            <div class="centerTextInDiv">
+            <div class="centerTextInDiv" id="faqInfo">
                 <h1>Frågor och svar</h1>
             </div>
-            <div class="row">
-                <!-- Left row -->
+            <div class="container">
                 <div class="row">
-                    <div class="qnaBox BGGrey text-center">
-                        <div>
-                            <h2 data-toggle="collapse" href="#question1" aria-expanded="false" aria-controls="collapseExample" class="whiteColor" style="cursor: pointer;">Fråga</h2>
+                    <!-- Left row -->
+                   <div class="qnaBound">
+                        <!-- Question 1-->
+                        <div class="col" style="min-width: 450px;">
+                            <div class="qnaBox BGGrey text-center">
+                                <div>
+                                    <h2 data-toggle="collapse" href="#question1" aria-expanded="false" aria-controls="collapseExample" class="whiteColor" style="cursor: pointer;">Fråga 1</h2>
+                                </div>
+                                <div class="collapse" id="question1">
+                                    <p class="whiteColor">Svaret på alla dina frågor!</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="collapse" id="question1">
-                            <p class="whiteColor">Svaret på alla dina frågor!</p>
+                        <!-- Question 1 end-->
+                        <!-- Question 2-->
+                        <div class="col" style="min-width: 450px;">
+                            <div class="qnaBox BGGrey text-center">
+                                <div>
+                                    <h2 data-toggle="collapse" href="#question2" aria-expanded="false" aria-controls="collapseExample" class="whiteColor" style="cursor: pointer;">Fråga 2</h2>
+                                </div>
+                                <div class="collapse" id="question2">
+                                    <p class="whiteColor">Svaret på alla dina frågor!</p>
+                                </div>
+                            </div>
                         </div>
+                        <!-- Question 2 end-->
+                        <!-- Add more questions here. Dont forget to change href and id for the collapse-->
                     </div>
+                    <!-- Left row end-->
+                    <!-- Right row-->
+
+                    <div  class="qnaBound">
+                        <!-- Question 2-->
+                        <div class="col" style="min-width:  450px;">
+                            <div class="qnaBox BGGrey text-center">
+                                <div>
+                                    <h2 data-toggle="collapse" href="#question3" aria-expanded="false" aria-controls="collapseExample" class="whiteColor" style="cursor: pointer;">Fråga 3</h2>
+                                </div>
+                                <div class="collapse" id="question3">
+                                    <p class="whiteColor">Svaret på alla dina frågor!</p>
+                                </div>
+                            </div>
+                        </div>            
+                        <!-- Question 3 end-->
+
+                        <!-- Question 4-->
+                        <div class="col" style="min-width:  450px;">
+                            <div class="qnaBox BGGrey text-center">
+                                <div>
+                                    <h2 data-toggle="collapse" href="#question4" aria-expanded="false" aria-controls="collapseExample" class="whiteColor" style="cursor: pointer;">Fråga 4</h2>
+                                </div>
+                                <div class="collapse" id="question4">
+                                    <p class="whiteColor">Svaret på alla dina frågor!</p>
+                                </div>
+                            </div>
+                        </div>                    
+                        <!-- Question 4 end-->
+                        <!-- Add more questions here. Dont forget to change href and id for the collapse-->
+                    </div>
+                    <!-- Right row end -->
                 </div>
-                <!-- Left row end-->
-                <!-- Right row-->
-                <div class="row">
-                    
-                </div>
-                <!-- Right row end -->
             </div>
         </div>
 
         <!-- QnA End -->
+
+        <div class="invisibleSpacer"></div>
+        
+        <!-- Kontakt info -->
+        <div class="container-fluid bg-white paddingBottom paddingTop" id="KontaktInfo">
+                <div class="container centerTextInDiv">
+                    <h1>Kontakt</h1>
+                    <!-- Kontakt lägerchefer -->
+                    <div>
+                        <h2><br>Lägerledning</h2>
+                        <table style="display: flex; justify-content: center;">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <h5 style="margin-right: 5px;">Jonatan Davidsson</h5>
+                                    </td>
+                                    <td>
+                                        <p style="margin-top: 8px; margin-left: 5px;">0713 37 13 37</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h5 style="margin-right: 5px;">Louise Persson</h5>
+                                    </td>
+                                    <td>
+                                        <p style="margin-top: 8px; margin-left: 5px;">0709-80 90 14</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h5 style="margin-right: 5px;">Alice Rydsom</h5>
+                                    </td>
+                                    <td>
+                                        <p style="margin-top: 8px; margin-left: 5px;">0767-07 19 95</p>
+                                    </td>
+                                </tr>
+                           </tbody>
+                        </table>
+                    </div>
+                    <!-- Kontakt lägerchefer end -->
+
+                    <!-- Kontakt krisgrupp -->
+                    <div>
+                        <h2><br>krisgrupp</h2>
+                        <table style="display: flex; justify-content: center;">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <h5 style="margin-right: 5px;">Karl karlsson</h5>
+                                    </td>
+                                    <td>
+                                        <p style="margin-top: 8px; margin-left: 5px;">0713 37 13 37</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Kontakt krisgrupp end -->
+
+                    <!-- Kontakt Uthyrning -->
+                    <div>
+                        <h2><br>Uthyrning Utrustning</h2>
+                        <table style="display: flex; justify-content: center;">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <h5 style="margin-right: 5px;">Karl karlsson</h5>
+                                    </td>
+                                    <td>
+                                        <p style="margin-top: 8px; margin-left: 5px;">0713 37 13 37</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Kontakt Uthyrning end -->
+
+                    <!-- Kontakt Liftkort -->
+                    <div>
+                        <h2><br>Liftkort</h2>
+                        <table style="display: flex; justify-content: center;">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <h5 style="margin-right: 5px;">Karl karlsson</h5>
+                                    </td>
+                                    <td>
+                                        <p style="margin-top: 8px; margin-left: 5px;">0713 37 13 37</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Kontakt Liftkort end -->
+
+                    <!-- Kontakt sjukvårdsansvarig -->
+                    <div>
+                        <h2><br>sjukvårdsansvarig</h2>
+                        <table style="display: flex; justify-content: center;">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <h5 style="margin-right: 5px;">Karl karlsson</h5>
+                                    </td>
+                                    <td>
+                                        <p style="margin-top: 8px; margin-left: 5px;">0713 37 13 37</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Kontakt sjukvårdsansvarig end -->
+
+                    
+                    <!-- Kontakt köksansvarig -->
+                    <div>
+                        <h2><br>köksansvarig</h2>
+                        <table style="display: flex; justify-content: center;">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <h5 style="margin-right: 5px;">Karl karlsson</h5>
+                                    </td>
+                                    <td>
+                                        <p style="margin-top: 8px; margin-left: 5px;">0713 37 13 37</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Kontakt köksansvarig end -->
+                </div>
+            </div>
+            <!-- Kontakt info end -->
 
     </div>
 
@@ -229,10 +426,18 @@
     <script>
         // Smooth scroll functions
         
-        // Scroll to top
+        // Scroll to top button
         $(function(){
             $("#scrollToTopBtn").click(function(){
-                $("html,body").animate({scrollTop:0},"800");
+                $("html,body").animate({scrollTop:0},"1300");
+                return false
+            })
+        })
+
+        // Scroll to top logo
+        $(function(){
+            $("#scrollToTopLogo").click(function(){
+                $("html,body").animate({scrollTop:0},"1300");
                 return false
             })
         })
@@ -240,8 +445,7 @@
         // Scroll to pris
         $(function(){
             $("#scrollToPrisBtn").click(function(){
-                console.log("Pris button working");
-                $("html,body").animate({scrollTop: $("#prisInfo").offset().top},"800");
+                $("html,body").animate({scrollTop: $("#prisInfo").offset().top},"1300");
                 return false
             })
         })
@@ -249,7 +453,7 @@
         // Scroll to branaslagret?
         $(function(){
             $("#scrollToBranaslagretBtn").click(function(){
-                $("html,body").animate({scrollTop: $("#branaslagretInfo").offset().top},"800");
+                $("html,body").animate({scrollTop: $("#branaslagretInfo").offset().top},"1300");
                 return false
             })
         })
@@ -257,8 +461,8 @@
         // Scroll to Regler
         $(function(){
             $("#scrollToReglerBtn").click(function(){
-                $("html,body").animate({scrollTop:0},"800");
-                return false
+                $("html,body").animate({scrollTop: $("#ReglerInfo").offset().top},"1300");
+                return false 
             })
         })
 
@@ -266,7 +470,7 @@
         // Scroll to faq
         $(function(){
             $("#scrollTofaqBtn").click(function(){
-                $("html,body").animate({scrollTop:0},"800");
+                $("html,body").animate({scrollTop: $("#faqInfo").offset().top},"1300");
                 return false
             })
         })
@@ -275,7 +479,7 @@
         // Scroll to kontakt
         $(function(){
             $("#scrollToKontaktBtn").click(function(){
-                $("html,body").animate({scrollTop:0},"800");
+                $("html,body").animate({scrollTop: $("#KontaktInfo").offset().top},"1000");
                 return false
             })
         })

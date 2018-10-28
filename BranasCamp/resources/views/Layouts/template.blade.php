@@ -89,6 +89,16 @@
                 return false
             })
         })
+        
+        // Closes the navbar drop-down in mobile view when a link i pressed
+        $('.navbar-nav>li>a').on('click', function(){
+            $('.navbar-collapse').collapse('hide');
+        });
+
+        $( window ).on( "load", function() {
+            // Trigger load animation to fade out here
+        });
+
         </script>
     </div>
 </body>

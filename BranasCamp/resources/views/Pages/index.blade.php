@@ -132,7 +132,7 @@
         <!-- QnA -->
 
         <div class="container paddingBottom">
-            <div class="centerTextInDiv" id="faqInfo">
+            <div class="centerTextInDiv paddingTop" id="faqInfo">
                 <h1>Frågor och svar</h1>
             </div>
             <div class="container">

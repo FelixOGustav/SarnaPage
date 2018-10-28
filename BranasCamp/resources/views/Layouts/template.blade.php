@@ -58,7 +58,8 @@
     <div class="container-fluid noPadding" style="min-height: 850px;"><!-- min-height should be able to be removed later -->
         <div class="navbarSpacer" ></div> <!-- Spacer so that content doesn't start under navbar -->
         @yield('content')
-        
+    
+    </div>
     <!-- Footer -->
 
     <div class="footerBG row" style="margin: 0px;" id="footerId">

@@ -31,4 +31,12 @@ class PagesController extends Controller
     public function template(){
         return view('Layouts/template') ->with('links', $this->links);
     }
+
+    public function registration(){
+        return view('Pages/registration') ->with('links', $this->links);
+    }
+
+    public function login(){
+        return view('Pages/login') ->with('links', $this->links);
+    }
 }

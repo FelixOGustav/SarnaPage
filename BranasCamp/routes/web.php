@@ -19,6 +19,8 @@ Route::get('/', function () {
 
 Route::get('/', 'PagesController@index');
 Route::get('/template', 'PagesController@template');
+Route::get('/registration', 'PagesController@registration');
+Route::get('/admin/login', 'PagesController@login');
 
 Route::get('/a/{id}', function ($id) {
     return 'Hi. youre looking for ' .$id;

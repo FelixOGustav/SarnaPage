@@ -186,3 +186,13 @@ label {
     margin-left: auto; 
     margin-right: auto; 
 }
+
+@media screen and (max-height: 890px){
+    .ScaleStartPageLogo {
+        -ms-transform: scale(0.6,0.6); /* IE 9 */
+        -webkit-transform: scale(0.6,0.6); /* Safari */
+        transform: scale(0.6,0.6); /* Standard syntax */
+        padding-bottom: 0px;
+        margin-bottom: -100px;
+    }
+}

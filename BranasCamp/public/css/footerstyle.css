@@ -1,15 +1,15 @@
 .footerBG {
     background-color: #54585ce0 !important;
-    max-height: 160px;
+    height: 160px;
 }
 
 .footerImg {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    padding-top: 50px;
-    max-width: 50%;
-    max-height: 80%;
+    padding-top: 40px;
+    max-width: 50% !important;
+    max-height: 80% !important;
 }
 
 @media (max-width:767.98px){

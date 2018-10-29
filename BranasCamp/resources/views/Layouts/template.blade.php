@@ -22,6 +22,19 @@
     <script src="{{URL::asset('js/app.js')}}"></script>
     <script src="{{URL::asset('js/scrollToTop.js')}}"></script>
 
+
+    <!-- Loading content -->
+
+    <div class="loadingBG" id="loadingScreen">
+        <div class="loadingContent centerTextInDiv">
+            <img src="{{URL::asset('img/snowflakeLoading.gif')}}" type="img/gif">
+            <p class="whiteColor">Vänta lite..</p>
+        </div>
+    </div>
+    
+    <!-- Loading content  end-->
+
+
     <!-- Navbar -->
     
     <div class="navbar navbar-expand-lg navbar-light navbarBG fixed-top navbar-custom">
@@ -97,7 +110,7 @@
         });
 
         $( window ).on( "load", function() {
-            // Trigger load animation to fade out here
+            $('#loadingScreen').fadeOut();
         });
 
         </script>

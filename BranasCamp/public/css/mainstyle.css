@@ -237,3 +237,10 @@ label {
     margin-top: -70px; /* Half the height*/
     color: white;
 }
+
+.cookiestyle {
+    width: 100%;
+    background-color: #606569;
+    color: white;
+    padding: 10px;
+}

@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head lang = "en">
+<head lang="sv">
     <meta charset="ISO-8859-1">
+    <!-- csrf token-->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="{{URL::asset('img/branaslogga.png')}}"  type="img/PNG">
 
@@ -33,7 +36,6 @@
     </div>
     
     <!-- Loading content  end-->
-
 
     <!-- Navbar -->
     
@@ -70,6 +72,9 @@
     <!-- Main Site Content -->
     <div class="container-fluid noPadding" style="min-height: 850px;"><!-- min-height should be able to be removed later -->
         <div class="navbarSpacer" ></div> <!-- Spacer so that content doesn't start under navbar -->
+            <!-- Cookie consent -->
+            @include('cookieConsent::index')
+            <!-- Cookie consent end -->
         @yield('content')
     
     </div>
@@ -78,8 +83,8 @@
     <div class="footerBG row" style="margin: 0px;" id="footerId">
         <div class="col" style="margin-top: auto; margin-bottom: auto; text-align: center">
             <a href="#" class="same-as-p whiteColor scaleFooterTextToMobile">Om hemsidan<br><br></a>
-            <a href="#" class="same-as-p whiteColor scaleFooterTextToMobile">GDPR<br><br></a>
-            <a href="#" class="same-as-p whiteColor scaleFooterTextToMobile">Admin-sidan</a>
+            <a href="/gdpr" class="same-as-p whiteColor scaleFooterTextToMobile">GDPR<br><br></a>
+            <a href="/admin/login" class="same-as-p whiteColor scaleFooterTextToMobile">Admin-sidan</a>
         </div>
 
         <div class="col">

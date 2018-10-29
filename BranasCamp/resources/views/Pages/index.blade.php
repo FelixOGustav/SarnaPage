@@ -95,8 +95,7 @@
         <div class="container-fluid bg-white paddingBottom paddingTop" id="prisInfo">
             <div class="centerTextInDiv">
                 <h1>Pris</h1>
-                <h3>Lägeravgift - 1950 kr</h3>
-                <h3>Med syskonrabatt - 1550 kr</h3>
+                <h3>Lägeravgift - 1500 kr</h3>
                 <h2><br>Liftkort</h2>
                 <h3>1 Dag - 200 kr</h3>
                 <h3>2 Dag - 400 kr</h3>

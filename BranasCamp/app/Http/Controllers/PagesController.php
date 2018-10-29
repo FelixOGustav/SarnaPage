@@ -39,4 +39,16 @@ class PagesController extends Controller
     public function login(){
         return view('Pages/login') ->with('links', $this->links);
     }
+
+    public function registrationDone(){
+        return view('Pages/registrationdone') ->with('links', $this->links);
+    }
+
+    public function gdpr(){
+        return view('Pages/gdpr') ->with('links', $this->links);
+    }
+
+    public function dashboard(){
+        return view('Pages/dashboard') -> with('links', $this->links);
+    }
 }

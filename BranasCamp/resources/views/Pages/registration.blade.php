@@ -7,21 +7,21 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="firstName">Förnamn</label>
-                                    <input type="text" class="form-control" id="firstname" placeholder="Kim">
+                                    <input type="text" class="form-control" id="firstname" placeholder="Kim" required>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="lastName">Efternamn</label>
-                                    <input type="text" class="form-control" id="lastName" placeholder="Svensson">
+                                    <input type="text" class="form-control" id="lastName" placeholder="Svensson" required>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-3">
                                     <label for="inputAddress">Föddelseår</label>
-                                    <input type="text" class="form-control" id="inputAddress" placeholder="2000">
+                                    <input type="text" class="form-control" id="inputAddress" placeholder="2000" required>
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="inputState">Månad</label>
-                                    <select id="inputState" class="form-control">
+                                    <select id="inputState" class="form-control" required>
                                         <option selected>Välj...</option>
                                         <option value="01">Januari</option>
                                         <option value="02">Februari</option>
@@ -39,39 +39,39 @@
                                 </div>
                                 <div class="form-group col-3">
                                     <label for="inputAddress">Dag</label>
-                                    <input type="text" class="form-control" id="inputAddress" placeholder="01">
+                                    <input type="text" class="form-control" id="inputAddress" placeholder="01" required>
                                 </div>
                                 <div class="form-group col-3">
                                     <label for="inputAddress2">Fyra sista</label>
-                                    <input type="text" class="form-control" id="inputAddress2" placeholder="XXXX">
+                                    <input type="text" class="form-control" id="inputAddress2" placeholder="XXXX" required>
                                 </div>
                             </div>
                             <div class="form-group container-fluid noPadding">
                                 <label for="inputCity">Adress</label>
-                                <input type="text" class="form-control" id="inputCity" placeholder="Vintergatan 42"> 
+                                <input type="text" class="form-control" id="inputCity" placeholder="Vintergatan 42" required> 
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-4">
                                             <label for="inputZip">Postnummer</label>
-                                            <input type="text" class="form-control" id="inputZip" placeholder="13337">
+                                            <input type="text" class="form-control" id="inputZip" placeholder="13337" required>
                                 </div>
                                 <div class="form-group col-md-8">
                                     <label for="inputCity">Postort</label>
-                                    <input type="text" class="form-control" id="inputCity" placeholder="Vintergårda">
+                                    <input type="text" class="form-control" id="inputCity" placeholder="Vintergårda" required>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="firstName">E-post</label>
-                                    <input type="email" class="form-control" id="" placeholder="Kim">
+                                    <input type="email" class="form-control" id="" placeholder="Kim" required>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="lastName">Bekräfta e-post</label>
-                                    <input type="email" class="form-control" id="lastName" placeholder="Svensson">
+                                    <input type="email" class="form-control" id="lastName" placeholder="Svensson" required>
                                 </div>
                                 <div class="form-group container-fluid noPadding">
                                         <label for="inputCity">Telefon</label>
-                                        <input type="text" class="form-control" id="inputCity" placeholder="0713-371337"> 
+                                        <input type="text" class="form-control" id="inputCity" placeholder="0713-371337" required> 
                                 </div>
                             </div>
                         </div>
@@ -80,11 +80,11 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="firstNameAdvocate">Förnamn målsman</label>
-                                    <input type="text" class="form-control" id="" placeholder="Kalle">
+                                    <input type="text" class="form-control" id="" placeholder="Kalle" required>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="lastNameAdvocate">Efternamn målsman</label>
-                                    <input type="text" class="form-control" id="lastName" placeholder="Svensson">
+                                    <input type="text" class="form-control" id="lastName" placeholder="Svensson" required>
                                 </div>
                             </div>
                         </div>    

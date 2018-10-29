@@ -25,3 +25,6 @@ Route::get('/admin/login', 'PagesController@login');
 Route::get('/a/{id}', function ($id) {
     return 'Hi. youre looking for ' .$id;
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

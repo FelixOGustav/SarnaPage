@@ -54,9 +54,13 @@ Route::post('register', ['as' => '', 'uses' => 'Auth\RegisterController@register
 Route::get('/a/{id}', function ($id) {
     return 'Hi. youre looking for ' .$id;
 });
+<<<<<<< HEAD
 
 Route::group(['prefix' => 'admin'], function () {
     Auth::routes();
 });
+=======
+Auth::routes();
+>>>>>>> 00ff0797cdf477f06813b7bb9b834b879f8bdce4
 
 Route::get('/home', 'HomeController@index')->name('home');

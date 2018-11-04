@@ -12,7 +12,10 @@
             <div class="form-group">
                 <input type="password" class="form-controll loginField {{ $errors->has('password') ? ' is-invalid' : '' }}" id="password" name="password" required placeholder="Lösenord">
             </div>
-            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+            <div>
+                <p>Kom ihåg mig</p>
+                <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+            </div>
             <a href="{{ route('password.request') }}" style="color: white; font-family: ChampagneLimousines;">Glömt lösenord?<br><br></a>
             <button type="submit" class="btn btn-white" style="font-family: ChampagneLimousines;">Logga in</button>
         </form>

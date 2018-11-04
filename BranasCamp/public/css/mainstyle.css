@@ -244,3 +244,61 @@ label {
     color: white;
     padding: 10px;
 }
+
+.adminContainer {
+    display: flex;    
+}
+
+.sidebarContainer {
+    width: 200px;
+    background-color: #606569;
+    margin-right: 10px;
+    margin-bottom: auto;
+    margin-top: 20px;
+}
+
+@media screen and (max-width: 991.98px){
+    .adminContainer {
+        display: block;
+    }   
+    .sidebarContainer {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+}
+
+
+.sidebarContainer a {
+    color:white;
+    text-decoration: none;
+    font-family: ChampagneLimousines;
+    font-size: 17px;
+}
+
+.sidebarContainer a:hover {
+    color:white;
+    text-decoration: none;
+    background-color: #ffffffb4;
+}
+
+.adminContent {
+    flex-grow: 1;
+    background-color: rgba(255, 255, 255, 0.719);
+    min-height: 1000px;
+    margin-top: 20px;
+}
+
+.adminNavBlock {
+    display: block;
+    padding: 5px;
+}
+
+.adminNavLine {
+    margin: 0px 5px;
+}
+
+.form-control {
+    border-radius: 0px;
+}

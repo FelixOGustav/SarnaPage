@@ -15,6 +15,8 @@ class PagesController extends Controller
         'kontaktLink' => '#' 
     ];
 
+    /*
+    //--- No longer needed. these are default if not overridden ---//
     protected $links = [
         'navLogoLink' => '/',
         'infoLink' => '/#branaslagretInfo',
@@ -23,32 +25,40 @@ class PagesController extends Controller
         'faqLink' => '/#faqInfo',
         'kontaktLink' => '/#KontaktInfo' 
     ];
+    */
 
     public function index(){
         return view('Pages/index') ->with('links', $this->StartPagelinkslinks);
     }
 
     public function template(){
-        return view('Layouts/template') ->with('links', $this->links);
+        return view('Layouts/template');
     }
 
     public function registration(){
-        return view('Pages/registration') ->with('links', $this->links);
+        return view('Pages/registration');
     }
 
     public function login(){
-        return view('Pages/login') ->with('links', $this->links);
+        return view('Pages/login');
     }
 
     public function registrationDone(){
-        return view('Pages/registrationdone') ->with('links', $this->links);
+        return view('Pages/registrationdone');
     }
 
     public function gdpr(){
-        return view('Pages/gdpr') ->with('links', $this->links);
+        return view('Pages/gdpr');
     }
 
     public function dashboard(){
-        return view('Pages/dashboard') -> with('links', $this->links);
+        return view('AdminPages/dashboard');
+    }
+    public function registrationlists(){
+        return view('AdminPages/registrationlists');
+    }
+
+    public function managemembers(){
+        return view('AdminPages/managemebers');
     }
 }

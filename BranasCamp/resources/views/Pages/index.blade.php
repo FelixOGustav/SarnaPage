@@ -34,9 +34,9 @@
         
         <div class="container-fluid startPageInfo paddingBottom">
             <h1>Plats</h1>
-            <h3>Vi sover i Kvistbergskolan i Torsby, Värmland. Vi åker skidor i Branäs</h3>
+            <h3>Vi sover i Kvistbergskolan i Sysslebäck, Värmland. Vi åker skidor i Branäs</h3>
             <h1>Åldersgräns</h1>
-            <h3>För dig som är född 2004 eller tidigare</h3>
+            <h3>För dig som är född 2005 eller tidigare</h3>
         </div>
 
         <div class="invisibleSpacer"></div>
@@ -46,38 +46,38 @@
             <div class=" container centerTextInDiv">
                 <h1>Vad är Branäslägret?</h1>
                 <p>Branäslägret är ett nyårsläger som varje år arrangeras av Equmeniaförsamlingarna i Vårgårda och Herrljungtrakten.
-                    Lägret riktar sig till tonåringar (födda senast 2004) och bjuder på en vecka av skidåkning, snack om Gud och bibel,
-                    gamla och nya vönner, aktiviteter av olika salg och mängder med tillfällen att njuta av livet! Lägret hålls i Kvistbergskolan
-                    i Sysslebäck, 10 min norr om branäs
+                    Lägret riktar sig till tonåringar (födda senast 2005) och bjuder på en vecka av skidåkning, snack om Gud och bibel,
+                    gamla och nya vänner, aktiviteter av olika slag och mängder med tillfällen att njuta av livet! Lägret hålls i Kvistbergskolan
+                    i Sysslebäck, 10 min norr om Branäs
                 </p>
                 <h1><br>Hur kan en dag se ut</h1>
                 <p>En vanlig dag börjar med frukost i matsalen. Därefter träffas tonåringar och ledare från respektive ort för att snacka
                     om hur tonåringarna upplever lägret, presentera dagens aktiviteter och tema och kanske leka en lek tillsammans. Runt 9
                     går bussarna mot Branäs för att dem som skall till pisten. Väl där serveras sedan en lättare mack-lunch vid kl 12.
                     Bussarna kommer sedan tillbaka från backen senast kl 17, då väntar en god kvällsmat. På eftermiddagen träffas man med sin
-                    tvärgrupp. tvärgruppen består av en grupp tonåringar från olika orter men i ungefär samma ålder. tillsammans med ett par 
+                    tvärgrupp. Tvärgruppen består av en grupp tonåringar från olika orter men i ungefär samma ålder. Tillsammans med ett par 
                     ledare pratar pratar man om hur dagen har varit, om dagen bibeltext, man lär känna varandra, prata och har roligt. För de 
                     deltagare som inte åker iväg till Branäs finns det gott om fria aktiviteter på skolan, spela spel, pyssla, idrotta eller 
                     bara slappa och ha de gött. Under kvällen är det ofta spex och något roligt program i matsalen innan det är dags för en andakt. 
-                    Andkaterna ör delade i två delar. Under det första stunden vill vi att alla deltagare är med, sedan följer en frivilig del 
+                    Andakaterna är delade i två delar. Under det första stunden vill vi att alla deltagare är med, sedan följer en frivilig del 
                     för dem som vill stanna lite längre. På andakterna sjunger man tillsammans och lyssnar på någon som berättar om sin tro. 
-                    För den som är hungrig server en lättare kvällsmat efter andakten, och sen är det läggdags som gäller! 
+                    För den som är hungrig serveras en lättare kvällsmat efter andakten, och sen är det läggdags som gäller! 
                     <br>
-                    Branäslägret är ett läger med kristet grund. Alla som hjälper till med lägret har en relation till kyrkan och en personlig 
-                    tro på Gud. För oss är den kristen tron en central byggsten i våra liv, men oavsett vilken tro eller livsåskådning du har 
+                    Branäslägret är ett läger med kristen grund. Alla som hjälper till med lägret har en relation till kyrkan och en personlig 
+                    tro på Gud. För oss är den kristna tron en central byggsten i våra liv, men oavsett vilken tro eller livsåskådning du har 
                     är du alltid välkommen på våra läger!
                 </p>
                 <h1><br>Vänta inte med att anmäla dig</h1>
-                <p>Det är högt tryck på plattserna, så vänta inte med att anmäla dig! Anmälan öppnar 1 nov här på hemsidan. Vi somer på luftmadrasser 
+                <p>Det är högt tryck på platserna, så vänta inte med att anmäla dig! Anmälan öppnar i november här på hemsidan. Vi sover på luftmadrasser 
                     som man tar med sig själva. Avfärd till lägret sker tidigt på morgonen den 27 Dec. Vi åker bussar upp till lägret. Hemfärd 
                     sker den 1 Jan. Det är svårt att säga i förväg exakt vilken tid bussarna anländer då det beror på väder och väglag. Vi håller 
-                    ungdommarna informerade under resans gång!
+                    ungdomarna informerade under resans gång!
                 </p>
                 <h1><br>För föräldrar</h1>
-                <p>Branäslägret anordnas av flera Equmeniaförsamlingar i Vårgårdatrakten. Lägret är en platts där ungdommar får lära känna nya 
-                    vänner i sin egen ålder, men också skapar viktiga relationer till ledare och vuxna, vilket kan bli till ett stort stöd till tonåringarna.
+                <p>Branäslägret anordnas av flera Equmeniaförsamlingar i Vårgårda- & Herrljungtrakten. Lägret är en plats där ungdomar får lära känna nya 
+                    vänner i sin alla åldrar, men också skapar viktiga relationer till ledare och vuxna, vilket kan bli till ett stort stöd till tonåringarna.
                     <br>
-                    lägret har fått vara en mötesplats för nya bekantskaper och en plats där tonåringar och unga vuxna fått möjlighet att växa i sig 
+                    Lägret har fått vara en mötesplats för nya bekantskaper och en plats där tonåringar och unga vuxna fått möjlighet att växa i sig 
                     själv och i en eventuell tro. Branäslägret är ett läger med en kristen grund. Alla som hjälper till med lägret har en relation 
                     till kyrkan och en personlig tro på Gud. För oss är den kristen tron en central byggsten i våra liv, men oavsett vilken tro eller 
                     livsåskådning du har är du alltid välkommen på våra läger! Vi ledare som är med och jobbar inför lägret är väldigt förväntansfulla 
@@ -96,14 +96,23 @@
             <div class="centerTextInDiv">
                 <h1>Pris</h1>
                 <h3>Lägeravgift - 1500 kr</h3>
-                <h2><br>Liftkort</h2>
-                <h3>1 Dag - 200 kr</h3>
-                <h3>2 Dag - 400 kr</h3>
-                <h3>3 Dag - 450 kr</h3>
+                <br>
+                <h2>Skidor och lifkort beställs senare, mer information om detta kommer med mail i december</h2>
+                <h2>Liftkort (Ungdom 8-15)</h2>
+                <h3>1 Dag - 260 kr</h3>
+                <h3>2 Dag - 520 kr </h3>
+                <h3>3 Dag - 750 kr</h3>
+                <h3>4 Dag - 950 kr</h3>
+                <h2><br>Liftkort (Vuxen 16+)</h2>
+                <h3>1 Dag - 340 kr</h3>
+                <h3>2 Dag - 660 kr </h3>
+                <h3>3 Dag - 950 kr</h3>
+                <h3>4 Dag - 1220 kr</h3>
                 <h2><br>Skidhyra</h2>
                 <h3>Skidor - 400 kr</h3>
                 <h3>Snowboard - 300 kr</h3>
                 <h3>Längdskidor - 100 kr</h3>
+                <p>OBS! Priserna är preliminära</p>
             </div>
         </div>
         <!-- Pris info end -->

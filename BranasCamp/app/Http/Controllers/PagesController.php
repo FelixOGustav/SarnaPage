@@ -15,6 +15,9 @@ class PagesController extends Controller
         'kontaktLink' => '#' 
     ];
 
+    protected $users;
+    protected $places;
+
     /*
     //--- No longer needed. these are default if not overridden ---//
     protected $links = [
@@ -36,7 +39,8 @@ class PagesController extends Controller
     }
 
     public function registration(){
-        return view('Pages/registration');
+        $places = \App\place::all();
+        return view('Pages/registration', ['places' => $places]);
     }
 
     public function login(){
@@ -59,6 +63,7 @@ class PagesController extends Controller
     }
 
     public function managemembers(){
-        return view('AdminPages/managemebers');
+        $users = \App\User::all();
+        return view('AdminPages/managemebers', ['users' => $users]);
     }
 }

@@ -4,7 +4,7 @@
     <meta charset="ISO-8859-1">
     <!-- csrf token-->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    
+
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="{{URL::asset('img/branaslogga.png')}}"  type="img/PNG">
 
@@ -41,7 +41,7 @@
     
     <div class="navbar navbar-expand-lg navbar-light navbarBG fixed-top navbar-custom">
         <div>
-            <a class="navbar-brand"  id="scrollToTopLogo" href="{{$links['navLogoLink'] ?? '/'}}"><img src="../img/branaslagret.svg" height="40" class="d-inline-block align-top"></a>
+            <a class="navbar-brand"  id="scrollToTopLogo" href="{{$links['navLogoLink'] ?? '/'}}"><img src="{{URL::asset('img/branaslagret.svg')}}" height="40" class="d-inline-block align-top"></a>
         </div>
         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarBasic" aria-controls="navbarBasic" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

@@ -11,6 +11,9 @@
     </div>
 @else
     <p>Här kommer du kunna hantera konton men vi är inte klara med det än.</p>
+    @foreach ($users as $user)
+        <li>{{ $user->name }}</li>
+    @endforeach
 @endif
 
 @endsection

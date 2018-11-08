@@ -89,6 +89,9 @@
                             <div class="form-group col-md-3">
                                 <label for="inputState">Månad</label>
                                 <select id="inputState" class="form-control" required>
+                                    @foreach($places as $place)
+                                        <option value="{{$place->placeid}}">{{$place->placename}}</option>
+                                    @endforeach
                                     <option selected>Välj...</option>
                                 </select>
                         </div>

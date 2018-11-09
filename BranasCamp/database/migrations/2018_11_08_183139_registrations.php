@@ -37,6 +37,8 @@ class Registrations extends Migration
             $table->tiemstamp('register_time');
             $table->string('other');
             $table->boolean('terms');
+            $table->string('verification_key');
+            $table->timestamp('verified_at');
         });
     }
 

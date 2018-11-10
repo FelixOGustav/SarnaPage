@@ -41,6 +41,7 @@ class RegistrationsLeader extends Migration
             $table->boolean('terms');
             $table->string('verification_key');
             $table->timestamp('verified_at');
+            $table->string('verification_key');
         });
     }
 

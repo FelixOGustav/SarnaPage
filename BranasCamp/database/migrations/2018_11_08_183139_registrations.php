@@ -13,7 +13,7 @@ class Registrations extends Migration
      */
     public function up()
     {
-        Schema::create('tblregistrations', function (Blueprint $table) {
+        Schema::create('registrations', function (Blueprint $table) {
             $table->increments('id');
             $table->string('first_name');
             $table->string('last_name');
@@ -28,17 +28,16 @@ class Registrations extends Migration
             $table->string('first_name_advocate');
             $table->string('last_name_advocate');
             $table->string('email_advocate');
-            $table->timestamp('email_verified_at')->nullable();
+            $table->timestamp('verified_at')->nullable();
             $table->string('phone_number_advocate');
             $table->string('home_number');
             $table->int('place');
             $table->boolean('member');
             $table->int('member_place');
-            $table->tiemstamp('register_time');
+            $table->int('cost');
             $table->string('other');
             $table->boolean('terms');
             $table->string('verification_key');
-            $table->timestamp('verified_at');
         });
     }
 

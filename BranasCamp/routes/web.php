@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 */
 
-Route::get('/', 'PagesController@index');
+Route::get('/', 'PagesController@index')->name('start');
 Route::get('/template', 'PagesController@template');
 Route::get('/registration', 'CampRegistrationController@registration');
 //Route::get('/admin/login', 'PagesController@login');
@@ -40,6 +40,8 @@ use Illuminate\Routing\UrlGenerator;
 Route::get('/test', function(){
     return url('/');
 });
+
+Route::get('test/mail', 'PagesController@testmail');
 
 
 Route::group(['prefix' => 'admin'], function () {

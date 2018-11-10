@@ -62,4 +62,24 @@ class PagesController extends Controller
         $user = \App\User::find($id);
         return view('AdminPages/manageuser', ['user' => $user]);
     }
+
+    // Remove before publishing. Just temp to develop verification email
+    public function testmail(){
+        $registration= new \App\Registration();
+        //return request()->all();
+        
+        $registration->first_name = 'Karl';
+        $registration->last_name = 'Karlsson';
+        $registration->birthdate = 1337-13-37;
+        $registration->last_four = 1337;
+        $registration->address = 'EliteStreet 3';
+        $registration->zip = 13337;
+        $registration->city = 'Ljung';
+        $registration->email = 'test@test.se';
+        $registration->first_name_advocate = 'Anders';
+        $registration->last_name_advocate = 'Andersson';
+        $registration->place = 0;
+
+        return view('Emails/registeredemail', ['registration' => $registration, 'link' => 'branaslagret.test']);
+    }
 }

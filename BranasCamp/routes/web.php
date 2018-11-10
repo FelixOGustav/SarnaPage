@@ -26,13 +26,19 @@ Route::get('/registration/done','CampRegistrationController@registrationDone');
 Route::post('/registration/done','CampRegistrationController@store');
 Route::get('/gdpr','PagesController@gdpr');
 
+Route::get('/registration/verify/{type}/{id}/{key}', 'CampRegistrationController@VerifyRegistration');
+
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/dashboard', 'PagesController@dashboard');
     Route::get('/admin/registrationlists','PagesController@registrationlists');
-    Route::get('/admin/managemembers','PagesController@managemembers');
-    
-    
-    
+    Route::get('/admin/manageusers','PagesController@manageusers');
+    Route::get('/admin/managerusers/user/{id}', 'PagesController@manageuser');
+});
+
+
+use Illuminate\Routing\UrlGenerator;
+Route::get('/test', function(){
+    return url('/');
 });
 
 
@@ -70,8 +76,8 @@ Route::group(['prefix' => 'admin'], function () {
 *
 *******************************************************/
 
-Route::get('/a/{id}', function ($id) {
-    return 'Hi. youre looking for ' .$id;
+Route::get('/a/{id}/{id2}', function ($id, $id2) {
+    return 'Hi. youre looking for ' .$id . ' and ' .$id2;
 });
 
 

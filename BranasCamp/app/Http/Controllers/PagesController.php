@@ -42,10 +42,6 @@ class PagesController extends Controller
         return view('Pages/login');
     }
 
-    public function registrationDone(){
-        return view('Pages/registrationdone');
-    }
-
     public function gdpr(){
         return view('Pages/gdpr');
     }
@@ -57,8 +53,13 @@ class PagesController extends Controller
         return view('AdminPages/registrationlists');
     }
 
-    public function managemembers(){
+    public function manageusers(){
         $users = \App\User::all();
         return view('AdminPages/managemebers', ['users' => $users]);
+    }
+
+    public function manageuser($id){
+        $user = \App\User::find($id);
+        return view('AdminPages/manageuser', ['user' => $user]);
     }
 }

@@ -11,9 +11,27 @@
     </div>
 @else
     <p>Här kommer du kunna hantera konton men vi är inte klara med det än.</p>
-    @foreach ($users as $user)
-        <li>{{ $user->name }}</li>
-    @endforeach
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>ID#</th>
+                <th>namn</th>
+                <th>Epost</th>
+                <th>Hantera</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($users as $user)
+                <tr>
+                    <th>{{$user->id}}</th>
+                    <th>{{$user->name}}</th>
+                    <th>{{$user->email}}</th>
+                    <th><a href="/admin/managerusers/user/{{$user->id}}" class="btn btn-primary">Hantera</a></th>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+    
 @endif
 
 @endsection

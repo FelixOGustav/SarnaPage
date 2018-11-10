@@ -6,7 +6,7 @@
         <!-- Start deltagare -->
         <div style="margin-top: 8%;"><h2>Deltagare</h2></div>
             <div>  
-            <form method="POST" action="registration/done">
+            <form method="POST" action="/registration/done">
                 {{ csrf_field() }}
                 <div class="form-row">
                     <div class="form-group col-md-6">
@@ -45,7 +45,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-12">
                         <label for="firstName">E-post</label>
-                        <input type="email" class="form-control" id="email" name="emil" placeholder="hen.hensson@hen.se" required>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="hen.hensson@hen.se" required>
                     </div>
                     <div class="form-group container-fluid noPadding">
                             <label for="inputCity">Telefon</label>
@@ -72,7 +72,7 @@
                     <select id="place" name="place" class="form-control" required>
                             <option value="">Välj...</option>
                         @foreach($places as $place)
-                            <option value="{{$place->placeid}}">{{$place->placename}}</option>
+                            <option value="{{$place->placeID}}">{{$place->placename}}</option>
                         @endforeach
                     </select>
             </div>
@@ -83,11 +83,11 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="firstNameAdvocate">Förnamn målsman</label>
-                        <input type="text" class="form-control" id="firstNameAdvoacte" name="firstNameAdvoacte" placeholder="Hen" required>
+                        <input type="text" class="form-control" id="firstNameAdvocate" name="firstNameAdvocate" placeholder="Hen" required>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="lastNameAdvocate">Efternamn målsman</label>
-                        <input type="text" class="form-control" id="lastNameAdvoacte" name="lastNameAdvoacte" placeholder="Hensson" required>
+                        <input type="text" class="form-control" id="lastNameAdvocate" name="lastNameAdvocate" placeholder="Hensson" required>
                     </div>
                 </div>
                 <div class="form-group col-md-6">
@@ -105,12 +105,12 @@
             </div>
             <!-- Slut Målsman-->
 
-            <!-- Start Equmeniap-->
+            <!-- Start Equmeniap
             <div data-toggle="buttons centerImg">
                 <label style="white-space: initial;" class="btm-md funky-radio active">
                     <input name="member"  id="member" type="radio" value="1" class="btn btn-secondary radio-buttom hidden">
                 "Yes, skälvklart"
-
+-->
                 </label>
 
                 <div class="form-group container-fluid noPadding" >
@@ -118,15 +118,15 @@
                         <select id="memberPlace" name="memberPlace" class="form-control" required>
                                 <option value="">Välj...</option>
                             @foreach($places as $place)
-                                <option value="{{$place->placeid}}">{{$place->placename}}</option>
+                                <option value="{{$place->placeID}}">{{$place->placename}}</option>
                             @endforeach
                         </select>
             </div>
-            <!-- Start regler-->
+            <!-- Start regler
             <div>
                     <input type="checkbox" class="form-check-input" id="terms" name="terms">
                     <label class="form-check-label" for="exampleCheck1">Jag har läst, förstått och godkänt reglerna. </label>
-            </div>
+            </div>-->
             <!--Slut regler-->
 
             <!-- Start anmäningsknapp-->

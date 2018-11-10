@@ -10,7 +10,7 @@
             <hr class="adminNavLine">
             <a href="/admin/registrationlists" class="adminNavBlock">Deltagar-listor</a>
             <hr class="adminNavLine">
-            <a href="/admin/managemembers" class="adminNavBlock">Hantera användare</a>
+            <a href="/admin/manageusers" class="adminNavBlock">Hantera användare</a>
             <hr class="adminNavLine">
             <a href="/admin/managemembers" class="adminNavBlock">Hantera Läger</a>
             <hr class="adminNavLine">

@@ -285,7 +285,7 @@ label {
 
 .adminContent {
     flex-grow: 1;
-    background-color: rgba(255, 255, 255, 0.719);
+    background-color: rgb(255, 255, 255);
     min-height: 1000px;
     margin-top: 20px;
 }

@@ -31,13 +31,14 @@ class Registrations extends Migration
             $table->timestamp('verified_at')->nullable();
             $table->string('phone_number_advocate');
             $table->string('home_number');
-            $table->int('place');
+            $table->integer('place');
             $table->boolean('member');
-            $table->int('member_place');
-            $table->int('cost');
+            $table->integer('member_place');
+            $table->integer('cost');
             $table->string('other');
             $table->boolean('terms');
             $table->string('verification_key');
+            $table->timestamps();
         });
     }
 

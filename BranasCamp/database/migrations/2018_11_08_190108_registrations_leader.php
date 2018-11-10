@@ -28,20 +28,18 @@ class RegistrationsLeader extends Migration
             $table->string('first_name_advocate');
             $table->string('last_name_advocate');
             $table->string('email_advocate');
-            $table->timestamp('email_verified_at')->nullable();
+            $table->timestamp('verified_at')->nullable();
             $table->string('phone_number_advocate');
             $table->string('home_number');
-            $table->int('place');
+            $table->integer('place');
             $table->boolean('member');
-            $table->int('member_place');
+            $table->integer('member_place');
             $table->boolean('kitchen');
-            $table->tiemstamp('register_time');
-            $table->int('cost');
+            $table->integer('cost');
             $table->string('other');
             $table->boolean('terms');
             $table->string('verification_key');
-            $table->timestamp('verified_at');
-            $table->string('verification_key');
+            $table->timestamps();
         });
     }
 

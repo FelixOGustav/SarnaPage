@@ -42,10 +42,18 @@ class CampRegistrationController extends Controller
         $registration->phone_number_advocate = Request('phoneNumberAdvocate');
         $registration->home_number = Request('homeNumberAdvocate');
         $registration->place = Request('place');
-        $registration->member = 0; //Request('member');
         $registration->member_place = 0; //Request('memberPlace');
         $registration->other = Request('other');
         $registration->terms = 1; //Request('terms');
+
+        if(Request('memberPlace')==null){
+            $registration->member = 0;
+        }
+
+        else{
+            $registration->member = 1;
+        }
+
         
         $registration->verification_key = Hash::make($registration->first_name . $registration->phonenumber);
 

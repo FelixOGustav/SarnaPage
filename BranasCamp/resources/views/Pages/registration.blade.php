@@ -5,6 +5,8 @@
                     <!-- Start deltagare -->
                     <div style="margin-top: 8%;"><h2>Deltagare</h2></div>
                         <div>  
+                        <form method="POST" action="/pages/registration/done">
+                            {{ csrf_field() }}
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="firstName">Förnamn</label>
@@ -133,7 +135,16 @@
                                 <option value="02">Nej</option>
                             </select>
                         </div>
-                        <!-- Start anmäningsknapp-->    
+                        <!-- Start regler-->
+                        <div>
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                        </div>
+                        <!--Slut regler-->
+                        <!-- Start anmäningsknapp-->
+                        <div>
                             <button type="submit" style="margin-top: 10px; margin-bottom: 5%; font-family: elkwood;" class="btn btn-secondary centerImg">Slutför Anmälan</button>
+                        </div>    
+                        </form>
 </div>                            
 @endsection

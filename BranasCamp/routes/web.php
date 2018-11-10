@@ -19,10 +19,11 @@ Route::get('/', function () {
 
 Route::get('/', 'PagesController@index');
 Route::get('/template', 'PagesController@template');
-Route::get('/registration', 'PagesController@registration');
+Route::get('/registration', 'CampRegistrationController@registration');
 //Route::get('/admin/login', 'PagesController@login');
 
-Route::get('/registration/done','PagesController@registrationDone');
+Route::get('/registration/done','CampRegistrationController@registrationDone');
+Route::post('/registration/done','CampRegistrationController@store');
 Route::get('/gdpr','PagesController@gdpr');
 
 Route::group(['middleware' => 'auth'], function () {

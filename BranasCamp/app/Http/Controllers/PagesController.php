@@ -38,11 +38,6 @@ class PagesController extends Controller
         return view('Layouts/template');
     }
 
-    public function registration(){
-        $places = \App\place::all();
-        return view('Pages/registration', ['places' => $places]);
-    }
-
     public function login(){
         return view('Pages/login');
     }

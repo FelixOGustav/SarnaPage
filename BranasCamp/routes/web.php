@@ -26,7 +26,7 @@ Route::get('/registration/done','CampRegistrationController@registrationDone');
 Route::post('/registration/done','CampRegistrationController@store');
 Route::get('/gdpr','PagesController@gdpr');
 
-Route::get('/registration/verify/{type}/{id}/{key}', 'CampRegistrationController@VerifyRegistration');
+Route::get('/registration/verify/{type}/{id}', 'CampRegistrationController@VerifyRegistration')->name('event.verifyRegistration')->middleware('signed');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/dashboard', 'PagesController@dashboard');

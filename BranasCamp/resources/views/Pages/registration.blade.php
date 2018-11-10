@@ -6,7 +6,7 @@
         <!-- Start deltagare -->
         <div style="margin-top: 8%;"><h2>Deltagare</h2></div>
             <div>  
-            <form method="POST" action="/pages/registration/done">
+            <form method="POST" action="registration/done">
                 {{ csrf_field() }}
                 <div class="form-row">
                     <div class="form-group col-md-6">

@@ -1,13 +1,16 @@
 @extends('Layouts/template')
 @section('content')
 <div class="bg-white">
-    <form method="POST" action="/registration/done">
+    <div class="BGGrey">
+        <h1 style=" margin-top: 3rem; text-align: center;" class="anmalan whiteColor">Anmälan</h1>
+        <h2 style="text-align: center;" class="rubrikerAnmalan whiteColor">Ledarsidan</h2>
+    </div>
+    <form method="POST" action="/registration/leader/done">
         {{ csrf_field() }}
     <div class="container">
-        <h1 style=" margin-top: 3rem; text-align: center;" class="anmalan">Anmälan</h1>
         <!-- Start deltagare -->
         <div style="margin-top: 5rem;"><h2 style="text-align: center;" class="rubrikerAnmalan">Deltagare</h2></div>
-            <div>
+            <div>  
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="firstName">Förnamn</label>
@@ -61,11 +64,11 @@
                 </div>
             <!-- Slut deltagare -->
             <!-- Start Ort -->
-            <div style="margin-top: 3rem;" >
+            <div style="margin-top: 3rem;">
                     
                 <div ><h2 style="text-align: center; " class="rubrikerAnmalan">Ort</h2></div>
                 <div class="form-group container-fluid noPadding" >
-                    <label for="inputState">Orten</label>
+                    <label for="place">Orten</label>
                     <select id="place" name="place" class="form-control" required>
                             <option value="">Välj...</option>
                         @foreach($places as $place)
@@ -75,6 +78,14 @@
                 </div>
             </div>
             <!-- Slut Ort -->
+                <div>
+                    <label for="place">Vill du stå i köket? (500kr rabatt)</label>
+                    <select id="kitchen" name="kitchen" class="form-control" required>
+                        <option value="">Välj...</option>
+                        <option value="0">Nej, jag är en kvällsmänniska..</option>
+                        <option value="1">Absoult, jag är ju en smålänning</option>
+                    </select>
+                </div>
             <!-- Skidhyra -->
     </div>
             <div class="BGGrey" style="padding-bottom: 3rem; padding-top: 3rem; margin-top:3rem; ">
@@ -84,7 +95,7 @@
     <div class="container">
             <!-- Start Målsman -->
             <div style="padding-top: 3rem;">    
-                <div><h2 style="text-align: center;" class="rubrikerAnmalan">Kontaktuppgifter målsman</h2></div>
+                <div><h2 style="text-align: center;" class="rubrikerAnmalan">Kontaktuppgifter närstående</h2></div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="firstNameAdvocate">Förnamn målsman</label>
@@ -117,7 +128,7 @@
                 <div class="form-group container-fluid noPadding" >
                         <label for="member">Är du med i en Equmeniaförening</label>
                         <select id="memberPlace" name="memberPlace" class="form-control" required>
-                                <option value="null">Nej, jag är inte medlem i någon Equmeniaförening</option>
+                                <option value="0">Nej, jag är inte medlem i någon Equmeniaförening</option>
                             @foreach($places as $place)
                                 <option value="{{$place->placeID}}">Ja, jag är med i {{$place->placename}}</option>
                             @endforeach
@@ -131,12 +142,12 @@
         <div class="container">
         <h2 style="text-align: center;" class="whiteColor" class="rubrikerAnmalan">Regler och vilkor:</h2>
         <h4 style="text-align: center;" class="whiteColor">-TIDER SKA FÖLJAS</h4>
-        <h4 style="text-align: center;" class="whiteColor">-LEDARNA ÄR DE SOM BESTÄMMER</h4>
+        <h4 style="text-align: center;" class="whiteColor">-LÄGERCHEFERNA ÄR DE SOM BESTÄMMER</h4>
         <h4 style="text-align: center;" class="whiteColor">-KILLAR OCH TJEJER SOVER ÅTSKILJT</h4>
         <h4 style="text-align: center;" class="whiteColor">-DU SKA VARA MED På DE OBLIGATORISKA AKTIVITETERNA</h4>
         <h4 style="text-align: center;" class="whiteColor">-NOLLTOLERANS MOT ALKOHOL OCH DROGER</h4>
         <h4 style="text-align: center;" class="whiteColor">-DET GÅR EJ AVANMäLAN EFTER SISTA ANMäLNINGSDAGEN UTAN GILTIGT LäKARINTYG</h4>
-        <h4 style="text-align: center;" class="whiteColor">-Anmälan är bindande</h4>
+        <h4 style="text-align: center;" class="whiteColor"></h4>
         <h4 style="text-align: center;" class="whiteColor"></h4>
         </div> 
         <!--Slut regler-->
@@ -144,9 +155,7 @@
         <!-- Start anmäningsknapp-->
             <div style="padding:5rem;">
                 <div style="text-align:center;">
-                        <h2 class="rubrikerAnmalan">Pris = 1500kr</h2>
-                        <p>(Eventuell syskonrabatt hanteras av din medlemsförsamling, kontakta ortsansvariga för mer information)</p>
-                        <br>
+                        <h2 class="rubrikerAnmalan">Pris =</h2>
                         <input type="checkbox"  id="terms" name="terms"  value="1" required>
                         <label  for="checkbox"><h4> Jag har läst, förstått och godkänt reglerna. </h4></label>
                 </div>

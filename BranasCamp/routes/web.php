@@ -20,10 +20,13 @@ Route::get('/', function () {
 Route::get('/', 'PagesController@index')->name('start');
 Route::get('/template', 'PagesController@template');
 Route::get('/registration', 'CampRegistrationController@registration');
+Route::get('/registration/leader', 'CampRegistrationController@registrationLeader');
 //Route::get('/admin/login', 'PagesController@login');
 
 Route::get('/registration/done','CampRegistrationController@registrationDone');
 Route::post('/registration/done','CampRegistrationController@store');
+Route::get('/registration/leader/done','CampRegistrationController@registrationDone');
+Route::post('/registration/leader/done','CampRegistrationController@storeLeader');
 Route::get('/gdpr','PagesController@gdpr');
 
 Route::get('/registration/verify/{type}/{id}', 'CampRegistrationController@VerifyRegistration')->name('event.verifyRegistration')->middleware('signed');

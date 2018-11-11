@@ -217,6 +217,9 @@
         <div class="container-fluid bg-white paddingBottom paddingTop" id="KontaktInfo">
                 <div class="container centerTextInDiv">
                     <h1>Kontakt</h1>
+                    <div>
+                        <h2>info@branaslagret.se</h2>
+                    </div>
                     <!-- Kontakt lägerchefer -->
                     <div>
                         <h2><br>Lägerledning</h2>
@@ -268,7 +271,23 @@
                         </table>
                     </div>
                     <!-- Kontakt krisgrupp end -->
-
+                    <!-- Kontakt webbadmin start -->
+                    <div>
+                        <h2><br>Webb-admin</h2>
+                        <table style="display: flex; justify-content: center;">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <h5 style="margin-right: 5px;">Gustav Råkeberg och Felix Brunnegård</h5>
+                                    </td>
+                                    <td>
+                                        <p style="margin-top: 8px; margin-left: 5px;">webb@branaslagret.se</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Kontakt webbadmin end -->
                     <!-- Kontakt Uthyrning -->
                     <div>
                         <h2><br>Uthyrning Utrustning</h2>

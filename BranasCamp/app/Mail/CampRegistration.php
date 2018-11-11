@@ -20,7 +20,7 @@ class CampRegistration extends Mailable
      *
      * @return void
      */
-    public function __construct(registration $registration, $link)
+    public function __construct($registration, $link)
     {
         $this->registration = $registration;
         $this->link = $link;

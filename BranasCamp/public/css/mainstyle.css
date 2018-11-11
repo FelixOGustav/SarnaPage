@@ -302,3 +302,30 @@ label {
 .form-control {
     border-radius: 0px;
 }
+
+form label {
+    font-size: 20px;
+    color: #606569;
+}
+
+.anmalan {
+    font-size:90px;
+}
+
+.rubrikerAnmalan {
+    font-size: 50px;
+}
+
+@media screen and (max-width: 991.98px){
+    form label {
+        font-size: 15px;
+    }
+
+    .anmalan {
+        font-size:50px;
+    }
+    
+    .rubrikerAnmalan {
+        font-size: 30px;
+    }
+}

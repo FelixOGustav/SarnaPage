@@ -63,6 +63,10 @@ class PagesController extends Controller
         return view('AdminPages/manageuser', ['user' => $user]);
     }
 
+    public function registrationfull(){
+        return view('Pages/registrationfull');
+    }
+
     // Remove before publishing. Just temp to develop verification email
     public function testmail(){
         $registration= new \App\Registration();

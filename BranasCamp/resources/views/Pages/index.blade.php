@@ -23,7 +23,7 @@
                     <div class="modal-body ">
                         <div class="row">
                             <a href="/registration" class="col modalButtonStyle"><h3 class="whiteColor">Deltagare</h3></a>
-                            <button href="#" class="col modalButtonStyle"><h3 class="whiteColor">Ledare</h3></button>
+                            <a href="/registration/leader" class="col modalButtonStyle"><h3 class="whiteColor">Ledare</h3></a>
                         </div>
                     </div>
                 </div>

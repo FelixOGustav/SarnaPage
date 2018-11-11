@@ -28,6 +28,7 @@ Route::post('/registration/done','CampRegistrationController@store');
 Route::get('/registration/leader/done','CampRegistrationController@registrationDone');
 Route::post('/registration/leader/done','CampRegistrationController@storeLeader');
 Route::get('/gdpr','PagesController@gdpr');
+Route::get('/registrationfull', 'PagesController@registrationfull');
 
 Route::get('/registration/verify/{type}/{id}', 'CampRegistrationController@VerifyRegistration')->name('event.verifyRegistration')->middleware('signed');
 

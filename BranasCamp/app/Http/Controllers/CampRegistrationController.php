@@ -29,7 +29,12 @@ class CampRegistrationController extends Controller
 
     // Standard attendee
     public function store(){
-        
+
+        // Redirects and will not register if all spots are full
+        if(!SpotFree()){
+            return redirect('/registrationfull');
+        }
+
         $registration= new \App\Registration();
         //return request()->all();
         
@@ -80,6 +85,11 @@ class CampRegistrationController extends Controller
 
     // leader attendee
     public function storeLeader(){
+
+        // Redirects and will not register if all spots are full
+        if(!SpotFree()){
+            return redirect('/registrationfull');
+        }
         
         $registration= new \App\Registrations_leader();
         //return request()->all();
@@ -155,6 +165,16 @@ class CampRegistrationController extends Controller
         }
         else{
             return 'Något gick fel. Kontakta lägerledningen eller webansvariga';
+        }
+    }
+
+    private function SpotFree(){
+        $count = Registrations_leader::count() + Registration::count();
+        if($count < 281) {
+            return true;
+        }
+        else {
+            return false;
         }
     }
 }

@@ -70,7 +70,7 @@
     <!-- Navbar end -->
 
     <!-- Main Site Content -->
-    <div class="container-fluid noPadding" style="min-height: 850px;"><!-- min-height should be able to be removed later -->
+    <div class="container-fluid noPadding" style="min-height: 850px;" id="mainContent"><!-- min-height should be able to be removed later -->
         <div class="navbarSpacer" ></div> <!-- Spacer so that content doesn't start under navbar -->
             
         <!-- Cookie consent -->
@@ -132,35 +132,27 @@
 
         $( window ).on( "load", function() {
             $('#loadingScreen').fadeOut();
+            $('#mainContent').css('min-height', $( window ).height());
             CheckCoockieConstent();
         });
 
         function CheckCoockieConstent() {
             if(!Cookies.get('consent')){
-                console.log("No cookie. Baking one..");
                 Cookies.set('consent', 'false');
             }
             else if(Cookies.get('consent') ==  'true'){
-                    console.log("Found cookie. Hiding..");
                     $('#cookieConsentDiv').hide();
-                
             }
+            return null;
         }
 
         $(function(){
             $('#agreeCookies').click(function(){
                 Cookies.set('consent', 'true');
-                console.log("Soul sold to us");
                 $('#cookieConsentDiv').hide();
                 return null;
             })
         })
-
-        function AgreeCookies(){
-            Cookies.set('consent', 'true');
-            console.log("Soul sold to us");
-            $('#cookieConsentDiv').hide();
-        }
 
 
         </script>

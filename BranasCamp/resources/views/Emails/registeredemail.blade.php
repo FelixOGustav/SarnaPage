@@ -28,6 +28,12 @@
             </a> 
             eller på startsidan.
         </p>
+        
+        <div style="text-align:left;">
+            <p style="color:#606569; font-style:italic; margin-top: 35px; font-size: 15px;">
+                Ledarna, Branäslägret
+            </p>
+        </div>
 
         <a href="{{$link}}"  style="color: white; background-color:#606569; padding: 12px; border-radius: 3px;
         text-decoration: none;">
@@ -37,11 +43,7 @@
             <a href="{{$link}}">{{$link}}</a>
         </div>
         
-        <div style="text-align:left;">
-            <p style="color:#606569; font-style:italic; margin-top: 35px; font-size: 15px;">
-                Ledarna, Branäslägret
-            </p>
-        </div>
+        
     </div>
     
 </body>

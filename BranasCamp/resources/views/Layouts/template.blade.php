@@ -24,7 +24,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="{{URL::asset('js/app.js')}}"></script>
     <script src="{{URL::asset('js/scrollToTop.js')}}"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 
     <!-- Loading content -->
 
@@ -72,9 +72,25 @@
     <!-- Main Site Content -->
     <div class="container-fluid noPadding" style="min-height: 850px;"><!-- min-height should be able to be removed later -->
         <div class="navbarSpacer" ></div> <!-- Spacer so that content doesn't start under navbar -->
-            <!-- Cookie consent -->
             
-            <!-- Cookie consent end -->
+        <!-- Cookie consent -->
+        <div class="js-cookie-consent cookie-consent" id="cookieConsentDiv" style="display: block;">
+            <div class="fixed-bottom cookiestyle centerTextInDiv">
+                <span class="cookie-consent__message">
+                    Genom att besöka och använda denna sida godkänner du användningen av cookies.
+                    Vi använder inga cookies för att spåra eller samla in användardata.
+                </span>
+                <span>
+                    <a href="/gdpr" class="btn" style="background-color: #DCDCDC; margin-left: 15px;"><p style="margin: 0px; padding: 0px;">Läs mer om GDPR</p></a>
+                    
+                    <button id="agreeCookies" class="btn btn-white" style="margin-left: 15px;">
+                        <p style="margin: 0px; padding: 0px;">Ok</p>
+                    </button>
+                </span>
+            </div>
+        </div>
+        <!-- Cookie consent end -->
+
         @yield('content')
     
     </div>
@@ -116,7 +132,36 @@
 
         $( window ).on( "load", function() {
             $('#loadingScreen').fadeOut();
+            CheckCoockieConstent();
         });
+
+        function CheckCoockieConstent() {
+            if(!Cookies.get('consent')){
+                console.log("No cookie. Baking one..");
+                Cookies.set('consent', 'false');
+            }
+            else if(Cookies.get('consent') ==  'true'){
+                    console.log("Found cookie. Hiding..");
+                    $('#cookieConsentDiv').hide();
+                
+            }
+        }
+
+        $(function(){
+            $('#agreeCookies').click(function(){
+                Cookies.set('consent', 'true');
+                console.log("Soul sold to us");
+                $('#cookieConsentDiv').hide();
+                return null;
+            })
+        })
+
+        function AgreeCookies(){
+            Cookies.set('consent', 'true');
+            console.log("Soul sold to us");
+            $('#cookieConsentDiv').hide();
+        }
+
 
         </script>
     </div>

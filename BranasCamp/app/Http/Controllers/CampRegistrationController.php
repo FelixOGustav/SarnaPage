@@ -73,7 +73,7 @@ class CampRegistrationController extends Controller
             ]);
         
         // Send Email
-        \Mail::to($registration->email)->send(new CampRegistration($registration, $verificationLink));
+        \Mail::to($registration->email_advocate)->send(new CampRegistration($registration, $verificationLink));
 
         return redirect('/registration/done');
     }

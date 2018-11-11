@@ -140,15 +140,15 @@
             <!-- Start regler-->
     <div class="BGGrey" style="padding-bottom: 3rem; padding-top: 3rem; margin-top: 3rem;">
         <div class="container">
-        <h2 style="text-align: center;" class="whiteColor" class="rubrikerAnmalan">Regler och vilkor:</h2>
-        <h4 style="text-align: center;" class="whiteColor">-TIDER SKA FÖLJAS</h4>
-        <h4 style="text-align: center;" class="whiteColor">-LÄGERCHEFERNA ÄR DE SOM BESTÄMMER</h4>
-        <h4 style="text-align: center;" class="whiteColor">-KILLAR OCH TJEJER SOVER ÅTSKILJT</h4>
-        <h4 style="text-align: center;" class="whiteColor">-DU SKA VARA MED På DE OBLIGATORISKA AKTIVITETERNA</h4>
-        <h4 style="text-align: center;" class="whiteColor">-NOLLTOLERANS MOT ALKOHOL OCH DROGER</h4>
-        <h4 style="text-align: center;" class="whiteColor">-DET GÅR EJ AVANMäLAN EFTER SISTA ANMäLNINGSDAGEN UTAN GILTIGT LäKARINTYG</h4>
-        <h4 style="text-align: center;" class="whiteColor"></h4>
-        <h4 style="text-align: center;" class="whiteColor"></h4>
+                <h2 style="text-align: center;" class="whiteColor" class="rubrikerAnmalan">Regler och vilkor:</h2>
+                <h4 style="text-align: center;" class="whiteColor">-TIDER SKA FÖLJAS</h4>
+                <h4 style="text-align: center;" class="whiteColor">-LEDARNA ÄR DE SOM BESTÄMMER</h4>
+                <h4 style="text-align: center;" class="whiteColor">-KILLAR OCH TJEJER SOVER ÅTSKILJT</h4>
+                <h4 style="text-align: center;" class="whiteColor">-DU SKA VARA MED På DE OBLIGATORISKA AKTIVITETERNA</h4>
+                <h4 style="text-align: center;" class="whiteColor">-NOLLTOLERANS MOT ALKOHOL OCH DROGER</h4>
+                <h4 style="text-align: center;" class="whiteColor">-DET GÅR EJ AVANMäLAN EFTER SISTA ANMäLNINGSDAGEN UTAN GILTIGT LäKARINTYG</h4>
+                <h4 style="text-align: center;" class="whiteColor">-Anmälan är bindande</h4>
+                <h4 style="text-align: center;" class="whiteColor">-Att deltagaren är med i bild och video om sedan publiceras på socialmedier (Om detta skulle vara ett problem, kontakta info@branaslagret.se)</h4>
         </div> 
         <!--Slut regler-->
     </div>

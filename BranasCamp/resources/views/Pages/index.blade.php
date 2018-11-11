@@ -151,10 +151,10 @@
                         <div class="col qnaBtnSize">
                             <div class="qnaBox BGGrey text-center">
                                 <div>
-                                    <h2 data-toggle="collapse" href="#question1" aria-expanded="false" aria-controls="collapseExample" class="whiteColor" style="cursor: pointer;">Fråga 1</h2>
+                                    <h2 data-toggle="collapse" href="#question1" aria-expanded="false" aria-controls="collapseExample" class="whiteColor" style="cursor: pointer;">Syskonrabatt</h2>
                                 </div>
                                 <div class="collapse" id="question1">
-                                    <p class="whiteColor">Svaret på alla dina frågor!</p>
+                                    <p class="whiteColor">Till årets läger är syskonrabatten borttagen för att lägeravgiften är sänkt. Skulle ekonomin vara ett problem så kontakta din equmeniaförening så hjälper de till. Ekonomin ska inte vara ett hinder för att åka med på lägret.</p>
                                 </div>
                             </div>
                         </div>
@@ -163,10 +163,10 @@
                         <div class="col qnaBtnSize">
                             <div class="qnaBox BGGrey text-center">
                                 <div>
-                                    <h2 data-toggle="collapse" href="#question2" aria-expanded="false" aria-controls="collapseExample" class="whiteColor" style="cursor: pointer;">Fråga 2</h2>
+                                    <h2 data-toggle="collapse" href="#question2" aria-expanded="false" aria-controls="collapseExample" class="whiteColor" style="cursor: pointer;">Hur går betalningen till?</h2>
                                 </div>
                                 <div class="collapse" id="question2">
-                                    <p class="whiteColor">Svaret på alla dina frågor!</p>
+                                    <p class="whiteColor">Betalningen görs via faktura som skickas till den epost som anges vid anmälan. Detta sker innan lägret och ska betalas innan lägret. OBS! Kan du av någon anledning inte ta emot fakturan via epost så måste du kontakta antingen lägerledningen eller webbansvarig.</p>
                                 </div>
                             </div>
                         </div>
@@ -181,10 +181,10 @@
                         <div class="col qnaBtnSize">
                             <div class="qnaBox BGGrey text-center">
                                 <div>
-                                    <h2 data-toggle="collapse" href="#question3" aria-expanded="false" aria-controls="collapseExample" class="whiteColor" style="cursor: pointer;">Fråga 3</h2>
+                                    <h2 data-toggle="collapse" href="#question3" aria-expanded="false" aria-controls="collapseExample" class="whiteColor" style="cursor: pointer;">Jag har inte fått ett aktiveringsmail</h2>
                                 </div>
                                 <div class="collapse" id="question3">
-                                    <p class="whiteColor">Svaret på alla dina frågor!</p>
+                                    <p class="whiteColor">Den tjänst som hemsidan använder för att leverera säkra mail, kan ibland vara belastad. Därför kan det dröja mellan 5-10 minuter innan mailet kommer fram. I övrigt, ta en titt i alla de olika inkorgarna, kanske har det hamnat i skräpposten. Om mailet fortfarande inte kommit fram efter några timmar så kontakta din ungdomsledare, hen kan logga in och se om du är anmäld.</p>
                                 </div>
                             </div>
                         </div>            
@@ -194,10 +194,10 @@
                         <div class="col qnaBtnSize">
                             <div class="qnaBox BGGrey text-center">
                                 <div>
-                                    <h2 data-toggle="collapse" href="#question4" aria-expanded="false" aria-controls="collapseExample" class="whiteColor" style="cursor: pointer;">Fråga 4</h2>
+                                    <h2 data-toggle="collapse" href="#question4" aria-expanded="false" aria-controls="collapseExample" class="whiteColor" style="cursor: pointer;">När får jag mer information?</h2>
                                 </div>
                                 <div class="collapse" id="question4">
-                                    <p class="whiteColor">Svaret på alla dina frågor!</p>
+                                    <p class="whiteColor">Ett mejl kommer att skickas ut med mer information angående lägret i mitten av december. Där kommer du få information om bland annat avgång, packlista m.m.</p>
                                 </div>
                             </div>
                         </div>                    
@@ -261,10 +261,10 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        <h5 style="margin-right: 5px;">Karl karlsson</h5>
+                                        <h5 style="margin-right: 5px;">Rickard Martinsson</h5>
                                     </td>
                                     <td>
-                                        <p style="margin-top: 8px; margin-left: 5px;">0713 37 13 37</p>
+                                        <p style="margin-top: 8px; margin-left: 5px;">0706-30 30 88</p>
                                     </td>
                                 </tr>
                             </tbody>
@@ -295,10 +295,10 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        <h5 style="margin-right: 5px;">Karl karlsson</h5>
+                                        <h5 style="margin-right: 5px;">Rickard Martinsson</h5>
                                     </td>
                                     <td>
-                                        <p style="margin-top: 8px; margin-left: 5px;">0713 37 13 37</p>
+                                        <p style="margin-top: 8px; margin-left: 5px;">0706-30 30 88</p>
                                     </td>
                                 </tr>
                             </tbody>
@@ -313,7 +313,7 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        <h5 style="margin-right: 5px;">Karl karlsson</h5>
+                                        <h5 style="margin-right: 5px;">Martin Olausson</h5>
                                     </td>
                                     <td>
                                         <p style="margin-top: 8px; margin-left: 5px;">0713 37 13 37</p>
@@ -350,7 +350,7 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        <h5 style="margin-right: 5px;">Karl karlsson</h5>
+                                        <h5 style="margin-right: 5px;">Markus Andersson</h5>
                                     </td>
                                     <td>
                                         <p style="margin-top: 8px; margin-left: 5px;">0713 37 13 37</p>

@@ -23,10 +23,27 @@ class CampRegistrationController extends Controller
         return view('Pages/registration-leader', ['places' => $places]);
     }
     
-    public function registrationDone(){
-        return view('Pages/registrationdone');
+    public function registrationDone($type, $id){
+        if($type == 'participant'){
+            $reg = \App\registration::find($id);
+            return view('Pages/registrationdone', ['mail' => $reg->email_advocate, 'recipient' => 'Din målsman']);
+        }
+        else{
+            $reg = \App\registrations_leader::find($id);
+            return view('Pages/registrationdone', ['mail' => $reg->email, 'recipient' => 'Du']);
+        }
     }
 
+    public function VerificationDone($type, $id){
+        if($type == 'participant'){
+            $reg = \App\registration::find($id);
+        }
+        else{
+            $reg = \App\registrations_leader::find($id);
+        }
+        return view('Pages/verificationdone', ['reg' => $reg]);
+    }
+    
     // Standard attendee
     public function store(){
 
@@ -85,7 +102,7 @@ class CampRegistrationController extends Controller
         // Send Email
         \Mail::to($registration->email_advocate)->send(new CampRegistration($registration, $verificationLink));
 
-        return redirect('/registration/done');
+        return redirect('/registration/done/participant/' . $registration->id);
     }
 
     // leader attendee
@@ -155,7 +172,7 @@ class CampRegistrationController extends Controller
         // Send Email
         \Mail::to($registration->email)->send(new CampRegistration($registration, $verificationLink));
 
-        return redirect('/registration/done');
+        return redirect('/registration/done/leader/' . $registration->id);
     }
 
     public function VerifyRegistration($type, $id){
@@ -165,7 +182,7 @@ class CampRegistrationController extends Controller
                 $fetchedRegistration->verified_at = Carbon::now()->toDateTimeString();
                 $fetchedRegistration->save();
             }
-            return redirect('/registration/done');
+            return redirect('/registration/verify/done/participant/' . $fetchedRegistration->id);
         }
         elseif($type == 'leader'){
             $fetchedRegistration = \App\registrations_leader::find($id);
@@ -173,6 +190,7 @@ class CampRegistrationController extends Controller
                 $fetchedRegistration->verified_at = Carbon::now()->toDateTimeString();
                 $fetchedRegistration->save();
             }
+            return redirect('/registration/verify/done/leader/' . $fetchedRegistration->id);
         }
         else{
             return 'Något gick fel. Kontakta lägerledningen eller webansvariga';

@@ -81,9 +81,9 @@
                     Vi använder inga cookies för att spåra eller samla in användardata.
                 </span>
                 <span>
-                    <a href="/gdpr" class="btn" style="background-color: #DCDCDC; margin-left: 15px;"><p style="margin: 0px; padding: 0px;">Läs mer om GDPR</p></a>
+                    <a href="/gdpr" class="btn" style="background-color: white; margin-left: 15px;"><p style="margin: 0px; padding: 0px;">Läs mer om GDPR</p></a>
                     
-                    <button id="agreeCookies" class="btn btn-white" style="margin-left: 15px;">
+                    <button id="agreeCookies" class="btn" style="background-color: white; margin-left: 15px;">
                         <p style="margin: 0px; padding: 0px;">Ok</p>
                     </button>
                 </span>

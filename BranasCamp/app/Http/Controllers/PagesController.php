@@ -69,6 +69,30 @@ class PagesController extends Controller
         return view('Pages/registrationfull');
     }
 
+    public function managecamps(){
+        $camps = \App\registration_state::all();
+        return view('AdminPages/managecamps', ['camps' => $camps]);
+    }
+
+    public function managecamp($id){
+        $camp = \App\registration_state::find($id);
+        return view('AdminPages/managecamp', ['camp' => $camp]);
+    }
+
+    public function CloseRegistration($id){
+        $camp = \App\registration_state::find($id);
+        $camp->open = 0;
+        $camp->save();
+        return redirect('/admin/managecamp/camp/' . $camp->id);
+    }
+
+    public function OpenRegistration($id){
+        $camp = \App\registration_state::find($id);
+        $camp->open = 1;
+        $camp->save();
+        return redirect('/admin/managecamp/camp/' . $camp->id);
+    }
+
     // Remove before publishing. Just temp to develop verification email
     public function testmail(){
         $registration= new \App\Registration();

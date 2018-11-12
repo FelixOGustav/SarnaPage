@@ -80,7 +80,7 @@
             <!-- Slut Ort -->
                 <div>
                     <label for="place">Vill du stå i köket? (500kr rabatt)</label>
-                    <select id="kitchen" name="kitchen" class="form-control" required>
+                    <select onchange="ChangePrice.call(this, event)" id="kitchen" name="kitchen" class="form-control" required>
                         <option value="">Välj...</option>
                         <option value="0">Nej, jag är en kvällsmänniska..</option>
                         <option value="1">Absoult, jag är ju en smålänning</option>
@@ -155,7 +155,7 @@
         <!-- Start anmäningsknapp-->
             <div style="padding:5rem;">
                 <div style="text-align:center;">
-                        <h2 class="rubrikerAnmalan">Pris =</h2>
+                        <h2 class="rubrikerAnmalan" id="pris">Pris =</h2>
                         <input type="checkbox"  id="terms" name="terms"  value="1" required>
                         <label  for="checkbox"><h4> Jag har läst, förstått och godkänt reglerna. </h4></label>
                 </div>
@@ -164,5 +164,18 @@
         <!-- Slut anmäningsknapp   -->    
         </form>
     
-</div>                 
+</div>
+<script>
+    function ChangePrice(event){
+        if(this.options[this.selectedIndex].value == 0){
+            document.getElementById("pris").innerHTML = "Pris = 1500kr";
+        }
+        else if(this.options[this.selectedIndex].value == 1){
+            document.getElementById("pris").innerHTML = "Pris = 1000kr";
+        }
+        else {
+            document.getElementById("pris").innerHTML = "Pris = Välj om du ska vara i köket för att se pris";
+        }
+    }
+</script>        
 @endsection

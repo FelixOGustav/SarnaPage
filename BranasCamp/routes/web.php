@@ -23,10 +23,11 @@ Route::get('/registration', 'CampRegistrationController@registration');
 Route::get('/registration/leader', 'CampRegistrationController@registrationLeader');
 //Route::get('/admin/login', 'PagesController@login');
 
-Route::get('/registration/done','CampRegistrationController@registrationDone');
+Route::get('/registration/done/{type}/{id}','CampRegistrationController@registrationDone');
 Route::post('/registration/done','CampRegistrationController@store');
-Route::get('/registration/leader/done','CampRegistrationController@registrationDone');
+Route::get('/registration/leader/done/{id}','CampRegistrationController@registrationDone');
 Route::post('/registration/leader/done','CampRegistrationController@storeLeader');
+Route::get('/registration/verify/done/{type}/{id}', 'CampRegistrationController@VerificationDone');
 Route::get('/gdpr','PagesController@gdpr');
 Route::get('/registrationfull', 'PagesController@registrationfull');
 
@@ -37,6 +38,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/registrationlists','PagesController@registrationlists');
     Route::get('/admin/manageusers','PagesController@manageusers');
     Route::get('/admin/managerusers/user/{id}', 'PagesController@manageuser');
+    Route::get('/admin/managecamps', 'PagesController@managecamps');
+    Route::get('/admin/managecamp/camp/{id}', 'PagesController@managecamp');
+    Route::get('/admin/managecamp/close/{id}', 'PagesController@CloseRegistration');
+    Route::get('/admin/managecamp/open/{id}', 'PagesController@OpenRegistration');
 });
 
 
@@ -45,7 +50,7 @@ Route::get('/test', function(){
     return url('/');
 });
 
-Route::get('test/mail', 'PagesController@testmail');
+//Route::get('/test/mail', 'PagesController@testmail');
 
 
 Route::group(['prefix' => 'admin'], function () {

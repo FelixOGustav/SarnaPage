@@ -11,9 +11,11 @@
     padding: 0px 10px;">
         <!--
             <p style="color: #606569; font-size:50px; font-weight: bold;">Branäslägret</p>
-        -->
+        
 
         <a href="{{URL::to('/')}}" target="blank"><img src="{{URL::asset('img/branaslagret.svg')}}" style="max-width: 90%;"></a>
+        -->
+        <h1 style="color: #606569; font-size: 80px;">Branäslägret</h1>
         <h1 style="color: #606569;">Kul att du ska med {{$registration->first_name}}!</h1>
 
         <p style="margin-bottom: 35px; color: #606569;">

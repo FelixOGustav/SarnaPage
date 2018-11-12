@@ -12,7 +12,7 @@
             <hr class="adminNavLine">
             <a href="/admin/manageusers" class="adminNavBlock">Hantera användare</a>
             <hr class="adminNavLine">
-            <a href="/admin/managemembers" class="adminNavBlock">Hantera Läger</a>
+            <a href="/admin/managecamps" class="adminNavBlock">Hantera Läger</a>
             <hr class="adminNavLine">
             <a href="{{ route('logout') }}" class="adminNavBlock" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logga ut</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

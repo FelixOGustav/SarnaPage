@@ -15,8 +15,8 @@
 
         <a href="{{URL::to('/')}}" target="blank"><img src="{{URL::asset('img/branaslagret.svg')}}" style="max-width: 90%;"></a>
         -->
-        <h1 style="color: #606569; font-size: 80px;">Branäslägret</h1>
-        <h1 style="color: #606569;">Kul att du ska med {{$registration->first_name}}!</h1>
+        <h1 style="color: #606569;">Branäslägret</h1>
+        <h2 style="color: #606569;">Kul att du ska med {{$registration->first_name}}!</h2>
 
         <p style="margin-bottom: 35px; color: #606569;">
             För att bekräfta anmälan måste ni klicka på knappen nedan. Om knappen inte fungerar kan ni prova att klicka 

@@ -20,6 +20,7 @@
                     <th>Efternamn</th>
                     <th>Ort</th>
                     <th>Anmäld Tid</th>
+                    <th>Bekräftat</th>
                 </tr>
             </thead>
             <tbody>
@@ -33,7 +34,12 @@
                                 <th>{{$place->placename}}</th>
                             @endif
                         @endforeach
-                        <th>{{$reg->created_at}}</th>
+                        <th>{{$reg->created_at}}</th>                        
+                        @if($reg->verified_at != null)
+                            <th><img src="{{URL::asset('img/greenDot.png')}}"></th>
+                        @else
+                            <th></th>
+                        @endif
                     </tr>
                 @endforeach
             </tbody>
@@ -49,6 +55,7 @@
                     <th>Efternamn</th>
                     <th>Ort</th>
                     <th>Anmäld Tid</th>
+                    <th>Bekräftat</th>
                 </tr>
             </thead>
             <tbody>
@@ -62,7 +69,12 @@
                                 <th>{{$place->placename}}</th>
                             @endif
                         @endforeach
-                        <th>{{$reg->created_at}}</th>
+                        <th>{{$reg->created_at}}</th>                        
+                        @if($reg->verified_at != null)
+                            <th><img src="{{URL::asset('img/greenDot.png')}}"></th>
+                        @else
+                            <th></th>
+                        @endif
                     </tr>
                 @endforeach
             </tbody>

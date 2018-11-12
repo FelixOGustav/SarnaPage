@@ -328,6 +328,7 @@
                     <!-- Kontakt Liftkort end -->
 
                     <!-- Kontakt sjukvårdsansvarig -->
+                    <!--
                     <div>
                         <h2><br>Sjukvårdsansvarig</h2>
                         <table style="display: flex; justify-content: center;">
@@ -343,6 +344,7 @@
                             </tbody>
                         </table>
                     </div>
+                -->
                     <!-- Kontakt sjukvårdsansvarig end -->
 
                     

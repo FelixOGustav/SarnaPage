@@ -17,6 +17,7 @@ class PagesController extends Controller
 
     protected $users;
     protected $places;
+    protected $camp;
 
     /*
     //--- No longer needed. these are default if not overridden ---//
@@ -31,7 +32,8 @@ class PagesController extends Controller
     */
 
     public function index(){
-        return view('Pages/index') ->with('links', $this->StartPagelinkslinks);
+        $camp = \App\registration_state::find(1);
+        return view('Pages/index', ['links' => $this->StartPagelinkslinks, 'camp' => $camp]);
     }
 
     public function template(){

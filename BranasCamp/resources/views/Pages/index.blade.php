@@ -5,12 +5,15 @@
         <img  class="bigLogo" src="../img/branaslagret.svg" alt="Särnalägret">
         <h1 class="dateLogo">27 dec - 1 jan</h1>        
         <h1 class="dateLogo">2018 - 2019</h1>
-
-        <div class="container-fluid d-flex justify-content-center">
-            <button class="buttonStyle" data-toggle="modal" data-target="#registerChoiseModal"><p>Anmäl dig!</p></button>
-        </div>
+        
+        @if($camp->open > 0)
+            <div class="container-fluid d-flex justify-content-center">
+                <button class="buttonStyle" data-toggle="modal" data-target="#registerChoiseModal"><p>Anmäl dig!</p></button>
+            </div>
+        @endif
     </div>
 
+    @if($camp->open > 0)
         <!-- Modal -->
         <div class="modal fade" id="registerChoiseModal" role="dialog">
             <div class="modal-dialog">
@@ -29,7 +32,7 @@
                 </div>
             </div>
         </div>
-
+    @endif
         
         
         <div class="container-fluid startPageInfo paddingBottom">

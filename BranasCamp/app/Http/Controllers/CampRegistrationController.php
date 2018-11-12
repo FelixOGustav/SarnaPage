@@ -31,7 +31,12 @@ class CampRegistrationController extends Controller
     public function store(){
 
         // Redirects and will not register if all spots are full
-        if(!SpotFree()){
+        //if(!SpotFree()){
+        //    return redirect('/registrationfull');
+        //}
+
+        $count = \App\registrations_leader::count() + \App\registration::count();
+        if($count > 280) {
             return redirect('/registrationfull');
         }
 
@@ -87,9 +92,15 @@ class CampRegistrationController extends Controller
     public function storeLeader(){
 
         // Redirects and will not register if all spots are full
-        if(!SpotFree()){
+        //if(!SpotFree()){
+        //    return redirect('/registrationfull');
+        //}
+
+        $count = \App\registrations_leader::count() + \App\registration::count();
+        if($count > 280) {
             return redirect('/registrationfull');
         }
+
         
         $registration= new \App\Registrations_leader();
         //return request()->all();

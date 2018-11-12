@@ -55,7 +55,8 @@ class PagesController extends Controller
         $registrations = \App\registration::all();
         $registrations_leaders = \App\registrations_leader::all();
         $places = \App\place::all();
-        return view('AdminPages/registrationlists', ['registrations' => $registrations, 'registrations_leaders' => $registrations_leaders, 'places' => $places]);
+        $regAmount = \App\registrations_leader::count() + \App\registration::count();
+        return view('AdminPages/registrationlists', ['registrations' => $registrations, 'registrations_leaders' => $registrations_leaders, 'places' => $places, 'count' => $regAmount]);
     }
 
     public function manageusers(){
@@ -70,6 +71,10 @@ class PagesController extends Controller
 
     public function registrationfull(){
         return view('Pages/registrationfull');
+    }
+
+    public function registrationExists(){
+        return view('Pages/registrationexist');
     }
 
     public function managecamps(){

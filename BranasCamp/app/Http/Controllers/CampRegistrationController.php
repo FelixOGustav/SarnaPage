@@ -80,6 +80,13 @@ class CampRegistrationController extends Controller
         $registration->other = Request('other');
         $registration->terms = Request('terms');
 
+        $registrations = \App\registration::all();
+        foreach($registrations as $otherReg){
+            if($registration->birthdate == $otherReg->birthdate && $registration->last_four == $otherReg->last_four){
+                return redirect('/registrationExists');
+            }
+        }
+
         if(Request('memberPlace')==0){
             $registration->member = 0;
             $registration->member_place =null;
@@ -143,6 +150,13 @@ class CampRegistrationController extends Controller
         $registration->terms = Request('terms');
         $registration->kitchen = Request('kitchen');
 
+        $registrations = \App\registrations_leader::all();
+        foreach($registrations as $otherReg){
+            if($registration->birthdate == $otherReg->birthdate && $registration->last_four == $otherReg->last_four){
+                return redirect('/registrationExists');
+            }
+        }
+
         if(Request('kitchen') > 0){
             $registration->cost = 1000;
         }
@@ -195,6 +209,35 @@ class CampRegistrationController extends Controller
         else{
             return 'Något gick fel. Kontakta lägerledningen eller webansvariga';
         }
+    }
+
+    // Resends verification email
+    public function ResendVerificationEmail($type, $id){
+        if($type == 'participant'){
+            $reg = \App\registration::find($id);
+            if($reg->verified_at == null){
+                $verificationLink = Url::signedRoute('event.verifyRegistration', [
+                    'type' => 'participant', 
+                    'id' => $reg->id
+                    ]);
+                
+                // Send Email
+                \Mail::to($reg->email_advocate)->send(new CampRegistration($reg, $verificationLink));
+            }      
+        }
+        else{
+            $reg = \App\registrations_leader::find($id);
+            if($reg->verified_at == null){
+                $verificationLink = Url::signedRoute('event.verifyRegistration', [
+                    'type' => 'leader', 
+                    'id' => $reg->id
+                    ]);
+                
+                // Send Email
+                \Mail::to($reg->email)->send(new CampRegistration($reg, $verificationLink));
+            }            
+        }
+        return redirect('admin/registrationlists');
     }
 
     private function SpotFree(){

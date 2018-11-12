@@ -56,10 +56,10 @@
                 <h1><br>Hur kan en dag se ut</h1>
                 <p>En vanlig dag börjar med frukost i matsalen. Därefter träffas tonåringar och ledare från respektive ort för att snacka
                     om hur tonåringarna upplever lägret, presentera dagens aktiviteter och tema och kanske leka en lek tillsammans. Runt 9
-                    går bussarna mot Branäs för att dem som skall till pisten. Väl där serveras sedan en lättare mack-lunch vid kl 12.
+                    går bussarna mot Branäs för dem som skall till pisten. Väl där serveras sedan en lättare mack-lunch vid kl 12.
                     Bussarna kommer sedan tillbaka från backen senast kl 17, då väntar en god kvällsmat. På eftermiddagen träffas man med sin
                     tvärgrupp. Tvärgruppen består av en grupp tonåringar från olika orter men i ungefär samma ålder. Tillsammans med ett par 
-                    ledare pratar pratar man om hur dagen har varit, om dagen bibeltext, man lär känna varandra, prata och har roligt. För de 
+                    ledare pratar man om hur dagen har varit, om dagens bibeltext, man lär känna varandra, prata och har roligt. För de 
                     deltagare som inte åker iväg till Branäs finns det gott om fria aktiviteter på skolan, spela spel, pyssla, idrotta eller 
                     bara slappa och ha de gött. Under kvällen är det ofta spex och något roligt program i matsalen innan det är dags för en andakt. 
                     Andakaterna är delade i två delar. Under det första stunden vill vi att alla deltagare är med, sedan följer en frivilig del 

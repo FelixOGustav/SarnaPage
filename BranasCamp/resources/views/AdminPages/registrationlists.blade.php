@@ -11,6 +11,7 @@
     </div> 
 @else
     <div class="centerTextInDiv">
+        <h4 style="text-align:left;">Antal anmälda: {{$count}}</h4>
         <h1>Deltagare</h1>
         <table class="table table-hover">
             <thead>
@@ -38,7 +39,7 @@
                         @if($reg->verified_at != null)
                             <th><img src="{{URL::asset('img/greenDot.png')}}"></th>
                         @else
-                            <th></th>
+                            <th><a href="/admin/registrationlists/participant/{{$reg->id}}" class="btn btn-primary">Skicka mail igen</a></th>
                         @endif
                     </tr>
                 @endforeach
@@ -73,7 +74,7 @@
                         @if($reg->verified_at != null)
                             <th><img src="{{URL::asset('img/greenDot.png')}}"></th>
                         @else
-                            <th></th>
+                            <th><a href="/admin/registrationlists/leader/{{$reg->id}}" class="btn btn-primary">Skicka mail igen</a></th>
                         @endif
                     </tr>
                 @endforeach

@@ -52,7 +52,10 @@ class PagesController extends Controller
         return view('AdminPages/dashboard');
     }
     public function registrationlists(){
-        return view('AdminPages/registrationlists');
+        $registrations = \App\registration::all();
+        $registrations_leaders = \App\registrations_leader::all();
+        $places = \App\place::all();
+        return view('AdminPages/registrationlists', ['registrations' => $registrations, 'registrations_leaders' => $registrations_leaders, 'places' => $places]);
     }
 
     public function manageusers(){

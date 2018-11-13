@@ -328,23 +328,21 @@
                     <!-- Kontakt Liftkort end -->
 
                     <!-- Kontakt sjukvårdsansvarig -->
-                    <!--
                     <div>
                         <h2><br>Sjukvårdsansvarig</h2>
                         <table style="display: flex; justify-content: center;">
                             <tbody>
                                 <tr>
                                     <td>
-                                        <h5 style="margin-right: 5px;">Karl karlsson</h5>
+                                        <h5 style="margin-right: 5px;">Joakim Alriksson</h5>
                                     </td>
                                     <td>
-                                        <p style="margin-top: 8px; margin-left: 5px;">0713 37 13 37</p>
+                                        <p style="margin-top: 8px; margin-left: 5px;">0707 44 10 51</p>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-                -->
                     <!-- Kontakt sjukvårdsansvarig end -->
 
                     

@@ -101,6 +101,10 @@ class PagesController extends Controller
         return redirect('/admin/managecamp/camp/' . $camp->id);
     }
 
+    public function About(){
+        return view('Pages/about');
+    }
+
     // Remove before publishing. Just temp to develop verification email
     public function testmail(){
         $registration= new \App\Registration();

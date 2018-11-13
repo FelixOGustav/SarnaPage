@@ -98,7 +98,7 @@
 
     <div class="footerBG row" style="margin: 0px;" id="footerId">
         <div class="col" style="margin-top: auto; margin-bottom: auto; text-align: center">
-            <a href="#" class="same-as-p whiteColor scaleFooterTextToMobile">Om hemsidan<br><br></a>
+            <a href="/about" class="same-as-p whiteColor scaleFooterTextToMobile">Om hemsidan<br><br></a>
             <a href="/gdpr" class="same-as-p whiteColor scaleFooterTextToMobile">GDPR<br><br></a>
             <a href="/admin/login" class="same-as-p whiteColor scaleFooterTextToMobile">Admin-sidan</a>
         </div>
@@ -112,7 +112,7 @@
     </div>
 
     <!-- Footer end -->
-    <button id="scrollToTopBtn" title="Go to top" class="dropShadow"><img src="../img/arrowUp.png"></button>
+    <button id="scrollToTopBtn" title="Go to top" class="dropShadow"><img src="{{URL::asset('img/arrowUp.png')}}"></button>
 
     <script>
         // Smooth scroll functions

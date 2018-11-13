@@ -13,16 +13,19 @@ class CampRegistrationController extends Controller
 {
     protected $places;
 
+    // Return view for normal registration
     public function registration(){
         $places = \App\place::all();
         return view('Pages/registration', ['places' => $places]);
     }
 
+    // Return view for leaders registration
     public function registrationLeader(){
         $places = \App\place::all();
         return view('Pages/registration-leader', ['places' => $places]);
     }
     
+    // Fetch registration and return view for registration done
     public function registrationDone($type, $id){
         if($type == 'participant'){
             $reg = \App\registration::find($id);
@@ -34,6 +37,7 @@ class CampRegistrationController extends Controller
         }
     }
 
+    // Fetch registration and return verified view
     public function VerificationDone($type, $id){
         if($type == 'participant'){
             $reg = \App\registration::find($id);
@@ -42,6 +46,19 @@ class CampRegistrationController extends Controller
             $reg = \App\registrations_leader::find($id);
         }
         return view('Pages/verificationdone', ['reg' => $reg]);
+    }
+    
+    // Fetch registration and return view for edit registration
+    public function EditRegistration($type, $id){
+        if($type == 'participant'){
+            $reg = \App\registration::find($id);
+            $leader = false;
+        }
+        else{
+            $reg = \App\registrations_leader::find($id);
+            $leader = true;
+        }
+        return view('AdminPages/editregistration', ['reg' => $reg, 'leader' => $leader]);
     }
     
     // Standard attendee
@@ -189,6 +206,34 @@ class CampRegistrationController extends Controller
         return redirect('/registration/done/leader/' . $registration->id);
     }
 
+
+    // Fetch old registration and update the new data
+    public function StoreEdit($type, $id){
+        
+        // Fetch registration from database
+        if($type == 'participant'){
+            $registration = \App\registration::find($id);
+            $leader = false;
+        }
+        else{
+            $registration = \App\registrations_leader::find($id);
+            $leader = true;
+        }
+
+        // Update data
+        $registration->first_name = Request('firstName');
+        $registration->last_name = Request('lastName');
+        $registration->email = Request('email');
+        $registration->email_advocate = Request('emailAdvocate');
+        // Add more column changes here when adding them to the view
+
+        // Save new data to database
+        $registration->save();
+        return redirect('/admin/registrationlists');
+    }
+
+    
+    // Verifys registration and redirects to verified done page
     public function VerifyRegistration($type, $id){
         if($type == 'participant'){
             $fetchedRegistration = \App\registration::find($id);

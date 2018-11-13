@@ -22,6 +22,7 @@
                     <th>Ort</th>
                     <th>Anmäld Tid</th>
                     <th>Bekräftat</th>
+                    <th>Ändra</th>
                 </tr>
             </thead>
             <tbody>
@@ -41,6 +42,7 @@
                         @else
                             <th><a href="/admin/registrationlists/participant/{{$reg->id}}" class="btn btn-primary">Skicka mail igen</a></th>
                         @endif
+                        <th><a href="/admin/editregistration/participant/{{$reg->id}}"><img src="{{URL::asset('img/edit.png')}}"></a></th>
                     </tr>
                 @endforeach
             </tbody>
@@ -57,6 +59,7 @@
                     <th>Ort</th>
                     <th>Anmäld Tid</th>
                     <th>Bekräftat</th>
+                    <th>Ändra</th>
                 </tr>
             </thead>
             <tbody>
@@ -76,6 +79,7 @@
                         @else
                             <th><a href="/admin/registrationlists/leader/{{$reg->id}}" class="btn btn-primary">Skicka mail igen</a></th>
                         @endif
+                        <th><a href="/admin/editregistration/leader/{{$reg->id}}"><img src="{{URL::asset('img/edit.png')}}"></a></th>
                     </tr>
                 @endforeach
             </tbody>

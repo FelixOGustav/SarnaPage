@@ -18,6 +18,7 @@ Route::get('/', function () {
 */
 
 Route::get('/', 'PagesController@index')->name('start');
+Route::get('/about', 'PagesController@About');
 Route::get('/template', 'PagesController@template');
 Route::get('/registration', 'CampRegistrationController@registration');
 Route::get('/registration/leader', 'CampRegistrationController@registrationLeader');
@@ -31,7 +32,6 @@ Route::get('/registration/verify/done/{type}/{id}', 'CampRegistrationController@
 Route::get('/gdpr','PagesController@gdpr');
 Route::get('/registrationfull', 'PagesController@registrationfull');
 Route::get('/registrationExists', 'Pagescontroller@registrationExists');
-Route::get('/admin/registrationlists/{type}/{id}', 'CampRegistrationController@ResendVerificationEmail');
 
 Route::get('/registration/verify/{type}/{id}', 'CampRegistrationController@VerifyRegistration')->name('event.verifyRegistration')->middleware('signed');
 
@@ -44,6 +44,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/managecamp/camp/{id}', 'PagesController@managecamp');
     Route::get('/admin/managecamp/close/{id}', 'PagesController@CloseRegistration');
     Route::get('/admin/managecamp/open/{id}', 'PagesController@OpenRegistration');
+    Route::get('/admin/registrationlists/{type}/{id}', 'CampRegistrationController@ResendVerificationEmail');
+    Route::get('/admin/editregistration/{type}/{id}', 'CampRegistrationController@EditRegistration');
+    Route::post('/admin/editregistration/done/{type}/{id}', 'CampRegistrationController@StoreEdit');
 });
 
 

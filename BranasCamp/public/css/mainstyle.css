@@ -329,3 +329,19 @@ form label {
         font-size: 30px;
     }
 }
+
+.centerEditButton {
+    vertical-align: middle;
+}
+
+.table th {
+    vertical-align: middle;
+    max-height: 62px;
+}
+
+
+
+.brightenOnHover:hover {
+    filter: opacity(80%);
+    -webkit-filter: opacity(80%);
+}

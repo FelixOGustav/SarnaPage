@@ -42,7 +42,7 @@
                         @else
                             <th><a href="/admin/registrationlists/participant/{{$reg->id}}" class="btn btn-primary">Skicka mail igen</a></th>
                         @endif
-                        <th><a href="/admin/editregistration/participant/{{$reg->id}}"><img src="{{URL::asset('img/edit.png')}}"></a></th>
+                        <th><a href="/admin/editregistration/participant/{{$reg->id}}"><img class="centerEditButton brightenOnHover" src="{{URL::asset('img/edit.png')}}"></a></th>
                     </tr>
                 @endforeach
             </tbody>
@@ -79,7 +79,7 @@
                         @else
                             <th><a href="/admin/registrationlists/leader/{{$reg->id}}" class="btn btn-primary">Skicka mail igen</a></th>
                         @endif
-                        <th><a href="/admin/editregistration/leader/{{$reg->id}}"><img src="{{URL::asset('img/edit.png')}}"></a></th>
+                        <th><a href="/admin/editregistration/leader/{{$reg->id}}"><img class="centerEditButton brightenOnHover" src="{{URL::asset('img/edit.png')}}"></a></th>
                     </tr>
                 @endforeach
             </tbody>

@@ -28,21 +28,21 @@
             <tbody>
                 @foreach ($registrations as $reg)
                     <tr>
-                        <th>{{$reg->id}}</th>
-                        <th>{{$reg->first_name}}</th>
-                        <th>{{$reg->last_name}}</th>
+                        <td>{{$reg->id}}</td>
+                        <td>{{$reg->first_name}}</td>
+                        <td>{{$reg->last_name}}</td>
                         @foreach ($places as $place)
                             @if($place->placeID == $reg->place)
-                                <th>{{$place->placename}}</th>
+                                <td>{{$place->placename}}</td>
                             @endif
                         @endforeach
-                        <th>{{$reg->created_at}}</th>                        
+                        <td>{{$reg->created_at}}</td>                        
                         @if($reg->verified_at != null)
-                            <th><img src="{{URL::asset('img/greenDot.png')}}"></th>
+                            <td><img src="{{URL::asset('img/greenDot.png')}}"></td>
                         @else
-                            <th><a href="/admin/registrationlists/participant/{{$reg->id}}" class="btn btn-primary">Skicka mail igen</a></th>
+                            <td><a href="/admin/registrationlists/participant/{{$reg->id}}" class="btn btn-primary">Skicka mail igen</a></td>
                         @endif
-                        <th><a href="/admin/editregistration/participant/{{$reg->id}}"><img class="centerEditButton brightenOnHover" src="{{URL::asset('img/edit.png')}}"></a></th>
+                        <td><a href="/admin/editregistration/participant/{{$reg->id}}"><img class="centerEditButton brightenOnHover" src="{{URL::asset('img/edit.png')}}"></a></td>
                     </tr>
                 @endforeach
             </tbody>
@@ -65,21 +65,21 @@
             <tbody>
                 @foreach ($registrations_leaders as $reg)
                     <tr>
-                        <th>{{$reg->id}}</th>
-                        <th>{{$reg->first_name}}</th>
-                        <th>{{$reg->last_name}}</th>
+                        <td>{{$reg->id}}</td>
+                        <td>{{$reg->first_name}}</td>
+                        <td>{{$reg->last_name}}</td>
                         @foreach ($places as $place)
                             @if($place->placeID == $reg->place)
-                                <th>{{$place->placename}}</th>
+                                <td>{{$place->placename}}</td>
                             @endif
                         @endforeach
-                        <th>{{$reg->created_at}}</th>                        
+                        <td>{{$reg->created_at}}</td>                        
                         @if($reg->verified_at != null)
-                            <th><img src="{{URL::asset('img/greenDot.png')}}"></th>
+                            <td><img src="{{URL::asset('img/greenDot.png')}}"></td>
                         @else
-                            <th><a href="/admin/registrationlists/leader/{{$reg->id}}" class="btn btn-primary">Skicka mail igen</a></th>
+                            <td><a href="/admin/registrationlists/leader/{{$reg->id}}" class="btn btn-primary">Skicka mail igen</a></td>
                         @endif
-                        <th><a href="/admin/editregistration/leader/{{$reg->id}}"><img class="centerEditButton brightenOnHover" src="{{URL::asset('img/edit.png')}}"></a></th>
+                        <td><a href="/admin/editregistration/leader/{{$reg->id}}"><img class="centerEditButton brightenOnHover" src="{{URL::asset('img/edit.png')}}"></a></td>
                     </tr>
                 @endforeach
             </tbody>

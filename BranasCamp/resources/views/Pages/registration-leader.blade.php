@@ -148,7 +148,7 @@
                 <h4 style="text-align: center;" class="whiteColor">-NOLLTOLERANS MOT ALKOHOL OCH DROGER</h4>
                 <h4 style="text-align: center;" class="whiteColor">-DET GÅR EJ AVANMäLAN EFTER SISTA ANMäLNINGSDAGEN UTAN GILTIGT LäKARINTYG</h4>
                 <h4 style="text-align: center;" class="whiteColor">-Anmälan är bindande</h4>
-                <h4 style="text-align: center;" class="whiteColor">-Att deltagaren är med i bild och video om sedan publiceras på socialmedier (Om detta skulle vara ett problem, kontakta info@branaslagret.se)</h4>
+                <h4 style="text-align: center;" class="whiteColor">-Att deltagaren är med i bild och video som sedan publiceras på socialmedier (Om detta skulle vara ett problem, kontakta info@branaslagret.se)</h4>
         </div> 
         <!--Slut regler-->
     </div>

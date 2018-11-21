@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PagesController extends Controller
 {
@@ -52,9 +53,43 @@ class PagesController extends Controller
         return view('AdminPages/dashboard');
     }
     public function registrationlists(){
-        $registrations = \App\registration::all();
-        $registrations_leaders = \App\registrations_leader::all();
+
+        $placesIDArray = [];
+        $user = Auth::user();
         $places = \App\place::all();
+
+        if($user->can('ljung')){
+            $placesIDArray[] = \App\place::where('placename', '=', 'Ljung')->first()->placeID;
+        }
+        if($user->can('asklanda_ornunga')){
+            $placesIDArray[] = \App\place::where('placename', '=', 'Asklanda-Ornunga')->first()->placeID;
+        }
+        if($user->can('bergstena_ostadkulle')){
+            $placesIDArray[] = \App\place::where('placename', '=', 'Bergstena-Östadkulle')->first()->placeID;
+        }
+        if($user->can('borgstena_tamta')){
+            $placesIDArray[] = \App\place::where('placename', '=', 'Borgstena/Tämta')->first()->placeID;
+        }
+        if($user->can('herrljunga')){
+            $placesIDArray[] = \App\place::where('placename', '=', 'Herrljunga')->first()->placeID;
+        }
+        if($user->can('ljurhalla')){
+            $placesIDArray[] = \App\place::where('placename', '=', 'Ljurhalla')->first()->placeID;
+        }
+        if($user->can('storsjostrand')){
+            $placesIDArray[] = \App\place::where('placename', '=', 'Storsjöstrand')->first()->placeID;
+        }
+        if($user->can('t_r_e')){
+            $placesIDArray[] = \App\place::where('placename', '=', 'Tåstorp/Rensvist/Eggvena/Lagmansholm')->first()->placeID;
+        }
+        if($user->can('vargarda')){
+            $placesIDArray[] = \App\place::where('placename', '=', 'Vårgårda')->first()->placeID;
+        }
+
+
+        $registrations = \App\registration::whereIn('place', $placesIDArray)->get();
+        $registrations_leaders = \App\registrations_leader::whereIn('place', $placesIDArray)->get();
+
         $regAmount = \App\registrations_leader::count() + \App\registration::count();
         return view('AdminPages/registrationlists', ['registrations' => $registrations, 'registrations_leaders' => $registrations_leaders, 'places' => $places, 'count' => $regAmount]);
     }
@@ -66,7 +101,8 @@ class PagesController extends Controller
 
     public function manageuser($id){
         $user = \App\User::find($id);
-        return view('AdminPages/manageuser', ['user' => $user]);
+        $access = \App\accesslevel::find($id);
+        return view('AdminPages/manageuser', ['user' => $user, 'access' => $access]);
     }
 
     public function registrationfull(){

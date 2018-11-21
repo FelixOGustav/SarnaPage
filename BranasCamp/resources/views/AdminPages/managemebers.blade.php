@@ -26,7 +26,7 @@
                     <td>{{$user->id}}</td>
                     <td>{{$user->name}}</td>
                     <td>{{$user->email}}</td>
-                    <td><a href="/admin/managerusers/user/{{$user->id}}" class="btn btn-primary">Hantera</a></td>
+                    <td><a href="/admin/manageusers/user/{{$user->id}}" class="btn btn-primary">Hantera</a></td>
                 </tr>
             @endforeach
         </tbody>

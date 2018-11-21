@@ -37,16 +37,17 @@ Route::get('/registration/verify/{type}/{id}', 'CampRegistrationController@Verif
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/dashboard', 'PagesController@dashboard');
-    Route::get('/admin/registrationlists','PagesController@registrationlists');
-    Route::get('/admin/manageusers','PagesController@manageusers');
-    Route::get('/admin/managerusers/user/{id}', 'PagesController@manageuser');
-    Route::get('/admin/managecamps', 'PagesController@managecamps');
-    Route::get('/admin/managecamp/camp/{id}', 'PagesController@managecamp');
-    Route::get('/admin/managecamp/close/{id}', 'PagesController@CloseRegistration');
-    Route::get('/admin/managecamp/open/{id}', 'PagesController@OpenRegistration');
-    Route::get('/admin/registrationlists/{type}/{id}', 'CampRegistrationController@ResendVerificationEmail');
-    Route::get('/admin/editregistration/{type}/{id}', 'CampRegistrationController@EditRegistration');
-    Route::post('/admin/editregistration/done/{type}/{id}', 'CampRegistrationController@StoreEdit');
+    Route::get('/admin/registrationlists','PagesController@registrationlists')->middleware('can:registrationlists');
+    Route::get('/admin/manageusers','PagesController@manageusers')->middleware('can:manageusers');
+    Route::get('/admin/manageusers/user/{id}', 'PagesController@manageuser')->middleware('can:manageusers');
+    Route::get('/admin/managecamps', 'PagesController@managecamps')->middleware('can:managecamps');
+    Route::get('/admin/managecamp/camp/{id}', 'PagesController@managecamp')->middleware('can:managecamps');
+    Route::get('/admin/managecamp/close/{id}', 'PagesController@CloseRegistration')->middleware('can:managecamps');
+    Route::get('/admin/managecamp/open/{id}', 'PagesController@OpenRegistration')->middleware('can:managecamps');
+    Route::get('/admin/registrationlists/{type}/{id}', 'CampRegistrationController@ResendVerificationEmail')->middleware('can:editregistration');
+    Route::get('/admin/editregistration/{type}/{id}', 'CampRegistrationController@EditRegistration')->middleware('can:editregistration');
+    Route::post('/admin/editregistration/done/{type}/{id}', 'CampRegistrationController@StoreEdit')->middleware('can:editregistration');
+    Route::post('/admin/manageuser/user/done/{id}', 'AccessLevelController@Store')->middleware('can:manageusers');
 });
 
 

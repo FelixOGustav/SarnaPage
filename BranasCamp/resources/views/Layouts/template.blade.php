@@ -138,7 +138,7 @@
 
         function CheckCoockieConstent() {
             if(!Cookies.get('consent')){
-                Cookies.set('consent', 'false');
+                Cookies.set('consent', 'false', { expires: 14 });
             }
             else if(Cookies.get('consent') ==  'true'){
                     $('#cookieConsentDiv').hide();
@@ -148,7 +148,7 @@
 
         $(function(){
             $('#agreeCookies').click(function(){
-                Cookies.set('consent', 'true');
+                Cookies.set('consent', 'true', { expires: 14 });
                 $('#cookieConsentDiv').hide();
                 return null;
             })

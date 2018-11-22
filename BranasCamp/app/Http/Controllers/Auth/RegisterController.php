@@ -70,7 +70,7 @@ class RegisterController extends Controller
         ]);
 
         $level = new \App\accesslevel();
-        $level->userid = $user->id;
+        $level->id = $user->id;
         $level->save();
 
         return $user;

@@ -11,11 +11,11 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="firstName">Förnamn</label>
-                        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Hen" required>
+                        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Namn" required>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="lastName">Efternamn</label>
-                        <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Hensson" required>
+                        <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Namnsson" required>
                     </div>
                 </div>
                 <div class="form-row">
@@ -44,7 +44,7 @@
                 </div>
                     <div class="form-group col-md-12 noPadding">
                         <label for="firstName">E-post</label>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="hen.hensson@hen.se" required>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="namn.namnsson@namn.se" required>
                     </div>
                     <div class="form-group container-fluid noPadding">
                             <label for="inputCity">Telefon</label>
@@ -88,16 +88,16 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="firstNameAdvocate">Förnamn målsman</label>
-                        <input type="text" class="form-control" id="firstNameAdvocate" name="firstNameAdvocate" placeholder="Hen" required>
+                        <input type="text" class="form-control" id="firstNameAdvocate" name="firstNameAdvocate" placeholder="Namn" required>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="lastNameAdvocate">Efternamn målsman</label>
-                        <input type="text" class="form-control" id="lastNameAdvocate" name="lastNameAdvocate" placeholder="Hensson" required>
+                        <input type="text" class="form-control" id="lastNameAdvocate" name="lastNameAdvocate" placeholder="Namnsson" required>
                     </div>
                 </div>
                 <div class="form-group col-md-12 noPadding">
                         <label for="firstName">E-post</label>
-                        <input type="email" class="form-control" id="emailAdvocate" name="emailAdvocate" placeholder="hen.malsman@hen.se" required>
+                        <input type="email" class="form-control" id="emailAdvocate" name="emailAdvocate" placeholder="namn.namnsson@namn.se" required>
                 </div>
                 <div class="form-group container-fluid noPadding">
                         <label for="inputCity">Telefon</label>

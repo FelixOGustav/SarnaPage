@@ -10,6 +10,10 @@
             <div class="container-fluid d-flex justify-content-center">
                 <button class="buttonStyle" data-toggle="modal" data-target="#registerChoiseModal"><p>Anmäl dig!</p></button>
             </div>
+        @else
+            <div class="container-fluid d-flex justify-content-center" style="width: 250px; margin-top: 50px; padding: 10px 10px 5px 10px; background-color: #606569;">
+                <h3 style="color: white;">Alla Platser är slut!</h3>
+            </div>
         @endif
     </div>
 

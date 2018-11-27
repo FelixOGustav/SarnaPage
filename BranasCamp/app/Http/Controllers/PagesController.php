@@ -141,6 +141,10 @@ class PagesController extends Controller
         return view('Pages/about');
     }
 
+    public function NewAdminTemplateTemp(){
+        return view('AdminPages/betaAdminTemplate');
+    }
+
     // Remove before publishing. Just temp to develop verification email
     public function testmail(){
         $registration= new \App\Registration();

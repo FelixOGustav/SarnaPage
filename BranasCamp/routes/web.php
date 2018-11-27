@@ -52,9 +52,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 use Illuminate\Routing\UrlGenerator;
-Route::get('/test', function(){
-    return url('/');
-});
+Route::get('/test', 'PagesController@NewAdminTemplateTemp');
 
 //Route::get('/test/mail', 'PagesController@testmail');
 

@@ -4,7 +4,7 @@
 <div class="centerTextInDiv">
     <h4 style="text-align:left;">Antal anmälda: {{$count}}</h4>
     <h1>Deltagare</h1>
-    <table id="regtbl" class="table table-hover" style="color: #606569;">
+    <table class="table table-hover">
         <thead>
             <tr>
                 <th>ID#</th>
@@ -84,14 +84,5 @@
         </tbody>
     </table>
 </div> 
-
-<script>
-
-    // Initialize tables
-    $(document).ready(function() {
-        $('#regtbl').dynatable();
-    });
-
-</script>
 
 @endsection

@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="{{URL::asset('css/footerstyle.css')}}">
     <link rel="stylesheet" href="{{URL::asset('css/mainstyle.css')}}">
     <link rel="stylesheet" href="{{URL::asset('css/adminstyle.css')}}">
-    <link rel="stylesheet" href="{{URL::asset('css/jquery.dynatable.css')}}">
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 
@@ -30,7 +29,10 @@
     <script src="{{URL::asset('js/app.js')}}"></script>
     <script src="{{URL::asset('js/scrollToTop.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-    <script src="{{URL::asset('js/jquery.dynatable.js')}}"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
     <!-- Loading content -->
 
@@ -146,31 +148,52 @@
 
             <!-- Top bar -->
             <div class="topBar">
-                <a id="sidebarshowbtn">
-                    <i class="fas fa-bars sidebarshowbtn"></i>
-                </a>
-                <span>
-                    <i class="fas fa-link" style="color: #606569;"></i>
-                    <a href="/">Branäslägret.se</a>
-                </span>
+                <i class="fas fa-link"></i>
+                <a href="/">Branäslägret.se</a>
             </div>
             
             <!-- Main site content -->
             <div class="contentcontainer">
-                @yield('adminContent')
+                @yield('content')
+
+                <table class="statisticscardstable">
+                    <tr>
+                        <td>
+                            <div class="registrationscountcard participant">
+                                <table style="width: 100%;">
+                                    <tr>
+                                        <td><h2>Deltagare</h2></td>
+                                    </tr>
+                                    <tr>
+                                        <td><h1>000</h1></td>
+                                        <td><i class="fas fa-child statisticscardicon"></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 100%; background-color:orangered; text-align: center;"><a>Visa deltagare</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                        
+                        <td>
+                            <div class="registrationscountcard leader">
+                                <div>
+                                    <h2>Deltagare</h2>
+                                    <h1>000</h1>
+                                    <i class="fas fa-user-astronaut statisticscardicon"></i>
+                                    <h4>Visa deltagare</h4>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
              </div>
         </div>
     </div>
 
     <script>
-        
-        $(document).ready(function () {
-            $('#sidebarshowbtn').on('click', function () {
-                $('#sidebar, #content').toggleClass('hidden');
-            });
-
-        });
-
+    
         // Fades out loading screen when done loading and then calls function to check cookies 
         $( window ).on( "load", function() {
             $('#loadingScreen').fadeOut();

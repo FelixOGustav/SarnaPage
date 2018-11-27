@@ -70,7 +70,7 @@ class CampRegistrationController extends Controller
         //}
 
         $count = \App\registrations_leader::count() + \App\registration::count();
-        if($count > 280) {
+        if($count > 279) {
             return redirect('/registrationfull');
         }
 
@@ -138,7 +138,7 @@ class CampRegistrationController extends Controller
         //}
 
         $count = \App\registrations_leader::count() + \App\registration::count();
-        if($count > 280) {
+        if($count > 279) {
             return redirect('/registrationfull');
         }
 

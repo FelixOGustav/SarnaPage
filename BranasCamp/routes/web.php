@@ -33,6 +33,8 @@ Route::get('/gdpr','PagesController@gdpr');
 Route::get('/registrationfull', 'PagesController@registrationfull');
 Route::get('/registrationExists', 'Pagescontroller@registrationExists');
 
+Route::post('/lateregistrationsignup', 'CampRegistrationController@Lateregistrationsignup');
+
 Route::get('/registration/verify/{type}/{id}', 'CampRegistrationController@VerifyRegistration')->name('event.verifyRegistration')->middleware('signed');
 
 Route::group(['middleware' => 'auth'], function () {

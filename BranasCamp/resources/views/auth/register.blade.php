@@ -1,10 +1,10 @@
 @extends('Layouts/AdminTemplate')
 
 @section('adminContent')
-<div>
+<div class="panel">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card" style="border: none; border-radius: 0px;">
+            <div class="card" style="border: none; border-radius: 0px; background-color: #606569;">
                 <div class="card-header" style="border-radius: 0px;">{{ __('Registrera ny användare') }}</div>
 
                 <div class="card-body BGGrey whiteColor">

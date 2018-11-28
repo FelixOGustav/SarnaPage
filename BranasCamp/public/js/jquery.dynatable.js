@@ -1209,7 +1209,7 @@
           $searchSpan = $('<span></span>', {
             id: 'dynatable-search-' + obj.element.id,
             'class': 'dynatable-search',
-            text: 'Search: '
+            text: 'Sök: '
           }).append($search);
 
       $search

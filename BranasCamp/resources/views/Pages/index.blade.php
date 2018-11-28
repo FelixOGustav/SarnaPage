@@ -11,14 +11,16 @@
                 <button class="buttonStyle" data-toggle="modal" data-target="#registerChoiseModal"><p>Anmäl dig!</p></button>
             </div>
         @else
-            <div class="container-fluid d-flex justify-content-center" style="width: 250px; margin-top: 50px; padding: 10px 10px 5px 10px; background-color: #606569;">
-                <h3 style="color: white;">Alla Platser är slut!</h3>
+            <div class="container-fluid d-flex justify-content-center">
+            <!--  <div class="container-fluid d-flex justify-content-center" style="width: 250px; margin-top: 50px; padding: 10px 10px 5px 10px; background-color: #606569;"> -->
+                <!-- <h3 style="color: white;">Alla Platser är slut!</h3> -->
+                <button class="buttonStyle" data-toggle="modal" data-target="#registerChoiseModal"><p>Efteranmälan</p></button>
             </div>
         @endif
     </div>
 
     @if($camp->open > 0)
-        <!-- Modal -->
+        <!-- Modal normal registration-->
         <div class="modal fade" id="registerChoiseModal" role="dialog">
             <div class="modal-dialog">
 
@@ -31,6 +33,57 @@
                         <div class="row">
                             <a href="/registration" class="col modalButtonStyle"><h3 class="whiteColor">Deltagare</h3></a>
                             <a href="/registration/leader" class="col modalButtonStyle"><h3 class="whiteColor">Ledare</h3></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @else 
+        <!-- Modal efter registration-->
+        <div class="modal fade" id="registerChoiseModal" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header justify-content-center">
+                        <h4 class="text-center">Intresseanmälan</h4>
+                    </div>
+                    <div class="modal-body ">
+                        <div class="row" style="padding: 10px; text-align:center;">
+                            <p>Platserna är slut, men det går att skriva upp sig på kö ifall det blir en ledig plats.<p>
+                            <p>Vi Kontaktar er via email för vidare instruktioner för riktiga anmälan om en plats skulle bli ledig.</p>
+                        </div>
+                        <div class="row" style="padding: 10px;">
+                            <form style="width: 100%" method="POST" action="/lateregistrationsignup">
+                                {{ csrf_field() }}
+                                <table style="width: 100%">
+                                    <tbody>
+                                        <tr>
+                                            <td style="width: 15%;">
+                                                    <label for="name" style="float:right">Namn</label>
+                                            </td>
+                                            <td style="width: 85%; padding-right: 40px;">
+                                                    <input type="text" id="name" name="name" style="width: 100%" placeholder="Namn Namnsson">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 15%;">
+                                                <label for="email" style="float:right">Epost</label>
+                                            </td>
+                                            <td style="width: 85%; padding-right: 40px;">
+                                                <input type="email" name="email" id="email"  style="width: 100%" placeholder="namn.namnsson@namn.se">
+                                            </td>
+                                        </tr>
+                                    </tbody>                                    
+                                </table>
+                                <div class="container-fluid" style="text-align: center;">
+                                    <i>OBS!!! Se till epost addressen är rätt ifylld! Om den är fel kommer vi inte kunna kontakta er och ni kommer förlora platsen</i>
+                                </div>
+                                <div class="container-fluid d-flex justify-content-center">
+                                    <button type="submit" class="buttonStyle" >
+                                        <p>Efteranmäl mig!</p>
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

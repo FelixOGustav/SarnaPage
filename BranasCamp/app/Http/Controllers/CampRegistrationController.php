@@ -285,6 +285,19 @@ class CampRegistrationController extends Controller
         return redirect('admin/registrationlists');
     }
 
+    // Signup for late registration list
+    public function Lateregistrationsignup(){
+
+        $mailable = Request('name') .' :: ' .Request('email');
+        \Mail::raw($mailable, function ($message) {
+            $message->from(Request('email'), Request('name'));
+            $message->to('latereglist@branaslagret.se', 'Sen anmälan');
+            $message->subject('Sen Anmälan för '.Request('name'));
+        });
+
+        return redirect('/');
+    }
+
     private function SpotFree(){
         $count = Registrations_leader::count() + Registration::count();
         if($count < 281) {

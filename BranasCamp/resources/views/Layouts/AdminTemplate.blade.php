@@ -142,7 +142,7 @@
         </div>
 
         <!-- Page Content -->
-        <div id="content" style="min-width: 75%;">
+        <div id="content">
 
             <!-- Top bar -->
             <div class="topBar">
@@ -156,7 +156,7 @@
             </div>
             
             <!-- Main site content -->
-            <div class="contentcontainer">
+            <div class="contentcontainer" id="contentcontainer">
                 @yield('adminContent')
              </div>
         </div>
@@ -166,8 +166,12 @@
         
         $(document).ready(function () {
             $('#sidebarshowbtn').on('click', function () {
-                $('#sidebar, #content').toggleClass('hidden');
+                $('#sidebar, #content, #contentcontainer').toggleClass('hidden');
             });
+
+            if(window.innerWidth < 769){
+                $('#sidebar, #content, #contentcontainer').toggleClass('hidden');
+            }
 
         });
 

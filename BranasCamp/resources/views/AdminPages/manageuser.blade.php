@@ -1,5 +1,6 @@
 @extends('Layouts/AdminTemplate')
 @section('adminContent')
+<div class="panel">
     <div class="centerTextInDiv">
         <h1>Hantera {{$user->name}}</h1>
     </div>
@@ -116,8 +117,10 @@
                 </div>
             </div>
             
-            
-            <button type="submit">Spara</button>
+            <div class="container-fluid d-flex justify-content-center">
+                <button type="submit" class="buttonStyle"><p>spara</p></button>
+            </div>
         </form>
     </div>
+</div>
 @endsection

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use \Illuminate\Support\Facades\URL;
 
 class PagesController extends Controller
 {
@@ -49,10 +50,25 @@ class PagesController extends Controller
         return view('Pages/gdpr');
     }
 
+    
+
     public function dashboard(){
-        return view('AdminPages/dashboard');
+        $places = \App\place::all();
+        $placesStats = [];
+
+        for($i = 0; $i < count($places); $i++){
+            $placesStats[] = new PlacesStats();
+            end($placesStats)->place = $places[$i]->placename;
+
+            $amountLeaders = \App\registrations_leader::where('place', '=', $places[$i]->placeID)->count();
+            $amounParticipants = \App\registration::where('place', '=', $places[$i]->placeID)->count();
+
+            end($placesStats)->amount = $amountLeaders + $amounParticipants;
+        }
+
+        return view('AdminPages/dashboard', ['placesStats' => $placesStats]);
     }
-    public function registrationlists(){
+    public function registrationlists($type){
 
         $placesIDArray = [];
         $user = Auth::user();
@@ -87,11 +103,17 @@ class PagesController extends Controller
         }
 
 
-        $registrations = \App\registration::whereIn('place', $placesIDArray)->get();
-        $registrations_leaders = \App\registrations_leader::whereIn('place', $placesIDArray)->get();
-
         $regAmount = \App\registrations_leader::count() + \App\registration::count();
-        return view('AdminPages/registrationlists', ['registrations' => $registrations, 'registrations_leaders' => $registrations_leaders, 'places' => $places, 'count' => $regAmount]);
+        
+        if($type == 'participant'){
+            $registrations = \App\registration::whereIn('place', $placesIDArray)->get();
+            return view('AdminPages/registrationlists', ['registrations' => $registrations, 'places' => $places, 'count' => $regAmount, 'type' => $type]);
+        }else if($type == 'leader'){
+            $registrations_leaders = \App\registrations_leader::whereIn('place', $placesIDArray)->get();
+            return view('AdminPages/registrationlists', ['registrations' => $registrations_leaders, 'places' => $places, 'count' => $regAmount, 'type' => $type]);
+        }else {
+            return redirect('/invalidaddress');
+        }
     }
 
     public function manageusers(){
@@ -141,6 +163,47 @@ class PagesController extends Controller
         return view('Pages/about');
     }
 
+    public function invalidaddress(){
+        return view('Pages/invalidaddress');
+    }
+
+    public function lateregistration(){
+        $links = \App\late_registration_key::all();
+        return view('AdminPages/lateregistration', ['links' => $links]);
+    }
+
+    public function addLateRegistration(){
+        $newLinkEntry = new \App\late_registration_key();
+        $newLinkEntry->link_key = Request('message');
+        if(Request('leader') == null){
+            $newLink = url("/lateregistration") .'/'.Request('message');
+            $newLinkEntry->leader = 0;
+        }
+        else {
+            $newLink = url("/lateregistration-leader") .'/'.Request('message'); 
+            $newLinkEntry->leader = 1;
+        }
+        $links = \App\late_registration_key::all();
+
+        // Checks if link already exists
+        foreach($links as $link){
+            if($newLink == $link->link){
+                return redirect('/');
+            }
+        }
+
+        $newLinkEntry->link = $newLink;
+        $newLinkEntry->save();
+
+        return redirect('/admin/lateregistration');
+    }
+
+    public function removeLateRegistration($id){
+        $link = \App\late_registration_key::find($id);
+        $link->delete();
+        return redirect('/admin/lateregistration');
+    }
+
     public function NewAdminTemplateTemp(){
         return view('AdminPages/betaAdminTemplate');
     }
@@ -164,4 +227,9 @@ class PagesController extends Controller
 
         return view('Emails/registeredemail', ['registration' => $registration, 'link' => 'branaslagret.test']);
     }
+}
+
+class PlacesStats {
+    public $place;
+    public $amount;
 }

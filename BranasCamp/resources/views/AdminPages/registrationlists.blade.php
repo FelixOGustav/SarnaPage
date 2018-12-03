@@ -3,8 +3,11 @@
 
 <div class="centerTextInDiv panel">
     <h4 style="text-align:left;">Antal anmälda: {{$count}}</h4>
-    <h1>Deltagare</h1>
-    <input type="search" placeholder="hehe">
+    @if($type == 'leader')
+        <h1>Ledare</h1>
+    @else
+        <h1>Deltagare</h1>
+    @endif
     <div class="sidescrollcontent">
         <table id="regtbl" class="table table-hover" style="color: #606569;">
             <thead>

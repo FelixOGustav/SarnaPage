@@ -54,7 +54,7 @@ body {
     padding: 40px 40px 40px 40px;
     /* Needed offset for topbar bg to be visible */
     margin-top: -62px;
-    padding-top: calc(62px + 40px); /* 62px is topbar height and 40px is content padding */
+    padding-top: 62px; /*calc(62px + 40px); 62px is topbar height and 40px is content padding */
 }
 
 
@@ -85,7 +85,7 @@ body {
         padding-left: 10px;
         padding-right: 0px;
         padding-bottom: 10px;
-        padding-top: calc(62px + 10px); /* 62px is topbar height and 40px is content padding */
+        /*padding-top:  calc(62px + 10px);  62px is topbar height and 40px is content padding */
     }
 
     .contentcontainer.hidden {
@@ -187,11 +187,18 @@ body {
 
 .panel {
     background-color: white;
+    margin-top: 40px;
     padding: 15px;
     border-radius: 5px;
     -webkit-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.2);
     -moz-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.2);
     box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.2);
+}
+
+@media screen and (max-width: 769px) {
+    .panel {
+        margin-top: 10px;
+    }
 }
 
 .tableheader {

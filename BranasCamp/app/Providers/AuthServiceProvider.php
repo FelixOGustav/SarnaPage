@@ -66,12 +66,24 @@ class AuthServiceProvider extends ServiceProvider
             return \App\accesslevel::find(Auth::user()->id)->statistics;
         });
         
+        Gate::define('manageusers', function() {
+            return \App\accesslevel::find(Auth::user()->id)->manage_user;
+        });
+
+        Gate::define('game_of_thrones', function() {
+            return \App\accesslevel::find(Auth::user()->id)->game_of_thrones;
+        });
+
+        Gate::define('schedule', function() {
+            return \App\accesslevel::find(Auth::user()->id)->schedule;
+        });
+        
         Gate::define('editregistration', function() {
             return \App\accesslevel::find(Auth::user()->id)->edit_registration;
         });
         
         Gate::define('verifieregistration', function() {
-            return \App\accesslevel::find(Auth::user()->id)->verifie_registration;
+            return \App\accesslevel::find(Auth::user()->id)->verified_registration;
         });
         
         Gate::define('ljung', function() {
@@ -120,10 +132,6 @@ class AuthServiceProvider extends ServiceProvider
         
         Gate::define('contact_info_advocate', function() {
             return \App\accesslevel::find(Auth::user()->id)->contact_info_advocate;
-        });
-        
-        Gate::define('manageusers', function() {
-            return \App\accesslevel::find(Auth::user()->id)->manage_user;
         });
 
         Gate::define('registrationlists', function(){

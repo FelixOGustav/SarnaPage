@@ -1,7 +1,12 @@
 @extends('Layouts/template')
 @section('content')
 <div class="bg-white">
+    @if($key)
+    <form method="POST" action="/registration/{{$key}}/done">
+    @else
     <form method="POST" action="/registration/done">
+    @endif
+    
         {{ csrf_field() }}
     <div class="container">
         <h1 style=" margin-top: 3rem; text-align: center;" class="anmalan">Anmälan</h1>

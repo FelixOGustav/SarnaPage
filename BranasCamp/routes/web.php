@@ -31,7 +31,12 @@ Route::post('/registration/leader/done','CampRegistrationController@storeLeader'
 Route::get('/registration/verify/done/{type}/{id}', 'CampRegistrationController@VerificationDone');
 Route::get('/gdpr','PagesController@gdpr');
 Route::get('/registrationfull', 'PagesController@registrationfull');
-Route::get('/registrationExists', 'Pagescontroller@registrationExists');
+Route::get('/registrationExists', 'PagesController@registrationExists');
+Route::get('/invalidaddress', 'PagesController@invalidaddress');
+Route::get('/lateregistration/{key}', 'CampRegistrationController@lateRegistration');
+Route::get('/lateregistration-leader/{key}', 'CampRegistrationController@lateRegistrationLeader');
+Route::post('/registration/leader/{key}/done', 'CampRegistrationController@LateStoreLeader');
+Route::post('/registration/{key}/done', 'CampRegistrationController@LateStore');
 
 Route::post('/lateregistrationsignup', 'CampRegistrationController@Lateregistrationsignup');
 
@@ -39,7 +44,7 @@ Route::get('/registration/verify/{type}/{id}', 'CampRegistrationController@Verif
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/dashboard', 'PagesController@dashboard');
-    Route::get('/admin/registrationlists','PagesController@registrationlists')->middleware('can:registrationlists');
+    Route::get('/admin/registrationlists/{type}','PagesController@registrationlists')->middleware('can:registrationlists');
     Route::get('/admin/manageusers','PagesController@manageusers')->middleware('can:manageusers');
     Route::get('/admin/manageusers/user/{id}', 'PagesController@manageuser')->middleware('can:manageusers');
     Route::get('/admin/managecamps', 'PagesController@managecamps')->middleware('can:managecamps');
@@ -50,6 +55,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/editregistration/{type}/{id}', 'CampRegistrationController@EditRegistration')->middleware('can:editregistration');
     Route::post('/admin/editregistration/done/{type}/{id}', 'CampRegistrationController@StoreEdit')->middleware('can:editregistration');
     Route::post('/admin/manageuser/user/done/{id}', 'AccessLevelController@Store')->middleware('can:manageusers');
+    Route::get('/admin/lateregistration', 'PagesController@lateregistration')->middleware('can:admin');
+    Route::post('/admin/addlateregistration', 'PagesController@addLateRegistration')->middleware('can:admin');
+    Route::get('/admin/lateregistration/remove/{id}', 'PagesController@removeLateRegistration')->middleware('can:admin');
 });
 
 

@@ -64,7 +64,7 @@
     <!-- Site Content -->
     <div class="wrapper" style="color: white;">
         <!-- Sidebar -->
-        <div id="sidebar">
+        <div id="sidebar" style="overflow-y: auto;">
             <div class="sidebarName">
                 <h4>{{Auth::user()->name}}</h4>
             </div>
@@ -78,6 +78,8 @@
                         <span>Start</span>
                     </a>
                 </li>
+
+                @can('registrationlists')
                 <li class="sidebarbutton">
                     <button data-toggle="collapse" data-target="#regsubgroup">
                         <i class="fas fa-list-ol"></i>
@@ -88,47 +90,71 @@
 
                 <div class="collapse registrationssubmenu" id="regsubgroup">
                     <li class="sidebarbutton">
-                        <a href="#">
+                        <a href="/admin/registrationlists/participant">
                             <span>Deltagarlistor</span>
                         </a>
                     </li>
                     <li class="sidebarbutton">
-                        <a href="#">
+                        <a href="/admin/registrationlists/leader">
                             <span>Ledarlistor</span>
                         </a>
                     </li>
                 </div>
+                @endcan
 
+                @can('adduser')
                 <li class="sidebarbutton">
                     <a href="/admin/register">
                         <i class="fas fa-user-plus"></i>
                         <span>Lägg till användare</span>
                     </a>
                 </li>
+                @endcan
+
+                @can('manageusers')
                 <li class="sidebarbutton">
                     <a href="/admin/manageusers">
                         <i class="fas fa-user-edit"></i>
                         <span>Hantera användare</span>
                     </a>
                 </li>
+                @endcan
+
+                @can('managecamps')
                 <li class="sidebarbutton">
                     <a href="/admin/managecamps">
                         <i class="fas fa-campground"></i>
                         <span>Hantera läger</span>
                     </a>
                 </li>
+                @endcan
+
+                @can('admin')
+                <li class="sidebarbutton">
+                    <a href="/admin/lateregistration">
+                        <i class="fas fa-clock"></i>
+                        <span>Sen anmälan</span>
+                    </a>
+                </li>
+                @endcan
+
+                @can('schedule')
                 <li class="sidebarbutton">
                     <a href="#">
                         <i class="fas fa-calendar-alt"></i>
                         <span>Schema</span>
                     </a>
                 </li>
+                @endcan
+
+                @can('game_of_thrones')
                 <li class="sidebarbutton">
                     <a href="#">
                         <i class="fas fa-toilet-paper"></i>
                         <span>Game of Thrones</span>
                     </a>
                 </li>
+                @endcan
             </ul>
 
             <!-- Logout button -->

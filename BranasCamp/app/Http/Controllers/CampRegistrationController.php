@@ -16,13 +16,38 @@ class CampRegistrationController extends Controller
     // Return view for normal registration
     public function registration(){
         $places = \App\place::all();
-        return view('Pages/registration', ['places' => $places]);
+        return view('Pages/registration', ['places' => $places, 'key' => null]);
     }
 
     // Return view for leaders registration
     public function registrationLeader(){
         $places = \App\place::all();
-        return view('Pages/registration-leader', ['places' => $places]);
+        return view('Pages/registration-leader', ['places' => $places, 'key' => null]);
+    }
+
+    public function lateRegistration($key){
+        $links = \App\late_registration_key::where('leader', '=', 0)->get();
+
+        foreach($links as $link){
+            if($key == $link->link_key){
+                $places = \App\place::all();
+                return view('Pages/registration', ['places' => $places, 'key' => $key]);
+            }
+        }
+
+        return view('Pages/invalidaddress');
+    }
+
+    public function lateRegistrationLeader($key){
+        $links = \App\late_registration_key::where('leader', '=', 1)->get();
+        foreach($links as $link){
+            if($key == $link->link_key){
+                $places = \App\place::all();
+                return view('Pages/registration-leader', ['places' => $places, 'key' => $key]);
+            }
+        }
+
+        return view('Pages/invalidaddress');
     }
     
     // Fetch registration and return view for registration done
@@ -63,12 +88,6 @@ class CampRegistrationController extends Controller
     
     // Standard attendee
     public function store(){
-
-        // Redirects and will not register if all spots are full
-        //if(!SpotFree()){
-        //    return redirect('/registrationfull');
-        //}
-
         $count = \App\registrations_leader::count() + \App\registration::count();
         if($count > 279) {
             return redirect('/registrationfull');
@@ -131,12 +150,6 @@ class CampRegistrationController extends Controller
 
     // leader attendee
     public function storeLeader(){
-
-        // Redirects and will not register if all spots are full
-        //if(!SpotFree()){
-        //    return redirect('/registrationfull');
-        //}
-
         $count = \App\registrations_leader::count() + \App\registration::count();
         if($count > 279) {
             return redirect('/registrationfull');
@@ -202,6 +215,148 @@ class CampRegistrationController extends Controller
         
         // Send Email
         \Mail::to($registration->email)->send(new CampRegistration($registration, $verificationLink));
+
+        return redirect('/registration/done/leader/' . $registration->id);
+    }
+
+    // Standard attendee late registration
+    public function LateStore($key){
+        
+        // If there is no key valid or type is wrong the registration will be discarded and will redirect to invalid address
+        $linkEntry = \App\late_registration_key::where('link_key', '=', $key)->first();
+        if($linkEntry == null || $linkEntry->leader != 0) {
+            return redirect('/invalidaddress');
+        }
+
+        $registration= new \App\Registration();
+        //return request()->all();
+        
+        $registration->first_name = Request('firstName');
+        $registration->last_name = Request('lastName');
+        $registration->birthdate = Request('birthdate');
+        $registration->last_four = Request('fourLast');
+        $registration->address = Request('address');
+        $registration->zip = Request('zip');
+        $registration->city = Request('city');
+        $registration->email = Request('email');
+        $registration->phonenumber = Request('phoneNumber');
+        $registration->allergy = Request('allergy');
+        $registration->first_name_advocate = Request('firstNameAdvocate');
+        $registration->last_name_advocate = Request('lastNameAdvocate');
+        $registration->email_advocate = Request('emailAdvocate');
+        $registration->phone_number_advocate = Request('phoneNumberAdvocate');
+        $registration->home_number = Request('homeNumberAdvocate');
+        $registration->place = Request('place');
+        $registration->member_place = Request('memberPlace');
+        $registration->other = Request('other');
+        $registration->terms = Request('terms');
+
+        $registrations = \App\registration::all();
+        foreach($registrations as $otherReg){
+            if($registration->birthdate == $otherReg->birthdate && $registration->last_four == $otherReg->last_four){
+                return redirect('/registrationExists');
+            }
+        }
+
+        if(Request('memberPlace')==0){
+            $registration->member = 0;
+            $registration->member_place =null;
+        }
+
+        else{
+            $registration->member = 1;
+        }
+
+        
+        //$registration->verification_key = Hash::make($registration->first_name . $registration->phonenumber);
+        $registration->save();
+
+        // Verification link generated by registration id and verification key
+        $verificationLink = Url::signedRoute('event.verifyRegistration', [
+            'type' => 'participant', 
+            'id' => $registration->id
+            ]);
+        
+        // Send Email
+        \Mail::to($registration->email_advocate)->send(new CampRegistration($registration, $verificationLink));
+
+        // Removes key from table so it cant be used again
+        $linkEntry->delete();
+
+        return redirect('/registration/done/participant/' . $registration->id);
+    }
+
+    // leader attendee late registration
+    public function LateStoreLeader($key){
+
+        // If there is no key valid or type is wrong the registration will be discarded and will redirect to invalid address
+        $linkEntry = \App\late_registration_key::where('link_key', '=', $key)->first();
+        if($linkEntry == null || $linkEntry->leader == 0) {
+            return redirect('/invalidaddress');
+        }
+        
+        $registration= new \App\Registrations_leader();
+        //return request()->all();
+        
+        $registration->first_name = Request('firstName');
+        $registration->last_name = Request('lastName');
+        $registration->birthdate = Request('birthdate');
+        $registration->last_four = Request('fourLast');
+        $registration->address = Request('address');
+        $registration->zip = Request('zip');
+        $registration->city = Request('city');
+        $registration->email = Request('email');
+        $registration->phonenumber = Request('phoneNumber');
+        $registration->allergy = Request('allergy');
+        $registration->first_name_advocate = Request('firstNameAdvocate');
+        $registration->last_name_advocate = Request('lastNameAdvocate');
+        $registration->email_advocate = Request('emailAdvocate');
+        $registration->phone_number_advocate = Request('phoneNumberAdvocate');
+        $registration->home_number = Request('homeNumberAdvocate');
+        $registration->place = Request('place');
+        $registration->member_place = Request('memberPlace');
+        $registration->other = Request('other');
+        $registration->terms = Request('terms');
+        $registration->kitchen = Request('kitchen');
+
+        $registrations = \App\registrations_leader::all();
+        foreach($registrations as $otherReg){
+            if($registration->birthdate == $otherReg->birthdate && $registration->last_four == $otherReg->last_four){
+                return redirect('/registrationExists');
+            }
+        }
+
+        if(Request('kitchen') > 0){
+            $registration->cost = 1000;
+        }
+        else{
+            $registration->cost = 1500;
+        }
+
+        if(Request('memberPlace')==0){
+            $registration->member = 0;
+            $registration->member_place =null;
+        }
+
+        else{
+            $registration->member = 1;
+        }
+
+        
+        //$registration->verification_key = Hash::make($registration->first_name . $registration->phonenumber);
+        $registration->save();
+
+        // Verification link generated by registration id and verification key
+        $verificationLink = Url::signedRoute('event.verifyRegistration', [
+            'type' => 'leader', 
+            'id' => $registration->id
+            ]);
+        
+        // Send Email
+        \Mail::to($registration->email)->send(new CampRegistration($registration, $verificationLink));
+
+        // Removes key from table so it cant be used again
+        $linkEntry->delete();
 
         return redirect('/registration/done/leader/' . $registration->id);
     }

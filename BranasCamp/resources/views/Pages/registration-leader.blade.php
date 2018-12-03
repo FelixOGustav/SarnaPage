@@ -5,7 +5,11 @@
         <h1 style=" margin-top: 3rem; text-align: center;" class="anmalan whiteColor">Anmälan</h1>
         <h2 style="text-align: center;" class="rubrikerAnmalan whiteColor">Ledarsidan</h2>
     </div>
+    @if($key)
+    <form method="POST" action="/registration/leader/{{$key}}/done">
+    @else
     <form method="POST" action="/registration/leader/done">
+    @endif
         {{ csrf_field() }}
     <div class="container">
         <!-- Start deltagare -->

@@ -156,7 +156,7 @@ class CampRegistrationController extends Controller
         }
 
         
-        $registration= new \App\Registrations_leader();
+        $registration = new \App\registrations_leader();
         //return request()->all();
         
         $registration->first_name = Request('firstName');
@@ -295,7 +295,7 @@ class CampRegistrationController extends Controller
             return redirect('/invalidaddress');
         }
         
-        $registration= new \App\Registrations_leader();
+        $registration = new \App\registrations_leader();
         //return request()->all();
         
         $registration->first_name = Request('firstName');

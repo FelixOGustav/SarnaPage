@@ -9,21 +9,21 @@
         <h1>Deltagare</h1>
     @endif
     <div class="sidescrollcontent">
-        <table id="regtbl" class="table table-hover" style="color: #606569;">
+        <table id="regtbl" class="table table-hover">
             <thead>
                 <tr class="tableheader">
-                    <th class="tblheadcol">ID#</th>
-                    <th class="tblheadcol">Förnamn</th>
-                    <th class="tblheadcol">Efternamn</th>
-                    <th class="tblheadcol">Ort</th>
-                    <th class="tblheadcol">Anmäld Tid</th>
-                    <th class="tblheadcol">Bekräftat</th>
+                    <th class="tblheadcol" id="tbl-id">ID#</th>
+                    <th class="tblheadcol" id="tbl-firstname">Förnamn</th>
+                    <th class="tblheadcol" id="tbl-lastname">Efternamn</th>
+                    <th class="tblheadcol" id="tbl-place">Ort</th>
+                    <th class="tblheadcol" id="tbl-time">Anmäld Tid</th>
+                    <th class="tblheadcol" id="tbl-confirmed">Bekräftat</th>
                     @can('editregistration')
-                        <th class="tblheadcol">Ändra</th>
+                        <th class="tblheadcol" id="tbl-edit">Ändra</th>
                     @endcan
                 </tr>
             </thead>
-            <tbody>
+            <tbody style="color: #606569;">
                 @foreach ($registrations as $reg)
                     <tr>
                         <td>{{$reg->id}}</td>
@@ -51,19 +51,17 @@
 </div> 
 
 <script>
-
-    // Initialize tables
-    $(document).ready(function() {
-        $('#regtbl').dynatable({
-            features: {
-                paginate: false,
-                search: true,
-                recordCount: true,
-                search: true
-            }
+    $(document).ready( function () {
+        $('#regtbl').DataTable({
+            paging: false,
+            select: false,
+            info: false,
+            dom: 'Bfrtip',
+            buttons: [
+                'excel', 'pdf', 'print', 'colvis'
+            ]
         });
     });
-
 </script>
 
 @endsection

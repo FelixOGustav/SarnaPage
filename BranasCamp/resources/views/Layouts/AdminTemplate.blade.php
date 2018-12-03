@@ -20,6 +20,17 @@
     <link rel="stylesheet" href="{{URL::asset('css/jquery.dynatable.css')}}">
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+    
+    <!-- Datatables -->
+    <!--
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/Datatables/jquery.dataTables.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/Datatables/buttons.dataTables.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/Datatables/colReorder.dataTables.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/Datatables/fixedHeader.dataTables.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/Datatables/responsive.dataTables.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/Datatables/rowReorder.dataTables.css')}}"/>
+-->
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/datatables.css')}}"/>
 
 </head>
 <body>
@@ -30,7 +41,28 @@
     <script src="{{URL::asset('js/app.js')}}"></script>
     <script src="{{URL::asset('js/scrollToTop.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-    <script src="{{URL::asset('js/jquery.dynatable.js')}}"></script>
+    <!-- <script src="{{URL::asset('js/jquery.dynatable.js')}}"></script> -->
+    
+    
+    <!-- Datatables -->
+    <!--
+    <script type="text/javascript" src="{{URL::asset('js/Datatables/jszip.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('js/Datatables/pdfmake.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('js/Datatables/vfs_fonts.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('js/Datatables/jquery.dataTables.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('js/Datatables/dataTables.buttons.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('js/Datatables/buttons.html5.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('js/Datatables/buttons.print.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('js/Datatables/dataTables.colReorder.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('js/Datatables/dataTables.fixedHeader.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('js/Datatables/dataTables.responsive.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('js/Datatables/dataTables.rowReorder.js')}}"></script>
+    -->
+
+    <script type="text/javascript" src="{{URL::asset('js/datatables.js')}}"></script>
+
+
+    <script src="{{URL::asset('js/adminsidenav.js')}}"></script>
 
     <!-- Loading content -->
 
@@ -190,16 +222,7 @@
 
     <script>
         
-        $(document).ready(function () {
-            $('#sidebarshowbtn').on('click', function () {
-                $('#sidebar, #content, #contentcontainer').toggleClass('hidden');
-            });
-
-            if(window.innerWidth < 769){
-                $('#sidebar, #content, #contentcontainer').toggleClass('hidden');
-            }
-
-        });
+        
 
         // Fades out loading screen when done loading and then calls function to check cookies 
         $( window ).on( "load", function() {

@@ -1,17 +1,28 @@
 $(document).ready(function () {
-
-    $("#sidebar").mCustomScrollbar({
-         theme: "minimal"
+    $('#sidebarshowbtn').on('click', function () {
+        $('#sidebar, #content, #contentcontainer').toggleClass('hidden');
     });
 
-    $('#sidebarCollapse').on('click', function () {
-        // open or close navbar
-        $('#sidebar').toggleClass('active');
-        // close dropdowns
-        $('.collapse.in').toggleClass('in');
-        // and also adjust aria-expanded attributes we use for the open/closed arrows
-        // in our CSS
-        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-    });
+    if(window.innerWidth < 769){
+        $('#sidebar, #content, #contentcontainer').toggleClass('hidden');
+    }
 
 });
+
+function ToggleDynatableCol(id){
+    var dyntblcol = document.getElementById(id);
+    if(dyntblcol.style.display != 'none'){
+        dyntblcol.style.display = 'none';
+    } else {
+        dyntblcol.style.display = 'auto';
+    }
+
+    $('#regtbl').dynatable({
+        features: {
+            paginate: false,
+            search: true,
+            recordCount: true,
+            search: true
+        }
+    });
+}

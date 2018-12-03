@@ -253,3 +253,7 @@ input {
     overflow-x: auto;
     white-space: nowrap;
 }
+
+.tbl-firstname {
+    display: block;
+}

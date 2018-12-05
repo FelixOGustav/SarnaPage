@@ -76094,7 +76094,8 @@ Buttons.defaults = {
 			tag: 'ActiveXObject' in window ?
 				'a' :
 				'button',
-			className: 'dt-button',
+      className: 'dt-button',
+			/*className: '',*/
 			active: 'active',
 			disabled: 'disabled'
 		},
@@ -76903,7 +76904,7 @@ $.extend( DataTable.ext.buttons, {
 		return {
 			extend: 'collection',
 			text: function ( dt ) {
-				return dt.i18n( 'buttons.colvis', 'Column visibility' );
+				return dt.i18n( 'buttons.colvis', 'Välj Kolumner <i class="fas fa-caret-down"></i>' );
 			},
 			className: 'buttons-colvis',
 			buttons: [ {
@@ -78376,6 +78377,7 @@ DataTable.ext.buttons.excelHtml5 = {
 //
 DataTable.ext.buttons.pdfHtml5 = {
 	className: 'buttons-pdf buttons-html5',
+  /*className: '',*/
 
 	available: function () {
 		return window.FileReader !== undefined && _pdfMake();

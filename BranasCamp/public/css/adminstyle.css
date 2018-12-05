@@ -257,3 +257,29 @@ input {
 .tbl-firstname {
     display: block;
 }
+
+#regtbl_wrapper button {
+    font-family: ChampagneLimousines;
+    font-size: 15px;
+    color: white;
+    background-image: none !important;
+    background-color: #FFA160 !important;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    box-shadow: none;
+}
+
+#regtbl_wrapper button:hover {
+    background-color: rgb(206, 124, 66) !important;
+}
+
+#regtbl_wrapper .buttons-columnVisibility i {
+    display: none;
+}
+
+#regtbl_wrapper .buttons-columnVisibility.active i {
+    display: inline-block;
+}

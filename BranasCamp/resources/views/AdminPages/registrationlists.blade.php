@@ -9,7 +9,7 @@
         <h1>Deltagare</h1>
     @endif
     <div class="sidescrollcontent">
-        <table id="regtbl" class="table table-hover">
+        <table id="regtbl" class="table table-hover" style="min-width: 100%;">
             <thead>
                 <tr class="tableheader">
                     <th class="tblheadcol" id="tbl-id">ID#</th>
@@ -98,7 +98,7 @@
                     extend: 'excelHtml5',
                     text: 'Excel  <i class="fas fa-file-excel"></i>',
                     titleAttr: 'Excel',
-                    //className: 'btn btn-info',
+                    className: 'exportbtn',
                     exportOptions: {
                         columns: ':visible'
                     }
@@ -107,7 +107,7 @@
                     extend: 'pdfHtml5',
                     text: 'PDF  <i class="fas fa-file-pdf"></i>',
                     titleAttr: 'PDF',
-                    //className: 'btn btn-info',
+                    className: 'exportbtn',
                     exportOptions: {
                         columns:  ':visible'
                     }
@@ -116,7 +116,7 @@
                     extend: 'print',
                     text: 'Skriv ut  <i class="fas fa-print"></i>',
                     titleAttr: 'Print',
-                    //className: 'btn btn-info',
+                    className: 'exportbtn',
                     exportOptions: {
                         columns:  ':visible'
                     }
@@ -129,6 +129,10 @@
                 }
             ]
         });
+
+        regtbl.columns('.tblheadcol').visible(false);
+        regtbl.columns([0, 1, 2, 11, 12]).visible(true);
+        regtbl.draw();
         
         // Datatables adds the class dt-button to buttons. I dont want them, and this is easiest
         // Without changing the source code. This just toggles the class off, which effectivly
@@ -143,14 +147,16 @@
         $('#regtbl_wrapper').find('.buttons-print').toggleClass('buttons-print');
         $('#regtbl_wrapper').find('.buttons-collection').toggleClass('buttons-collection');
         $('#regtbl_wrapper').find('.buttons-colvis').toggleClass('buttons-colvis');
-        
-        /*
-        $('.buttons-columnVisibility').each(function(i, obj){
-            var old = obj.innerHTML;
-            obj.innerHTML = old + '  ' + '<i class="fas fa-check"></i>';
-            console.log('KLAR!');
-        }) */
     });
 </script>
+
+<!-- Removes export buttons -->
+@cannot('exportreglists')
+<script>
+    $(document).ready( function () {
+        $('.dt-buttons').find('.exportbtn').remove();
+    });
+</script>
+@endcan
 
 @endsection

@@ -150,5 +150,9 @@ class AuthServiceProvider extends ServiceProvider
                 return false;
             }
         });
+
+        Gate::define('exportreglists', function() {
+            return \App\accesslevel::find(Auth::user()->id)->admin;
+        });
     }
 }

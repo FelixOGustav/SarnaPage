@@ -276,10 +276,21 @@ input {
     background-color: rgb(206, 124, 66) !important;
 }
 
+.buttons-columnVisibility {
+    text-align: left;
+}
+
 #regtbl_wrapper .buttons-columnVisibility i {
-    display: none;
+    /*display: none;*/
+    opacity: 0;
+    -webkit-transition: opacity 0.1s ease-in-out;
+    -moz-transition: opacity 0.1s ease-in-out;
+    -ms-transition: opacity 0.1s ease-in-out;
+    -o-transition: opacity 0.1s ease-in-out;
+    transition: opacity 0.1s ease-in-out;
 }
 
 #regtbl_wrapper .buttons-columnVisibility.active i {
-    display: inline-block;
+    /*display: inline-block;*/
+    opacity: 1;
 }

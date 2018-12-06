@@ -124,7 +124,7 @@
                 {
                     extend: 'colvis',
                     columnText: function ( dt, idx, title ) {
-                        return title + '  <i class="fas fa-check"></i>';
+                        return '<i class="fas fa-check"></i>   ' + title;
                     }
                 }
             ]

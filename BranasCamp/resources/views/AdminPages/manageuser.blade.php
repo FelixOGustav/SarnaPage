@@ -32,6 +32,21 @@
                 </div>
 
                 <div style="margin: 10px;">
+                    <label style="vertical-align:middle;">Köket</label>
+                    <input type="checkbox" value="1" name="kitchen" id="kitchen" @if($access->kitchen) checked @endif>
+                </div>
+
+                <div style="margin: 10px;">
+                    <label style="vertical-align:middle;">Schema</label>
+                    <input type="checkbox" value="1" name="schedule" id="schedule" @if($access->schedule) checked @endif>
+                </div>
+
+                <div style="margin: 10px;">
+                    <label style="vertical-align:middle;">Game Of Thrones</label>
+                    <input type="checkbox" value="1" name="game_of_thrones" id="game_of_thrones" @if($access->game_of_thrones) checked @endif>
+                </div>
+
+                <div style="margin: 10px;">
                     <label style="vertical-align:middle;">Lägga till användare</label>
                     <input type="checkbox" value="1" name="add_user" id="add_user" @if($access->add_user) checked @endif>
                 </div>
@@ -54,6 +69,11 @@
                 <div style="margin: 10px;">
                     <label style="vertical-align:middle;">Verifierad anmälan</label>
                     <input type="checkbox" value="1" name="verified_registration" id="verified_registration" @if($access->verified_registration) checked @endif>
+                </div>
+                
+                <div style="margin: 10px;">
+                    <label style="vertical-align:middle;">Ålder/ Födelsedag</label>
+                    <input type="checkbox" value="1" name="age" id="age" @if($access->age) checked @endif>
                 </div>
 
                 <div style="margin: 10px;">

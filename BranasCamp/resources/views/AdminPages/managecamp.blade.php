@@ -14,18 +14,35 @@
                     @else 
                         <th>Stäng anmälan</th>
                     @endif
+                    @if($camp->late_open == 0)
+                        <th>Öppna sen anmälan</th>
+                    @else 
+                        <th>Stäng sen anmälan</th>
+                    @endif
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <th>{{$camp->id}}</th>
-                    <th>{{$camp->name}}</th>
+                    <td>{{$camp->id}}</td>
+                    <td>{{$camp->name}}</td>
                     @if($camp->open == 1)
-                        <th>Anmälan öppen</th>
-                        <th><a href="/admin/managecamp/close/{{$camp->id}}" class="btn btn-primary">Stäng anmälan</a></th>
+                        <td>Anmälan öppen</td>
+                    @elseif($camp->late_open == 1)
+                        <td>Sen anmälan öppen</td>
+                    @else
+                        <td>Anmälan stängd</td>
+                    @endif
+
+                    @if($camp->open == 1)
+                        <td><a href="/admin/managecamp/close/{{$camp->id}}" class="btn btn-primary">Stäng anmälan</a></td>
                     @else 
-                        <th>Anmälan stängd</th>
-                        <th><a href="/admin/managecamp/open/{{$camp->id}}" class="btn btn-primary">Öpnna anmälan</a></th>
+                        <td><a href="/admin/managecamp/open/{{$camp->id}}" class="btn btn-primary">Öpnna anmälan</a></td>
+                    @endif
+
+                    @if($camp->late_open == 1)
+                        <td><a href="/admin/managecamp/closelate/{{$camp->id}}" class="btn btn-primary">Stäng sen anmälan</a></td>
+                    @else 
+                        <td><a href="/admin/managecamp/openlate/{{$camp->id}}" class="btn btn-primary">Öpnna sen anmälan</a></td>
                     @endif
                 </tr>
             </tbody>

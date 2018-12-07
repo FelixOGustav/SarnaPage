@@ -155,6 +155,22 @@ class PagesController extends Controller
     public function OpenRegistration($id){
         $camp = \App\registration_state::find($id);
         $camp->open = 1;
+        $camp->late_open = 0;
+        $camp->save();
+        return redirect('/admin/managecamp/camp/' . $camp->id);
+    }
+
+    public function CloseLateRegistration($id){
+        $camp = \App\registration_state::find($id);
+        $camp->late_open = 0;
+        $camp->save();
+        return redirect('/admin/managecamp/camp/' . $camp->id);
+    }
+
+    public function OpenLateRegistration($id){
+        $camp = \App\registration_state::find($id);
+        $camp->open = 0;
+        $camp->late_open = 1;
         $camp->save();
         return redirect('/admin/managecamp/camp/' . $camp->id);
     }

@@ -12,28 +12,49 @@
         <table id="regtbl" class="table table-hover" style="min-width: 100%;">
             <thead>
                 <tr class="tableheader">
-                    <th class="tblheadcol" id="tbl-id">ID#</th>
-                    <th class="tblheadcol" id="tbl-firstname">Förnamn</th>
-                    <th class="tblheadcol" id="tbl-lastname">Efternamn</th>
-                    <th class="tblheadcol" id="tbl-place">Ort</th>
+                    <th class="tblheadcol def-vis-col" id="tbl-id">ID#</th>
+                    <th class="tblheadcol def-vis-col" id="tbl-firstname">Förnamn</th>
+                    <th class="tblheadcol def-vis-col" id="tbl-lastname">Efternamn</th>
+                    <th class="tblheadcol def-vis-col" id="tbl-place">Ort</th>
+
+                    @can('age')
+                        <th class="tblheadcol" id="tbl-age">Ålder</th>
+                        <th class="tblheadcol" id="tbl-birthdate">Födelsedag</th>
+                    @endcan
+
+                    @can('persnr')
+                        <th class="tblheadcol" id="tbl-lastfour">Sista fyra</th>
+                    @endcan
+
                     <th class="tblheadcol" id="tbl-time">Anmäld Tid</th>
                     @can('allergy')
-                        <th class="tblheadcol" id="tbl-edit">Allergi</th>
+                        <th class="tblheadcol" id="tbl-allergy">Allergi</th>
                     @endcan
+
                     @can('other')
-                        <th class="tblheadcol" id="tbl-edit">Övrigt</th>
+                        <th class="tblheadcol" id="tbl-other">Övrigt</th>
                     @endcan
+
                     @can('contact_info')
-                        <th class="tblheadcol" id="tbl-edit">Telefon</th>
-                        <th class="tblheadcol" id="tbl-edit">Epost</th>
+                        <th class="tblheadcol" id="tbl-phone">Telefon</th>
+                        <th class="tblheadcol" id="tbl-email">Epost</th>
                     @endcan
+
                     @can('contact_info_advocate')
-                    <th class="tblheadcol" id="tbl-edit">Telefon Anhörig</th>
-                    <th class="tblheadcol" id="tbl-edit">Epost Anhörig</th>
+                        <th class="tblheadcol" id="tbl-phone-advocate">Telefon Anhörig</th>
+                        <th class="tblheadcol" id="tbl-email-advocate">Epost Anhörig</th>
                     @endcan
-                    <th class="tblheadcol" id="tbl-confirmed">Bekräftat</th>
+
+                    @can('kitchen')
+                        @if($type == 'leader')
+                            <th class="tblheadcol" id="tbl-kitchen">Köket</th>
+                        @endif
+                    @endcan
+                    
+                    <th class="tblheadcol def-vis-col" id="tbl-confirmed">Bekräftat</th>
+
                     @can('editregistration')
-                        <th class="tblheadcol" id="tbl-edit">Ändra</th>
+                        <th class="tblheadcol def-vis-col" id="tbl-edit">Ändra</th>
                     @endcan
                     
                 </tr>
@@ -49,6 +70,16 @@
                                 <td>{{$place->placename}}</td>
                             @endif
                         @endforeach
+                        
+                        @can('age')
+                            <td>{{\App\Http\Controllers\CampRegistrationController::GetAgeFromDate($reg->birthdate)}}</td>
+                            <td>{{$reg->birthdate}}</td>
+                        @endcan
+                        
+                        @can('persnr')
+                            <td>{{$reg->last_four}}</td>
+                        @endcan
+
                         <td>{{$reg->created_at}}</td> 
                         @can('allergy')
                             <td class="tblheadcol" id="tbl-edit">{{$reg->allergy}}</td>
@@ -63,7 +94,17 @@
                         @can('contact_info_advocate')
                             <td class="tblheadcol" id="tbl-edit">{{$reg->phone_number_advocate}}</td>
                             <td class="tblheadcol" id="tbl-edit">{{$reg->email_advocate}}</td>
-                        @endcan   
+                        @endcan 
+
+                        @can('kitchen')
+                            @if($type == 'leader')
+                                @if($reg->kitchen > 0)
+                                    <td>Ja</td>
+                                @else
+                                    <td>Nej</td>
+                                @endif
+                            @endif
+                        @endcan
 
                         @if($reg->verified_at != null)
                             <td><img src="{{URL::asset('img/greenDot.png')}}"></td>
@@ -131,7 +172,7 @@
         });
 
         regtbl.columns('.tblheadcol').visible(false);
-        regtbl.columns([0, 1, 2, 11, 12]).visible(true);
+        regtbl.columns(['.def-vis-col']).visible(true);
         regtbl.draw();
         
         // Datatables adds the class dt-button to buttons. I dont want them, and this is easiest

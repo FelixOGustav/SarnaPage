@@ -122,8 +122,16 @@ class AuthServiceProvider extends ServiceProvider
             return \App\accesslevel::find(Auth::user()->id)->herrljunga;
         });
         
+        Gate::define('age', function() {
+            return \App\accesslevel::find(Auth::user()->id)->age;
+        });
+
         Gate::define('persnr', function() {
             return \App\accesslevel::find(Auth::user()->id)->persnr;
+        });
+
+        Gate::define('kitchen', function() {
+            return \App\accesslevel::find(Auth::user()->id)->kitchen;
         });
         
         Gate::define('contact_info', function() {

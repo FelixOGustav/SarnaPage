@@ -5,7 +5,7 @@
     <!-- csrf token-->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="{{URL::asset('img/branaslogga.png')}}"  type="img/PNG">
     <title>Branäslägret Admin-sida</title>
@@ -69,7 +69,7 @@
 
     <div class="loadingBG" id="loadingScreen">
         <div class="loadingContent centerTextInDiv">
-            <img src="{{URL::asset('img/snowflakeLoading.gif')}}" type="img/gif">
+            <img src="{{URL::asset('img/branaslogga_white.png')}}" type="img/PNG" class="rotating">
             <p class="whiteColor">Vänta lite..</p>
         </div>
     </div>

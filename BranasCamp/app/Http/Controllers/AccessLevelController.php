@@ -100,6 +100,22 @@ class AccessLevelController extends Controller
         if($access->statistics == null){
             $access->statistics = 0;
         }
+        $access->kitchen = Request('kitchen');
+        if($access->kitchen == null){
+            $access->kitchen = 0;
+        }
+        $access->schedule = Request('schedule');
+        if($access->schedule == null){
+            $access->schedule = 0;
+        }
+        $access->game_of_thrones = Request('game_of_thrones');
+        if($access->game_of_thrones == null){
+            $access->game_of_thrones = 0;
+        }
+        $access->age = Request('age');
+        if($access->age == null){
+            $access->age = 0;
+        }
 
         $access->save();
         

@@ -10,11 +10,15 @@
             <div class="container-fluid d-flex justify-content-center">
                 <button class="buttonStyle" data-toggle="modal" data-target="#registerChoiseModal"><p>Anmäl dig!</p></button>
             </div>
-        @else
+        @elseif($camp->late_open > 0)
             <div class="container-fluid d-flex justify-content-center">
             <!--  <div class="container-fluid d-flex justify-content-center" style="width: 250px; margin-top: 50px; padding: 10px 10px 5px 10px; background-color: #606569;"> -->
                 <!-- <h3 style="color: white;">Alla Platser är slut!</h3> -->
                 <button class="buttonStyle" data-toggle="modal" data-target="#registerChoiseModal"><p>Efteranmälan</p></button>
+            </div>
+        @else
+            <div class="container-fluid d-flex justify-content-center">
+                <p class="buttonStyle" style="color: white; font-size: 27px; cursor: default;">Anmälan är stängd</p>
             </div>
         @endif
     </div>

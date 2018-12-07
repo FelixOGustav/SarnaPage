@@ -93,7 +93,7 @@ class CampRegistrationController extends Controller
             return redirect('/registrationfull');
         }
 
-        $registration= new \App\Registration();
+        $registration= new \App\registration();
         //return request()->all();
         
         $registration->first_name = Request('firstName');
@@ -228,7 +228,7 @@ class CampRegistrationController extends Controller
             return redirect('/invalidaddress');
         }
 
-        $registration= new \App\Registration();
+        $registration= new \App\registration();
         //return request()->all();
         
         $registration->first_name = Request('firstName');
@@ -460,6 +460,21 @@ class CampRegistrationController extends Controller
         }
         else {
             return false;
+        }
+    }
+
+    public static function GetAgeFromDate($date) {
+        return Carbon::parse($date)->age;
+    }
+
+    public static function GetGenderFromLastFour($lastfour) {
+        $num = intval(substr($lastfour, 2, 1)) % 2;
+
+        if($num == 1){
+            return 'Kille';
+        }
+        else {
+            return 'Tjej';
         }
     }
 }

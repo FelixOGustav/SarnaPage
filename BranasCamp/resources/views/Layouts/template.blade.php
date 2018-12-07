@@ -5,7 +5,7 @@
     <!-- csrf token-->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
     <link rel="icon" href="{{URL::asset('img/branaslogga.png')}}"  type="img/PNG">
 
     <!-- CSS links-->
@@ -17,7 +17,8 @@
 
     <title>{{config('app.name', 'Branäslägret')}}</title>
 </head>
-<body class="mainBG">
+<body>
+    <div class="mainBG"></div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,7 +31,7 @@
 
     <div class="loadingBG" id="loadingScreen">
         <div class="loadingContent centerTextInDiv">
-            <img src="{{URL::asset('img/snowflakeLoading.gif')}}" type="img/gif">
+            <img src="{{URL::asset('img/branaslogga_white.png')}}" type="img/PNG" class="rotating">
             <p class="whiteColor">Vänta lite..</p>
         </div>
     </div>

@@ -60,13 +60,22 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/lateregistration', 'PagesController@lateregistration')->middleware('can:admin');
     Route::post('/admin/addlateregistration', 'PagesController@addLateRegistration')->middleware('can:admin');
     Route::get('/admin/lateregistration/remove/{id}', 'PagesController@removeLateRegistration')->middleware('can:admin');
+    Route::get('/admin/mail', 'MailController@Mail')->middleware('can:admin');
+    Route::post('/admin/mail/new', 'MailController@Store')->middleware('can:admin');
+    Route::post('/admin/mail/update/save/{id}', 'MailController@Update')->middleware('can:admin');
+    Route::get('/admin/mail/update/{id}', 'MailController@UpdateServe')->middleware('can:admin');
+    Route::get('/admin/mail/remove/{id}', 'MailController@Remove')->middleware('can:admin');
+    Route::post('/admin/mail/send', 'MailController@Send')->middleware('can:admin');
+    Route::post('/admin/mail/send/progress', 'MailController@Progress')->middleware('can:admin');;
 });
 
 
 use Illuminate\Routing\UrlGenerator;
 Route::get('/test', 'PagesController@NewAdminTemplateTemp');
 
-//Route::get('/test/mail', 'PagesController@testmail');
+Route::get('/test/mail/{id}', function ($id) {
+    return view('Emails/defaultmail', ['mail' => \App\mail::find($id)]);
+});
 
 
 Route::group(['prefix' => 'admin'], function () {

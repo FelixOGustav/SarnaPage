@@ -23,14 +23,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
     
     <!-- Datatables -->
-    <!--
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/Datatables/jquery.dataTables.css')}}"/>
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/Datatables/buttons.dataTables.css')}}"/>
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/Datatables/colReorder.dataTables.css')}}"/>
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/Datatables/fixedHeader.dataTables.css')}}"/>
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/Datatables/responsive.dataTables.css')}}"/>
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/Datatables/rowReorder.dataTables.css')}}"/>
--->
     <link rel="stylesheet" type="text/css" href="{{URL::asset('css/datatables.css')}}"/>
 
 </head>
@@ -44,22 +36,7 @@
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
     <!-- <script src="{{URL::asset('js/jquery.dynatable.js')}}"></script> -->
     
-    
     <!-- Datatables -->
-    <!--
-    <script type="text/javascript" src="{{URL::asset('js/Datatables/jszip.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('js/Datatables/pdfmake.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('js/Datatables/vfs_fonts.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('js/Datatables/jquery.dataTables.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('js/Datatables/dataTables.buttons.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('js/Datatables/buttons.html5.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('js/Datatables/buttons.print.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('js/Datatables/dataTables.colReorder.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('js/Datatables/dataTables.fixedHeader.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('js/Datatables/dataTables.responsive.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('js/Datatables/dataTables.rowReorder.js')}}"></script>
-    -->
-
     <script type="text/javascript" src="{{URL::asset('js/datatables.js')}}"></script>
 
 
@@ -169,6 +146,12 @@
                         <span>Sen anmälan</span>
                     </a>
                 </li>
+                <li class="sidebarbutton">
+                    <a href="/admin/mail">
+                        <i class="fas fa-envelope"></i>
+                        <span>Mail</span>
+                    </a>
+                </li>
                 @endcan
 
                 @can('schedule')
@@ -221,9 +204,17 @@
         </div>
     </div>
 
+    <button id="scrollToTopBtn" title="Go to top" class="dropShadow" style="left:initial ; right: 20px;"><img src="{{URL::asset('img/arrowUp.png')}}"></button>
+
     <script>
         
-        
+        // Scroll to top button
+        $(function(){
+            $("#scrollToTopBtn").click(function(){
+                $("html,body").animate({scrollTop:0},"1300");
+                return false
+            })
+        })
 
         // Fades out loading screen when done loading and then calls function to check cookies 
         $( window ).on( "load", function() {

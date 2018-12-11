@@ -2,28 +2,25 @@
 
 namespace App\Mail;
 
-use App\registration;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class CampRegistration extends Mailable
+class MassMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $registration;
-    public $link;
+    public $mail;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($registration, $link)
+    public function __construct($mail)
     {
-        $this->registration = $registration;
-        $this->link = $link;
+        $this->mail = $mail;
     }
 
     /**
@@ -33,7 +30,7 @@ class CampRegistration extends Mailable
      */
     public function build()
     {
-        return $this->view('Emails/registeredemail')
-                    ->subject('Bekräfta Anmälan');
+        return $this->view('Emails/defaultmail')
+                    ->subject($this->mail->subject);
     }
 }

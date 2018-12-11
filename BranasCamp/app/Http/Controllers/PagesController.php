@@ -21,18 +21,6 @@ class PagesController extends Controller
     protected $places;
     protected $camp;
 
-    /*
-    //--- No longer needed. these are default if not overridden ---//
-    protected $links = [
-        'navLogoLink' => '/',
-        'infoLink' => '/#branaslagretInfo',
-        'prisLink' => '/#prisInfo',
-        'reglerLink' => '/#ReglerInfo',
-        'faqLink' => '/#faqInfo',
-        'kontaktLink' => '/#KontaktInfo' 
-    ];
-    */
-
     public function index(){
         $camp = \App\registration_state::find(1);
         return view('Pages/index', ['links' => $this->StartPagelinkslinks, 'camp' => $camp]);

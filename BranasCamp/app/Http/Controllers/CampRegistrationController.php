@@ -15,12 +15,22 @@ class CampRegistrationController extends Controller
 
     // Return view for normal registration
     public function registration(){
+        // Returns a 403 forbidden access if registration is closed
+        if(!\App\registration_state::find(1)->open){
+            abort(403);
+        }
+        
         $places = \App\place::all();
         return view('Pages/registration', ['places' => $places, 'key' => null]);
     }
 
     // Return view for leaders registration
     public function registrationLeader(){
+        // Returns a 403 forbidden access if registration is closed
+        if(!\App\registration_state::find(1)->open){
+            abort(403);
+        }
+
         $places = \App\place::all();
         return view('Pages/registration-leader', ['places' => $places, 'key' => null]);
     }
@@ -384,7 +394,7 @@ class CampRegistrationController extends Controller
 
         // Save new data to database
         $registration->save();
-        return redirect('/admin/registrationlists');
+        return redirect('/admin/registrationlists/'.$type);
     }
 
     
@@ -437,7 +447,7 @@ class CampRegistrationController extends Controller
                 \Mail::to($reg->email)->send(new CampRegistration($reg, $verificationLink));
             }            
         }
-        return redirect('admin/registrationlists');
+        return redirect('admin/registrationlists/'.$type);
     }
 
     // Signup for late registration list

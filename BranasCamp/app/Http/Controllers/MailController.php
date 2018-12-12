@@ -96,6 +96,10 @@ class MailController extends Controller
             }
         }
 
+        if(Request('email')){
+            $addresses[] = Request('email');
+        }
+
         $this->SendMail($addresses, $id);
 
         return redirect('admin/mail');

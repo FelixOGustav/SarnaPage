@@ -79,6 +79,11 @@
                                 </tr>
                         </tbody>
                     </table>
+
+                    <label for="email"><br>Epost för individuellt utskick</label>
+                    <p style="font-size: 13px;">Mailet skickas till endast denna address om ovanstående val lämnas tomma</p>
+                    <input type="email" name="email" id="email" placeholder="namn@namnsson.se" style="width: calc(100% - 12px); margin-bottom: 25px;">
+
                     <input type="hidden" id="id" name="id" value="">
                     <button type="submit"class="col modalButtonStyle" style="margin: 0px;" onclick="ViewProgress()"><h3 class="whiteColor">Skicka</h3></button>
                 </form>

@@ -66,7 +66,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/mail/update/{id}', 'MailController@UpdateServe')->middleware('can:admin');
     Route::get('/admin/mail/remove/{id}', 'MailController@Remove')->middleware('can:admin');
     Route::post('/admin/mail/send', 'MailController@Send')->middleware('can:admin');
-    Route::post('/admin/mail/send/progress', 'MailController@Progress')->middleware('can:admin');;
+    Route::post('/admin/mail/send/progress', 'MailController@Progress')->middleware('can:admin');
+    Route::get('/admin/mail/duplicate/{id}', 'MailController@Duplicate')->middleware('can:admin');
+    Route::get('/admin/mail/clearsendstats/{id}', 'MailController@ClearSendStats')->middleware('can:admin');
 });
 
 

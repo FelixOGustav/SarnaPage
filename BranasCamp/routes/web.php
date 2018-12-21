@@ -42,6 +42,14 @@ Route::post('/lateregistrationsignup', 'CampRegistrationController@Lateregistrat
 
 Route::get('/registration/verify/{type}/{id}', 'CampRegistrationController@VerifyRegistration')->name('event.verifyRegistration')->middleware('signed');
 
+
+// App Routes
+Route::group(['prefix' => 'app'], function () {
+    Route::get('/', 'AppController@Index');
+    Route::get('/schedule', 'AppController@Schedule');       
+});
+
+
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/dashboard', 'PagesController@dashboard');
     Route::get('/admin/registrationlists/{type}','PagesController@registrationlists')->middleware('can:registrationlists');

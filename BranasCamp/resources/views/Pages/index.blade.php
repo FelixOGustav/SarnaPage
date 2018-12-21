@@ -325,10 +325,10 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        <h5 style="margin-right: 5px;">Rickard Martinsson</h5>
+                                        <h5 style="margin-right: 5px;">Alice Marinder</h5>
                                     </td>
                                     <td>
-                                        <p style="margin-top: 8px; margin-left: 5px;">0706-30 30 88</p>
+                                        <p style="margin-top: 8px; margin-left: 5px;">0730-81 88 89</p>
                                     </td>
                                 </tr>
                             </tbody>

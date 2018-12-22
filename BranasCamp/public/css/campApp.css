@@ -5,7 +5,7 @@
 }
 
 .appBody {
-    width: 100vw;
+    /*width: 100vw;*/
     min-height: calc(100vh - 130px); /* Remove height of header and nav from full height */
     margin-top: 65px; /* Same as app header height */
     background-color: #606569;
@@ -33,3 +33,50 @@
     width: 100%;
     font-size: 25px;
 }
+
+.navButtonWrapper:hover {
+    background-color: rgb(211, 208, 208);
+}
+
+.navButtonWrapper.active {
+    background-color: rgb(226, 224, 224);
+}
+
+.scroller {
+    /* older spec implementation */
+/*    scroll-snap-destination: 0% 100%;*/
+
+    scroll-snap-type: mandatory;
+	scroll-snap-points-y: repeat(100vw);
+	scroll-snap-type: x mandatory;
+	display: flex;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .page {
+    min-width: 100vw;
+    min-height: calc(100vh - 130px); /* Remove height of header and nav from full height */
+    background-color: #606569;
+    padding: 0px 10px;
+
+	scroll-snap-align: start;
+  }
+
+  .customTable-ish {
+    background-color: white;
+    color: #606569;
+    padding: 10px;
+    margin: 20px 0px;
+  }
+
+  .customTable-ish-row button {
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+  }
+
+  .appFooterSpacer {
+      padding-bottom: 65px;
+  }

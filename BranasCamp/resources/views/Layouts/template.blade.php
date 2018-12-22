@@ -8,6 +8,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
     <link rel="icon" href="{{URL::asset('img/branaslogga.png')}}"  type="img/PNG">
 
+    <meta name="author" content="Gustav Råkeberg, Felix Brunnegård">
+    <meta name="description" content="Branäslägret är ett nyårsläger som arrangeras av equmeniakyrkans församlingar i trakten kring Herrljunga och Vårgårda. Veckan bjuder på skidåkning, Gud-snack, lägerstämning, bibel, gamla och nya vänner, aktiviteter, slappa-tid och mängder med tillfällen att njuta av livet!">
+    <meta property="og:url" content="https://branaslagret.se/app">
+    <meta property="og:site_name" content="Branäslägret 2018-2019">
+    <meta property="og:title" content="Branäslägret">
+    <meta property="og:description" content="Branäslägret är ett nyårsläger som arrangeras av equmeniakyrkans församlingar i trakten kring Herrljunga och Vårgårda. Veckan bjuder på skidåkning, Gud-snack, lägerstämning, bibel, gamla och nya vänner, aktiviteter, slappa-tid och mängder med tillfällen att njuta av livet!">
+
+    <meta name="theme-color" content="#606569">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-startup-image" content="{{URL::asset('img/branaslogga.png')}}">
+    <link rel="apple-touch-icon image_src" href="{{URL::asset('img/branaslogga.png')}}">
+
     <!-- CSS links-->
     <link rel="stylesheet" href="{{URL::asset('css/app.css')}}">
     <link rel="stylesheet" href="{{URL::asset('css/fonts.css')}}">

@@ -1,34 +1,65 @@
 @extends('Layouts/appTemplate')
 @section('appContent')
-    
-<h1 class="whiteColor">28 DECEMBER</h1>
-<h3 class="whiteColor">Info om dagem</h3>
 
-<table class="table table-stiped whiteColor">
-    <thead>
-        <tr>
-            <th>Tid</th>
-            <th>Aktivitet</th>
-            <th>Beskrivning</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>07:00</td>
-            <td>Väckning</td>
-            <td>Äntligen morgon, hoppa upp ur sovsäcken, gör dig redo för en ny dag!</td>
-        </tr>
-        <tr>
-            <td>07:30</td>
-            <td>Frukost</td>
-            <td>Nu serveras finfin frukost i matsalen. Mums!</td>
-        </tr>
-        <tr>
-            <td>08:30</td>
-            <td>Ortsamling</td>
-            <td>Alla från orten samlas och får information om dagen</td>
-        </tr>
-    </tbody>
-</table>
+<div class="scroller">
+
+    <?php $date = 27; $month = "DECEMBER"; ?>
+    @for($i = 0; $i < 6; $i++)
+        <section class="page">
+            <div class="centerTextInDiv">
+                @switch($i)
+                    @case(0)
+                        <?php $date = 27; $month = "DECEMBER"; ?>
+                        @break
+                    @case(1)
+                        <?php $date = 28; $month = "DECEMBER"; ?>
+                        @break
+                    @case(2)
+                        <?php $date = 29; $month = "DECEMBER"; ?>
+                        @break
+                    @case(3)
+                        <?php $date = 30; $month = "DECEMBER"; ?>
+                        @break
+                    @case(4)
+                        <?php $date = 31; $month = "DECEMBER"; ?>
+                        @break
+                    @case(5)
+                        <?php $date = 1; $month = "JANUARI"; ?>
+                        @break
+                    @default
+                        
+                @endswitch
+
+            
+                <h1 class="whiteColor">{{$date}} {{$month}}</h1>
+                <h5 class="whiteColor">Info om dagen</h5>
+                <p class="whiteColor" style="font-size: 14px;">Denna dag ska alla deltagare köpa godis till sina ledare.
+                    Dom som inte gör det måste städa toaletterna resten av lägret.
+                </p>
+            </div>
+            
+            <table class="table table-striped">
+                <thead>
+                    <tr class="whiteColor">
+                        <th>Tid</th>
+                        <th>Aktivitet</th>
+                        <th>Beskrivning</th>
+                    </tr>
+                </thead>
+                <tbody style="background-color: white;">
+                    @foreach($events as $event)
+                    <tr>
+                        <td>{{Carbon\Carbon::parse($event->time)->format('h:i')}}</td>
+                        <td>{{$event->titel}}</td>
+                        <td>{{$event->description}}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+
+        </section>
+    @endfor
+
+</div>
 
 @endsection

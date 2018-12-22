@@ -46,7 +46,10 @@ Route::get('/registration/verify/{type}/{id}', 'CampRegistrationController@Verif
 // App Routes
 Route::group(['prefix' => 'app'], function () {
     Route::get('/', 'AppController@Index');
-    Route::get('/schedule', 'AppController@Schedule');       
+    Route::get('/schedule', 'AppController@Schedule'); 
+    Route::get('/seminars', 'AppController@Seminars');
+    Route::get('/gameofthrones', 'AppController@GameOfThrones');
+    Route::get('/donation', 'AppController@Donation');      
 });
 
 

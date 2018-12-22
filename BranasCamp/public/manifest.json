@@ -1,0 +1,21 @@
+{
+    "short_name": "Branäslägret",
+    "name": "Branäslägret",
+    "icons": [
+      {
+        "src": "/img/icon-192.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "/img/icon-512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "start_url": "/app",
+    "background_color": "#FFFFFF",
+    "display": "standalone",
+    "scope": "/app",
+    "theme_color": "#606569"
+  }

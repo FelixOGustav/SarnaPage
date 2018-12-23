@@ -24,7 +24,7 @@
                         <?php $date = 31; $month = "DECEMBER"; ?>
                         @break
                     @case(5)
-                        <?php $date = 1; $month = "JANUARI"; ?>
+                        <?php $date = '01'; $month = "JANUARI"; ?>
                         @break
                     @default
                         
@@ -33,9 +33,11 @@
             
                 <h1 class="whiteColor">{{$date}} {{$month}}</h1>
                 <h5 class="whiteColor">Info om dagen</h5>
-                <p class="whiteColor" style="font-size: 14px;">Denna dag ska alla deltagare köpa godis till sina ledare.
-                    Dom som inte gör det måste städa toaletterna resten av lägret.
-                </p>
+                @foreach ($days as $day)
+                    @if($day->date == '2018-12-'.$date || $day->date == '2019-01-'.$date)
+                        <p class="whiteColor" style="font-size: 14px;">{{$day->info}}</p>
+                    @endif
+                @endforeach
             </div>
             
             <table class="table table-striped">
@@ -48,15 +50,16 @@
                 </thead>
                 <tbody style="background-color: white;">
                     @foreach($events as $event)
-                    <tr>
-                        <td>{{Carbon\Carbon::parse($event->time)->format('h:i')}}</td>
-                        <td>{{$event->titel}}</td>
-                        <td>{{$event->description}}</td>
-                    </tr>
+                        @if(\Carbon\Carbon::parse($event->time)->format('d') == $date)
+                            <tr style="@if($event->leader)background-color: #f9f1a9; @endif">
+                                <td>{{Carbon\Carbon::parse($event->time)->format('H:i')}}</td>
+                                <td>{{$event->titel}}</td>
+                                <td>{{$event->description}}</td>
+                            </tr>
+                        @endif
                     @endforeach
                 </tbody>
             </table>
-
         </section>
     @endfor
 

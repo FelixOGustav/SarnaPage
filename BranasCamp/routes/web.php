@@ -80,6 +80,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/admin/mail/send/progress', 'MailController@Progress')->middleware('can:admin');
     Route::get('/admin/mail/duplicate/{id}', 'MailController@Duplicate')->middleware('can:admin');
     Route::get('/admin/mail/clearsendstats/{id}', 'MailController@ClearSendStats')->middleware('can:admin');
+    Route::get('/admin/schedule/{date?}', 'AppController@EditSchedule')->middleware('can:schedule');
+    Route::post('/admin/schedule/save/{day}', 'AppController@SaveDay')->middleware('can:schedule');
+    Route::get('/admin/schedule/delete/{id}', 'AppController@DeleteEvent')->middleware('can:schedule');
+    Route::post('/admin/schedule/newactivity', 'AppController@NewEvent')->middleware('can:schedule');
 });
 
 

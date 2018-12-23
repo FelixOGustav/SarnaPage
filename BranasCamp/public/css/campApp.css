@@ -58,7 +58,7 @@
     min-width: 100vw;
     min-height: calc(100vh - 130px); /* Remove height of header and nav from full height */
     background-color: #606569;
-    padding: 0px 10px;
+    padding: 0px 10px 65px;
 
 	scroll-snap-align: start;
   }

@@ -258,6 +258,11 @@ input {
     display: block;
 }
 
+.dateSelectBtn.active {
+    background-color: #606569 !important;
+    color: white !important;
+}
+
 #regtbl_wrapper button {
     font-family: ChampagneLimousines;
     font-size: 15px;
@@ -293,4 +298,10 @@ input {
 #regtbl_wrapper .buttons-columnVisibility.active i {
     /*display: inline-block;*/
     opacity: 1;
+}
+
+.newActivityPanel {
+    background-color: #dadada;
+    margin: 10px;
+    padding: 10px;
 }

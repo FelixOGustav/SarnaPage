@@ -24,12 +24,17 @@
     
     <!-- Datatables -->
     <link rel="stylesheet" type="text/css" href="{{URL::asset('css/datatables.css')}}"/>
+    
+
+
+
 
 </head>
 <body>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="{{URL::asset('js/app.js')}}"></script>
     <script src="{{URL::asset('js/scrollToTop.js')}}"></script>
@@ -38,9 +43,11 @@
     
     <!-- Datatables -->
     <script type="text/javascript" src="{{URL::asset('js/datatables.js')}}"></script>
-
-
     <script src="{{URL::asset('js/adminsidenav.js')}}"></script>
+
+    <script src="{{URL::asset('js/moment.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>  
+    
 
     <!-- Loading content -->
 
@@ -156,7 +163,7 @@
 
                 @can('schedule')
                 <li class="sidebarbutton">
-                    <a href="#">
+                    <a href="/admin/schedule">
                         <i class="fas fa-calendar-alt"></i>
                         <span>Schema</span>
                     </a>

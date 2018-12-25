@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Auth;
+use Illuminate\Support\Facades\Cookie;
 
 class AppController extends Controller
 {
@@ -17,7 +18,9 @@ class AppController extends Controller
         $events = \App\schedule_event::orderBy('time', 'asc')->get();
         $days = \App\schedule_day::all();
 
-        return view('App/schedule', ['events' => $events, 'days' => $days, 'uri' => $request->path()]);
+        $leader = Cookie::get('AppSettings_Leader', 'Cookie is Null');
+
+        return view('App/schedule', ['events' => $events, 'days' => $days, 'leaderSetting' => $leader, 'uri' => $request->path()]);
     }
 
     public function Seminars(Request $request){
@@ -75,5 +78,15 @@ class AppController extends Controller
         $event->save();
 
         return redirect('/admin/schedule/'.Carbon::parse($event->time)->format('Y-m-d'));
+    }
+
+    public function UpdateSettings(Request $request){
+        $leaderSetting = Request('leader');
+        if($leaderSetting == null){
+            $leaderSetting = 0;
+        }
+
+        //20160 = Minutes until expire. (14 days)
+        return redirect($request->uri)->cookie('AppSettings_Leader', $leaderSetting, 20160);
     }
 }

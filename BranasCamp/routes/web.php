@@ -49,7 +49,8 @@ Route::group(['prefix' => 'app'], function () {
     Route::get('/schedule', 'AppController@Schedule'); 
     Route::get('/seminars', 'AppController@Seminars');
     Route::get('/gameofthrones', 'AppController@GameOfThrones');
-    Route::get('/donation', 'AppController@Donation');      
+    Route::get('/donation', 'AppController@Donation');   
+    Route::post('/settings/update', 'AppController@UpdateSettings');   
 });
 
 

@@ -53,8 +53,21 @@
                     <h4 class="text-center">Inställningar</h4>
                 </div>
                 <div class="modal-body ">
-                    <p>Här kommer det finnas inställningar!</p>
-                    <button style="color:white; font-family: Elkwood; font-size: 20px;" data-toggle="modal" data-target="#settingsModal" class="buttonStyle">Stäng</button>
+                    <form method="POST" action="/app/settings/update" id="settingsForm">
+                        {{ csrf_field() }}
+                        
+                        <h5>Ledarschema</h5>
+                        <!--<div class="shrinker">-->
+                            <input type="checkbox" value="1" id="leader" name="leader" @if($leaderSetting) checked @endif>
+                            <label for="leader">Toggle</label>
+                       <!-- </div>-->
+                        
+                        <input type="hidden" id="uri" name="uri" value="/{{$uri}}">
+                        <div class="row">
+                            <button style="color:white; font-family: Elkwood; font-size: 20px;" data-toggle="modal" data-target="#settingsModal" class="col modalButtonStyle"><h3 class="whiteColor">Stäng</h3></button>
+                            <button type="submit" class="col modalButtonStyle"><h3 class="whiteColor">Spara</h3></button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -134,6 +147,33 @@
         
     });
 
+
+/*
+    $( "#settingsForm" ).submit(function( event ) {
+        // Stop form from submitting normally
+        event.preventDefault();
+
+        // Get some values from elements on the page:
+        var $form = $( this ),
+        term = $form.find( "input[name='leader']" ).val(),
+        url = $form.attr( "action" );
+        currentURI = '/{{$uri}}';
+        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+
+        // Send the data using post
+        var posting = $.post( url, { 
+            _token: CSRF_TOKEN, 
+            leader: term,
+            uri: currentURI 
+            }
+         );
+
+        // Put the results in a div
+        posting.done(function( data ) {
+            location.reload(true);
+        });
+    });
+    */
 </script>
 </body>
 </html>

@@ -2,7 +2,6 @@
 @section('appContent')
 
 <div class="scroller">
-
     <?php $date = 27; $month = "DECEMBER"; ?>
     @for($i = 0; $i < 6; $i++)
         <section class="page">
@@ -51,11 +50,13 @@
                 <tbody style="background-color: white;">
                     @foreach($events as $event)
                         @if(\Carbon\Carbon::parse($event->time)->format('d') == $date)
-                            <tr style="@if($event->leader)background-color: #f9f1a9; @endif">
-                                <td>{{Carbon\Carbon::parse($event->time)->format('H:i')}}</td>
-                                <td>{{$event->titel}}</td>
-                                <td>{{$event->description}}</td>
-                            </tr>
+                            @if($event->leader != 1 || ($event->leader && $leaderSetting == 1))
+                                <tr style="@if($event->leader)background-color: #f9f1a9; @endif">
+                                    <td>{{Carbon\Carbon::parse($event->time)->format('H:i')}}</td>
+                                    <td>{{$event->titel}}</td>
+                                    <td>{{$event->description}}</td>
+                                </tr>
+                            @endif
                         @endif
                     @endforeach
                 </tbody>

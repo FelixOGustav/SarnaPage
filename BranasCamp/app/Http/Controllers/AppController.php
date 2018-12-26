@@ -11,7 +11,9 @@ class AppController extends Controller
 {
 
     public function Index(Request $request){
-        return view('App/appIndex', ['uri' => $request->path()]);
+        $leader = Cookie::get('AppSettings_Leader', 'Cookie is Null');
+        
+        return view('App/appIndex', ['uri' => $request->path(), 'leaderSetting' => $leader]);
     }
 
     public function Schedule(Request $request){
@@ -24,15 +26,18 @@ class AppController extends Controller
     }
 
     public function Seminars(Request $request){
-        return view('App/seminars', ['uri' => $request->path()]);
+        $leader = Cookie::get('AppSettings_Leader', 'Cookie is Null');
+        return view('App/seminars', ['uri' => $request->path(), 'leaderSetting' => $leader]);
     }
 
     public function GameOfThrones(Request $request){
-        return view('App/gameOfThrones', ['uri' => $request->path()]);
+        $leader = Cookie::get('AppSettings_Leader', 'Cookie is Null');
+        return view('App/gameOfThrones', ['uri' => $request->path(), 'leaderSetting' => $leader]);
     }
 
     public function Donation(Request $request){
-        return view('App/donation', ['uri' => $request->path()]);
+        $leader = Cookie::get('AppSettings_Leader', 'Cookie is Null');
+        return view('App/donation', ['uri' => $request->path(), 'leaderSetting' => $leader]);
     }
 
     public function EditSchedule($date = '', Request $request){

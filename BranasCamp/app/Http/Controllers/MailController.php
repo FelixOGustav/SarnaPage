@@ -29,7 +29,7 @@ class MailController extends Controller
         }
         
         $participants_sends = $mail->participants_sent_amount;
-        $participants_already_mailed = json_decode($mail->sent_to);
+        $participants_already_mailed = json_decode($mail->participants_sent_to);
         
         // If list is null, set it to empty
         if(!$participants_already_mailed){
@@ -52,8 +52,7 @@ class MailController extends Controller
 
             // If $MAX_MAIL_SENDS mails or more have been sent, stop sending and update send amount to right and set progress bar to 100%
             if($progressI >= $MAX_MAIL_SENDS){
-                $participants_sends = $x + $mail->sent_amount;
-                $x = $amount + 1;
+                $participants_sends = $x + $mail->participants_sent_amount;
                 Session::put('progress', 100);
                 Session::save();
                 
@@ -66,7 +65,7 @@ class MailController extends Controller
         }
 
         $participants_advocate_sends = $mail->participants_advocate_sent_amount;
-        $participants_advocate_already_mailed = json_decode($mail->sent_to);
+        $participants_advocate_already_mailed = json_decode($mail->participants_advocate_sent_to);
         
         // If list is null, set it to empty
         if(!$participants_advocate_already_mailed){
@@ -89,8 +88,7 @@ class MailController extends Controller
 
             // If $MAX_MAIL_SENDS mails or more have been sent, stop sending and update send amount to right and set progress bar to 100%
             if($progressI >= $MAX_MAIL_SENDS){
-                $participants_advocate_sends = $x + $mail->sent_amount;
-                $x = $amount + 1;
+                $participants_advocate_sends = $x + $mail->participants_advocate_sent_amount;
                 Session::put('progress', 100);
                 Session::save();
                 
@@ -103,7 +101,7 @@ class MailController extends Controller
         }
 
         $leader_sends = $mail->leader_sent_amount;
-        $leader_already_mailed = json_decode($mail->sent_to);
+        $leader_already_mailed = json_decode($mail->leader_sent_to);
         
         // If list is null, set it to empty
         if(!$leader_already_mailed){
@@ -126,8 +124,7 @@ class MailController extends Controller
 
             // If $MAX_MAIL_SENDS mails or more have been sent, stop sending and update send amount to right and set progress bar to 100%
             if($progressI >= $MAX_MAIL_SENDS){
-                $leader_sends = $x + $mail->sent_amount;
-                $x = $amount + 1;
+                $leader_sends = $x + $mail->leader_sent_amount;
                 Session::put('progress', 100);
                 Session::save();
                 
@@ -140,7 +137,7 @@ class MailController extends Controller
         }
 
         $leader_advocate_sends = $mail->leader_advocate_sent_amount;
-        $leader_advocate_already_mailed = json_decode($mail->sent_to);
+        $leader_advocate_already_mailed = json_decode($mail->leader_advocate_sent_to);
         
         // If list is null, set it to empty
         if(!$leader_advocate_already_mailed){
@@ -163,8 +160,7 @@ class MailController extends Controller
 
             // If $MAX_MAIL_SENDS mails or more have been sent, stop sending and update send amount to right and set progress bar to 100%
             if($progressI >= $MAX_MAIL_SENDS){
-                $sends = $x + $mail->sent_amount;
-                $x = $amount + 1;
+                $sends = $x + $mail->leader_advocate_sent_amount;
                 Session::put('progress', 100);
                 Session::save();
                 

@@ -85,6 +85,19 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/admin/schedule/save/{day}', 'AppController@SaveDay')->middleware('can:schedule');
     Route::get('/admin/schedule/delete/{id}', 'AppController@DeleteEvent')->middleware('can:schedule');
     Route::post('/admin/schedule/newactivity', 'AppController@NewEvent')->middleware('can:schedule');
+    Route::get('/admin/seminars', 'PagesController@Seminars')->middleware('can:seminars');
+    Route::post('/admin/seminar/new', 'PagesController@NewSeminar')->middleware('can:seminars');
+    Route::get('/admin/seminar/delete/{id}', 'PagesController@DeleteSeminar')->middleware('can:seminars');
+    Route::get('/admin/seminar/edit/{id}', 'PagesController@EditSeminar')->middleware('can:seminars');
+    Route::post('/admin/seminar/update', 'PagesController@UpdateSeminar')->middleware('can:seminars');
+    Route::get('/admin/gameofthrones', 'PagesController@GameOfThrones')->middleware('can:game_of_thrones');
+    Route::post('/admin/gameofthrones/info/save/{id}', 'PagesController@UpdateGOTInfo')->middleware('can:game_of_thrones');
+    Route::post('/admin/gameofthrones/new', 'PagesController@newGOT')->middleware('can:game_of_thrones');
+    Route::get('/admin/gameofthrones/delete/{id}', 'PagesController@DeleteGameOfThrones')->middleware('can:game_of_thrones');
+    Route::get('/admin/gameofthrones/edit/{id}', 'PagesController@EditGameOfThrones')->middleware('can:game_of_thrones');
+    Route::post('/admin/gameofthrones/update', 'PagesController@UpdateGameOfThrones')->middleware('can:game_of_thrones');
+    Route::get('/admin/insamling', 'PagesController@Insamling')->middleware('can:insamling');
+    Route::post('/admin/insamling/update/{id}', 'PagesController@UpdateInsamling')->middleware('can:insamling');
 });
 
 

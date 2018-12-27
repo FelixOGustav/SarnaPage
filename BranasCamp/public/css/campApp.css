@@ -81,6 +81,19 @@
       padding-bottom: 65px;
   }
 
+  .app_button{
+      min-width: 100%;
+      background-color: white;
+      padding: 15px;
+      color: #606569;
+      text-decoration: none;
+  }
+
+  .app_button_container {
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 25px;    
+  }
 
 
 

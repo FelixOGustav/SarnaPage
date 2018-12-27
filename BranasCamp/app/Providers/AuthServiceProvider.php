@@ -54,6 +54,10 @@ class AuthServiceProvider extends ServiceProvider
             return \App\accesslevel::find(Auth::user()->id)->manage_user;
         });
         
+        Gate::define('seminars', function() {
+            return \App\accesslevel::find(Auth::user()->id)->seminars;
+        });
+
         Gate::define('allergy', function() {
             return \App\accesslevel::find(Auth::user()->id)->allergy;
         });
@@ -72,6 +76,10 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('game_of_thrones', function() {
             return \App\accesslevel::find(Auth::user()->id)->game_of_thrones;
+        });
+
+        Gate::define('insamling', function() {
+            return \App\accesslevel::find(Auth::user()->id)->insamling;
         });
 
         Gate::define('schedule', function() {

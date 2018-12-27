@@ -133,6 +133,131 @@ class PagesController extends Controller
         return view('AdminPages/managecamp', ['camp' => $camp]);
     }
 
+    public function seminars(){
+        $seminars = \App\seminar::all();
+        $seminarInfo = \App\seminarinfo::all()->first();
+
+        return view('AdminPages/manageSeminars', ['seminars' => $seminars, 'seminarInfo' => $seminarInfo]);
+    }
+
+    public function GameOfThrones(){
+        $toilets = \App\gameofthrone::all();
+        $info = \App\gameofthronesinfo::all()->first();
+        
+        return view('AdminPages/managegameofthrones', ['toilets' => $toilets, 'info' => $info]);
+    }
+
+    public function newGOT(){
+        $toilet = new \App\gameofthrone();
+
+        $toilet->name = Request('name');
+        $toilet->description = Request('description');
+        $toilet->responsible = Request('responsible');
+        $toilet->place = Request('place');
+
+        $toilet->save();
+        
+        return redirect('/admin/gameofthrones');
+    }
+
+    public function UpdateGameOfThrones(){
+        $toilet = \App\gameofthrone::find(Request('id'));
+
+        $toilet->name = Request('name');
+        $toilet->description = Request('description');
+        $toilet->responsible = Request('responsible');
+        $toilet->place = Request('place');
+        $toilet->wins = Request('wins');
+
+        $toilet->save();
+
+        return redirect('/admin/gameofthrones');
+    }
+
+    public function EditGameOfThrones($id){
+        $toilet = \App\gameofthrone::find($id);
+
+        return view('/adminPages/editGameOfThrones', ['toilet' => $toilet]);
+    }
+
+    public function DeleteGameOfThrones($id){
+        $toilet = \App\gameofthrone::find($id);
+        $toilet->delete();
+
+        return redirect('/admin/gameofthrones');
+    }
+
+    public function UpdateGOTInfo($id){
+        $info = \App\gameofthronesinfo::find($id);
+
+        $info->description = Request('description');
+        $info->link = Request('link');
+        $info->vote_open = Request('vote_open');
+
+
+        $info->save();
+
+        return redirect('/admin/gameofthrones');
+    }
+
+    public function Insamling(){
+        $insamling = \App\insamling::all()->first();
+
+        return view('adminPages/insamling', ['insamling' => $insamling]);
+    }
+
+    public function UpdateInsamling($id){
+        $insamling = \App\insamling::find($id);
+        $insamling->description = Request('description');
+
+        $insamling->save();
+
+        return redirect('/admin/insamling');
+    }
+
+    public function NewSeminar(){
+        $seminar = new \App\seminar();
+
+        $seminar->titel = Request('titel');
+        $seminar->description = Request('description');
+        $seminar->date = Request('date');
+        $seminar->place = Request('place');
+        $seminar->spots = Request('spots');
+        $seminar->responsible = Request('responsible');
+        $seminar->gym_plus = Request('gym_plus');
+
+        $seminar->save();
+
+        return redirect('/admin/seminars');
+    }
+
+    public function UpdateSeminar(){
+        $seminar = \App\seminar::find(Request('id'));
+
+        $seminar->titel = Request('titel');
+        $seminar->description = Request('description');
+        $seminar->date = Request('date');
+        $seminar->place = Request('place');
+        $seminar->spots = Request('spots');
+        $seminar->responsible = Request('responsible');
+        $seminar->gym_plus = Request('gym_plus');
+
+        $seminar->save();
+
+        return redirect('/admin/seminars');
+    }
+
+    public function DeleteSeminar($id) {
+        $seminar = \App\seminar::find($id);
+        $seminar->delete();
+        return redirect('/admin/seminars');
+    }
+
+    public function EditSeminar($id) {
+        $seminar = \App\seminar::find($id);
+        return view('AdminPages/editSeminar', ['seminar' => $seminar]);
+    }
+
     public function CloseRegistration($id){
         $camp = \App\registration_state::find($id);
         $camp->open = 0;

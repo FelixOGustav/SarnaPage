@@ -11,8 +11,9 @@ class AppController extends Controller
 {
 
     public function Index(Request $request){
-        $leader = Cookie::get('AppSettings_Leader', 'Cookie is Null');
+        $leader = Cookie::get('AppSettings_Leader', '0');
         
+        return redirect('/app/schedule');
         return view('App/appIndex', ['uri' => $request->path(), 'leaderSetting' => $leader]);
     }
 
@@ -20,24 +21,33 @@ class AppController extends Controller
         $events = \App\schedule_event::orderBy('time', 'asc')->get();
         $days = \App\schedule_day::all();
 
-        $leader = Cookie::get('AppSettings_Leader', 'Cookie is Null');
+        $leader = Cookie::get('AppSettings_Leader', '0');
 
         return view('App/schedule', ['events' => $events, 'days' => $days, 'leaderSetting' => $leader, 'uri' => $request->path()]);
     }
 
     public function Seminars(Request $request){
-        $leader = Cookie::get('AppSettings_Leader', 'Cookie is Null');
-        return view('App/seminars', ['uri' => $request->path(), 'leaderSetting' => $leader]);
+        $seminars = \App\seminar::orderBy('date', 'asc')->get();
+        $dates = \App\seminar::distinct('date')->pluck('date')->sort();
+        $seminarInfo = \App\seminarinfo::all()->first();
+
+        $leader = Cookie::get('AppSettings_Leader', '0');
+        return view('App/seminars', ['uri' => $request->path(), 'leaderSetting' => $leader, 'seminars' => $seminars, 'dates' => $dates, 'seminarInfo' => $seminarInfo]);
     }
 
     public function GameOfThrones(Request $request){
-        $leader = Cookie::get('AppSettings_Leader', 'Cookie is Null');
-        return view('App/gameOfThrones', ['uri' => $request->path(), 'leaderSetting' => $leader]);
+        $leader = Cookie::get('AppSettings_Leader', '0');
+        $toilets = \App\gameofthrone::all();
+        $info = \App\gameofthronesinfo::all()->first();
+
+        return view('App/gameOfThrones', ['uri' => $request->path(), 'leaderSetting' => $leader, 'toilets' => $toilets, 'info' => $info]);
     }
 
     public function Donation(Request $request){
-        $leader = Cookie::get('AppSettings_Leader', 'Cookie is Null');
-        return view('App/donation', ['uri' => $request->path(), 'leaderSetting' => $leader]);
+        $leader = Cookie::get('AppSettings_Leader', '0');
+        $insamling = \App\insamling::all()->first();
+
+        return view('App/donation', ['uri' => $request->path(), 'leaderSetting' => $leader, 'insamling' => $insamling]);
     }
 
     public function EditSchedule($date = '', Request $request){

@@ -172,9 +172,27 @@
 
                 @can('game_of_thrones')
                 <li class="sidebarbutton">
-                    <a href="#">
+                    <a href="/admin/gameofthrones">
                         <i class="fas fa-toilet-paper"></i>
                         <span>Game of Thrones</span>
+                    </a>
+                </li>
+                @endcan
+
+                @can('seminars')
+                <li class="sidebarbutton">
+                    <a href="/admin/seminars">
+                        <i class="far fa-comments"></i>
+                        <span>Seminarie</span>
+                    </a>
+                </li>
+                @endcan
+                
+                @can('insamling')
+                <li class="sidebarbutton">
+                    <a href="/admin/insamling">
+                        <i class="far fa-heart"></i>
+                        <span>Insamling</span>
                     </a>
                 </li>
                 @endcan

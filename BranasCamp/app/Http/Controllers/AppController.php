@@ -13,7 +13,7 @@ class AppController extends Controller
     public function Index(Request $request){
         $leader = Cookie::get('AppSettings_Leader', '0');
         
-        return redirect('/app/schedule');
+        //return redirect('/app/schedule');
         return view('App/appIndex', ['uri' => $request->path(), 'leaderSetting' => $leader]);
     }
 

@@ -34,6 +34,16 @@
                     @can('other')
                         <th class="tblheadcol" id="tbl-other">Övrigt</th>
                     @endcan
+                        <th class="tblheadcol" id="tbl-member">Medlem</th>
+                    @can('member')
+
+                    @endcan
+
+                    @can('address')
+                        <th class="tblheadcol" id="tbl-address">Address</th>
+                        <th class="tblheadcol" id="tbl-postnr">Post nr</th>
+                        <th class="tblheadcol" id="tbl-postort">Post Ort</th>
+                    @endcan
 
                     @can('contact_info')
                         <th class="tblheadcol" id="tbl-phone">Telefon</th>
@@ -87,6 +97,27 @@
                         @can('other')
                             <td class="tblheadcol" id="tbl-edit">{{$reg->other}}</td>
                         @endcan
+
+                        @can('member')
+                            @if($reg->member)
+                                <td class="tblheadcol" id="tbl-edit">Medlem 
+                                    @foreach ($places as $place) 
+                                        @if($place->placeID == $reg->member_place) 
+                                        i {{$place->placename}} 
+                                        @endif 
+                                    @endforeach
+                                </td>
+                            @else
+                                <td class="tblheadcol" id="tbl-edit">Ej Medlem</td>
+                            @endif
+                        @endcan
+
+                        @can('address')
+                            <td class="tblheadcol" id="tbl-edit">{{$reg->address}}</td>
+                            <td class="tblheadcol" id="tbl-edit">{{$reg->zip}}</td>
+                            <td class="tblheadcol" id="tbl-edit">{{$reg->city}}</td>
+                        @endcan
+                        
                         @can('contact_info')
                             <td class="tblheadcol" id="tbl-edit">{{$reg->phonenumber}}</td>
                             <td class="tblheadcol" id="tbl-edit">{{$reg->email}}</td>

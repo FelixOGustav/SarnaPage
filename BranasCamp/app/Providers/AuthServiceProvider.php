@@ -38,6 +38,18 @@ class AuthServiceProvider extends ServiceProvider
             }
         });
 
+        Gate::define('address', function(){
+            if(\App\accesslevel::find(Auth::user()->id)->admin == 1){
+                return true;
+            }
+        });
+
+        Gate::define('member', function(){
+            if(\App\accesslevel::find(Auth::user()->id)->admin == 1){
+                return true;
+            }
+        });
+
         Gate::define('admin', function() {
             return \App\accesslevel::find(Auth::user()->id)->admin;
         });

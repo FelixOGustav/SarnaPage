@@ -34,9 +34,9 @@
                     @can('other')
                         <th class="tblheadcol" id="tbl-other">Övrigt</th>
                     @endcan
-                        <th class="tblheadcol" id="tbl-member">Medlem</th>
+                        
                     @can('member')
-
+                        <th class="tblheadcol" id="tbl-member">Medlem</th>
                     @endcan
 
                     @can('address')
@@ -85,12 +85,13 @@
                             <td>{{\App\Http\Controllers\CampRegistrationController::GetAgeFromDate($reg->birthdate)}}</td>
                             <td>{{$reg->birthdate}}</td>
                         @endcan
+
+                        <td>{{$reg->created_at}}</td> 
                         
                         @can('persnr')
                             <td>{{$reg->last_four}}</td>
                         @endcan
 
-                        <td>{{$reg->created_at}}</td> 
                         @can('allergy')
                             <td class="tblheadcol" id="tbl-edit">{{$reg->allergy}}</td>
                         @endcan

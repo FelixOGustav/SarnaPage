@@ -45,9 +45,7 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define('member', function(){
-            if(\App\accesslevel::find(Auth::user()->id)->admin == 1){
-                return true;
-            }
+            return \App\accesslevel::find(Auth::user()->id)->admin;
         });
 
         Gate::define('admin', function() {

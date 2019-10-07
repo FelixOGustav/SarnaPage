@@ -22,7 +22,7 @@ class PagesController extends Controller
     protected $camp;
 
     public function index(){
-        $camp = \App\registration_state::find(1);
+        $camp = \App\camp::find(1);
         return view('Pages/index', ['links' => $this->StartPagelinkslinks, 'camp' => $camp]);
     }
 
@@ -124,12 +124,12 @@ class PagesController extends Controller
     }
 
     public function managecamps(){
-        $camps = \App\registration_state::all();
+        $camps = \App\camp::all();
         return view('AdminPages/managecamps', ['camps' => $camps]);
     }
 
     public function managecamp($id){
-        $camp = \App\registration_state::find($id);
+        $camp = \App\camp::find($id);
         return view('AdminPages/managecamp', ['camp' => $camp]);
     }
 
@@ -259,14 +259,14 @@ class PagesController extends Controller
     }
 
     public function CloseRegistration($id){
-        $camp = \App\registration_state::find($id);
+        $camp = \App\camp::find($id);
         $camp->open = 0;
         $camp->save();
         return redirect('/admin/managecamp/camp/' . $camp->id);
     }
 
     public function OpenRegistration($id){
-        $camp = \App\registration_state::find($id);
+        $camp = \App\camp::find($id);
         $camp->open = 1;
         $camp->late_open = 0;
         $camp->save();
@@ -274,14 +274,14 @@ class PagesController extends Controller
     }
 
     public function CloseLateRegistration($id){
-        $camp = \App\registration_state::find($id);
+        $camp = \App\camp::find($id);
         $camp->late_open = 0;
         $camp->save();
         return redirect('/admin/managecamp/camp/' . $camp->id);
     }
 
     public function OpenLateRegistration($id){
-        $camp = \App\registration_state::find($id);
+        $camp = \App\camp::find($id);
         $camp->open = 0;
         $camp->late_open = 1;
         $camp->save();

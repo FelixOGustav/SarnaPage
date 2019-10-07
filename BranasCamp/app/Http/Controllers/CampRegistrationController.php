@@ -16,7 +16,7 @@ class CampRegistrationController extends Controller
     // Return view for normal registration
     public function registration(){
         // Returns a 403 forbidden access if registration is closed
-        if(!\App\registration_state::find(1)->open){
+        if(!\App\camp::find(1)->open){
             abort(403);
         }
         
@@ -27,7 +27,7 @@ class CampRegistrationController extends Controller
     // Return view for leaders registration
     public function registrationLeader(){
         // Returns a 403 forbidden access if registration is closed
-        if(!\App\registration_state::find(1)->open){
+        if(!\App\camp::find(1)->open){
             abort(403);
         }
 

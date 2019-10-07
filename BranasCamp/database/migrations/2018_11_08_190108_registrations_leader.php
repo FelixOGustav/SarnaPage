@@ -13,7 +13,7 @@ class RegistrationsLeader extends Migration
      */
     public function up()
     {
-        Schema::create('registrations_leader', function (Blueprint $table) {
+        Schema::create('registrations_leaders', function (Blueprint $table) {
             $table->increments('id');
             $table->string('first_name');
             $table->string('last_name');
@@ -24,21 +24,22 @@ class RegistrationsLeader extends Migration
             $table->string('city');
             $table->string('email');
             $table->string('phonenumber');
-            $table->string('allergy');
+            $table->string('allergy', 300)->nullable();
             $table->string('first_name_advocate');
             $table->string('last_name_advocate');
             $table->string('email_advocate');
             $table->timestamp('verified_at')->nullable();
             $table->string('phone_number_advocate');
-            $table->string('home_number');
+            $table->string('home_number')->nullable();
             $table->integer('place');
             $table->boolean('member');
-            $table->integer('member_place');
+            $table->integer('member_place')->nullable();
             $table->boolean('kitchen');
-            $table->integer('cost');
-            $table->string('other');
+            $table->integer('cost')->default(1500)->nullable();
+            $table->string('other', 1000)->nullable();
             $table->boolean('terms');
-            $table->string('verification_key');
+            $table->integer('camp_id');
+            $table->string('verification_key')->nullable();
             $table->timestamps();
         });
     }

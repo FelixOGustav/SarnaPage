@@ -52,12 +52,12 @@ class AppController extends Controller
 
     public function EditSchedule($date = '', Request $request){
         if($date == '' || $date == null){
-            $date = '2018-12-27';
+            $date = date('Y-m-d');
         }
         $day = \App\schedule_day::all()->where('date', '=', $date)->first();
 
         if($day == null){
-            return redirect('/admin/schedule');
+            $day = \App\schedule_day::orderBy('date','asc')->first();
         }
 
         $events = \App\schedule_event::orderBy('time', 'asc')->get();

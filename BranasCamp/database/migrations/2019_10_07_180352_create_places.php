@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddLevelToUsers extends Migration
+class CreatePlaces extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class AddLevelToUsers extends Migration
      */
     public function up()
     {
-        Schema::table('users', function($table){
-            //$table->integer('level')->default(999);
+        Schema::create('places', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('placename', 36);
         });
     }
 
@@ -25,8 +26,6 @@ class AddLevelToUsers extends Migration
      */
     public function down()
     {
-        Schema::table('users', function($table){
-            //$table->dropColumn('level');
-        });
+        Schema::dropIfExists('places');
     }
 }

@@ -1,5 +1,9 @@
 <?php
 
+use App\Jobs\SendMassEmailJob;
+use App\Mail\CampRegistration;
+
+use Carbon\Carbon;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -56,7 +60,7 @@ Route::group(['prefix' => 'app'], function () {
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/dashboard', 'PagesController@dashboard');
-    Route::get('/admin/registrationlists/{type}','PagesController@registrationlists')->middleware('can:registrationlists');
+    Route::get('/admin/registrationlists/{type}/{cancelled?}','PagesController@registrationlists')->middleware('can:registrationlists');
     Route::get('/admin/manageusers','PagesController@manageusers')->middleware('can:manageusers');
     Route::get('/admin/manageusers/user/{id}', 'PagesController@manageuser')->middleware('can:manageusers');
     Route::get('/admin/managecamps', 'PagesController@managecamps')->middleware('can:managecamps');
@@ -65,9 +69,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/managecamp/open/{id}', 'PagesController@OpenRegistration')->middleware('can:managecamps');
     Route::get('/admin/managecamp/closelate/{id}', 'PagesController@CloseLateRegistration')->middleware('can:managecamps');
     Route::get('/admin/managecamp/openlate/{id}', 'PagesController@OpenLateRegistration')->middleware('can:managecamps');
-    Route::get('/admin/registrationlists/{type}/{id}', 'CampRegistrationController@ResendVerificationEmail')->middleware('can:editregistration');
+    Route::get('/admin/resendverificationmail/{type}/{id}', 'CampRegistrationController@ResendVerificationEmail')->middleware('can:verifieregistration');
     Route::get('/admin/editregistration/{type}/{id}', 'CampRegistrationController@EditRegistration')->middleware('can:editregistration');
     Route::post('/admin/editregistration/done/{type}/{id}', 'CampRegistrationController@StoreEdit')->middleware('can:editregistration');
+    Route::get('/admin/removeregistration/{type}/{id}', 'CampRegistrationController@MoveRegistrationToCancelled')->middleware('can:admin');
+    Route::get('/admin/restoreregistration/{type}/{id}', 'CampRegistrationController@RestoreCancelledRegistration')->middleware('can:admin');
     Route::post('/admin/manageuser/user/done/{id}', 'AccessLevelController@Store')->middleware('can:manageusers');
     Route::get('/admin/lateregistration', 'PagesController@lateregistration')->middleware('can:admin');
     Route::post('/admin/addlateregistration', 'PagesController@addLateRegistration')->middleware('can:admin');
@@ -98,6 +104,17 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/admin/gameofthrones/update', 'PagesController@UpdateGameOfThrones')->middleware('can:game_of_thrones');
     Route::get('/admin/insamling', 'PagesController@Insamling')->middleware('can:insamling');
     Route::post('/admin/insamling/update/{id}', 'PagesController@UpdateInsamling')->middleware('can:insamling');
+    Route::get('/admin/togglemaintenencemode', 'PagesController@ToggleMaintenenceMode')->middleware('can:admin');
+    Route::get('/admin/editstart', 'PagesController@EditStart')->middleware('can:admin');    
+    Route::post('/admin/editinfo/{id?}', 'PagesController@SaveEditStart')->middleware('can:admin');
+    Route::get('/admin/editinfo/{id}','PagesController@EditInfo')->middleware('can:admin');
+    Route::get('/admin/removeinfo/{id}','PagesController@RemoveInfo')->middleware('can:admin');
+    Route::post('/admin/editfaq/{id?}', 'PagesController@SaveStartFaq')->middleware('can:admin');
+    Route::get('/admin/editfaq/{id}', 'PagesController@EditStartFaq')->middleware('can:admin');
+    Route::get('/admin/removefaq/{id}', 'PagesController@RemoveStartFaq')->middleware('can:admin');
+    Route::post('/admin/editcontact/{id?}', 'PagesController@SaveStartContact')->middleware('can:admin');
+    Route::get('/admin/editcontact/{id}', 'PagesController@EditStartContact')->middleware('can:admin');
+    Route::get('/admin/removecontact/{id}', 'PagesController@RemoveStartContact')->middleware('can:admin');
 });
 
 
@@ -108,6 +125,14 @@ Route::get('/test/mail/{id}', function ($id) {
     return view('Emails/defaultmail', ['mail' => \App\mail::find($id)]);
 });
 
+/*
+Route::get('/sendMailJob', function(){
+        //$job = (new SendMassEmailJob('gustav.rakeberg@gmail.com', 4))->delay(Carbon::now()->addSeconds(10));
+        //dispatch($job);
+        \Mail::to('gustav.rakeberg@gmail.com')->send(new CampRegistration(\App\registration::find(23), 'https://explorelagret.se'));
+    return 'Email job dispatched';
+});
+*/
 
 Route::group(['prefix' => 'admin'], function () {
     //Auth::routes();

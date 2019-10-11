@@ -34,7 +34,7 @@
                 <div class="container" style="margin-top: 20px">
                     <div style="position: relative">
                         <label>Titel</label>
-                        <input class="form-control" style="padding-right: 0px;" type="text" id="titel" name="titel" placeholder="Aktivitet" required/>
+                        <input class="form-control" style="padding-right: 0px;" type="text" id="title" name="title" placeholder="Aktivitet" required/>
                     </div>
                 </div>
     

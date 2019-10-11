@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+<!-- 
+****************************************************************************************
+*                                                                                      *
+*    Bygd av Gustav Råkeberg och Felix Brunnegård med Laravel och twitter bootstrap    *
+*                                                                                      *
+****************************************************************************************
+-->
 <html lang="sv">
 <head>
     <meta charset="UTF-8">
@@ -19,6 +26,7 @@
     <link rel="stylesheet" href="{{URL::asset('css/mainstyle.css')}}">
     <link rel="stylesheet" href="{{URL::asset('css/adminstyle.css')}}">
     <link rel="stylesheet" href="{{URL::asset('css/jquery.dynatable.css')}}">
+    <link rel="stylesheet" href="{{URL::asset('css/loadingscreenstyle.css')}}">
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
     
@@ -116,6 +124,16 @@
                             <span>Ledarlistor</span>
                         </a>
                     </li>
+                    <li class="sidebarbutton">
+                        <a href="/admin/registrationlists/participant/cancelled">
+                            <span>Avanmälda Deltagare</span>
+                        </a>
+                    </li>
+                    <li class="sidebarbutton">
+                        <a href="/admin/registrationlists/leader/cancelled">
+                            <span>Avamälda Ledare</span>
+                        </a>
+                    </li>
                 </div>
                 @endcan
 
@@ -157,6 +175,12 @@
                     <a href="/admin/mail">
                         <i class="fas fa-envelope"></i>
                         <span>Mail</span>
+                    </a>
+                </li>
+                <li class="sidebarbutton">
+                    <a href="/admin/editstart">
+                        <i class="fas fa-desktop"></i>
+                        <span>Redigera startsida</span>
                     </a>
                 </li>
                 @endcan

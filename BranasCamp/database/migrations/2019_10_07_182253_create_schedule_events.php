@@ -17,7 +17,7 @@ class CreateScheduleEvents extends Migration
             $table->increments('id');
             $table->dateTime('time');
             $table->dateTime('time_end')->nullable();
-            $table->string('title', 150);
+            $table->string('titel', 150);
             $table->string('description', 600)->nullable();
             $table->tinyInteger('leader')->nullable();
             $table->tinyInteger('gym_plus')->nullable();

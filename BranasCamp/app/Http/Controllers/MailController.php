@@ -2,218 +2,32 @@
 
 namespace App\Http\Controllers;
 
+ini_set('max_execution_time', 180); //3 minutes
+
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Mail\MassMail;
+use App\Jobs\SendMassEmailJob;
 use Session;
 
 class MailController extends Controller
 {
-    function SendMail($pAddresses, $pAdvAddresses, $lAddresses, $lAdvAddresses, $otherAddress, $mailid){
+    function SendMail($addresses, $mailid){
+        $counter = 0;
         $mail = \App\mail::find($mailid);
-
-        $MAX_MAIL_SENDS = 90;
-
-        $pAmount = count($pAddresses);
-        $pAdvAmount = count($pAdvAddresses);
-        $lAmount = count($lAddresses);
-        $lAdvAmount = count($lAdvAddresses);
-        $otherAmount = count($otherAddress);
-        $combinedAmount = $pAmount + $pAdvAmount + $lAmount + $lAdvAmount + $otherAmount;
-
-        $progressI = 0;
-
-        if($otherAddress){
-            \Mail::to($otherAddress)->send(new MassMail($mail));
-            $progressI++;
-        }
-        
-        $participants_sends = $mail->participants_sent_amount;
-        $participants_already_mailed = json_decode($mail->participants_sent_to);
-        
-        // If list is null, set it to empty
-        if(!$participants_already_mailed){
-            $participants_already_mailed = [];
-        }
-
-        for($x = 0; $x < $pAmount; $x++){
-            
-            if(!in_array($pAddresses[$x], $participants_already_mailed)){  // Checks if mail addressed has already been sent to
-                \Mail::to($pAddresses[$x])->send(new MassMail($mail));   // Sends mail
-                $participants_already_mailed[] = $pAddresses[$x];  // Adds address to list of already sent addresses
-            }
-            $progressI++;
-
-            // Update values for progress bar
-            $i = ($progressI / $combinedAmount) * 100;
+        foreach($addresses as $address){
+            //dispatch(new SendMassEmailJob($address, $mailid));  // Puts mails in queue and will be sent one per minute (currently setup with a cronjob "php artisan queue:work --once")
+            \Mail::to($address)->send(new MassMail($mail));
+            $counter++;
+            $i = ($counter / count($addresses)) * 100;
             Session::put('progress', $i);
-            
-            $participants_sends++;
-
-            // If $MAX_MAIL_SENDS mails or more have been sent, stop sending and update send amount to right and set progress bar to 100%
-            if($progressI >= $MAX_MAIL_SENDS){
-                $participants_sends = $x + $mail->participants_sent_amount;
-                Session::put('progress', 100);
-                Session::save();
-                
-                $mail->participants_sent_amount = $participants_sends; 
-                $mail->participants_sent_to = json_encode($participants_already_mailed);
-                $mail->save();
-                return;
-            }            
             Session::save();
         }
-
-        $participants_advocate_sends = $mail->participants_advocate_sent_amount;
-        $participants_advocate_already_mailed = json_decode($mail->participants_advocate_sent_to);
-        
-        // If list is null, set it to empty
-        if(!$participants_advocate_already_mailed){
-            $participants_advocate_already_mailed = [];
-        }
-
-        for($x = 0; $x < $pAdvAmount; $x++){
-            
-            if(!in_array($pAdvAddresses[$x], $participants_advocate_already_mailed)){  // Checks if mail addressed has already been sent to
-                \Mail::to($pAdvAddresses[$x])->send(new MassMail($mail));   // Sends mail
-                $participants_advocate_already_mailed[] = $pAdvAddresses[$x];  // Adds address to list of already sent addresses
-            }
-            $progressI++;
-
-            // Update values for progress bar
-            $i = ($progressI / $combinedAmount) * 100;
-            Session::put('progress', $i);
-            
-            $participants_advocate_sends++;
-
-            // If $MAX_MAIL_SENDS mails or more have been sent, stop sending and update send amount to right and set progress bar to 100%
-            if($progressI >= $MAX_MAIL_SENDS){
-                $participants_advocate_sends = $x + $mail->participants_advocate_sent_amount;
-                Session::put('progress', 100);
-                Session::save();
-                
-                $mail->participants_advocate_sent_amount = $participants_advocate_sends; 
-                $mail->participants_advocate_sent_to = json_encode($participants_advocate_already_mailed);
-                $mail->save();
-                return;
-            }            
-            Session::save();
-        }
-
-        $leader_sends = $mail->leader_sent_amount;
-        $leader_already_mailed = json_decode($mail->leader_sent_to);
-        
-        // If list is null, set it to empty
-        if(!$leader_already_mailed){
-            $leader_already_mailed = [];
-        }
-
-        for($x = 0; $x < $lAmount; $x++){
-            
-            if(!in_array($lAddresses[$x], $leader_already_mailed)){  // Checks if mail addressed has already been sent to
-                \Mail::to($lAddresses[$x])->send(new MassMail($mail));   // Sends mail
-                $leader_already_mailed[] = $lAddresses[$x];  // Adds address to list of already sent addresses
-            }
-            $progressI++;
-
-            // Update values for progress bar
-            $i = ($progressI / $combinedAmount) * 100;
-            Session::put('progress', $i);
-            
-            $leader_sends++;
-
-            // If $MAX_MAIL_SENDS mails or more have been sent, stop sending and update send amount to right and set progress bar to 100%
-            if($progressI >= $MAX_MAIL_SENDS){
-                $leader_sends = $x + $mail->leader_sent_amount;
-                Session::put('progress', 100);
-                Session::save();
-                
-                $mail->leader_sent_amount = $leader_sends; 
-                $mail->leader_sent_to = json_encode($leader_already_mailed);
-                $mail->save();
-                return;
-            }            
-            Session::save();
-        }
-
-        $leader_advocate_sends = $mail->leader_advocate_sent_amount;
-        $leader_advocate_already_mailed = json_decode($mail->leader_advocate_sent_to);
-        
-        // If list is null, set it to empty
-        if(!$leader_advocate_already_mailed){
-            $leader_advocate_already_mailed = [];
-        }
-
-        for($x = 0; $x < $lAdvAmount; $x++){
-            
-            if(!in_array($lAdvAddresses[$x], $leader_advocate_already_mailed)){  // Checks if mail addressed has already been sent to
-                \Mail::to($lAdvAddresses[$x])->send(new MassMail($mail));   // Sends mail
-                $leader_advocate_already_mailed[] = $lAdvAddresses[$x];  // Adds address to list of already sent addresses
-            }
-            $progressI++;
-
-            // Update values for progress bar
-            $i = ($progressI / $combinedAmount) * 100;
-            Session::put('progress', $i);
-            
-            $leader_advocate_sends++;
-
-            // If $MAX_MAIL_SENDS mails or more have been sent, stop sending and update send amount to right and set progress bar to 100%
-            if($progressI >= $MAX_MAIL_SENDS){
-                $sends = $x + $mail->leader_advocate_sent_amount;
-                Session::put('progress', 100);
-                Session::save();
-                
-                $mail->leader_advocate_sent_amount = $leader_advocate_sends; 
-                $mail->leader_advocate_sent_to = json_encode($leader_advocate_already_mailed);
-                $mail->save();
-                return;
-            }            
-            Session::save();
-        }
-
-        if($participants_already_mailed){
-            $mail->participants_sent_amount = $participants_sends; 
-            $mail->participants_sent_to = json_encode($participants_already_mailed);
-        }
-        
-        if($participants_advocate_already_mailed){
-            $mail->participants_advocate_sent_amount = $participants_advocate_sends; 
-            $mail->participants_advocate_sent_to = json_encode($participants_advocate_already_mailed);
-        }
-        if($leader_already_mailed){
-            $mail->leader_sent_amount = $leader_sends; 
-            $mail->leader_sent_to = json_encode($leader_already_mailed);
-        }
-        if($leader_advocate_already_mailed){
-            $mail->leader_advocate_sent_amount = $leader_advocate_sends; 
-            $mail->leader_advocate_sent_to = json_encode($leader_advocate_already_mailed);
-        }
-
-        if($progressI >= 5){
-            $mail->lock_sending_until = Carbon::now()->addHour();
-        }
-
-        $mail->save();
     }
-
- 
 
     public function Progress(){
         return response()->json(array(Session::get('progress')));
-    }
-
-    function CanSend(){
-        $mails = \App\mail::all();
-        $currentTime = Carbon::now();
-
-        // Id
-        foreach($mails as $mail){
-            if($currentTime->lessThan($mail->lock_sending_until)){
-                return false;
-            }
-        }
-        return true;
+        //return response()->json(array(\App\job::count()));
     }
 
     // Return admin page mail view
@@ -221,8 +35,8 @@ class MailController extends Controller
         $mails = \App\mail::all();
         $leaders = \App\registrations_leader::count();
         $registrations = \App\registration::count();
-
-        return view('AdminPages/mail', ['mails' => $mails, 'leaders' => $leaders, 'registrations' => $registrations, 'cansend' => $this->CanSend()]);
+        //$queued = \App\job::count();
+        return view('AdminPages/mail', ['mails' => $mails]); //, 'queued' => $queued]);
     }
 
     public function UpdateServe($id){
@@ -261,45 +75,41 @@ class MailController extends Controller
 
         $id = Request('id');
 
-        $participants_addresses = [];
-        $participants_advocate_addresses = [];
-        $leader_addresses = [];
-        $leader_advocate_addresses = [];
-        $otherAddress = [];
+        $address = [];
 
         if(Request('participant')){
             $localAddresses = \App\registration::all();
             foreach($localAddresses as $localAddress){
-                $participants_addresses[] = $localAddress->email;
+                $address[] = $localAddress->email;
             }
         }
 
         if(Request('participantAdvocate')){
             $localAddresses = \App\registration::all();
             foreach($localAddresses as $localAddress){
-                $participants_advocate_addresses[] = $localAddress->email_advocate;
+                $address[] = $localAddress->email_advocate;
             }
         }
 
         if(Request('leader')){
             $localAddresses = \App\registrations_leader::all();
             foreach($localAddresses as $localAddress){
-                $leader_addresses[] = $localAddress->email;
+                $address[] = $localAddress->email;
             }
         }
 
         if(Request('leaderAdvocate')){
             $localAddresses = \App\registrations_leader::all();
             foreach($localAddresses as $localAddress){
-                $leader_advocate_addresses[] = $localAddress->email_advocate;
+                $address[] = $localAddress->email_advocate;
             }
         }
 
         if(Request('email')){
-            $otherAddress[] = Request('email');
+            $address[] = Request('email');
         }
 
-        $this->SendMail($participants_addresses, $participants_advocate_addresses, $leader_addresses, $leader_advocate_addresses, $otherAddress, $id);
+        $this->SendMail($address, $id);
 
         return redirect('admin/mail');
     }

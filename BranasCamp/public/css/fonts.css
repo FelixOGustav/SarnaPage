@@ -1,11 +1,13 @@
 @font-face {
     font-family: "ChampagneLimousines";
     src: url(../Fonts/champagne__limousines-webfont.woff2);
+    src: url(../Fonts/Champagne&Limousines.ttf);
 }
 
 @font-face {
     font-family: "Elkwood";
     src: url(../Fonts/elkwood-webfont.woff2);
+    src: url(../Fonts/Elkwood.otf);
 }
 
 p {

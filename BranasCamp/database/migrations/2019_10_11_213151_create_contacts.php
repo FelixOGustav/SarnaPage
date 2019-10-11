@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePlaces extends Migration
+class CreateContacts extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreatePlaces extends Migration
      */
     public function up()
     {
-        Schema::create('places', function (Blueprint $table) {
-            $table->increments('placeID');
-            $table->string('placename', 36);
+        Schema::create('contacts', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer("groupID");
+            $table->string("name", 100);
+            $table->string("contact_info", 100);
+            $table->timestamps();
         });
     }
 
@@ -26,6 +29,6 @@ class CreatePlaces extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('places');
+        Schema::dropIfExists('contacts');
     }
 }

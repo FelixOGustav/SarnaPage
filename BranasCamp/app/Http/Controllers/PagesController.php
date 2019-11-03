@@ -389,10 +389,12 @@ class PagesController extends Controller
 
     public function EditStart(){
         $infos = \App\startpage_info::all();
+        $info_type = \App\startpage_type::all();
         $contacts = \App\contact::all();
+        $contacts_group = \App\contact_group::all();
         $faqs = \App\faq::all();
 
-        return view('AdminPages/editstart', ['infos' => $infos,'faqs' => $faqs, 'contacts' => $contacts]);   
+        return view('AdminPages/editstart', ['infos' => $infos, 'info_types' => $info_type,'faqs' => $faqs, 'contacts' => $contacts, 'contact_groups' => $contacts_group]);   
     }
 
     public function EditInfo($id){
@@ -410,7 +412,6 @@ class PagesController extends Controller
 
         $info->title = Request('title');
         $info->body = Request('body');
-        $info->img = Request('image');
         $info->type = Request('type');
 
         $info->save();
@@ -463,7 +464,7 @@ class PagesController extends Controller
             $contact = new \App\contact();
         }
 
-        $contact->group = Request('group');
+        $contact->groupID = Request('group');
         $contact->name = Request('name');
         $contact->contact_info = Request('contact_info');
 

@@ -9,7 +9,6 @@
                 <th>Titel</th>
                 <th>Brödtext</th>
                 <th>Typ</th>
-                <th>bild</th>
                 <th>Redigera</th>
                 <th>Radera</th>
             </thead>
@@ -19,7 +18,6 @@
                         <td>{{$info->title}}</td>
                         <td>{{$info->body}}</td>
                         <td>{{$info->type}}</td>
-                        <td><img src="{{URL::asset($info->img)}}" style="height: 150px;"></td>
                         <td><a href="/admin/editinfo/{{$info->id}}" class="btn btn-info">Redigera</a></td>
                         <td><a href="/admin/removeinfo/{{$info->id}}" class="btn btn-danger">Ta bort</a></td>
                     </tr>
@@ -41,13 +39,10 @@
             <div style="color: #606569;">
                 <h4>Typ</h4>
                 <select name="type" id="type">
-                    <option value="sidebyside">Side by Side</option>
-                    <option value="imagebelow">Image below</option>
+                    @foreach ($info_types as $type)
+                    <option value="{{$type->type}}">{{$type->type}}</option>    
+                    @endforeach
                 </select>
-            </div>
-            <div style="color: #606569;">
-                <h4>Bild</h4>
-                <input type="text" name="image" id="image" style="width: calc(100% - 15px);">
             </div>
 
             <button type="submit" class="btn btn-primary" style="margin-top: 50px;">Spara</button>
@@ -108,7 +103,13 @@
             <tbody>
                 @foreach ($contacts as $contact)
                     <tr>
-                        <td>{{$contact->group}}</td>
+                        <td>
+                            @foreach($contact_groups as $group)
+                                @if($contact->groupID == $group->id)
+                                    {{$group->groupName}}
+                                @endif
+                            @endforeach
+                        </td>
                         <td>{{$contact->name}}</td>
                         <td>{{$contact->contact_info}}</td>
                         <td><a href="/admin/editcontact/{{$contact->id}}" class="btn btn-info">Redigera</a></td>
@@ -122,8 +123,12 @@
             {{ csrf_field() }}
             <div style="color: #606569;">
                 <h4>Grupp <p>Alla med samma grupp kommer hamna under samma rubrik</p></h4>
-                <input type="text" name="group" id="group" style="width: calc(100% - 15px);">
-            </div>
+                    <select name="group" id="group">
+                        @foreach ($contact_groups as $group)
+                        <option value="{{$group->id}}">{{$group->groupName}}</option>    
+                        @endforeach
+                    </select>
+                </div>
             <div style="color: #606569;">
                 <h4>Namn</h4>
                 <input type="text" name="name" id="name" style="width: calc(100% - 15px);">

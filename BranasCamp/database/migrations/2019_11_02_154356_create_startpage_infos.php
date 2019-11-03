@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateContactsGroups extends Migration
+class CreateStartpageInfos extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateContactsGroups extends Migration
      */
     public function up()
     {
-        Schema::create('contact_groups', function (Blueprint $table) {
+        Schema::table('startpage_infos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string("groupName", 100);
+            $table->string("type", 100);
+            $table->string("title", 200)->nullable();
+            $table->text("body")->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +29,8 @@ class CreateContactsGroups extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contact_groups');
+        Schema::table('startpage_infos', function (Blueprint $table) {
+            //
+        });
     }
 }

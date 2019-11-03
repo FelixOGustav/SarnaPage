@@ -269,132 +269,30 @@
                     <h1>Kontakt</h1>
                     <!-- Kontakt lägerchefer -->
                     <div>
-                        <h2><br>Lägerledning</h2>
-                        <table style="display: flex; justify-content: center;">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <h5 style="margin-right: 5px;">Jonatan Davidsson</h5>
-                                    </td>
-                                    <td>
-                                        <p style="margin-top: 8px; margin-left: 5px;">0713 37 13 37</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <h5 style="margin-right: 5px;">Louise Persson</h5>
-                                    </td>
-                                    <td>
-                                        <p style="margin-top: 8px; margin-left: 5px;">0709-80 90 14</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <h5 style="margin-right: 5px;">Alice Rydsom</h5>
-                                    </td>
-                                    <td>
-                                        <p style="margin-top: 8px; margin-left: 5px;">0767-07 19 95</p>
-                                    </td>
-                                </tr>
-                           </tbody>
-                        </table>
+                        @foreach ($contact_groups as $group)
+                            <h2><br>{{$group->groupName}}</h2>
+                            <table style="display: flex; justify-content: center;">
+                                <tbody>
+                                    @foreach ($contacts as $contact)
+                                        @if($contact->groupID == $group->id)
+                                        <tr>
+                                            <td>
+                                                <h5 style="margin-right: 5px;">{{$contact->name}}</h5>
+                                            </td>
+                                            <td>
+                                                <p style="margin-top: 8px; margin-left: 5px;">{{$contact->contact_info}}</p>
+                                            </td>
+                                        </tr>    
+                                        @endif
+                                    @endforeach
+                            </tbody>
+                            </table>
+                        @endforeach
                     </div>
                     <!-- Kontakt lägerchefer end -->
-
-                    <!-- Kontakt krisgrupp -->
-                    <div>
-                        <h2><br>krisgrupp</h2>
-                        <table style="display: flex; justify-content: center;">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <h5 style="margin-right: 5px;">Karl karlsson</h5>
-                                    </td>
-                                    <td>
-                                        <p style="margin-top: 8px; margin-left: 5px;">0713 37 13 37</p>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- Kontakt krisgrupp end -->
-
-                    <!-- Kontakt Uthyrning -->
-                    <div>
-                        <h2><br>Uthyrning Utrustning</h2>
-                        <table style="display: flex; justify-content: center;">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <h5 style="margin-right: 5px;">Karl karlsson</h5>
-                                    </td>
-                                    <td>
-                                        <p style="margin-top: 8px; margin-left: 5px;">0713 37 13 37</p>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- Kontakt Uthyrning end -->
-
-                    <!-- Kontakt Liftkort -->
-                    <div>
-                        <h2><br>Liftkort</h2>
-                        <table style="display: flex; justify-content: center;">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <h5 style="margin-right: 5px;">Karl karlsson</h5>
-                                    </td>
-                                    <td>
-                                        <p style="margin-top: 8px; margin-left: 5px;">0713 37 13 37</p>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- Kontakt Liftkort end -->
-
-                    <!-- Kontakt sjukvårdsansvarig -->
-                    <div>
-                        <h2><br>sjukvårdsansvarig</h2>
-                        <table style="display: flex; justify-content: center;">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <h5 style="margin-right: 5px;">Karl karlsson</h5>
-                                    </td>
-                                    <td>
-                                        <p style="margin-top: 8px; margin-left: 5px;">0713 37 13 37</p>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- Kontakt sjukvårdsansvarig end -->
-
-                    
-                    <!-- Kontakt köksansvarig -->
-                    <div>
-                        <h2><br>köksansvarig</h2>
-                        <table style="display: flex; justify-content: center;">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <h5 style="margin-right: 5px;">Karl karlsson</h5>
-                                    </td>
-                                    <td>
-                                        <p style="margin-top: 8px; margin-left: 5px;">0713 37 13 37</p>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- Kontakt köksansvarig end -->
                 </div>
-            </div>
             <!-- Kontakt info end -->
-
+        </div>   
     </div>
 
     <!-- Main Site Content End -->

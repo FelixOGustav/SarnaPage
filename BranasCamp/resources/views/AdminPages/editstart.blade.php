@@ -90,6 +90,41 @@
 
 <div class="panel">
     <div class="sidescrollcontent">
+        <h2>Hantera kontakt-grupper</h2>
+        <hr>
+        <table style="color: #606569; white-space: normal;" class="table table-hover">
+            <thead>
+                <th>Grupp namn</th>
+                <th>Flytta upp</th>
+                <th>Flytta ner</th>
+                <th>Redigera</th>
+                <th>Radera</th>
+            </thead>
+            <tbody>
+                @foreach ($contact_groups as $group)
+                    <tr>
+                        <td>{{$group->groupName}}</td>
+                        <td><a href="/admin/editcontactgroup/{{$group->id}}/up" class="btn btn-warning"><i class="fas fa-arrow-up"></i></a></td>
+                        <td><a href="/admin/editcontactgroup/{{$group->id}}/down" class="btn btn-warning"><i class="fas fa-arrow-down"></i></a></td>
+                        <td><a href="/admin/editcontactgroup/{{$group->id}}" class="btn btn-info">Redigera</a></td>
+                        <td><a href="/admin/removecontactgroup/{{$group->id}}" class="btn btn-danger">Ta bort</a></td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+
+        <hr>
+        <form action="/admin/editcontactgroup" method="POST">
+            <h2>Lägg till grupp</h2>
+            {{ csrf_field() }}
+            <div style="color: #606569;">
+                <h4>Gruppnamn</h4>
+                <input type="text" name="name" id="name" style="width: calc(100% - 15px);">
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="margin-top: 50px;">Spara</button>
+        </form>
+        <hr>
         <h2>Hantera kontakter</h2>
         <hr>
         <table style="color: #606569; white-space: normal;" class="table table-hover">

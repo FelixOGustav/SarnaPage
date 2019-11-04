@@ -24,13 +24,22 @@ class PagesController extends Controller
     protected $camp;
 
     public function index(){
-        $camp = \App\camp::find(1);
+        $camp = \App\camp::where('active', 1)->first();
         //$infos = \App\startpage_info::all();
         $contacts = \App\contact::all();
-        $groups = \App\contact_group::all();
+        $groups = \App\contact_group::orderBy('order', 'asc')->get();;
         $faqs = \App\faq::all();
+
+        for($i = 0; $i < $groups->count(); $i++){
+            $groups[$i]->populated = false; 
+            foreach($contacts as $contact){
+                if($contact->groupID == $groups[$i]->id){
+                    $groups[$i]->populated = true;
+                }
+            }
+        }
         //return view('Pages/index', ['links' => $this->StartPagelinkslinks, 'camp' => $camp, 'infos' => $infos, 'contacts' => $contacts, 'groups' => $groups, 'faqs' => $faqs]);
-        return view('Pages/index', ['links' => $this->StartPagelinkslinks, 'camp' => $camp]);
+        return view('Pages/index', ['links' => $this->StartPagelinkslinks, 'camp' => $camp, 'contacts' => $contacts, 'contact_groups' => $groups, 'faqs' => $faqs]);
     }
 
     public function template(){
@@ -391,7 +400,7 @@ class PagesController extends Controller
         $infos = \App\startpage_info::all();
         $info_type = \App\startpage_type::all();
         $contacts = \App\contact::all();
-        $contacts_group = \App\contact_group::all();
+        $contacts_group = \App\contact_group::orderBy('order', 'asc')->get();
         $faqs = \App\faq::all();
 
         return view('AdminPages/editstart', ['infos' => $infos, 'info_types' => $info_type,'faqs' => $faqs, 'contacts' => $contacts, 'contact_groups' => $contacts_group]);   
@@ -484,6 +493,61 @@ class PagesController extends Controller
     public function EditStartContact($id){
         $contact = \App\contact::find($id);
         return view('AdminPages/editcontact', ['contact' => $contact]);
+    }
+
+    public function AddContactGroup() {
+        $contact_group = new \App\contact_group();
+        $contact_group->groupName = Request('name');
+        $contact_group->order = \App\contact_group::orderby('order', 'asc')->get()->last()->order + 1;
+        $contact_group->save();
+        return redirect('admin/editstart');
+    }
+
+    public function EditContactGroup($id){
+        $contacts_group = \App\contact_group::find($id);
+        $contacts_group->groupName = Request("groupName");
+        return redirect('admin/editstart');
+    }
+
+    public function RemoveContactGroup($id){
+        $contacts_group = \App\contact_group::find($id);
+        $contacts_group->delete();  
+        return redirect('admin/editstart');
+    }
+    
+    public function EditContactGroupOrder($id, $dir){
+        $offset;
+        if($dir == "up"){
+            $offset = -1;
+        } else if ($dir == "down"){
+            $offset = 1;
+        } else {
+            return "Could not identify direction";
+            return "Invalid direction";
+        }
+
+        if(($id == 0 && $dir == "up") || ($id == \App\contact::all()->last()->id && $dir == "down")){
+            return "Invalid direction";
+            return redirect('admin/editstart');
+        }
+
+        $contact = \App\contact_group::find($id);
+        $contact_other = \App\contact_group::find($id + $offset);
+        
+        $orderFrom = $contact->order;
+        $orderTo = $contact_other->order;
+        
+        $contact->order = 999999;
+        $contact->save();
+        $contact_other->order = 555555;
+        $contact_other->save();
+        
+        $contact->order = $orderTo;
+        $contact->save();
+        $contact_other->order = $orderFrom;
+        $contact_other->save();
+        
+        return redirect('admin/editstart');
     }
 }
 

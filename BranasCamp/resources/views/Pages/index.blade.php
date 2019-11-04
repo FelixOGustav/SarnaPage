@@ -4,7 +4,7 @@
     <div class="ScaleStartPageLogo">
         <img  class="bigLogo" src="../img/branaslagret.svg" alt="Särnalägret">
         <h1 class="dateLogo">27 dec - 1 jan</h1>        
-        <h1 class="dateLogo">2018 - 2019</h1>
+        <h1 class="dateLogo">2019 - 2020</h1>
         
         @if($camp->open > 0)
             <div class="container-fluid d-flex justify-content-center">
@@ -18,7 +18,7 @@
             </div>
         @else
             <div class="container-fluid d-flex justify-content-center">
-                <p class="buttonStyle" style="color: white; font-size: 27px; cursor: default;">Anmälan är stängd</p>
+                <p class="buttonStyle" style="color: white; font-size: 27px; cursor: default;">Anmälan öppnar 5 nov 19:00</p>
             </div>
         @endif
     </div>
@@ -98,9 +98,9 @@
         
         <div class="container-fluid startPageInfo paddingBottom">
             <h1>Plats</h1>
-            <h3>Vi sover i Kvistbergskolan i Sysslebäck, Värmland. Vi åker skidor i Branäs</h3>
+            <h3>Vi bor i Kvistbergskolan i Sysslebäck, Värmland. Vi åker skidor i Branäs-</h3>
             <h1>Åldersgräns</h1>
-            <h3>För dig som är född 2005 eller tidigare</h3>
+            <h3>För dig som är född 2006 eller tidigare.</h3>
         </div>
 
         <div class="invisibleSpacer"></div>
@@ -109,44 +109,47 @@
         <div class="container-fluid bg-white paddingBottom paddingTop" id="branaslagretInfo">
             <div class=" container centerTextInDiv">
                 <h1>Vad är Branäslägret?</h1>
-                <p>Branäslägret är ett nyårsläger som varje år arrangeras av Equmeniaförsamlingarna i Vårgårda och Herrljungtrakten.
-                    Lägret riktar sig till tonåringar (födda senast 2005) och bjuder på en vecka av skidåkning, snack om Gud och bibel,
+                <p>Branäslägret är ett nyårsläger som varje år arrangeras av Equmeniaförsamlingarna i Vårgårda- och Herrljungtrakten.
+                    Lägret riktar sig till tonåringar (födda senast 2006) och bjuder på en vecka av skidåkning, snack om Gud och bibel,
                     gamla och nya vänner, aktiviteter av olika slag och mängder med tillfällen att njuta av livet! Lägret hålls i Kvistbergskolan
-                    i Sysslebäck, 10 min norr om Branäs
+                    i Sysslebäck, 10 min norr om Branäs.
                 </p>
-                <h1><br>Hur kan en dag se ut</h1>
-                <p>En vanlig dag börjar med frukost i matsalen. Därefter träffas tonåringar och ledare från respektive ort för att snacka
-                    om hur tonåringarna upplever lägret, presentera dagens aktiviteter och tema och kanske leka en lek tillsammans. Runt 9
-                    går bussarna mot Branäs för dem som skall till pisten. Väl där serveras sedan en lättare mack-lunch vid kl 12.
-                    Bussarna kommer sedan tillbaka från backen senast kl 17, då väntar en god kvällsmat. På eftermiddagen träffas man med sin
-                    tvärgrupp. Tvärgruppen består av en grupp tonåringar från olika orter men i ungefär samma ålder. Tillsammans med ett par 
-                    ledare pratar man om hur dagen har varit, om dagens bibeltext, man lär känna varandra, prata och har roligt. För de 
-                    deltagare som inte åker iväg till Branäs finns det gott om fria aktiviteter på skolan, spela spel, pyssla, idrotta eller 
-                    bara slappa och ha de gött. Under kvällen är det ofta spex och något roligt program i matsalen innan det är dags för en andakt. 
-                    Andakaterna är delade i två delar. Under det första stunden vill vi att alla deltagare är med, sedan följer en frivilig del 
-                    för dem som vill stanna lite längre. På andakterna sjunger man tillsammans och lyssnar på någon som berättar om sin tro. 
-                    För den som är hungrig serveras en lättare kvällsmat efter andakten, och sen är det läggdags som gäller! 
-                    <br>
-                    Branäslägret är ett läger med kristen grund. Alla som hjälper till med lägret har en relation till kyrkan och en personlig 
-                    tro på Gud. För oss är den kristna tron en central byggsten i våra liv, men oavsett vilken tro eller livsåskådning du har 
-                    är du alltid välkommen på våra läger!
+                <h1><br>Hur kan en dag se ut?</h1>
+                <p>En vanlig dag på Branäslägret börjar med frukost i matsalen. Därefter träffas deltagare och ledare från respektive 
+                    ort och för att prata om hur deltagarna upplever lägret och kanske leker någon lek. Dagens tema och aktiviteter 
+                    presenteras. Klockan nio går bussarna mot Branäs för de som ska till pisten. Klockan 12 serveras en lättare lunch 
+                    i backen. Sista bussen från backen är hemma klockan 17, lagom till en god kvällsmat. För de deltagare som inte 
+                    åker till pisten finns en mängd olika aktiviteter att göra på skolan. Exempelvis idrotta, spela spel, pyssla, 
+                    slappa eller åka iväg på kortare utflykter. På eftermiddagen, när alla ledare och deltagare är hemma på skolan 
+                    igen, träffas man i så kallade tvärgrupper. En tvärgrupp består av deltagare i samma åldrar från olika orter. 
+                    Ett utmärkt sätt att lära känna nya vänner! I tvärgruppen pratar man om hur dagen har varit, leker någon lek, 
+                    läser och diskuterar dagens bibeltext. På kvällen är det spex och underhållning i matsalen, samt kiosk och 
+                    insamling till ett välgörenhetsprojekt. Efter detta går man till sporthallen för att ha en andakt. Andakten är 
+                    uppdelad i två delar, en del där vi vill att alla är med och en frivillig del. På andakterna sjunger vi lovsång 
+                    tillsammans och lyssnar på någon som berättar om sin tro. När andakten är slut finns en kvällsmacka att äta innan 
+                    läggdags.
                 </p>
                 <h1><br>Vänta inte med att anmäla dig</h1>
-                <p>Det är högt tryck på platserna, så vänta inte med att anmäla dig! Anmälan öppnar i november här på hemsidan. Vi sover på luftmadrasser 
-                    som man tar med sig själva. Avfärd till lägret sker tidigt på morgonen den 27 Dec. Vi åker bussar upp till lägret. Hemfärd 
-                    sker den 1 Jan. Det är svårt att säga i förväg exakt vilken tid bussarna anländer då det beror på väder och väglag. Vi håller 
-                    ungdomarna informerade under resans gång!
+                <p>Det är högt tryck på platserna, så vänta inte med att anmäla dig! Anmälan öppnar i 5 november 
+                    och är öppen i en månad eller så fort lägret blir fullt. 
+                </p>
+                <h1><br>Daturm</h1>
+                <p>Avfärd till lägret sker tidigt på morgonen den 27:e december från Vårgårda Buss i Vårgårda. 
+                    Vi åker buss upp till Branäs och stannar i Kristinehamn för att äta en medhavd lunch. Hemfärd 
+                    från Branäs sker på morgonen den 1 januari. Vilken tid på eftermiddagen vi anländer till Vårgårda 
+                    beror på väder och väglag. Mer praktisk information och exakta tider kommer på mail till de som 
+                    anmält sig till lägret när anmälan har stängt. 
+
                 </p>
                 <h1><br>För föräldrar</h1>
-                <p>Branäslägret anordnas av flera Equmeniaförsamlingar i Vårgårda- & Herrljungtrakten. Lägret är en plats där ungdomar får lära känna nya 
-                    vänner i sin alla åldrar, men också skapar viktiga relationer till ledare och vuxna, vilket kan bli till ett stort stöd till tonåringarna.
-                    <br>
-                    Lägret har fått vara en mötesplats för nya bekantskaper och en plats där tonåringar och unga vuxna fått möjlighet att växa i sig 
-                    själv och i en eventuell tro. Branäslägret är ett läger med en kristen grund. Alla som hjälper till med lägret har en relation 
-                    till kyrkan och en personlig tro på Gud. För oss är den kristen tron en central byggsten i våra liv, men oavsett vilken tro eller 
-                    livsåskådning du har är du alltid välkommen på våra läger! Vi ledare som är med och jobbar inför lägret är väldigt förväntansfulla 
-                    och ser fram emot ännu ett härligt nyårsläger med mycket snö, glädje, kärlek och Gud.
-                    <br>
+                <p>Branäslägret arrangeras av Equmeniaförsamlingar runt Vårgårda - och Herrljungatrakten. Lägret är 
+                    en plats för ungdomarna att lära känna nya vänner, ha roligt och få höra om den kristna tron. 
+                    Branäslägret är ett läger med kristen grund. Alla ledare som är med och hjälper till med lägret 
+                    har en relation till kyrkan och en personlig tro på Jesus. För oss är den kristna tron en central 
+                    byggsten i våra liv men oavsett vilken tro eller livsåskådning man har är alla välkomna på våra läger!
+                    <br><br>
+                    Vi som är ledare på lägret är väldigt förväntansfulla och ser fram emot ännu ett härligt 
+                    nyårsläger med mycket snö, glädje, kärlek och Gud! <br>
                     Vi hoppas att alla som vill ska hänga med oss till Branäslägret!
                 </p>
             </div>
@@ -209,66 +212,49 @@
             </div>
             <div class="container">
                 <div class="row">
+                @for($i = 0; $i < $faqs->count(); $i++)
                     <!-- Left row -->
-                   <div class="qnaBound">
-                        <!-- Question 1-->
-                        <div class="col qnaBtnSize">
-                            <div class="qnaBox BGGrey text-center">
-                                <div>
-                                    <h2 data-toggle="collapse" href="#question1" aria-expanded="false" aria-controls="collapseExample" class="whiteColor" style="cursor: pointer;">Syskonrabatt</h2>
-                                </div>
-                                <div class="collapse" id="question1">
-                                    <p class="whiteColor">Till årets läger är syskonrabatten borttagen för att lägeravgiften är sänkt. Skulle ekonomin vara ett problem så kontakta din equmeniaförening så hjälper de till. Ekonomin ska inte vara ett hinder för att åka med på lägret.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Question 1 end-->
-                        <!-- Question 2-->
-                        <div class="col qnaBtnSize">
-                            <div class="qnaBox BGGrey text-center">
-                                <div>
-                                    <h2 data-toggle="collapse" href="#question2" aria-expanded="false" aria-controls="collapseExample" class="whiteColor" style="cursor: pointer;">Hur går betalningen till?</h2>
-                                </div>
-                                <div class="collapse" id="question2">
-                                    <p class="whiteColor">Betalningen görs via faktura som skickas till den epost som anges vid anmälan. Detta sker innan lägret och ska betalas innan lägret. OBS! Kan du av någon anledning inte ta emot fakturan via epost så måste du kontakta antingen lägerledningen eller webbansvarig.</p>
+                    @if($i % 2 == 1)
+                        <div class="qnaBound">
+                            <!-- Question 1-->
+                            <div class="col qnaBtnSize">
+                                <div class="qnaBox BGGrey text-center">
+                                    <div>
+                                        <h2 data-toggle="collapse" href="#question{{$faqs[$i]->id}}" aria-expanded="false" aria-controls="collapseExample" class="whiteColor" style="cursor: pointer;">{{$faqs[$i]->question}}</h2>
+                                    </div>
+                                    <div class="collapse" id="question{{$faqs[$i]->id}}">
+                                        <p class="whiteColor">{{$faqs[$i]->answer}}</p>
+                                    </div>
                                 </div>
                             </div>
+                            <!-- Question 1 end-->
+                            <!-- Add more questions here. Dont forget to change href and id for the collapse-->
                         </div>
-                        <!-- Question 2 end-->
-                        <!-- Add more questions here. Dont forget to change href and id for the collapse-->
-                    </div>
-                    <!-- Left row end-->
+                        <!-- Left row end-->
+                    @endif
+                    @endfor
+
                     <!-- Right row-->
-
-                    <div  class="qnaBound">
-                        <!-- Question 2-->
-                        <div class="col qnaBtnSize">
-                            <div class="qnaBox BGGrey text-center">
-                                <div>
-                                    <h2 data-toggle="collapse" href="#question3" aria-expanded="false" aria-controls="collapseExample" class="whiteColor" style="cursor: pointer;">Jag har inte fått ett aktiveringsmail</h2>
+                    @for($i = 0; $i < $faqs->count(); $i++)
+                    @if($i % 2 == 0)
+                        <div  class="qnaBound">
+                            <!-- Question 2-->
+                            <div class="col qnaBtnSize">
+                                <div class="qnaBox BGGrey text-center">
+                                    <div>
+                                        <h2 data-toggle="collapse" href="#question{{$faqs[$i]->id}}" aria-expanded="false" aria-controls="collapseExample" class="whiteColor" style="cursor: pointer;">{{$faqs[$i]->question}}</h2>
+                                    </div>
+                                    <div class="collapse" id="question{{$faqs[$i]->id}}">
+                                        <p class="whiteColor">{{$faqs[$i]->answer}}</p>
+                                    </div>
                                 </div>
-                                <div class="collapse" id="question3">
-                                    <p class="whiteColor">Den tjänst som hemsidan använder för att leverera säkra mail, kan ibland vara belastad. Därför kan det dröja mellan 5-10 minuter innan mailet kommer fram. I övrigt, ta en titt i alla de olika inkorgarna, kanske har det hamnat i skräpposten. Om mailet fortfarande inte kommit fram efter några timmar så kontakta din ungdomsledare, hen kan logga in och se om du är anmäld.</p>
-                                </div>
-                            </div>
-                        </div>            
-                        <!-- Question 3 end-->
-
-                        <!-- Question 4-->
-                        <div class="col qnaBtnSize">
-                            <div class="qnaBox BGGrey text-center">
-                                <div>
-                                    <h2 data-toggle="collapse" href="#question4" aria-expanded="false" aria-controls="collapseExample" class="whiteColor" style="cursor: pointer;">När får jag mer information?</h2>
-                                </div>
-                                <div class="collapse" id="question4">
-                                    <p class="whiteColor">Ett mejl kommer att skickas ut med mer information angående lägret i mitten av december. Där kommer du få information om bland annat avgång, packlista m.m.</p>
-                                </div>
-                            </div>
-                        </div>                    
-                        <!-- Question 4 end-->
-                        <!-- Add more questions here. Dont forget to change href and id for the collapse-->
-                    </div>
-                    <!-- Right row end -->
+                            </div>            
+                            <!-- Question 3 end-->
+                            <!-- Add more questions here. Dont forget to change href and id for the collapse-->
+                        </div>
+                        <!-- Right row end -->
+                    @endif
+                    @endfor
                 </div>
             </div>
         </div>
@@ -286,146 +272,30 @@
                     </div>
                     <!-- Kontakt lägerchefer -->
                     <div>
-                        <h2><br>Lägerledning</h2>
-                        <table style="display: flex; justify-content: center;">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <h5 style="margin-right: 5px;">Jonatan Davidsson</h5>
-                                    </td>
-                                    <td>
-                                        <p style="margin-top: 8px; margin-left: 5px;">0703 27 40 31</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <h5 style="margin-right: 5px;">Louise Persson</h5>
-                                    </td>
-                                    <td>
-                                        <p style="margin-top: 8px; margin-left: 5px;">0709-80 90 14</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <h5 style="margin-right: 5px;">Alice Rydsom</h5>
-                                    </td>
-                                    <td>
-                                        <p style="margin-top: 8px; margin-left: 5px;">0767-07 19 95</p>
-                                    </td>
-                                </tr>
-                           </tbody>
-                        </table>
+                        @foreach ($contact_groups as $group)
+                            @if($group->populated)
+                            <h2><br>{{$group->groupName}}</h2>
+                            <table style="display: flex; justify-content: center;">
+                                <tbody>
+                                    @foreach ($contacts as $contact)
+                                        @if($contact->groupID == $group->id)
+                                        <tr>
+                                            <td>
+                                                <h5 style="margin-right: 5px;">{{$contact->name}}</h5>
+                                            </td>
+                                            <td>
+                                                <p style="margin-top: 8px; margin-left: 5px;">{{$contact->contact_info}}</p>
+                                            </td>
+                                        </tr>    
+                                        @endif
+                                    @endforeach
+                            </tbody>
+                            </table>
+                            @endif
+                        @endforeach
                     </div>
                     <!-- Kontakt lägerchefer end -->
-
-                    <!-- Kontakt krisgrupp -->
-                    <div>
-                        <h2><br>krisgrupp</h2>
-                        <table style="display: flex; justify-content: center;">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <h5 style="margin-right: 5px;">Alice Marinder</h5>
-                                    </td>
-                                    <td>
-                                        <p style="margin-top: 8px; margin-left: 5px;">0730-81 88 89</p>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- Kontakt krisgrupp end -->
-                    <!-- Kontakt webbadmin start -->
-                    <div>
-                        <h2><br>Webb-admin</h2>
-                        <table style="display: flex; justify-content: center;">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <h5 style="margin-right: 5px;">Gustav Råkeberg och Felix Brunnegård</h5>
-                                    </td>
-                                    <td>
-                                        <p style="margin-top: 8px; margin-left: 5px;">webb@branaslagret.se</p>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- Kontakt webbadmin end -->
-                    <!-- Kontakt Uthyrning -->
-                    <div>
-                        <h2><br>Uthyrning Utrustning</h2>
-                        <table style="display: flex; justify-content: center;">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <h5 style="margin-right: 5px;">Rickard Martinsson</h5>
-                                    </td>
-                                    <td>
-                                        <p style="margin-top: 8px; margin-left: 5px;">0706-30 30 88</p>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- Kontakt Uthyrning end -->
-
-                    <!-- Kontakt Liftkort -->
-                    <div>
-                        <h2><br>Liftkort</h2>
-                        <table style="display: flex; justify-content: center;">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <h5 style="margin-right: 5px;">Martin Olausson</h5>
-                                    </td>
-                                    <td>
-                                        <p style="margin-top: 8px; margin-left: 5px;">0709 61 98 46</p>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- Kontakt Liftkort end -->
-
-                    <!-- Kontakt sjukvårdsansvarig -->
-                    <div>
-                        <h2><br>Sjukvårdsansvarig</h2>
-                        <table style="display: flex; justify-content: center;">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <h5 style="margin-right: 5px;">Joakim Alriksson</h5>
-                                    </td>
-                                    <td>
-                                        <p style="margin-top: 8px; margin-left: 5px;">0707 44 10 51</p>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- Kontakt sjukvårdsansvarig end -->
-
-                    
-                    <!-- Kontakt köksansvarig -->
-                    <div>
-                        <h2><br>Köksansvarig</h2>
-                        <table style="display: flex; justify-content: center;">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <h5 style="margin-right: 5px;">Markus Andersson</h5>
-                                    </td>
-                                    <td>
-                                        <p style="margin-top: 8px; margin-left: 5px;">0702 84 88 85</p>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- Kontakt köksansvarig end -->
                 </div>
-            </div>
             <!-- Kontakt info end -->
 
     </div>

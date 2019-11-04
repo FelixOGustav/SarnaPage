@@ -162,7 +162,7 @@
         <div class="container-fluid bg-white paddingBottom paddingTop" id="prisInfo">
             <div class="centerTextInDiv">
                 <h1>Pris</h1>
-                <h3>Lägeravgift - 1500 kr</h3>
+                <h3>Lägeravgift - 1450 kr</h3>
                 <br>
                 <h2>Skidor och lifkort beställs senare, mer information om detta kommer med mail i december</h2>
                 <h2>Liftkort (Ungdom 8-15)</h2>

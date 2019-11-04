@@ -125,7 +125,26 @@ class CampRegistrationController extends Controller
 
         // Build the birthday string
         $birthday = $year . "-" . $month . "-" . $day;
-
+        
+         // parse birthdate and last four from personnummer
+         $ssnAdvocate = Request('socialSecurityNumberAdvocate');
+         $ssnAdvocate = preg_replace('/[^0-9]/', '', $ssnAdvocate);
+         $yearAdvocate = substr($ssnAdvocate, 0, 2);
+         $monthAdvocate = substr($ssnAdvocate, 2, 2);
+         $dayAdvocate = substr($ssnAdvocate, 4, 2);
+         $lastfourAdvocate = substr($ssnAdvocate, 6, 4);
+ 
+         // Add correct century, since it originaly doesn't contain it
+         if((int)$yearAdvocate > 40){
+             $yearAdvocate = "19" . $yearAdvocate;
+         }
+         else {
+             $yearAdvocate = "20" . $yearAdvocate;
+         }
+ 
+         // Build the birthday string
+         $birthdayAdvocate = $yearAdvocate . "-" . $monthAdvocate . "-" . $dayAdvocate;
+ 
         $registration->first_name = Request('firstName');
         $registration->last_name = Request('lastName');
         $registration->birthdate = $birthday;
@@ -138,6 +157,8 @@ class CampRegistrationController extends Controller
         $registration->allergy = Request('allergy');
         $registration->first_name_advocate = Request('firstNameAdvocate');
         $registration->last_name_advocate = Request('lastNameAdvocate');
+        $registration->birthdate_advocate = $birthdayAdvocate;
+        $registration->last_four_advocate = $lastfourAdvocate;
         $registration->email_advocate = Request('emailAdvocate');
         $registration->phone_number_advocate = Request('phoneNumberAdvocate');
         $registration->home_number = Request('homeNumberAdvocate');
@@ -145,12 +166,14 @@ class CampRegistrationController extends Controller
         $registration->member_place = Request('memberPlace');
         $registration->other = Request('other');
         $registration->terms = Request('terms');
-        if(Request('discount')){
+        $registration->camp_id = 1;
+        /*if(Request('discount')){
             $registration->discount = Request('discount');
         }
         else {
             $registration->discount = '0';
         }
+        */
 
         $registrations = \App\registration::all();
         foreach($registrations as $otherReg){
@@ -233,14 +256,15 @@ class CampRegistrationController extends Controller
         $registration->member_place = Request('memberPlace');
         $registration->other = Request('other');
         $registration->terms = Request('terms');
-        if(Request('discount')){
+        $registration->camp_id = 1;
+        /*if(Request('discount')){
             $registration->discount = Request('discount');
         }
         else {
             $registration->discount = '0';
-        }
-        $registration->kitchen = 0;
-
+        }*/
+        $registration->kitchen = Request('kitchen');
+        
         $registrations = \App\registrations_leader::all();
         foreach($registrations as $otherReg){
             if($registration->birthdate == $otherReg->birthdate && $registration->last_four == $otherReg->last_four){

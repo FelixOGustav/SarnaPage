@@ -25,15 +25,9 @@
                         <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Namnsson" required>
                     </div>
                 </div>
-                <div class="form-row">
-                    <div class="form-group col-9">
-                        <label for="year">Föddelseår</label>
-                        <input type="text" class="form-control" id="birthdate" name="birthdate" placeholder="1337-13-37" required>
-                    </div>
-                    <div class="form-group col-3">
-                        <label for="inputAddress2">Fyra sista</label>
-                        <input type="text" class="form-control" id="fourLast" name="fourLast" placeholder="XXXX" required>
-                    </div>
+                <div class="form-group col-md-12 noPadding">
+                    <label for="firstName">Personnummer</label>
+                    <input type="text" class="form-control" maxlength="10" id="socialSecurityNumber" name="socialSecurityNumber" placeholder="ÅÅMMDDXXXX" required>
                 </div>
                 <div class="form-group container-fluid noPadding">
                     <label for="inputCity">Adress</label>
@@ -53,12 +47,16 @@
                         <label for="firstName">E-post</label>
                         <input type="email" class="form-control" id="email" name="email" placeholder="namn.namnsson@namn.se" required>
                     </div>
+                    <div class="form-group col-md-12 noPadding">
+                        <label for="firstName">E-post bekräftelse</label>
+                        <input type="email" class="form-control" id="emailConfirm" name="emailConfirm" placeholder="namn.namnsson@namn.se" onpaste="return false;" required>
+                    </div>
                     <div class="form-group container-fluid noPadding">
                             <label for="inputCity">Telefon</label>
                             <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="0713-371337" required> 
                     </div>
                     <div>
-                        <label for="allergy">Allergi</label>
+                        <label for="allergy">Allergi (max 300 tecken)</label>
                         <textarea class="form-control container-fluid" name="allergy" id="allergy" cols="165" rows="5"></textarea>
                     </div>
                     <div>
@@ -111,15 +109,19 @@
                     </div>
                 </div>
                 <div class="form-group col-md-12 noPadding">
-                        <label for="firstName">E-post</label>
-                        <input type="email" class="form-control" id="emailAdvocate" name="emailAdvocate" placeholder="namn.namnsson@namn.se" required>
+                    <label for="firstName">E-post</label>
+                    <input type="email" class="form-control" id="emailAdvocate" name="emailAdvocate" placeholder="namn.namnsson@namn.se" required>
+                </div>
+                <div class="form-group col-md-12 noPadding">
+                    <label for="firstName">E-post bekräftelse</label>
+                    <input type="email" class="form-control" id="emailAdvocateConfirm" name="emailAdvocateConfirm" placeholder="namn.namnsson@namn.se" onpaste="return false;" required>
                 </div>
                 <div class="form-group container-fluid noPadding">
                         <label for="inputCity">Telefon</label>
                         <input type="text" class="form-control" id="phoneNumberAdvocate" name="phoneNumberAdvocate" placeholder="0713-371337" required> 
                 </div>
                 <div class="form-group container-fluid noPadding">
-                        <label for="inputCity">Hemtelefon</label>
+                        <label for="inputCity">Hemtelefon (ej obligatorisk)</label>
                         <input type="text" class="form-control" id="homeNumberAdvocate" name="homeNumberAdvocate" placeholder="0713-371337"> 
                 </div>
             </div>
@@ -181,5 +183,7 @@
             document.getElementById("pris").innerHTML = "Pris = Välj om du ska vara i köket för att se pris";
         }
     }
-</script>        
+</script>   
+<!-- Reference to js helper-->
+<script src="{{URL::asset('js/registrationHelper.js')}}"></script>    
 @endsection

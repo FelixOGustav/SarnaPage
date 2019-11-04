@@ -14,7 +14,7 @@ class CreateStartpageTypes extends Migration
     public function up()
     {
         Schema::table('startpage_types', function (Blueprint $table) {
-            $table->increments('id');
+            //$table->increments('id');
             $table->string('type', 100);
             $table->timestamps();
         });

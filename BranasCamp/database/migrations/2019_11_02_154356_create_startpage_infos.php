@@ -14,7 +14,7 @@ class CreateStartpageInfos extends Migration
     public function up()
     {
         Schema::table('startpage_infos', function (Blueprint $table) {
-            $table->increments('id');
+            //$table->increments('id');
             $table->string("type", 100);
             $table->string("title", 200)->nullable();
             $table->text("body")->nullable();

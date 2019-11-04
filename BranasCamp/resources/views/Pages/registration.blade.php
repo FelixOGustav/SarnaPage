@@ -23,7 +23,7 @@
                         <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Namnsson" required>
                     </div>
                 </div>
-                <div class="form-row">
+                <!--<div class="form-row">
                     <div class="form-group col-9">
                         <label for="year">Föddelseår</label>
                         <input type="text" class="form-control" id="birthdate" name="birthdate" placeholder="1337-13-37" required>
@@ -32,6 +32,10 @@
                         <label for="inputAddress2">Fyra sista</label>
                         <input type="text" class="form-control" id="fourLast" name="fourLast" placeholder="XXXX" required>
                     </div>
+                </div>-->
+                <div class="form-group col-md-12 noPadding">
+                    <label for="firstName">Personnummer</label>
+                    <input type="text" class="form-control" maxlength="10" id="socialSecurityNumber" name="socialSecurityNumber" placeholder="ÅÅMMDDXXXX" required>
                 </div>
                 <div class="form-group container-fluid noPadding">
                     <label for="inputCity">Adress</label>
@@ -51,13 +55,17 @@
                         <label for="firstName">E-post</label>
                         <input type="email" class="form-control" id="email" name="email" placeholder="namn.namnsson@namn.se" required>
                     </div>
+                    <div class="form-group col-md-12 noPadding">
+                        <label for="firstName">E-post bekräftelse</label>
+                        <input type="email" class="form-control" id="emailConfirm" name="emailConfirm" placeholder="namn.namnsson@namn.se" onpaste="return false;" required>
+                    </div>
                     <div class="form-group container-fluid noPadding">
                             <label for="inputCity">Telefon</label>
                             <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="0713-371337" required> 
                     </div>
                     <div>
-                        <label for="allergy">Allergi</label>
-                        <textarea class="form-control container-fluid" name="allergy" id="allergy" cols="165" rows="5"></textarea>
+                        <label for="allergy">Allergi (max 300 tecken)</label>
+                        <textarea class="form-control container-fluid" name="allergy" id="allergy" cols="165" rows="5" maxlength="300"></textarea>
                     </div>
                     <div>
                         <label for="other">Övrigt</label>
@@ -100,16 +108,34 @@
                         <input type="text" class="form-control" id="lastNameAdvocate" name="lastNameAdvocate" placeholder="Namnsson" required>
                     </div>
                 </div>
+                <!--<div class="form-row">
+                    <div class="form-group col-9">
+                        <label for="year">Föddelseår</label>
+                        <input type="text" class="form-control" id="birthDateAdvocate" name="birthDateAdvocate" placeholder="1337-13-37" required>
+                    </div>
+                    <div class="form-group col-3">
+                        <label for="inputAddress2">Fyra sista</label>
+                        <input type="text" class="form-control" id="fourLastAdvocate" name="fourLastAdvocate" placeholder="XXXX" required>
+                    </div>
+                </div>-->
+                <div class="form-group col-md-12 noPadding">
+                    <label for="firstName">Personnummer</label>
+                    <input type="text" class="form-control" maxlength="10" id="socialSecurityNumberAdvocate" name="socialSecurityNumberAdvocate" placeholder="ÅÅMMDDXXXX" required>
+                </div>
                 <div class="form-group col-md-12 noPadding">
                         <label for="firstName">E-post</label>
                         <input type="email" class="form-control" id="emailAdvocate" name="emailAdvocate" placeholder="namn.namnsson@namn.se" required>
+                </div>
+                <div class="form-group col-md-12 noPadding">
+                        <label for="firstName">E-post bekräftelse</label>
+                        <input type="email" class="form-control" id="emailAdvocateConfirm" name="emailAdvocateConfirm" placeholder="namn.namnsson@namn.se" onpaste="return false;" required>
                 </div>
                 <div class="form-group container-fluid noPadding">
                         <label for="inputCity">Telefon</label>
                         <input type="text" class="form-control" id="phoneNumberAdvocate" name="phoneNumberAdvocate" placeholder="0713-371337" required> 
                 </div>
                 <div class="form-group container-fluid noPadding">
-                        <label for="inputCity">Hemtelefon</label>
+                        <label for="inputCity">Hemtelefon (Ej obligatorisk)</label>
                         <input type="text" class="form-control" id="homeNumberAdvocate" name="homeNumberAdvocate" placeholder="0713-371337"> 
                 </div>
             </div>
@@ -149,7 +175,7 @@
         <!-- Start anmäningsknapp-->
             <div style="padding:5rem;">
                 <div style="text-align:center;">
-                        <h2 class="rubrikerAnmalan">Pris = 1500kr</h2>
+                        <h2 class="rubrikerAnmalan">Pris = 1450kr</h2>
                         <p>(Eventuell syskonrabatt hanteras av din medlemsförsamling, kontakta ortsansvariga för mer information)</p>
                         <br>
                         <input type="checkbox"  id="terms" name="terms"  value="1" required>
@@ -159,6 +185,7 @@
             </div>
         <!-- Slut anmäningsknapp   -->    
         </form>
-    
+<!-- Reference to js helper-->
+<script src="{{URL::asset('js/registrationHelper.js')}}"></script>    
 </div>                 
 @endsection

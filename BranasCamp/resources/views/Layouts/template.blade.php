@@ -112,7 +112,7 @@
     <div class="footerBG row" style="margin: 0px;" id="footerId">
         <div class="col" style="margin-top: auto; margin-bottom: auto; text-align: center">
             <a href="/about" class="same-as-p whiteColor scaleFooterTextToMobile">Om hemsidan<br><br></a>
-            <a href="/gdpr" class="same-as-p whiteColor scaleFooterTextToMobile">GDPR<br><br></a>
+            <a href="https://equmenia.se/personuppgiftspolicy/" class="same-as-p whiteColor scaleFooterTextToMobile">GDPR<br><br></a>
             <a href="/admin/login" class="same-as-p whiteColor scaleFooterTextToMobile">Admin-sidan</a>
         </div>
 

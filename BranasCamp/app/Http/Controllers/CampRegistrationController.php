@@ -16,7 +16,7 @@ class CampRegistrationController extends Controller
     // Return view for normal registration
     public function registration(){
         // Returns a 403 forbidden access if registration is closed
-        if(!\App\camp::find(1)->open){
+        if(!\App\camp::where('active', 1)->first()->open){
             abort(403);
         }
         
@@ -27,7 +27,7 @@ class CampRegistrationController extends Controller
     // Return view for leaders registration
     public function registrationLeader(){
         // Returns a 403 forbidden access if registration is closed
-        if(!\App\camp::find(1)->open){
+        if(!\App\camp::where('active', 1)->first()->open){
             abort(403);
         }
 
@@ -99,8 +99,9 @@ class CampRegistrationController extends Controller
     
     // Standard attendee
     public function store(){
-        $count = \App\registrations_leader::count() + \App\registration::count();
-        if($count > 379) {
+        $camp = \App\camp::where('active', 1)->first();
+        $count = \App\registration::count();
+        if($count >= $camp->participantSpots) {
             return redirect('/registrationfull');
         }
 
@@ -166,7 +167,7 @@ class CampRegistrationController extends Controller
         $registration->member_place = Request('memberPlace');
         $registration->other = Request('other');
         $registration->terms = Request('terms');
-        $registration->camp_id = 1;
+        $registration->camp_id = $camp->id;
         /*if(Request('discount')){
             $registration->discount = Request('discount');
         }
@@ -209,8 +210,9 @@ class CampRegistrationController extends Controller
 
     // leader attendee
     public function storeLeader(){
-        $count = \App\registrations_leader::count() + \App\registration::count();
-        if($count > 379) {
+        $camp = \App\camp::where('active', 1)->first();
+        $count = \App\registrations_leader::count();
+        if($count >= $camp->leaderSpots) {
             return redirect('/registrationfull');
         }
 
@@ -256,7 +258,7 @@ class CampRegistrationController extends Controller
         $registration->member_place = Request('memberPlace');
         $registration->other = Request('other');
         $registration->terms = Request('terms');
-        $registration->camp_id = 1;
+        $registration->camp_id = $camp->id;
         /*if(Request('discount')){
             $registration->discount = Request('discount');
         }
@@ -627,6 +629,10 @@ class CampRegistrationController extends Controller
         $cancelled_registration->allergy = $registration->allergy;
         $cancelled_registration->first_name_advocate =$registration->first_name_advocate;
         $cancelled_registration->last_name_advocate = $registration->last_name_advocate;
+        if($type == "participant") {
+            $cancelled_registration->birthdate_advocate = $registration->birthdate_advocate;
+            $cancelled_registration->last_four_advocate = $registration->last_four_advocate;
+        }
         $cancelled_registration->email_advocate = $registration->email_advocate;
         $cancelled_registration->verified_at = $registration->verified_at;
         $cancelled_registration->phone_number_advocate = $registration->phone_number_advocate;
@@ -638,6 +644,7 @@ class CampRegistrationController extends Controller
         $cancelled_registration->other = $registration->other;
         $cancelled_registration->terms = $registration->terms;
         $cancelled_registration->verification_key = $registration->verification_key;
+        $cancelled_registration->camp_id = $registration->camp_id;
         if($type != "participant")
             $cancelled_registration->kitchen = $registration->kitchen;
 
@@ -674,6 +681,10 @@ class CampRegistrationController extends Controller
         $registration->allergy = $cancelled_registration->allergy;
         $registration->first_name_advocate =$cancelled_registration->first_name_advocate;
         $registration->last_name_advocate = $cancelled_registration->last_name_advocate;
+        if($type == "participant") {
+            $registration->birthdate_advocate = $cancelled_registration->birthdate_advocate;
+            $registration->last_four_advocate = $cancelled_registration->last_four_advocate;
+        }
         $registration->email_advocate = $cancelled_registration->email_advocate;
         $registration->verified_at = $cancelled_registration->verified_at;
         $registration->phone_number_advocate = $cancelled_registration->phone_number_advocate;
@@ -685,6 +696,7 @@ class CampRegistrationController extends Controller
         $registration->other = $cancelled_registration->other;
         $registration->terms = $cancelled_registration->terms;
         $registration->verification_key = $cancelled_registration->verification_key;
+        $registration->camp_id = $cancelled_registration->camp_id;
         if($type != "participant")
             $registration->kitchen = $cancelled_registration->kitchen;
 
@@ -712,4 +724,14 @@ class CampRegistrationController extends Controller
             return 'Tjej';
         }
     }
+
+    /*
+    public static function CheckAndOpenRegistrationForActiveCamp() {
+        $camp = \App\camp::where('active', 1)->first();
+        if($camp->registrationOpen->gt(carbon::now())) {
+            $camp->open = 1;
+            $camp->save();
+        }
+    }
+    */
 }

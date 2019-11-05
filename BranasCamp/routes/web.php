@@ -116,7 +116,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/editcontact/{id}', 'PagesController@EditStartContact')->middleware('can:admin');
     Route::get('/admin/removecontact/{id}', 'PagesController@RemoveStartContact')->middleware('can:admin');
     Route::get('/admin/editcontactgroup/{id}', 'PagesController@EditContactGroup')->middleware('can:admin');
-    Route::get('/admin/editcontactgroup/{id}/{dir}', 'PagesController@EditContactGroupOrder')->middleware('can:admin');
+    Route::post('/admin/editcontactgroup/{id}', 'PagesController@SaveContactGroup')->middleware('can:admin');
+    Route::get('/admin/editcontactgrouporder/{id}/{dir}', 'PagesController@EditContactGroupOrder')->middleware('can:admin');
     Route::get('/admin/editcontactgroup/{id}/{dir}', 'PagesController@EditContactGroupOrder')->middleware('can:admin');
     Route::get('/admin/removecontactgroup/{id}', 'PagesController@RemoveContactGroup')->middleware('can:admin');
     Route::post('/admin/editcontactgroup/', 'PagesController@AddContactGroup')->middleware('can:admin');

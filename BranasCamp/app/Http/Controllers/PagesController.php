@@ -492,7 +492,8 @@ class PagesController extends Controller
     
     public function EditStartContact($id){
         $contact = \App\contact::find($id);
-        return view('AdminPages/editcontact', ['contact' => $contact]);
+        $contact_groups = \App\contact_group::all();
+        return view('AdminPages/editcontact', ['contact' => $contact, 'contact_groups' => $contact_groups]);
     }
 
     public function AddContactGroup() {
@@ -504,8 +505,15 @@ class PagesController extends Controller
     }
 
     public function EditContactGroup($id){
-        $contacts_group = \App\contact_group::find($id);
-        $contacts_group->groupName = Request("groupName");
+        $contact_group = \App\contact_group::find($id);
+        //$contact_group->groupName = Request("groupName");
+        return view('AdminPages/editcontactgroup', ['contact_group' => $contact_group]);
+    }
+
+    public function SaveContactGroup($id){
+        $contact_group = \App\contact_group::find($id);
+        $contact_group->groupName = Request("name");
+        $contact_group->save();
         return redirect('admin/editstart');
     }
 
@@ -516,23 +524,25 @@ class PagesController extends Controller
     }
     
     public function EditContactGroupOrder($id, $dir){
-        $offset;
+        $contact_other;
+        $contact = \App\contact_group::find($id);
+
         if($dir == "up"){
-            $offset = -1;
+            try{
+                $contact_other = \App\contact_group::where('order', $contact->order - 1)->first();
+            } catch(Exception $e) {
+                return redirect('admin/editstart');
+            }
         } else if ($dir == "down"){
-            $offset = 1;
+            try{
+                $contact_other = \App\contact_group::where('order', $contact->order + 1)->first();
+            } catch(Exception $e) {
+                return redirect('admin/editstart');
+            }
         } else {
             return "Could not identify direction";
             return "Invalid direction";
         }
-
-        if(($id == 0 && $dir == "up") || ($id == \App\contact::all()->last()->id && $dir == "down")){
-            return "Invalid direction";
-            return redirect('admin/editstart');
-        }
-
-        $contact = \App\contact_group::find($id);
-        $contact_other = \App\contact_group::find($id + $offset);
         
         $orderFrom = $contact->order;
         $orderTo = $contact_other->order;

@@ -21,12 +21,13 @@
                         <th class="tblheadcol" id="tbl-age">Ålder</th>
                         <th class="tblheadcol" id="tbl-birthdate">Födelsedag</th>
                     @endcan
-
+                    
                     @can('persnr')
-                        <th class="tblheadcol" id="tbl-lastfour">Sista fyra</th>
+                    <th class="tblheadcol" id="tbl-lastfour">Sista fyra</th>
                     @endcan
 
                     <th class="tblheadcol" id="tbl-time">Anmäld Tid</th>
+
                     @can('allergy')
                         <th class="tblheadcol" id="tbl-allergy">Allergi</th>
                     @endcan
@@ -65,6 +66,15 @@
 
                     @can('editregistration')
                         <th class="tblheadcol def-vis-col" id="tbl-edit">Ändra</th>
+                    @endcan                    
+
+                    @can('admin')
+                        <th class="tblheadcol def-vis-col" id="tbl-delete">
+                            @if($cancelled == false)
+                                Ta bort</th>
+                            @else 
+                                Återskapa
+                            @endif
                     @endcan
                     
                 </tr>
@@ -86,11 +96,11 @@
                             <td>{{$reg->birthdate}}</td>
                         @endcan
 
-                        <td>{{$reg->created_at}}</td> 
-                        
                         @can('persnr')
-                            <td>{{$reg->last_four}}</td>
+                        <td>{{$reg->last_four}}</td>
                         @endcan
+
+                        <td>{{$reg->created_at}}</td> 
 
                         @can('allergy')
                             <td class="tblheadcol" id="tbl-edit">{{$reg->allergy}}</td>
@@ -151,6 +161,29 @@
                         @can('editregistration')                    
                             <td><a href="/admin/editregistration/participant/{{$reg->id}}"><i class="fas fa-edit" style="color: #606569;"></i></a></td>
                         @endcan 
+
+                        @can('admin')
+                            @if($type == 'participant')
+                                @if($cancelled == 'cancelled')
+                                    <td><a href="/admin/restoreregistration/participant/{{$reg->id}}" class="btn btn-danger">                                    
+                                    <i class="fas fa-life-ring"></i>
+                                @else 
+                                    <td><a href="/admin/removeregistration/participant/{{$reg->id}}" class="btn btn-danger"> 
+                                    <i class="far fa-trash-alt"></i>
+                                @endif
+                                </a></td>
+                            @else 
+                                
+                                @if($cancelled == 'cancelled')
+                                    <td><a href="/admin/restoreregistration/leader/{{$reg->id}}" class="btn btn-danger">
+                                    <i class="fas fa-life-ring"></i>
+                                @else 
+                                    <td><a href="/admin/removeregistration/leader/{{$reg->id}}" class="btn btn-danger">
+                                    <i class="far fa-trash-alt"></i>
+                                @endif
+                                </a></td>
+                            @endif
+                        @endcan
 
                     </tr>
                 @endforeach

@@ -104,8 +104,8 @@
                 @foreach ($contact_groups as $group)
                     <tr>
                         <td>{{$group->groupName}}</td>
-                        <td><a href="/admin/editcontactgroup/{{$group->id}}/up" class="btn btn-warning"><i class="fas fa-arrow-up"></i></a></td>
-                        <td><a href="/admin/editcontactgroup/{{$group->id}}/down" class="btn btn-warning"><i class="fas fa-arrow-down"></i></a></td>
+                        <td><a href="/admin/editcontactgrouporder/{{$group->id}}/up" class="btn btn-warning"><i class="fas fa-arrow-up"></i></a></td>
+                        <td><a href="/admin/editcontactgrouporder/{{$group->id}}/down" class="btn btn-warning"><i class="fas fa-arrow-down"></i></a></td>
                         <td><a href="/admin/editcontactgroup/{{$group->id}}" class="btn btn-info">Redigera</a></td>
                         <td><a href="/admin/removecontactgroup/{{$group->id}}" class="btn btn-danger">Ta bort</a></td>
                     </tr>

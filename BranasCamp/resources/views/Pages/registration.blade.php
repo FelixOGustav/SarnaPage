@@ -181,7 +181,7 @@
                         <input type="checkbox"  id="terms" name="terms"  value="1" required>
                         <label  for="checkbox"><h4> Jag har läst, förstått och godkänt reglerna. </h4></label>
                 </div>
-                <button type="submit" style="margin-top: 10px; font-family: elkwood;" class="btn btn-primary centerImg whiteColor">Slutför Anmälan</button>
+                <button type="submit" style="margin-top: 10px; font-family: elkwood;" id="submitRegistration" class="btn btn-primary centerImg whiteColor">Slutför Anmälan</button>
             </div>
         <!-- Slut anmäningsknapp   -->    
         </form>

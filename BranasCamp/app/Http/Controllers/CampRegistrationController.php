@@ -15,9 +15,15 @@ class CampRegistrationController extends Controller
 
     // Return view for normal registration
     public function registration(){
+        $camp = \App\camp::where('active', 1)->first();
         // Returns a 403 forbidden access if registration is closed
-        if(!\App\camp::where('active', 1)->first()->open){
+        if(!$camp->open){
             abort(403);
+        }
+
+        $count = \App\registration::count();
+        if($count >= $camp->participantSpots) {
+            return redirect('/registrationfull');
         }
         
         $places = \App\place::orderBy('placename', 'ASC')->get();
@@ -26,9 +32,15 @@ class CampRegistrationController extends Controller
 
     // Return view for leaders registration
     public function registrationLeader(){
+        $camp = \App\camp::where('active', 1)->first();
         // Returns a 403 forbidden access if registration is closed
-        if(!\App\camp::where('active', 1)->first()->open){
+        if(!$camp->open){
             abort(403);
+        }
+
+        $count = \App\registrations_leader::count();
+        if($count >= $camp->leaderSpots) {
+            return redirect('/registrationfull');
         }
 
         $places = \App\place::orderBy('placename', 'ASC')->get();

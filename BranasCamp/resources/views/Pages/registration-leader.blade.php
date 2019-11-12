@@ -13,7 +13,7 @@
         {{ csrf_field() }}
     <div class="container">
         <!-- Start deltagare -->
-        <div style="margin-top: 5rem;"><h2 style="text-align: center;" class="rubrikerAnmalan">Deltagare</h2></div>
+        <div style="margin-top: 5rem;"><h2 style="text-align: center;" class="rubrikerAnmalan">Ledare</h2></div>
             <div>  
                 <div class="form-row">
                     <div class="form-group col-md-6">

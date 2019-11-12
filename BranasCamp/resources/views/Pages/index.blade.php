@@ -77,6 +77,14 @@
                                                 <input type="email" name="email" id="email"  style="width: 100%" placeholder="namn.namnsson@namn.se">
                                             </td>
                                         </tr>
+                                        <tr>
+                                            <td style="width: 15%;">
+                                                <label for="phoneNumber" style="float:right">Telefonnummer</label>
+                                            </td>
+                                            <td style="width: 85%; padding-right: 40px;">
+                                                <input type="text" name="phoneNumber" id="phoneNumber"  style="width: 100%" placeholder="0713-371337">
+                                            </td>
+                                        </tr>
                                     </tbody>                                    
                                 </table>
                                 <div class="container-fluid" style="text-align: center;">

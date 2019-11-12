@@ -529,7 +529,7 @@ class CampRegistrationController extends Controller
         $registration->last_name = Request('lastName');
         $registration->email = Request('email');
         $registration->email_advocate = Request('emailAdvocate');
-        $registration->place = Request('place');
+        $registration->place = Request('place') != null ? Request('place') : $registration->place;
         $registration->address = Request('address');
         $registration->zip = Request('zip');
         $registration->city = Request('city');

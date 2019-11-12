@@ -1,50 +1,65 @@
 @extends('Layouts/AdminTemplate')
 @section('adminContent')
-    <div class="">
-        <h2 style="text-align:left;">Ändra anmälan: {{$reg->id}}</h2>
-        @if($leader)
-            <form method="POST" action="/admin/editregistration/done/leader/{{$reg->id}}">
-        @else            
-            <form method="POST" action="/admin/editregistration/done/participant/{{$reg->id}}">
-        @endif            
-            {{ csrf_field() }}
-            <table style="width: 100%;">
-                <tbody>
-                    <tr>
-                        <th><label for="firstName">Förnamn</label></th>
-                        <th><input type="text"  style="width: 90%;"  id="firstName" name="firstName" value="{{$reg->first_name}}"></th>
-                    </tr>
-                    <tr>
-                        <th><label for="lastName">Efternamn</label></th>
-                        <th><input type="text"  style="width: 90%;"  id="lastName" name="lastName" value="{{$reg->last_name}}"></th>
-                    </tr>
-                    <!-- Epost ledare -->
-                    @if($leader)
-                    <tr>
-                        <th><label>Epost</label></th>
-                        <th><input type="email" class="form-control" style="width: 90%;"id="email" name="email" value="{{$reg->email}}"></th>
-                    </tr>
-                    <tr>
-                        <th><label>Epost Anhörig</label></th>
-                        <th><input type="email" class="form-control" style="width: 90%;" id="emailAdvocate" name="emailAdvocate" value="{{$reg->email_advocate}}"></th>
-                    </tr>
-                    <!-- Epost deltagare -->
-                    @else
-                    <tr>
-                        <th><label>Epost</label></th>
-                        <th><input type="email" class="form-control" style="width: 90%;" id="email" name="email" value="{{$reg->email}}"></th>
-                    </tr>
-                    <tr>
-                        <th><label>Epost Målsman</label></th>
-                        <th><input type="email" class="form-control" style="width: 90%;" id="emailAdvocate" name="emailAdvocate" value="{{$reg->email_advocate}}"></th>
-                    </tr>
-        
+    <div class="panel">
+        <div class="sidescrollcontent">
+            <h2 style="text-align:left;">Ändra anmälan: {{$reg->id}}</h2>
+            @if($leader)
+                <form method="POST" action="/admin/editregistration/done/leader/{{$reg->id}}">
+            @else            
+                <form method="POST" action="/admin/editregistration/done/participant/{{$reg->id}}">
+            @endif            
+                    {{ csrf_field() }}
+                    <div>
+                        <h4 for="firstName">Förnamn</h4>
+                        <input type="text" style="width: calc(100% - 15px); margin-bottom: 20px;" id="firstName" name="firstName" value="{{$reg->first_name}}" required>
+                    </div>
+                    <div>
+                        <h4 for="lastName">Efternamn</h4>
+                        <input type="text" style="width: calc(100% - 15px); margin-bottom: 20px;" id="lastName" name="lastName" value="{{$reg->last_name}}" required>
+                    </div>
+                    <div>
+                        <h4>Epost</h4>
+                        <input type="email" style="width: calc(100% - 15px); margin-bottom: 20px;" id="email" name="email" value="{{$reg->email}}" required>
+                    </div>
+                    <div>
+                        <h4>Epost @if($leader)Anhörig @else Målsman @endif</h4>
+                        <input type="email" style="width: calc(100% - 15px); margin-bottom: 20px;" id="emailAdvocate" name="emailAdvocate" value="{{$reg->email_advocate}}" required>
+                    </div>
+                    <div>
+                        <h4>Telefon</h4>
+                        <input type="text" style="width: calc(100% - 15px); margin-bottom: 20px;" id="phoneNumber" name="phoneNumber" value="{{$reg->phonenumber}}" required>
+                    </div>
+                    <div>
+                        <h4>Telefon @if($leader)Anhörig @else Målsman @endif</h4>
+                        <input type="text" style="width: calc(100% - 15px); margin-bottom: 20px;" id="phoneNumberAdvocate" name="phoneNumberAdvocate" value="{{$reg->phone_number_advocate}}" required>
+                    </div>
+                    <div>
+                        <h4>Address</h4>
+                        <input type="text" style="width: calc(100% - 15px); margin-bottom: 20px;" id="address" name="address" value="{{$reg->address}}" required>
+                    </div>
+                    <div>
+                        <h4>Postnr</h4>
+                        <input type="text" style="width: calc(100% - 15px); margin-bottom: 20px;" id="zip" name="zip" value="{{$reg->zip}}" required>
+                    </div>
+                    <div>
+                        <h4>Stad</h4>
+                        <input type="text" style="width: calc(100% - 15px); margin-bottom: 20px;" id="city" name="city" value="{{$reg->city}}" required>
+                    </div>
+                    @if(Auth::user()->can('admin'))
+                        <div>
+                            <h4 for="lastName">Ort</h4>
+                            <select id="place" name="place" style="width: calc(100% - 15px); margin-bottom: 20px;" required>
+                                @foreach($places as $place)
+                                    <option value="{{$place->placeID}}" @if($reg->place == $place->placeID) selected @endif>{{$place->placename}}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     @endif
-                </tbody>
-            </table>
-            <div class="centerTextInDiv">
-                <button type="submit" class="btn btn-primary" style="margin-top: 35px;">Spara</button> 
-            </div>
-        </form>
+                    
+                    <div class="centerTextInDiv">
+                        <button type="submit" class="btn btn-primary" style="margin-top: 35px;">Spara</button> 
+                    </div>
+                </form>
+        </div>
     </div> 
 @endsection

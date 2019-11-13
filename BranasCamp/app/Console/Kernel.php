@@ -13,7 +13,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        'app\Console\Commands\CloseRegistration',
+        'app\Console\Commands\OpenRegistration'
     ];
 
     /**

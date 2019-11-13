@@ -80,6 +80,10 @@ class OpenRegistration extends Command
             return true;
         }
 
+        if($camp->open == 1){
+            return true;
+        }
+
         return false;
     }
 }

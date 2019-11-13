@@ -51,7 +51,7 @@ class CloseRegistration extends Command
         }
         
         $currentTime = Carbon::now();
-        if($currentTime >= $camp->registrationCloses){
+        if($currentTime >= $camp->registrationCloses && $camp->open = 1){
             $camp->open = 0;
             $camp->late_open = 1;
             $camp->save();

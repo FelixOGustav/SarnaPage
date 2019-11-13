@@ -331,7 +331,8 @@ class CampRegistrationController extends Controller
     }
 
     // Standard attendee late registration
-    public function LateStore($key){
+    public function LateStore($key){        
+        $camp = \App\camp::where('active', 1)->first();
         
         // If there is no key valid or type is wrong the registration will be discarded and will redirect to invalid address
         $linkEntry = \App\late_registration_key::where('link_key', '=', $key)->first();
@@ -380,13 +381,14 @@ class CampRegistrationController extends Controller
         $registration->member_place = Request('memberPlace');
         $registration->other = Request('other');
         $registration->terms = Request('terms');
-        if(Request('discount')){
+        $registration->camp_id = $camp->id;
+        /*if(Request('discount')){
             $registration->discount = Request('discount');
         }
         else {
             $registration->discount = '0';
         }
-
+*/
         $registrations = \App\registration::all();
         foreach($registrations as $otherReg){
             if($registration->birthdate == $otherReg->birthdate && $registration->last_four == $otherReg->last_four){
@@ -424,6 +426,7 @@ class CampRegistrationController extends Controller
 
     // leader attendee late registration
     public function LateStoreLeader($key){
+        $camp = \App\camp::where('active', 1)->first();
 
         // If there is no key valid or type is wrong the registration will be discarded and will redirect to invalid address
         $linkEntry = \App\late_registration_key::where('link_key', '=', $key)->first();
@@ -473,13 +476,14 @@ class CampRegistrationController extends Controller
         $registration->other = Request('other');
         $registration->terms = Request('terms');
         $registration->kitchen = '0';
-        if(Request('discount')){
+        $registration->camp_id = $camp->id;
+        /*if(Request('discount')){
             $registration->discount = Request('discount');
         }
         else {
             $registration->discount = '0';
         }
-
+*/
         $registrations = \App\registrations_leader::all();
         foreach($registrations as $otherReg){
             if($registration->birthdate == $otherReg->birthdate && $registration->last_four == $otherReg->last_four){

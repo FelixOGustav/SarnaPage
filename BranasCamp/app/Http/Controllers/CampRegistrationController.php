@@ -217,6 +217,12 @@ class CampRegistrationController extends Controller
         // Send Email
         \Mail::to($registration->email_advocate)->send(new CampRegistration($registration, $verificationLink));
 
+        if(\App\registrations_leader::count() >= $camp->leaderSpots && \App\registration::count() >= $camp->participantSpots){
+            $camp->open = 0;
+            $camp->late_open = 1;
+            $camp->save();
+        }
+
         return redirect('/registration/done/participant/' . $registration->id);
     }
 
@@ -314,6 +320,12 @@ class CampRegistrationController extends Controller
         
         // Send Email
         \Mail::to($registration->email)->send(new CampRegistration($registration, $verificationLink));
+
+        if(\App\registrations_leader::count() >= $camp->leaderSpots && \App\registration::count() >= $camp->participantSpots){
+            $camp->open = 0;
+            $camp->late_open = 1;
+            $camp->save();
+        }
 
         return redirect('/registration/done/leader/' . $registration->id);
     }

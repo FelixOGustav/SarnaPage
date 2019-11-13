@@ -55,6 +55,8 @@ class CloseRegistration extends Command
             $camp->open = 0;
             $camp->late_open = 1;
             $camp->save();
+            $logMsg = "\n[CLOSED] :: Registration closed at: " . $currentTime;
+            file_put_contents(storage_path('logs/registrationLog.log'), $logMsg, FILE_APPEND);
         }
     }
 }

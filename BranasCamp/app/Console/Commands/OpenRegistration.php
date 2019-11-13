@@ -56,6 +56,8 @@ class OpenRegistration extends Command
             $camp->late_open = 0;
             $camp->open = 1;
             $camp->save();
+            $logMsg = "\n[OPEN] :: Registration opened at: " . $currentTime;
+            file_put_contents(storage_path('logs/registrationLog.log'), $logMsg, FILE_APPEND);
         }
     }
 

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use \Illuminate\Support\Facades\URL;
 use Artisan;
 use App;
+use \App\Mail\LateregistrationInvite;
 
 class PagesController extends Controller
 {
@@ -327,7 +328,8 @@ class PagesController extends Controller
 
     public function lateregistration(){
         $links = \App\late_registration_key::all();
-        return view('AdminPages/lateregistration', ['links' => $links]);
+        $registrations = \App\registrationqueue::all();
+        return view('AdminPages/lateregistration', ['links' => $links, 'registrations' => $registrations]);
     }
 
     public function addLateRegistration(){
@@ -358,6 +360,10 @@ class PagesController extends Controller
 
     public function removeLateRegistration($id){
         $link = \App\late_registration_key::find($id);
+        $linkedQueuedRegistration = \App\registrationqueue::where("linkId", $link->id)->first();
+        if($linkedQueuedRegistration != null){
+            $linkedQueuedRegistration->delete();
+        }
         $link->delete();
         return redirect('/admin/lateregistration');
     }
@@ -559,6 +565,99 @@ class PagesController extends Controller
         
         return redirect('admin/editstart');
     }
+
+
+
+    /************************************
+     * 
+    * Registration Queue
+     * 
+     ************************************/
+
+     
+    // Signup for late registration list
+    public function Lateregistrationsignup(){
+        $registration = new \App\registrationqueue();
+
+        $registration->name = Request('name');
+        $registration->email = Request('email');
+        if(Request('phoneNumber') != null)
+            $registration->phone = Request('phoneNumber');
+        if(Request('leader') != null)
+            $registration->leader = Request('leader');
+        $registration->save();
+        return redirect('/');
+    }
+
+    public function lateRegistrationQueue(){
+        $registrationparticipants = \App\registrationqueue::where('leader', 0)->get();
+        $registrationleaders = \App\registrationqueue::where('leader', 1)->get();
+        return view('AdminPages/lateregistrationqueue', ['registrationparticipants' => $registrationparticipants, 'registrationleaders' => $registrationleaders]);
+    }
+
+    public function sendLateRegLink($leader, $registrationid){
+        $registration = \App\registrationqueue::find($registrationid);
+        if($registration == null){
+            return redirect('/admin/lateregistration/queues');
+        }
+        
+        $key = \App\late_registration_key::find($registration->linkId);
+        if($key != null){
+            \Mail::to($registration->email)->send(new LateRegistrationInvite($registration->name, $key->link));
+            return redirect('/admin/lateregistration/queues');
+        }
+
+        $lateReg = new \App\late_registration_key();
+        $lateReg->link_key = $this->getRandomString(rand(15, 25));
+
+        if($registration->leader == 0){
+            $newLink = url("/lateregistration") .'/'. $lateReg->link_key;
+            $lateReg->leader = 0;
+        }
+        else {
+            $newLink = url("/lateregistration-leader") .'/'. $lateReg->link_key;
+            $lateReg->leader = 1;
+        }
+        $lateReg->link = $newLink;
+        
+        $links = \App\late_registration_key::all();
+        // Checks if link already exists
+        foreach($links as $link){
+            if($newLink == $link->link){
+                return redirect('/admin/lateregistration/queues');
+            }
+        }
+
+        $lateReg->save();
+        $registration->linkId = $lateReg->id;
+        $registration->save();
+
+        \Mail::to($registration->email)->send(new LateRegistrationInvite($registration->name, $newLink));
+
+        return redirect('/admin/lateregistration/queues');
+    }
+
+    public function RemoveLateRegistrationFromQueue($id){
+        $registration = \App\registrationqueue::find($id);
+        if($registration->linkId != null) {
+            $linkEntry = \App\late_registration_key::find($registration->linkId);
+            $linkEntry->delete();
+        }
+        $registration->delete();
+        return redirect('/admin/lateregistration/queues');
+    }
+
+    private function getRandomString($length) { 
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'; 
+        $randomString = ''; 
+      
+        for ($i = 0; $i < $length; $i++) { 
+            $index = rand(0, strlen($characters) - 1); 
+            $randomString .= $characters[$index]; 
+        } 
+      
+        return $randomString; 
+    } 
 }
 
 class PlacesStats {

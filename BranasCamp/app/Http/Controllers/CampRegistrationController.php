@@ -361,6 +361,25 @@ class CampRegistrationController extends Controller
 
         // Build the birthday string
         $birthday = $year . "-" . $month . "-" . $day;
+
+        // parse birthdate and last four from personnummer
+        $ssnAdvocate = Request('socialSecurityNumberAdvocate');
+        $ssnAdvocate = preg_replace('/[^0-9]/', '', $ssnAdvocate);
+        $yearAdvocate = substr($ssnAdvocate, 0, 2);
+        $monthAdvocate = substr($ssnAdvocate, 2, 2);
+        $dayAdvocate = substr($ssnAdvocate, 4, 2);
+        $lastfourAdvocate = substr($ssnAdvocate, 6, 4);
+
+        // Add correct century, since it originaly doesn't contain it
+        if((int)$yearAdvocate > 40){
+            $yearAdvocate = "19" . $yearAdvocate;
+        }
+        else {
+            $yearAdvocate = "20" . $yearAdvocate;
+        }
+
+        // Build the birthday string
+        $birthdayAdvocate = $yearAdvocate . "-" . $monthAdvocate . "-" . $dayAdvocate;
         
         $registration->first_name = Request('firstName');
         $registration->last_name = Request('lastName');
@@ -376,6 +395,8 @@ class CampRegistrationController extends Controller
         $registration->last_name_advocate = Request('lastNameAdvocate');
         $registration->email_advocate = Request('emailAdvocate');
         $registration->phone_number_advocate = Request('phoneNumberAdvocate');
+        $registration->birthdate_advocate = $birthdayAdvocate;
+        $registration->last_four_advocate = $lastfourAdvocate;
         $registration->home_number = Request('homeNumberAdvocate');
         $registration->place = Request('place');
         $registration->member_place = Request('memberPlace');
@@ -417,6 +438,12 @@ class CampRegistrationController extends Controller
         
         // Send Email
         \Mail::to($registration->email_advocate)->send(new CampRegistration($registration, $verificationLink));
+
+        // If the link is connected to one in the queue, remove that queue entry
+        $registrationQueue = \App\registrationqueue::where('linkId', $linkEntry->id)->first();
+        if($registrationQueue != null){
+            $registrationQueue->delete();
+        }
 
         // Removes key from table so it cant be used again
         $linkEntry->delete();
@@ -520,6 +547,12 @@ class CampRegistrationController extends Controller
         // Send Email
         \Mail::to($registration->email)->send(new CampRegistration($registration, $verificationLink));
 
+        // If the link is connected to one in the queue, remove that queue entry
+        $registrationQueue = \App\registrationqueue::where('linkId', $linkEntry->id)->first();
+        if($registrationQueue != null){
+            $registrationQueue->delete();
+        }
+
         // Removes key from table so it cant be used again
         $linkEntry->delete();
 
@@ -609,19 +642,6 @@ class CampRegistrationController extends Controller
             }            
         }
         return redirect('admin/registrationlists/'.$type);
-    }
-
-    // Signup for late registration list
-    public function Lateregistrationsignup(){
-
-        $mailable = Request('name') .' :: ' .Request('email');
-        \Mail::raw($mailable, function ($message) {
-            $message->from(Request('email'), Request('name'));
-            $message->to('latereglist@explorelagret.se', 'Sen anmälan');
-            $message->subject('Sen Anmälan för '.Request('name'));
-        });
-
-        return redirect('/');
     }
 
     private function SpotFree(){

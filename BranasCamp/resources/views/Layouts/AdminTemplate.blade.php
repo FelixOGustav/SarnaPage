@@ -172,6 +172,12 @@
                     </a>
                 </li>
                 <li class="sidebarbutton">
+                    <a href="/admin/lateregistration/queues">
+                        <i class="fas fa-user-friends"></i>
+                        <span>Efteranmälan Kö</span>
+                    </a>
+                </li>
+                <li class="sidebarbutton">
                     <a href="/admin/mail">
                         <i class="fas fa-envelope"></i>
                         <span>Mail</span>

@@ -20,6 +20,13 @@
                             <p id="customlink{{$link->id}}" >{{$link->link}}</p>
                         </td>
                         <td>
+                            @foreach($registrations as $registration)
+                                @if($registration->linkId == $link->id)
+                                    <p>Skickad till: {{$registration->name}}</p>
+                                @endif
+                            @endforeach
+                        </td>
+                        <td>
                             <button onclick="copyToClipboard('#customlink{{$link->id}}')" class="btn button-green">Kopiera</button>
                         </td>
                         <td>

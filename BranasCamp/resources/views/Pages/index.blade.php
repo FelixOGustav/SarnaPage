@@ -43,8 +43,27 @@
             </div>
         </div>
     @else 
-        <!-- Modal efter registration-->
+
+        <!-- Modal efter registrering val-->
         <div class="modal fade" id="registerChoiseModal" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header justify-content-center">
+                        <h4 class="text-center">Deltagare Eller Ledare?</h4>
+                    </div>
+                    <div class="modal-body ">
+                        <div class="row">
+                            <button class="col modalButtonStyle lateRegTypeChoice" data-toggle="modal" data-target="#registerModal" data-dismiss="modal" data-regtype="participant"><h3 class="whiteColor">Deltagare</h3></button>
+                            <button class="col modalButtonStyle lateRegTypeChoice" data-toggle="modal" data-target="#registerModal" data-dismiss="modal" data-regtype="leader"><h3 class="whiteColor">Ledare</h3></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal efter registrering-->
+        <div class="modal fade" id="registerModal" role="dialog">
             <div class="modal-dialog">
                 <!-- Modal content-->
                 <div class="modal-content">
@@ -85,6 +104,7 @@
                                                 <input type="text" name="phoneNumber" id="phoneNumber"  style="width: 100%" placeholder="0713-371337">
                                             </td>
                                         </tr>
+                                        <input type="hidden" id="leader" name="leader">
                                     </tbody>                                    
                                 </table>
                                 <div class="container-fluid" style="text-align: center;">
@@ -365,6 +385,23 @@
                 return false
             })
         })
+
+        $(function(){
+            $(".lateRegTypeChoice").click(function(){
+                console.log($(this).data("regtype"));
+                
+                var $target = $(event.target);
+                if($(this).data("regtype") == "leader"){
+                    console.log("Found type: leader");
+                    $("#leader").val(1);
+                }
+                else{
+                    console.log("Found type: participant");
+                    $("#leader").val(0);
+                }
+            })
+        })
+
     </script>
     <!-- scroll to top btn end -->
     

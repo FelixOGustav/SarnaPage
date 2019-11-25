@@ -54,6 +54,16 @@
                                 @endforeach
                             </select>
                         </div>
+
+                        @if($leader)
+                            <div>
+                                <h4 for="kitchen">Kökspersonal</h4>
+                                <select name="kitchen" id="kitchen" style="width: calc(100% - 15px); margin-bottom: 20px;" required>
+                                    <option value="1"@if($reg->kitchen == 1) selected @endif>Ja, {{$reg->first_name}} är snål</option>
+                                    <option value="0"@if($reg->kitchen == 0) selected @endif>Nej, {{$reg->first_name}} vill sova</option>
+                                </select>
+                            </div>
+                        @endif
                     @endif
                     
                     <div class="centerTextInDiv">

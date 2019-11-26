@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use \Illuminate\Support\Facades\URL;
 use Artisan;
 use App;
-use \App\Mail\LateregistrationInvite;
+use \App\Mail\LateRegistrationInvite;
 
 class PagesController extends Controller
 {
@@ -362,7 +362,8 @@ class PagesController extends Controller
         $link = \App\late_registration_key::find($id);
         $linkedQueuedRegistration = \App\registrationqueue::where("linkId", $link->id)->first();
         if($linkedQueuedRegistration != null){
-            $linkedQueuedRegistration->delete();
+            $linkedQueuedRegistration->linkId = null;
+            $linkedQueuedRegistration->save();
         }
         $link->delete();
         return redirect('/admin/lateregistration');

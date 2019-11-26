@@ -18,7 +18,7 @@
             </div>
         @else
             <div class="container-fluid d-flex justify-content-center">
-                <p class="buttonStyle" style="color: white; font-size: 27px; cursor: default;">Anmälan öppnar 5 nov 19:00</p>
+                <p class="buttonStyle" style="color: white; font-size: 27px; cursor: default;">Anmälan är stängd. Vi ses nästa år!</p>
             </div>
         @endif
     </div>

@@ -570,6 +570,7 @@ class CampRegistrationController extends Controller
         }
         else{
             $registration = \App\registrations_leader::find($id);
+            $registration->kitchen = Request('kitchen') != null ? Request('kitchen') : $registration->kitchen;
             $leader = true;
         }
 
@@ -579,7 +580,6 @@ class CampRegistrationController extends Controller
         $registration->email = Request('email');
         $registration->email_advocate = Request('emailAdvocate');
         $registration->place = Request('place') != null ? Request('place') : $registration->place;
-        $registration->kitchen = Request('kitchen') != null ? Request('kitchen') : $registration->kitchen;
         $registration->address = Request('address');
         $registration->zip = Request('zip');
         $registration->city = Request('city');

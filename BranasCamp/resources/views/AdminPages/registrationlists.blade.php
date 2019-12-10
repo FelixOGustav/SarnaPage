@@ -61,6 +61,8 @@
                             <th class="tblheadcol" id="tbl-kitchen">Köket</th>
                         @endif
                     @endcan
+
+                    <th class="tblheadcol" id="tbl-gender">Kön</th>
                     
                     <th class="tblheadcol def-vis-col" id="tbl-confirmed">Bekräftat</th>
 
@@ -147,6 +149,12 @@
                                 @endif
                             @endif
                         @endcan
+
+                        @if($reg->last_four[2] % 2 == 0)
+                            <td class="tblheadcol" id="tbl-gender">Tjej</td>
+                        @else
+                            <td class="tblheadcol" id="tbl-gender">Kille</td>
+                        @endif
 
                         @if($reg->verified_at != null)
                             <td><img src="{{URL::asset('img/greenDot.png')}}"></td>

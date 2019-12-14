@@ -128,6 +128,7 @@
                 <thead style="color: #606569;">
                     <tr>
                         <th>Ämne</th>
+                        <th>Bifogad fil</th>
                         <th>Val</th>
                     </tr>
                 </thead>
@@ -135,6 +136,11 @@
                     @foreach($mails as $mail)
                         <tr style="color: #606569;">
                             <td>{{$mail->subject}}</td>
+                            @if($mail->attachment == null)
+                                <td><i>Inget bifogat</i></td>
+                            @else
+                                <td>{{$mail->attachment_send_name}}</td>
+                            @endif
                             <td>                               
                                 <a class="btn btn-secondary" style="color:white;" data-toggle="modal" data-target="#previewmodal" onclick="updatePreviewModal('/test/mail/{{$mail->id}}')">Förhandsgranska</a> 
                                 <a class="btn btn-success" style="color:white;" data-toggle="modal" data-target="#sendmodal" onclick="updateSendModal({{$mail->id}})">välj mottagare</a> 
@@ -158,7 +164,7 @@
         <h1>Nytt Mail</h1>
     </div>
     <div class="sidescrollcontent">
-        <form method="POST" action="/admin/mail/new" id="newMail">
+        <form method="POST" action="/admin/mail/new" id="newMail" enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="form-row" style="margin: 0px;">
                 <div class="form-group" style="width: 100%;">
@@ -172,6 +178,14 @@
                     <textarea name="body" id="body" cols="30" rows="10" form="newMail" style="width: calc(100% - 14px);"></textarea>
                 </div>
             </div>  
+            <div class="form-row" style="margin: 0px;">
+                <div class="form-group" style="width: 100%;">
+                    <label for="attachment" style="">Bifoga fil</label>
+                    <div>
+                        <input type="file" name="attachment" id="attachment" style="width: calc(100% - 12px);">
+                    </div>
+                </div>
+            </div>
             <button type="submit" class="buttonStyle" style="background-color: #606569;"><p>Spara</p></button>
         </form>
     </div>

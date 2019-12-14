@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use App\Mail\MassMail;
 use App\Jobs\SendMassEmailJob;
 use Session;
+use Illuminate\Support\Facades\Storage;
 
 class MailController extends Controller
 {
@@ -45,12 +46,29 @@ class MailController extends Controller
     }
 
     // Stores a new email
-    public function Store(){
+    public function Store(Request $request){
+        $this->validate($request, [
+            'attachment' => 'mimetypes:application/pdf|nullable|max:1999'
+        ]);
+
         $mail = new \App\mail();
+        
+        // Handle file attachment upload
+        if($request->hasFile('attachment')){
+            // Get filename and set it to a uniqe name
+            $fileNameWithExt = $request->file('attachment')->getClientOriginalName(); // Check what to use for pdf
+            $fileNameWithoutExt = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('attachment')->getClientOriginalExtension();
+            $fileNameToStore = $fileNameWithoutExt.'_'.time().'.'.$extension;
+
+            // Upload
+            $path = $request->file('attachment')->storeAs('mailAttachments', $fileNameToStore);
+            $mail->attachment = $fileNameToStore;
+            $mail->attachment_send_name = $fileNameWithExt;
+        } 
 
         $mail->subject = Request('subject');
         $mail->body = Request('body');
-
         $mail->save();
         
         return redirect('/admin/mail');
@@ -120,7 +138,9 @@ class MailController extends Controller
 
         $newMail->subject = $mail->subject;
         $newMail->body = $mail->body;
-
+        if($mail->attachment != null){
+            $newMail->attachment = $mail->attachment;
+        }
         $newMail->Save();
 
         return redirect('admin/mail');
@@ -148,8 +168,8 @@ class MailController extends Controller
 
     public function Remove($id) {
         $mail = \App\mail::find($id);
+        Storage::delete('mailAttachments/'.$mail->attachment);
         $mail->delete();
-
         return redirect('admin/mail');
     }
 }

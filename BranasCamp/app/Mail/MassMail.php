@@ -30,7 +30,16 @@ class MassMail extends Mailable
      */
     public function build()
     {
-        return $this->view('Emails/defaultmail')
-                    ->subject($this->mail->subject);
+        if($this->mail->attachment == null){
+            return $this->view('Emails/defaultmail')
+                        ->subject($this->mail->subject);
+        } else {
+            return $this->view('Emails/defaultmail')
+                        ->subject($this->mail->subject)
+                        ->attach(\storage_path('app/mailAttachments/'.$this->mail->attachment), [
+                            'as' => $this->mail->attachment_send_name,
+                            'mime' => 'application/pdf',
+                        ]);
+        }
     }
 }

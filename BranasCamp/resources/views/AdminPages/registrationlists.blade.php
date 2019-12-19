@@ -51,6 +51,9 @@
                         <th class="tblheadcol" id="tbl-email">Epost</th>
                     @endcan
 
+                    <th class="tblheadcol" id="tbl-first-name-advocate">Förnamn Anhörig</th>
+                    <th class="tblheadcol" id="tbl-last-name-advocate">Efternamn Anhörig</th>
+
                     @can('contact_info_advocate')
                         <th class="tblheadcol" id="tbl-phone-advocate">Telefon Anhörig</th>
                         <th class="tblheadcol" id="tbl-email-advocate">Epost Anhörig</th>
@@ -135,6 +138,10 @@
                             <td class="tblheadcol" id="tbl-edit">{{$reg->phonenumber}}</td>
                             <td class="tblheadcol" id="tbl-edit">{{$reg->email}}</td>
                         @endcan
+
+                        <td class="tblheadcol" id="tbl-first-name-advocate">{{$reg->first_name_advocate}}</td>
+                        <td class="tblheadcol" id="tbl-last-name-advocate">{{$reg->last_name_advocate}}</td>
+
                         @can('contact_info_advocate')
                             <td class="tblheadcol" id="tbl-edit">{{$reg->phone_number_advocate}}</td>
                             <td class="tblheadcol" id="tbl-edit">{{$reg->email_advocate}}</td>

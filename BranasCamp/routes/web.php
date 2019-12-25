@@ -88,11 +88,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/mail/duplicate/{id}', 'MailController@Duplicate')->middleware('can:admin');
     Route::get('/admin/mail/clearsendstats/{id}', 'MailController@ClearSendStats')->middleware('can:admin');
     Route::get('/admin/schedule/{date?}', 'AppController@EditSchedule')->middleware('can:schedule');
+    Route::get('/admin/schedule/edit/{date}', 'AppController@EditEvent')->middleware('can:schedule');
+    Route::post('/admin/schedule/update/{date}', 'AppController@UpdateEvent')->middleware('can:schedule');
     Route::post('/admin/schedule/save/{day}', 'AppController@SaveDay')->middleware('can:schedule');
     Route::get('/admin/schedule/delete/{id}', 'AppController@DeleteEvent')->middleware('can:schedule');
     Route::post('/admin/schedule/newactivity', 'AppController@NewEvent')->middleware('can:schedule');
     Route::get('/admin/seminars', 'PagesController@Seminars')->middleware('can:seminars');
     Route::post('/admin/seminar/new', 'PagesController@NewSeminar')->middleware('can:seminars');
+    Route::post('/admin/seminar/info/save', 'PagesController@saveSeminarInfo')->middleware('can:seminars');
     Route::get('/admin/seminar/delete/{id}', 'PagesController@DeleteSeminar')->middleware('can:seminars');
     Route::get('/admin/seminar/edit/{id}', 'PagesController@EditSeminar')->middleware('can:seminars');
     Route::post('/admin/seminar/update', 'PagesController@UpdateSeminar')->middleware('can:seminars');

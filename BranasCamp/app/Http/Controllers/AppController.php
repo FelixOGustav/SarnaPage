@@ -81,6 +81,24 @@ class AppController extends Controller
         return redirect('/admin/schedule/'.Carbon::parse($event->time)->format('Y-m-d'));
     }
 
+    public function EditEvent($id){
+        $event = \App\schedule_event::find($id);
+
+        return view('adminPages/editScheduleEvent', ['event' => $event]);
+    }
+
+    public function UpdateEvent($id){        
+        $event = \App\schedule_event::find($id);
+
+        $event->time = Request('time');
+        $event->time_end = Request('time_end');
+        $event->titel = Request('titel');
+        $event->description = Request('description');
+        $event->save();
+
+        return redirect('/admin/schedule/'.Carbon::parse($event->time)->format('Y-m-d'));
+    }
+
     public function NewEvent(){
         $event = new \App\schedule_event();
         $event->titel = Request('titel');

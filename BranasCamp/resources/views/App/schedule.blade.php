@@ -33,7 +33,7 @@
                 <h1 class="whiteColor">{{$date}} {{$month}}</h1>
                 <h5 class="whiteColor">Info om dagen</h5>
                 @foreach ($days as $day)
-                    @if($day->date == '2018-12-'.$date || $day->date == '2019-01-'.$date)
+                    @if($day->date == '2019-12-'.$date || $day->date == '2020-01-'.$date)
                         <p class="whiteColor" style="font-size: 14px;">{{$day->info}}</p>
                     @endif
                 @endforeach

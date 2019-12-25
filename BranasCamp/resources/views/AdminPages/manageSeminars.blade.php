@@ -5,7 +5,7 @@
         <h1 style="text-align: center;">Hantera Seminarier</h1>
 
         <h4>Generell info</h4>
-        <form action="/admin/seminar/info/save/" method="post" id="seminarInfo">
+        <form action="/admin/seminar/info/save" method="POST" id="seminarInfo">
             {{ csrf_field() }}
             <div class="row" style="margin: 0px;">
                 <textarea name="info" id="info" cols="30" rows="4" form="seminarInfo" style="width: 100%; text-align:center;">{{$seminarInfo->description}}</textarea>
@@ -22,7 +22,7 @@
     
         <div class="collapse newActivityPanel" id="newActivity">
             <h4 style="text-align: center;">Nytt seminarium</h4>
-            <form action="/admin/seminar/new" method="post">
+            <form action="/admin/seminar/new" method="POST">
                 {{ csrf_field() }}
                 <div class="container" style="margin-top: 20px">
                     <div style="position: relative">
@@ -100,7 +100,7 @@
                                 <a href="/admin/seminar/delete/{{$seminar->id}}" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
                             </span>
                         </td>
-                        <td>{{$seminar->titel}}</td>
+                        <td>{{$seminar->title}}</td>
                         <td>{{$seminar->description}}</td>
                         <td>{{$seminar->responsible}}</td>
                         <td>{{$seminar->place}}</td>

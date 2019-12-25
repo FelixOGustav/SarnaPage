@@ -19,7 +19,7 @@
                 <div class="container" style="margin-top: 20px">
                     <div style="position: relative">
                         <label>Titel</label>
-                        <input class="form-control" style="padding-right: 0px;" type="text" id="titel" name="titel" placeholder="Aktivitet" required value="{{$seminar->titel}}"/>
+                        <input class="form-control" style="padding-right: 0px;" type="text" id="titel" name="titel" placeholder="Aktivitet" required value="{{$seminar->title}}"/>
                     </div>
                 </div>
     

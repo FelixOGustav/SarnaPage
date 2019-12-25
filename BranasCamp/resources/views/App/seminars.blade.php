@@ -14,7 +14,7 @@
                     @if($seminar->date == $date)
                         <div class="customTable-ish-row">
                             <button style="font-size: 18px; font-family: Elkwood; color: #606569;" type="button" data-toggle="collapse" data-target="#seminar{{$seminar->id}}" aria-expanded="true" aria-controls="seminar1">
-                                {{$seminar->titel}} @if($seminar->gym_plus) <i class="fab fa-google-plus-g" style="font-size: 13px; margin-left: 10px;"></i> @endif
+                                {{$seminar->title}} @if($seminar->gym_plus) <i class="fab fa-google-plus-g" style="font-size: 13px; margin-left: 10px;"></i> @endif
                                 <span style="float: right;"><i class="fas fa-angle-down" style="text-align: right;"></i></span>
                             </button>
                             <div class="collapse" id="seminar{{$seminar->id}}">

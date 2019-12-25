@@ -170,6 +170,15 @@ class PagesController extends Controller
         return view('AdminPages/manageSeminars', ['seminars' => $seminars, 'seminarInfo' => $seminarInfo]);
     }
 
+    public function SaveSeminarInfo(){
+        $seminarInfo = \App\seminarinfo::all()->first();
+
+        $seminarInfo->description = Request("info");
+        $seminarInfo->save();
+
+        return redirect('/admin/seminars');
+    }
+
     public function GameOfThrones(){
         $toilets = \App\gameofthrone::all();
         $info = \App\gameofthronesinfo::all()->first();
@@ -233,7 +242,7 @@ class PagesController extends Controller
     public function Insamling(){
         $insamling = \App\insamling::all()->first();
 
-        return view('adminPages/insamling', ['insamling' => $insamling]);
+        return view('AdminPages/insamling', ['insamling' => $insamling]);
     }
 
     public function UpdateInsamling($id){
@@ -264,7 +273,7 @@ class PagesController extends Controller
     public function UpdateSeminar(){
         $seminar = \App\seminar::find(Request('id'));
 
-        $seminar->titel = Request('titel');
+        $seminar->title = Request('titel');
         $seminar->description = Request('description');
         $seminar->date = Request('date');
         $seminar->place = Request('place');

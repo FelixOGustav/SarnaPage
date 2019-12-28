@@ -4,11 +4,11 @@
 <div class="panel">
     <div class="row">
         <div class="col-sm-12">
-            <a href="/admin/schedule/2019-12-27" class="btn btn-light dateSelectBtn" style="margin: 5px;">27 Dev</a>
-            <a href="/admin/schedule/2019-12-28" class="btn btn-light dateSelectBtn" style="margin: 5px;">28 Dev</a>
-            <a href="/admin/schedule/2019-12-29" class="btn btn-light dateSelectBtn" style="margin: 5px;">29 Dev</a>
-            <a href="/admin/schedule/2019-12-30" class="btn btn-light dateSelectBtn" style="margin: 5px;">30 Dev</a>
-            <a href="/admin/schedule/2019-12-31" class="btn btn-light dateSelectBtn" style="margin: 5px;">31 Dev</a>
+            <a href="/admin/schedule/2019-12-27" class="btn btn-light dateSelectBtn" style="margin: 5px;">27 Dec</a>
+            <a href="/admin/schedule/2019-12-28" class="btn btn-light dateSelectBtn" style="margin: 5px;">28 Dec</a>
+            <a href="/admin/schedule/2019-12-29" class="btn btn-light dateSelectBtn" style="margin: 5px;">29 Dec</a>
+            <a href="/admin/schedule/2019-12-30" class="btn btn-light dateSelectBtn" style="margin: 5px;">30 Dec</a>
+            <a href="/admin/schedule/2019-12-31" class="btn btn-light dateSelectBtn" style="margin: 5px;">31 Dec</a>
             <a href="/admin/schedule/2020-01-01" class="btn btn-light dateSelectBtn" style="margin: 5px;">1 jan</a>
         </div>
     </div>

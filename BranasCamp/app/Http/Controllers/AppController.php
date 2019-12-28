@@ -84,7 +84,7 @@ class AppController extends Controller
     public function EditEvent($id){
         $event = \App\schedule_event::find($id);
 
-        return view('adminPages/editScheduleEvent', ['event' => $event]);
+        return view('AdminPages/editScheduleEvent', ['event' => $event]);
     }
 
     public function UpdateEvent($id){        

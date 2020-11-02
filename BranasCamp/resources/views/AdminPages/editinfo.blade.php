@@ -16,8 +16,9 @@
             <div style="color: #606569;">
                 <h4 for="type">Typ</h4>
                 <select name="type" id="type">
-                    <option value="sidebyside" @if($info->type == "sidebyside") selected @endif>Side by Side</option>
-                    <option value="imagebelow" @if($info->type == "imagebelow") selected @endif>Image below</option>
+                    @foreach ($info_types as $type)
+                        <option value="{{$type->type}}" @if($info->type == $type->type) selected @endif>{{$type->type}}</option>    
+                    @endforeach
                 </select>
             </div>
             <div style="color: #606569;">

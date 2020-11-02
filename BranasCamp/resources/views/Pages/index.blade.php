@@ -3,8 +3,8 @@
     
     <div class="ScaleStartPageLogo">
         <img  class="bigLogo" src="../img/branaslagret.svg" alt="Särnalägret">
-        <h1 class="dateLogo">27 dec - 1 jan</h1>        
-        <h1 class="dateLogo">2019 - 2020</h1>
+        <h1 class="dateLogo">29 dec - 1 jan</h1>        
+        <h1 class="dateLogo">2020 - 2021</h1>
         
         @if($camp->open > 0)
             <div class="container-fluid d-flex justify-content-center">
@@ -128,7 +128,7 @@
             <h1>Plats</h1>
             <h3>Vi bor i Kvistbergskolan i Sysslebäck, Värmland. Vi åker skidor i Branäs-</h3>
             <h1>Åldersgräns</h1>
-            <h3>För dig som är född 2006 eller tidigare.</h3>
+            <h3>För dig som är född 2007 eller tidigare.</h3>
         </div>
 
         <div class="invisibleSpacer"></div>
@@ -136,50 +136,14 @@
         <!-- What is branaslagret info -->
         <div class="container-fluid bg-white paddingBottom paddingTop" id="branaslagretInfo">
             <div class=" container centerTextInDiv">
-                <h1>Vad är Branäslägret?</h1>
-                <p>Branäslägret är ett nyårsläger som varje år arrangeras av Equmeniaförsamlingarna i Vårgårda- och Herrljungtrakten.
-                    Lägret riktar sig till tonåringar (födda senast 2006) och bjuder på en vecka av skidåkning, snack om Gud och bibel,
-                    gamla och nya vänner, aktiviteter av olika slag och mängder med tillfällen att njuta av livet! Lägret hålls i Kvistbergskolan
-                    i Sysslebäck, 10 min norr om Branäs.
-                </p>
-                <h1><br>Hur kan en dag se ut?</h1>
-                <p>En vanlig dag på Branäslägret börjar med frukost i matsalen. Därefter träffas deltagare och ledare från respektive 
-                    ort och för att prata om hur deltagarna upplever lägret och kanske leker någon lek. Dagens tema och aktiviteter 
-                    presenteras. Klockan nio går bussarna mot Branäs för de som ska till pisten. Klockan 12 serveras en lättare lunch 
-                    i backen. Sista bussen från backen är hemma klockan 17, lagom till en god kvällsmat. För de deltagare som inte 
-                    åker till pisten finns en mängd olika aktiviteter att göra på skolan. Exempelvis idrotta, spela spel, pyssla, 
-                    slappa eller åka iväg på kortare utflykter. På eftermiddagen, när alla ledare och deltagare är hemma på skolan 
-                    igen, träffas man i så kallade tvärgrupper. En tvärgrupp består av deltagare i samma åldrar från olika orter. 
-                    Ett utmärkt sätt att lära känna nya vänner! I tvärgruppen pratar man om hur dagen har varit, leker någon lek, 
-                    läser och diskuterar dagens bibeltext. På kvällen är det spex och underhållning i matsalen, samt kiosk och 
-                    insamling till ett välgörenhetsprojekt. Efter detta går man till sporthallen för att ha en andakt. Andakten är 
-                    uppdelad i två delar, en del där vi vill att alla är med och en frivillig del. På andakterna sjunger vi lovsång 
-                    tillsammans och lyssnar på någon som berättar om sin tro. När andakten är slut finns en kvällsmacka att äta innan 
-                    läggdags.
-                </p>
-                <h1><br>Vänta inte med att anmäla dig</h1>
-                <p>Det är högt tryck på platserna, så vänta inte med att anmäla dig! Anmälan öppnar i 5 november 
-                    och är öppen i en månad eller så fort lägret blir fullt. 
-                </p>
-                <h1><br>Daturm</h1>
-                <p>Avfärd till lägret sker tidigt på morgonen den 27:e december från Vårgårda Buss i Vårgårda. 
-                    Vi åker buss upp till Branäs och stannar i Kristinehamn för att äta en medhavd lunch. Hemfärd 
-                    från Branäs sker på morgonen den 1 januari. Vilken tid på eftermiddagen vi anländer till Vårgårda 
-                    beror på väder och väglag. Mer praktisk information och exakta tider kommer på mail till de som 
-                    anmält sig till lägret när anmälan har stängt. 
-
-                </p>
-                <h1><br>För föräldrar</h1>
-                <p>Branäslägret arrangeras av Equmeniaförsamlingar runt Vårgårda - och Herrljungatrakten. Lägret är 
-                    en plats för ungdomarna att lära känna nya vänner, ha roligt och få höra om den kristna tron. 
-                    Branäslägret är ett läger med kristen grund. Alla ledare som är med och hjälper till med lägret 
-                    har en relation till kyrkan och en personlig tro på Jesus. För oss är den kristna tron en central 
-                    byggsten i våra liv men oavsett vilken tro eller livsåskådning man har är alla välkomna på våra läger!
-                    <br><br>
-                    Vi som är ledare på lägret är väldigt förväntansfulla och ser fram emot ännu ett härligt 
-                    nyårsläger med mycket snö, glädje, kärlek och Gud! <br>
-                    Vi hoppas att alla som vill ska hänga med oss till Branäslägret!
-                </p>
+                @foreach ($infos as $info)
+                    @if($info->type == "Tom")
+                        <div class="invisibleSpacer"></div>
+                    @else
+                        <h1>{{ $info->title }}</h1>
+                        <p>{{ $info->body }}<br><br></p>
+                    @endif
+                @endforeach
             </div>
         </div>
         <!-- What is branaslagret end -->

@@ -39,8 +39,11 @@ class PagesController extends Controller
                 }
             }
         }
+
+        $infos = \App\startpage_info::all();
+
         //return view('Pages/index', ['links' => $this->StartPagelinkslinks, 'camp' => $camp, 'infos' => $infos, 'contacts' => $contacts, 'groups' => $groups, 'faqs' => $faqs]);
-        return view('Pages/index', ['links' => $this->StartPagelinkslinks, 'camp' => $camp, 'contacts' => $contacts, 'contact_groups' => $groups, 'faqs' => $faqs]);
+        return view('Pages/index', ['links' => $this->StartPagelinkslinks, 'camp' => $camp, 'infos' => $infos, 'contacts' => $contacts, 'contact_groups' => $groups, 'faqs' => $faqs]);
     }
 
     public function template(){
@@ -424,7 +427,8 @@ class PagesController extends Controller
 
     public function EditInfo($id){
         $info = \App\startpage_info::find($id);
-        return view('AdminPages/editinfo', ['info' => $info]);   
+        $info_type = \App\startpage_type::all();
+        return view('AdminPages/editinfo', ['info' => $info, 'info_types' => $info_type]);   
     }
 
     public function SaveEditStart($id = false){

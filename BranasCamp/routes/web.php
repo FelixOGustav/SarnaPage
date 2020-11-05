@@ -127,6 +127,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/lateregistration/queues', 'PagesController@lateRegistrationQueue')->middleware('can:admin');
     Route::get('/admin/lateregistration/queues/sendlink/{leader}/{registrationid}', 'PagesController@sendLateRegLink')->middleware('can:admin');
     Route::get('/admin/lateregistration/queues/remove/{id}', 'PagesController@RemoveLateRegistrationFromQueue')->middleware('can:admin');
+    Route::get('/admin/editSpots/{id}', 'PagesController@editSpots')->middleware('can:admin');
+    Route::post('/admin/editSpots/{id}/save', 'PagesController@saveSpots')->middleware('can:admin');
 });
 
 

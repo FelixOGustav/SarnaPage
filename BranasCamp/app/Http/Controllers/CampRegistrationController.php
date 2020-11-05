@@ -21,13 +21,13 @@ class CampRegistrationController extends Controller
             abort(403);
         }
 
-        $count = \App\registration::count();
-        if($count >= $camp->participantSpots) {
-            return redirect('/registrationfull');
+        $takenMap = array();
+        $places = \App\place::where('camp_id', $camp->id)->orderBy('placename', 'ASC')->get();
+        foreach($places as $place){
+            $takenMap[$place->placeID] = !$this->isSpotsAvailable($camp, $place, false);
         }
-        
-        $places = \App\place::orderBy('placename', 'ASC')->get();
-        return view('Pages/registration', ['places' => $places, 'key' => null]);
+
+        return view('Pages/registration', ['places' => $places, 'key' => null, 'takenMap' => $takenMap]);
     }
 
     // Return view for leaders registration
@@ -38,22 +38,27 @@ class CampRegistrationController extends Controller
             abort(403);
         }
 
-        $count = \App\registrations_leader::count();
-        if($count >= $camp->leaderSpots) {
-            return redirect('/registrationfull');
+        $takenMap = array();
+        $places = \App\place::where('camp_id', $camp->id)->orderBy('placename', 'ASC')->get();
+        foreach($places as $place){
+            $takenMap[$place->placeID] = !$this->isSpotsAvailable($camp, $place, false);
         }
 
-        $places = \App\place::orderBy('placename', 'ASC')->get();
-        return view('Pages/registration-leader', ['places' => $places, 'key' => null]);
+        return view('Pages/registration-leader', ['places' => $places, 'key' => null, 'takenMap' => $takenMap]);
     }
 
     public function lateRegistration($key){
+        $camp = \App\camp::where('active', 1)->first();
         $links = \App\late_registration_key::where('leader', '=', 0)->get();
 
         foreach($links as $link){
             if($key == $link->link_key){
-                $places = \App\place::all();
-                return view('Pages/registration', ['places' => $places, 'key' => $key]);
+                $takenMap = array();
+                $places = \App\place::where('camp_id', $camp->id)->orderBy('placename', 'ASC')->get();
+                foreach($places as $place){
+                    $takenMap[$place->placeID] = false;
+                }
+                return view('Pages/registration', ['places' => $places, 'key' => $key, 'takenMap' => $takenMap]);
             }
         }
 
@@ -61,11 +66,17 @@ class CampRegistrationController extends Controller
     }
 
     public function lateRegistrationLeader($key){
+        $camp = \App\camp::where('active', 1)->first();
         $links = \App\late_registration_key::where('leader', '=', 1)->get();
+        
         foreach($links as $link){
             if($key == $link->link_key){
-                $places = \App\place::all();
-                return view('Pages/registration-leader', ['places' => $places, 'key' => $key]);
+                $takenMap = array();
+                $places = \App\place::where('camp_id', $camp->id)->orderBy('placename', 'ASC')->get();
+                foreach($places as $place){
+                    $takenMap[$place->placeID] = false;
+                }
+                return view('Pages/registration-leader', ['places' => $places, 'key' => $key, 'takenMap' => $takenMap]);
             }
         }
 
@@ -116,6 +127,38 @@ class CampRegistrationController extends Controller
         if($count >= $camp->participantSpots) {
             return redirect('/registrationfull');
         }
+        // Validation of request
+        $validation = $request->validate([
+            'firstName' => 'required',
+            'lastName' => 'required',
+            'socialSecurityNumber' => 'required|alpha_num|size:10',
+            //'email' => ['email', new EmailExist],
+            //'emailAdvocate' => ['email', new EmailExist],
+            'place' => [function ($attribute, $value, $fail) {
+                $place = \App\place::find((int)$value);
+                $campForValidation = \App\registration_state::where('active', 1)->first();
+                if($place->camp_id != $campForValidation->id){
+                    $fail("Den ort du valt ingår ej i lägret. Försök igen eller välj en annan ort");
+                }
+                if (!$this->isSpotsAvailable($campForValidation, $place, false)) {
+                    $prefix = '[' . Carbon::now() . '] | [ Registration ] | ';
+                    $newLine = "\n";
+                    $logFilePath = 'logs/registrationLog.log';
+                    $leadersCount = \App\registrations_leader::all()
+                        ->where('place', $place->placeID)
+                        ->where('camp_id', $camp->id)
+                        ->count();
+                    $participantsCount = \App\registration::all()
+                        ->where('place', $place->placeID)
+                        ->where('camp_id', $camp->id)
+                        ->count();
+                    file_put_contents(storage_path($logFilePath), $prefix . 'Spots full in: ' . $place->placename . $newLine, FILE_APPEND);
+                    file_put_contents(storage_path($logFilePath), $prefix . 'Registrations: ' . $participantsCount . $newLine, FILE_APPEND);
+                    file_put_contents(storage_path($logFilePath), $prefix . 'Leaders: ' . $leadersCount . $newLine, FILE_APPEND);
+                    $fail('Plattserna i den ort du valt är tyvärr slut. Välj en annan ort om du vågar');
+                }
+            }]
+        ]);
 
         $registration= new \App\registration();
         //return request()->all();
@@ -217,11 +260,7 @@ class CampRegistrationController extends Controller
         // Send Email
         \Mail::to($registration->email_advocate)->send(new CampRegistration($registration, $verificationLink));
 
-        if(\App\registrations_leader::count() >= $camp->leaderSpots && \App\registration::count() >= $camp->participantSpots){
-            $camp->open = 0;
-            $camp->late_open = 1;
-            $camp->save();
-        }
+        $this->checkAndCloseRegistrationIfFull($camp);
 
         return redirect('/registration/done/participant/' . $registration->id);
     }
@@ -233,7 +272,39 @@ class CampRegistrationController extends Controller
         if($count >= $camp->leaderSpots) {
             return redirect('/registrationfull');
         }
-
+        // Validation of request
+        $validation = $request->validate([
+            'firstName' => 'required',
+            'lastName' => 'required',
+            'socialSecurityNumber' => 'required|alpha_num|size:10',
+            //email' => ['email', new EmailExist],
+            //'emailAdvocate' => ['email', new EmailExist],
+            'place' => [function ($attribute, $value, $fail) {
+                $place = \App\place::find((int)$value);
+                $campForValidation = \App\registration_state::where('active', 1)->first();
+                if($place->camp_id != $campForValidation->id){
+                    $fail("Den ort du valt ingår ej i lägret. Försök igen eller välj en annan ort");
+                }
+                if (!$this->isSpotsAvailable($campForValidation, $place, true)) {
+                    $prefix = '[' . Carbon::now() . '] | [ Registration ] | ';
+                    $newLine = "\n";
+                    $logFilePath = 'logs/registrationLog.log';
+                    $leadersCount = \App\registrations_leader::all()
+                        ->where('place', $place->placeID)
+                        ->where('camp_id', $camp->id)
+                        ->count();
+                    $participantsCount = \App\registration::all()
+                        ->where('place', $place->placeID)
+                        ->where('camp_id', $camp->id)
+                        ->count();
+                    file_put_contents(storage_path($logFilePath), $prefix . 'Spots full in: ' . $place->placename . $newLine, FILE_APPEND);
+                    file_put_contents(storage_path($logFilePath), $prefix . 'Registrations: ' . $participantsCount . $newLine, FILE_APPEND);
+                    file_put_contents(storage_path($logFilePath), $prefix . 'Leaders: ' . $leadersCount . $newLine, FILE_APPEND);
+                    $fail('Plattserna i den ort du valt är tyvärr slut. Välj en annan ort om du vågar');
+                }
+            }]
+        ]);
+        
         
         $registration = new \App\registrations_leader();
         //return request()->all();
@@ -321,11 +392,7 @@ class CampRegistrationController extends Controller
         // Send Email
         \Mail::to($registration->email)->send(new CampRegistration($registration, $verificationLink));
 
-        if(\App\registrations_leader::count() >= $camp->leaderSpots && \App\registration::count() >= $camp->participantSpots){
-            $camp->open = 0;
-            $camp->late_open = 1;
-            $camp->save();
-        }
+        $this->checkAndCloseRegistrationIfFull($camp);
 
         return redirect('/registration/done/leader/' . $registration->id);
     }
@@ -426,7 +493,25 @@ class CampRegistrationController extends Controller
             $registration->member = 1;
         }
 
-        
+        $registrations = \App\registration::where('camp_id', '=', $camp->id)->get();
+        foreach($registrations as $otherReg){
+            if($registration->birthdate == $otherReg->birthdate && $registration->last_four == $otherReg->last_four){$prefix = '[' . Carbon::now() . '] | [ Registration ] | ';
+                $newLine = "\n";
+                $logFilePath = 'logs/registrationLog.log';
+                file_put_contents(storage_path($logFilePath), $prefix . 'Registration with same SSN found' . $newLine, FILE_APPEND);
+                file_put_contents(storage_path($logFilePath), $prefix . 'SSN: ' . $birthday . '-' . $lastfour . $newLine, FILE_APPEND);
+                file_put_contents(storage_path($logFilePath), $prefix . 'Registration id of match: ' . $otherReg->id . $newLine, FILE_APPEND);
+                
+                $diff = $otherReg->created_at->diffInSeconds();
+                if($diff > 2){
+                    return redirect('/registrationExists');
+                } else {
+                    file_put_contents(storage_path($logFilePath), $prefix . 'Difference in time: ' . $diff . $newLine, FILE_APPEND);
+                    file_put_contents(storage_path($logFilePath), $prefix . 'Acting like registration happened like normal' . $newLine, FILE_APPEND);
+                    return redirect('/registration/done/participant/' . $otherReg->id);
+                }
+            }
+        }
         //$registration->verification_key = Hash::make($registration->first_name . $registration->phonenumber);
         $registration->save();
 
@@ -511,13 +596,25 @@ class CampRegistrationController extends Controller
             $registration->discount = '0';
         }
 */
-        $registrations = \App\registrations_leader::all();
+        $registrations = \App\registrations_leader::where('camp_id', '=', $camp->id)->get();
         foreach($registrations as $otherReg){
-            if($registration->birthdate == $otherReg->birthdate && $registration->last_four == $otherReg->last_four){
-                return redirect('/registrationExists');
+            if($registration->birthdate == $otherReg->birthdate && $registration->last_four == $otherReg->last_four){$prefix = '[' . Carbon::now() . '] | [ Registration ] | ';
+                $newLine = "\n";
+                $logFilePath = 'logs/registrationLog.log';
+                file_put_contents(storage_path($logFilePath), $prefix . 'Registration with same SSN found' . $newLine, FILE_APPEND);
+                file_put_contents(storage_path($logFilePath), $prefix . 'SSN: ' . $birthday . '-' . $lastfour . $newLine, FILE_APPEND);
+                file_put_contents(storage_path($logFilePath), $prefix . 'Registration id of match: ' . $otherReg->id . $newLine, FILE_APPEND);
+                
+                $diff = $otherReg->created_at->diffInSeconds();
+                if($diff > 2){
+                    return redirect('/registrationExists');
+                } else {
+                    file_put_contents(storage_path($logFilePath), $prefix . 'Difference in time: ' . $diff . $newLine, FILE_APPEND);
+                    file_put_contents(storage_path($logFilePath), $prefix . 'Acting like registration happened like normal' . $newLine, FILE_APPEND);
+                    return redirect('/registration/done/leader/' . $otherReg->id);
+                }
             }
         }
-
         if(Request('kitchen') > 0){
             $registration->cost = 1000;
         }
@@ -773,7 +870,40 @@ class CampRegistrationController extends Controller
             return 'Tjej';
         }
     }
+    public function isSpotsAvailable($camp, $place, $leader){
+        $leadersCount = \App\registrations_leader::all()
+                ->where('place', $place->placeID)
+                ->where('camp_id', $camp->id)
+                ->count();
+        $participantsCount = \App\registration::all()
+                ->where('place', $place->placeID)
+                ->where('camp_id', $camp->id)
+                ->count();
+        
+        //$leadersCount = 55;
+        //$participantsCount = 66;
+        
+        if($leader){
+            return $leadersCount < $place->leaderSpots && $leadersCount + $participantsCount < $place->spots;
+        } else {            
+            return $participantsCount < $place->participateSpots && $leadersCount + $participantsCount < $place->spots;
+        }
+    }
 
+    public function checkAndCloseRegistrationIfFull($camp){
+        $places = \App\place::all();
+        foreach($places as $place){
+            if($this->isSpotsAvailable($camp, $place, true) || $this->isSpotsAvailable($camp, $place, false)){
+                return;
+            }
+        }
+
+        // no available spots found. Closing registration
+        $camp = \App\registration_state::where('active', 1)->first();
+        $camp->open = 0;
+        $camp->late_open = 1;
+        $camp->save();
+    }
     /*
     public static function CheckAndOpenRegistrationForActiveCamp() {
         $camp = \App\camp::where('active', 1)->first();

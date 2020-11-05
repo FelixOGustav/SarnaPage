@@ -9,6 +9,7 @@
                     <th>ID#</th>
                     <th>Läger</th>
                     <th>Status</th>
+                    <th>Hantera platser</th>
                     @if($camp->open == 0)
                         <th>Öppna anmälan</th>
                     @else 
@@ -33,6 +34,8 @@
                         <td>Anmälan stängd</td>
                     @endif
 
+                    <td><a href="/admin/editSpots/{{$camp->id}}" class="btn btn-warning">Hantera platser</a></td>
+                    
                     @if($camp->open == 1)
                         <td><a href="/admin/managecamp/close/{{$camp->id}}" class="btn btn-primary">Stäng anmälan</a></td>
                     @else 

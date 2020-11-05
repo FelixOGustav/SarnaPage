@@ -661,6 +661,23 @@ class PagesController extends Controller
         return redirect('/admin/lateregistration/queues');
     }
 
+    public function editSpots($camp_id){
+        $places = \App\place::where('camp_id', $camp_id)->orderBy('placename', 'ASC')->get();
+        return view('AdminPages/editSpots', ['places' => $places]);
+    }
+
+    public function saveSpots(Request $request, $id){
+        $places = \App\place::where('camp_id', $id)->orderBy('placename', 'ASC')->get();
+
+        foreach($places as $place){
+            $place->spots = $request->input($place->placeID . '_max');
+            $place->participateSpots = $request->input($place->placeID . '_participants');
+            $place->leaderSpots = $request->input($place->placeID . '_leaders');
+            $place->save();
+        }
+        return redirect('/admin/editSpots/' . $id);
+    }
+
     private function getRandomString($length) { 
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'; 
         $randomString = ''; 

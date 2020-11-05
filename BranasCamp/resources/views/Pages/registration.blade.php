@@ -82,7 +82,7 @@
                     <select id="place" name="place" class="form-control" required>
                             <option value="">Välj...</option>
                         @foreach($places as $place)
-                            <option value="{{$place->placeID}}">{{$place->placename}}</option>
+                            <option value="{{$place->placeID}}" {{old("place") == $place->placeID ? "selected":""}} {{$takenMap[$place->placeID] ? "disabled":""}}>{{$place->placename}} {{$takenMap[$place->placeID] ? "(Fullt)":""}}</option>
                         @endforeach
                     </select>
                 </div>

@@ -125,10 +125,12 @@
         
         
         <div class="container-fluid startPageInfo paddingBottom">
+            <!--
             <h1>Plats</h1>
             <h3>Vi bor i Kvistbergskolan i Sysslebäck, Värmland. Vi åker skidor i Branäs-</h3>
             <h1>Åldersgräns</h1>
             <h3>För dig som är född 2007 eller tidigare.</h3>
+            -->
         </div>
 
         <div class="invisibleSpacer"></div>

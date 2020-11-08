@@ -78,57 +78,58 @@ class PagesController extends Controller
     }
 
     public function registrationlists($type, $cancelled = false){
-
+        
+        $camp = \App\camp::where('active', 1)->first();
         $placesIDArray = [];
         $user = Auth::user();
         $places = \App\place::all();
 
         if($user->can('ljung')){
-            $placesIDArray[] = \App\place::where('placename', '=', 'Ljung')->first()->placeID;
+            $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Ljung')->first()->placeID;
         }
         if($user->can('asklanda_ornunga')){
-            $placesIDArray[] = \App\place::where('placename', '=', 'Asklanda-Ornunga')->first()->placeID;
+            $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Asklanda-Ornunga')->first()->placeID;
         }
         if($user->can('bergstena_ostadkulle')){
-            $placesIDArray[] = \App\place::where('placename', '=', 'Bergstena-Östadkulle')->first()->placeID;
+            $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Bergstena-Östadkulle')->first()->placeID;
         }
         if($user->can('borgstena_tamta')){
-            $placesIDArray[] = \App\place::where('placename', '=', 'Borgstena-Tämta')->first()->placeID;
+            $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Borgstena-Tämta')->first()->placeID;
         }
         if($user->can('herrljunga')){
-            $placesIDArray[] = \App\place::where('placename', '=', 'Herrljunga')->first()->placeID;
+            $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Herrljunga')->first()->placeID;
         }
         if($user->can('ljurhalla')){
-            $placesIDArray[] = \App\place::where('placename', '=', 'Ljurhalla')->first()->placeID;
+            $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Ljurhalla')->first()->placeID;
         }
         if($user->can('storsjostrand')){
-            $placesIDArray[] = \App\place::where('placename', '=', 'Storsjöstrand')->first()->placeID;
+            $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Storsjöstrand')->first()->placeID;
         }
         if($user->can('t_r_e')){
-            $placesIDArray[] = \App\place::where('placename', '=', 'Tåstorp/Rensvist/Eggvena/Lagmansholm')->first()->placeID;
+            $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Tåstorp/Rensvist/Eggvena/Lagmansholm')->first()->placeID;
         }
         if($user->can('vargarda')){
-            $placesIDArray[] = \App\place::where('placename', '=', 'Vårgårda')->first()->placeID;
+            $placesIDArray[] = \App\place::where('camp_id', $camp->id)->where('placename', '=', 'Vårgårda')->first()->placeID;
         }
 
         if($type == 'participant'){
             if($cancelled == "cancelled"){
-                $regAmount = \App\registrations_cancel::count();
-                $registrations = \App\registrations_cancel::whereIn('place', $placesIDArray)->get();
+                $regAmount = \App\registrations_cancel::where('camp_id', $camp->id)->count();
+                $registrations = \App\registrations_cancel::where('camp_id', $camp->id)->whereIn('place', $placesIDArray)->get();
             }
             else{
-                $regAmount = \App\registration::count();
-                $registrations = \App\registration::whereIn('place', $placesIDArray)->get();
+                $regAmount = \App\registration::where('camp_id', $camp->id)->where('camp_id', $camp->id)->count();
+                $registrations = \App\registration::where('camp_id', $camp->id)->whereIn('place', $placesIDArray)->get();
             }
             return view('AdminPages/registrationlists', ['registrations' => $registrations, 'places' => $places, 'count' => $regAmount, 'type' => $type, 'cancelled' => $cancelled]);
         }else if($type == 'leader'){
             if($cancelled == "cancelled"){
-                $regAmount = \App\registrations_leaders_cancel::count();
-                $registrations_leaders = \App\registrations_leaders_cancel::whereIn('place', $placesIDArray)->get();
+                $regAmount = \App\registrations_leaders_cancel::where('camp_id', $camp->id)->count();
+                $registrations_leaders = \App\registrations_leaders_cancel::where('camp_id', $camp->id)->whereIn('place', $placesIDArray)->get();
             }
             else{
-                $regAmount = \App\registrations_leader::count();
-                $registrations_leaders = \App\registrations_leader::whereIn('place', $placesIDArray)->get();
+                $regAmount = \App\registrations_leader::where('camp_id', $camp->id)->count();
+                $registrations_leaders = \App\registrations_leader::where('camp_id', $camp->id)->whereIn('place', $placesIDArray)->get();
             }
             return view('AdminPages/registrationlists', ['registrations' => $registrations_leaders, 'places' => $places, 'count' => $regAmount, 'type' => $type, 'cancelled' => $cancelled]);
         }else {

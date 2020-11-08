@@ -121,22 +121,22 @@ class CampRegistrationController extends Controller
     }
     
     // Standard attendee
-    public function store(){
+    public function store(Request $request){
         $camp = \App\camp::where('active', 1)->first();
         $count = \App\registration::count();
-        if($count >= $camp->participantSpots) {
+        /* if($count >= $camp->participantSpots) {
             return redirect('/registrationfull');
-        }
+        } */
         // Validation of request
         $validation = $request->validate([
             'firstName' => 'required',
             'lastName' => 'required',
             'socialSecurityNumber' => 'required|alpha_num|size:10',
-            //'email' => ['email', new EmailExist],
-            //'emailAdvocate' => ['email', new EmailExist],
+            'email' => 'email:rfc,dns',
+            'emailAdvocate' => 'email:rfc,dns',
             'place' => [function ($attribute, $value, $fail) {
                 $place = \App\place::find((int)$value);
-                $campForValidation = \App\registration_state::where('active', 1)->first();
+                $campForValidation = \App\camp::where('active', 1)->first();
                 if($place->camp_id != $campForValidation->id){
                     $fail("Den ort du valt ingår ej i lägret. Försök igen eller välj en annan ort");
                 }
@@ -266,22 +266,22 @@ class CampRegistrationController extends Controller
     }
 
     // leader attendee
-    public function storeLeader(){
+    public function storeLeader(Request $request){
         $camp = \App\camp::where('active', 1)->first();
         $count = \App\registrations_leader::count();
-        if($count >= $camp->leaderSpots) {
+        /* if($count >= $camp->leaderSpots) {
             return redirect('/registrationfull');
-        }
+        } */
         // Validation of request
         $validation = $request->validate([
             'firstName' => 'required',
             'lastName' => 'required',
             'socialSecurityNumber' => 'required|alpha_num|size:10',
-            //email' => ['email', new EmailExist],
-            //'emailAdvocate' => ['email', new EmailExist],
+            'email' => 'email:rfc,dns',
+            'emailAdvocate' => 'email:rfc,dns',
             'place' => [function ($attribute, $value, $fail) {
                 $place = \App\place::find((int)$value);
-                $campForValidation = \App\registration_state::where('active', 1)->first();
+                $campForValidation = \App\camp::where('active', 1)->first();
                 if($place->camp_id != $campForValidation->id){
                     $fail("Den ort du valt ingår ej i lägret. Försök igen eller välj en annan ort");
                 }
@@ -899,7 +899,7 @@ class CampRegistrationController extends Controller
         }
 
         // no available spots found. Closing registration
-        $camp = \App\registration_state::where('active', 1)->first();
+        $camp = \App\camp::where('active', 1)->first();
         $camp->open = 0;
         $camp->late_open = 1;
         $camp->save();

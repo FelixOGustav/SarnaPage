@@ -64,9 +64,11 @@
                 <li class="nav-item">
                     <a class="nav-link nav-item-custom ElkwoodNavbar navbarItemSpacing" href="{{$links['infoLink'] ?? "/#branaslagretInfo"}}" id="scrollToBranaslagretBtn">Branäslägret?</a>
                 </li>
+            <!--
                 <li class="nav-item">
                     <a class="nav-link nav-item-custom ElkwoodNavbar navbarItemSpacing" href="{{$links['prisLink'] ?? "/#prisInfo"}}" id="scrollToPrisBtn">Pris <span class="sr-only">(current)</span></a>
                 </li>
+            -->
                 <li class="nav-item">
                     <a class="nav-link nav-item-custom ElkwoodNavbar navbarItemSpacing" href="{{$links['reglerLink'] ?? "/#ReglerInfo"}}" id="scrollToReglerBtn">Regler</a>
                 </li>

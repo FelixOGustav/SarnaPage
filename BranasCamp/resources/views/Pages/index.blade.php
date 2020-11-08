@@ -18,7 +18,7 @@
             </div>
         @else
             <div class="container-fluid d-flex justify-content-center">
-                <p class="buttonStyle" style="color: white; font-size: 27px; cursor: default;">Anmälan är stängd. Vi ses nästa år!</p>
+                <p class="buttonStyle" style="color: white; font-size: 27px; cursor: default;">Anmälan öppnas 10 November 18:00!</p>
             </div>
         @endif
     </div>
@@ -153,6 +153,7 @@
         <div class="invisibleSpacer"></div>
 
         <!-- Pris info -->
+        <!--
         <div class="container-fluid bg-white paddingBottom paddingTop" id="prisInfo">
             <div class="centerTextInDiv">
                 <h1>Pris</h1>
@@ -176,10 +177,11 @@
                 <p>OBS! Priserna är preliminära</p>
             </div>
         </div>
+    -->
         <!-- Pris info end -->
-
+<!--
         <div class="invisibleSpacer"></div>
-
+-->
         <!-- Regler info -->
         <div class="container-fluid bg-white paddingBottom paddingTop" id="ReglerInfo">
                 <div class="container centerTextInDiv">
@@ -188,10 +190,12 @@
                     <h3>- Ledarna är de som bestämmer</h3>
                     <h3>- Du ska vara med på de obligatoriska aktiviteterna</h3>
                     <h3>- Nolltolerans mot alkohol och droger</h3>
+                <!--
                     <h3>- Avanmälan efter sista anmälningsdagen utan giltigt läkarintyg eller överenskommande med 
                         lägerledningen gör att man måste betala lägeravgiften. Eventuell kostnad för liftkort/skidhyra 
                         behöver inte betalas.
                     </h3>
+                -->
                 </div>
             </div>
             <!-- Regler info end -->

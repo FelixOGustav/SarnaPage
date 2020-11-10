@@ -61,7 +61,8 @@ class PagesController extends Controller
     
 
     public function dashboard(){
-        $places = \App\place::all();
+        $camp = \App\camp::where('active', 1)->first();
+        $places = \App\place::where('camp_id', $camp->id)->get();
         $placesStats = [];
 
         for($i = 0; $i < count($places); $i++){

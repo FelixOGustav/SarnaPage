@@ -231,7 +231,7 @@ class CampRegistrationController extends Controller
         }
         */
 
-        $registrations = \App\registration::all();
+        $registrations = \App\registration::where('camp_id', $camp->id)->get();
         foreach($registrations as $otherReg){
             if($registration->birthdate == $otherReg->birthdate && $registration->last_four == $otherReg->last_four){
                 return redirect('/registrationExists');
@@ -282,13 +282,14 @@ class CampRegistrationController extends Controller
             'place' => [function ($attribute, $value, $fail) {
                 $place = \App\place::find((int)$value);
                 $campForValidation = \App\camp::where('active', 1)->first();
+                $prefix = '[' . Carbon::now() . '] | [ Registration ] | ';
+                $newLine = "\n";
+                $logFilePath = 'logs/registrationLog.log';
                 if($place->camp_id != $campForValidation->id){
+                    file_put_contents(storage_path($logFilePath), $prefix . 'Invalid place: ' . $place->placename . ":". $place->placeID . " Place camp id: " . $place->camp_id. " active camp id: " . $campForValidation->id . $newLine, FILE_APPEND);
                     $fail("Den ort du valt ingår ej i lägret. Försök igen eller välj en annan ort");
                 }
                 if (!$this->isSpotsAvailable($campForValidation, $place, true)) {
-                    $prefix = '[' . Carbon::now() . '] | [ Registration ] | ';
-                    $newLine = "\n";
-                    $logFilePath = 'logs/registrationLog.log';
                     $leadersCount = \App\registrations_leader::all()
                         ->where('place', $place->placeID)
                         ->where('camp_id', $camp->id)
@@ -356,7 +357,7 @@ class CampRegistrationController extends Controller
         }*/
         $registration->kitchen = Request('kitchen');
         
-        $registrations = \App\registrations_leader::all();
+        $registrations = \App\registrations_leader::where('camp_id', $camp->id)->get();
         foreach($registrations as $otherReg){
             if($registration->birthdate == $otherReg->birthdate && $registration->last_four == $otherReg->last_four){
                 return redirect('/registrationExists');
@@ -477,7 +478,7 @@ class CampRegistrationController extends Controller
             $registration->discount = '0';
         }
 */
-        $registrations = \App\registration::all();
+        $registrations = \App\registration::where('camp_id', $camp->id)->get();
         foreach($registrations as $otherReg){
             if($registration->birthdate == $otherReg->birthdate && $registration->last_four == $otherReg->last_four){
                 return redirect('/registrationExists');

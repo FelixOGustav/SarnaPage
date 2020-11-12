@@ -98,10 +98,11 @@
                 </div>
             <!-- Skidhyra -->
     </div>
+            <!--
             <div class="BGGrey" style="padding-bottom: 3rem; padding-top: 3rem; margin-top:3rem; ">
                 <h3 style="text-align:center;" class="whiteColor">OBS! Information om att köpa liftkort och hyra utrustning, kommer skickas ut i början av december.</h3>
             </div>
-            <!-- -->
+             -->
     <div class="container">
             <!-- Start Målsman -->
             <div style="padding-top: 3rem;">    
